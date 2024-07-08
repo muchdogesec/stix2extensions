@@ -1,0 +1,82 @@
+{
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix4doge/main/schemas/sdos/weakness.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "weakness",
+	"description": "This extension creates a new SDO that can be used to represent weaknesses (for CWEs).",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/blob/master/schemas/common/core.json"
+		},
+		{
+			"properties": {
+				"type": {
+					"type": "string",
+					"description": "The value of this property MUST be `weakness`.",
+					"enum": [
+						"weakness"
+					]
+				},
+				"id": {
+					"title": "id",
+					"pattern": "^weakness--"
+				},
+				"name": {
+					"type": "string",
+					"description": "The CWE ID used to identify the Weakness."
+				},
+				"description": {
+				  "type": "string",
+				  "description": "A description about the Weakness."
+				},
+				"modes_of_introduction": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"likelihood_of_exploit": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"common_consequences": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"detection_methods": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"extensions": {
+					"type": "object",
+					"properties": {
+						"extension-definition--31725edc-7d81-5db7-908a-9134f322284a": {
+							"type": "object",
+							"properties": {
+            					"extension_type": {
+									"enum": [
+										"new-sdo"
+									]
+            					}
+							},
+							"required": ["new-sdo"]
+						},
+					"required": ["extension-definition--31725edc-7d81-5db7-908a-9134f322284a"]
+					}
+				}
+			}
+		}
+	],
+	"required": [
+		"type",
+		"id",
+		"name",
+		"extensions"
+  	]
+}

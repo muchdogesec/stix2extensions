@@ -1,0 +1,14 @@
+{
+    "type": "phone-number",
+    "spec_version": "2.1",
+    "id": "phone-number--60bc3ff5-37c4-5b5a-9aeb-6c4d116534bd",
+    "number": "4407890129093",
+    "country": "GBR",
+    "connection": "Mobile",
+    "provider": "Big Network",
+    "extensions": {
+        "extension-definition--14a97ee2-e666-5ada-a6bd-b7177f79e211": {
+            "extension_type": "new-sco"
+        }
+    }
+}

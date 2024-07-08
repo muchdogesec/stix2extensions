@@ -1,0 +1,16 @@
+{
+    "type": "bank-account",
+    "spec_version": "2.1",
+    "id": "bank-account--a7348a10-f1b6-5b3d-8908-0ca0f67a5fb5",
+    "bank": "Big Bank",
+    "country": "GBR",
+    "currency": "GBP",
+    "holder_name": "DOGESEC",
+    "iban_number": "GB33BUKB20201555555555",
+    "swift_code": "DEMOGB22XXX",
+    "extensions": {
+        "extension-definition--f19f3291-6a84-5674-b311-d75a925d5bd9": {
+            "extension_type": "new-sco"
+        }
+    }
+}

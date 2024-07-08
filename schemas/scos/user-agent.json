@@ -1,0 +1,53 @@
+{
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix4doge/main/schemas/scos/user-agent.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "user-agent",
+	"description": "This extension creates a new SCO that can be used to represent user agents used in HTTP request. It is designed to be used when the Network Traffic SCO with HTTP request extension cannot be used due to lack of request information needed for the required properties.",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/blob/master/schemas/common/cyber-observable-core.json"
+		},
+		{
+			"properties": {
+				"type": {
+					"type": "string",
+					"description": "The value of this property MUST be `user-agent`.",
+					"enum": [
+						"user-agent"
+					]
+				},
+				"id": {
+					"title": "id",
+					"pattern": "^user-agent--"
+				},
+				"string": {
+					"type": "string",
+					"description": "The full user agent string."
+				},
+				"extensions": {
+					"type": "object",
+					"properties": {
+						"extension-definition--7ca5afee-0e4e-5813-b643-de51538658cc": {
+							"type": "object",
+							"properties": {
+            					"extension_type": {
+									"enum": [
+										"new-sco"
+									]
+            					}
+							},
+							"required": ["new-sco"]
+						},
+					"required": ["extension-definition--7ca5afee-0e4e-5813-b643-de51538658cc"]
+					}
+				}
+			}
+		}
+	],
+	"required": [
+		"type",
+		"id",
+		"extensions"
+  	]
+}

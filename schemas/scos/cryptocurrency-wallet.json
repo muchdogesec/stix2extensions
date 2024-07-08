@@ -1,0 +1,53 @@
+{
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix4doge/main/schemas/scos/cryptocurrency-wallet.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "bank-account",
+	"description": "This extension creates a new SCO that can be used to represent cryptocurrency wallets.",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/blob/master/schemas/common/cyber-observable-core.json"
+		},
+		{
+			"properties": {
+				"type": {
+					"type": "string",
+					"description": "The value of this property MUST be `cryptocurrency-wallet`.",
+					"enum": [
+						"cryptocurrency-wallet"
+					]
+				},
+				"id": {
+					"title": "id",
+					"pattern": "^cryptocurrency-wallet--"
+				},
+				"address": {
+					"type": "string",
+					"description": "The hash of the wallet."
+				},
+				"extensions": {
+					"type": "object",
+					"properties": {
+						"extension-definition--be78509e-6958-51b1-8b26-d17ee0eba2d7": {
+							"type": "object",
+							"properties": {
+            					"extension_type": {
+									"enum": [
+										"new-sco"
+									]
+            					}
+							},
+							"required": ["new-sco"]
+						},
+					"required": ["extension-definition--be78509e-6958-51b1-8b26-d17ee0eba2d7"]
+					}
+				}
+			}
+		}
+	],
+	"required": [
+		"type",
+		"id",
+		"extensions"
+  	]
+}

@@ -1,0 +1,69 @@
+{
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix4doge/main/schemas/scos/phone-number.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "phone-number",
+	"description": "This extension creates a new SCO that can be used to represent phone numbers.",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/blob/master/schemas/common/cyber-observable-core.json"
+		},
+		{
+			"properties": {
+				"type": {
+					"type": "string",
+					"description": "The value of this property MUST be `phone-number`.",
+					"enum": [
+						"phone-number"
+					]
+				},
+				"id": {
+					"title": "id",
+					"pattern": "^phone-number--"
+				},
+				"number": {
+					"type": "string",
+					"description": "An E.164 formatted phone number."
+				},
+				"country": {
+					"type": "string",
+					"description": "Three digit ISO country code the number was issues. Should match intentional dialing prefix in number."
+				},
+				"connection" : {
+					"type": "string",
+					"description": "The type of connection the number resolves to.",
+					"enum": [
+						"mobile",
+						"landline"
+					]
+				},
+				"provider": {
+					"type": "string",
+					"description": "The company that manages the number."
+				},
+				"extensions": {
+					"type": "object",
+					"properties": {
+						"extension-definition--14a97ee2-e666-5ada-a6bd-b7177f79e211": {
+							"type": "object",
+							"properties": {
+            					"extension_type": {
+									"enum": [
+										"new-sco"
+									]
+            					}
+							},
+							"required": ["new-sco"]
+						},
+					"required": ["extension-definition--14a97ee2-e666-5ada-a6bd-b7177f79e211"]
+					}
+				}
+			}
+		}
+	],
+	"required": [
+		"type",
+		"id",
+		"extensions"
+  	]
+}

@@ -1,0 +1,73 @@
+{
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix4doge/main/schemas/scos/bank-account.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "bank-account",
+	"description": "This extension creates a new SCO that can be used to represent bank account details.",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/blob/master/schemas/common/cyber-observable-core.json"
+		},
+		{
+			"properties": {
+				"type": {
+					"type": "string",
+					"description": "The value of this property MUST be `bank-account`.",
+					"enum": [
+						"bank-account"
+					]
+				},
+				"id": {
+					"title": "id",
+					"pattern": "^bank-account--"
+				},
+				"bank": {
+					"type": "string",
+					"description": "Name of the bank account the manages the account."
+				},
+				"country": {
+					"type": "string",
+					"description": "3 digit ISO country code for country of account."
+				},
+				"currency": {
+					"type": "string",
+					"description": "3 digit ISO currency code for currency of account."
+				},
+				"holder_name": {
+					"type": "string",
+					"description": "Name of the holder of the account."
+				},
+				"iban_number": {
+					"type": "string",
+					"description": "Full IBAN number of the account."
+				},
+				"swift_code": {
+					"type": "string",
+					"description": "Full swift code of the account."
+				},
+				"extensions": {
+					"type": "object",
+					"properties": {
+						"extension-definition--f19f3291-6a84-5674-b311-d75a925d5bd9": {
+							"type": "object",
+							"properties": {
+            					"extension_type": {
+									"enum": [
+										"new-sco"
+									]
+            					}
+							},
+							"required": ["new-sco"]
+						},
+					"required": ["extension-definition--f19f3291-6a84-5674-b311-d75a925d5bd9"]
+					}
+				}
+			}
+		}
+	],
+	"required": [
+		"type",
+		"id",
+		"extensions"
+  	]
+}

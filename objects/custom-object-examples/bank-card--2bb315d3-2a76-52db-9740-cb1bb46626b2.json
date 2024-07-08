@@ -1,0 +1,21 @@
+{
+    "type": "bank-card",
+    "spec_version": "2.1",
+    "id": "bank-card--2bb315d3-2a76-52db-9740-cb1bb46626b2",
+    "format": "credit",
+    "number": "4242424242424242",
+    "scheme": "VISA",
+    "brand": "VISA",
+    "currency": "GBP",
+    "issuer_name": "Big Bank",
+    "issuer_country": "GBR",
+    "holder_name": "DOGESEC",
+    "valid_from": "01/99",
+    "valid_to": "01/00",
+    "security_code": "999",
+    "extensions": {
+        "extension-definition--7922f91a-ee77-58a5-8217-321ce6a2d6e0": {
+            "extension_type": "new-sco"
+        }
+    }
+}

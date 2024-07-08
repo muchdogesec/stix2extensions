@@ -1,0 +1,107 @@
+{
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix4doge/main/schemas/scos/cryptocurrency-transaction.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "cryptocurrency-transaction",
+	"description": "This extension creates a new SCO that can be used to represent cryptocurrency transactions.",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/blob/master/schemas/common/cyber-observable-core.json"
+		},
+		{
+			"properties": {
+				"type": {
+					"type": "string",
+					"description": "The value of this property MUST be `cryptocurrency-transaction`.",
+					"enum": [
+						"cryptocurrency-transaction"
+					]
+				},
+				"id": {
+					"title": "id",
+					"pattern": "^cryptocurrency-transaction--"
+				},
+				"symbol": {
+					"type": "string",
+					"description": "3 digit code for the cryptocurrency."
+				},
+				"hash": {
+					"type": "string",
+					"description": "The transaction hash."
+				},
+				"hash": {
+					"type": "string",
+					"description": "The block ID of the transaction."
+				},
+				"fee": {
+					"type": "string",
+					"description": "The transaction fee."
+				},
+				"fee": {
+					"type": "string",
+					"description": "The transaction fee."
+				},
+				"execution_time": {
+					"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json",
+					"description": "The time of transaction."
+				},
+				"input": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+					  		"address_ref": {
+								"type": "string",
+								"description": "Specifies a reference to a cryptocurrency-wallet STIX ID."
+					  		},
+					  		"amount": {
+								"type": "number",
+								"description": "The input amount."
+							},
+          					"minItems": 1
+						}
+					}
+				},
+				"output": {
+				 	"type": "array",
+				 	"items": {
+						"type": "object",
+						"properties": {
+					  		"address_ref": {
+								"type": "string",
+								"description": "Specifies a reference to a cryptocurrency-wallet STIX ID."
+					  		},
+					  		"amount": {
+								"type": "number",
+								"description": "The output amount."
+					  		},
+          					"minItems": 1
+						}
+					}
+				},
+				"extensions": {
+					"type": "object",
+					"properties": {
+						"extension-definition--151d042d-4dcf-5e44-843f-1024440318e5": {
+							"type": "object",
+							"properties": {
+            					"extension_type": {
+									"enum": [
+										"new-sco"
+									]
+            					}
+							},
+							"required": ["new-sco"]
+						},
+					"required": ["extension-definition--151d042d-4dcf-5e44-843f-1024440318e5"]
+					}
+				}
+			}
+		}
+	],
+	"required": [
+		"type",
+		"id",
+		"extensions"
+  	]
+}
