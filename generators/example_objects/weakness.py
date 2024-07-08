@@ -82,13 +82,13 @@ for directory, weakness_sdo in fs_directories.items():
 # Now move those files into the standardised locations for easy download
 
 final_directories = [
-    "objects/custom-object-examples"
+    "example_objects/sdos"
 ]
 
 for directory in final_directories:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-shutil.move("tmp_object_store/weakness/weakness--" + str(uuid.uuid5(namespace, f"A demo weakness")) + "/20200101000000000.json", "objects/custom-object-examples/weakness--" + str(uuid.uuid5(namespace, f"A demo weakness")) + ".json")
+shutil.move("tmp_object_store/weakness/weakness--" + str(uuid.uuid5(namespace, f"A demo weakness")) + "/20200101000000000.json", "example_objects/sdos/weakness--" + str(uuid.uuid5(namespace, f"A demo weakness")) + ".json")
 
 shutil.rmtree("tmp_object_store")

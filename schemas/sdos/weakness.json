@@ -1,5 +1,5 @@
 {
-	"$id": "https://raw.githubusercontent.com/muchdogesec/stix4doge/main/schemas/sdos/weakness.json",
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/sdos/weakness.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"title": "weakness",
 	"description": "This extension creates a new SDO that can be used to represent weaknesses (for CWEs).",

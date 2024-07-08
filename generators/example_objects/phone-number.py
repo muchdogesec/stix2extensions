@@ -6,7 +6,7 @@ import shutil
 
 from uuid import UUID
 
-from stix2extensions.cryptocurrency_wallet import CryptocurrencyWallet
+from stix2extensions.phone_number import Phonenumber
 # create the directories
 
 tmp_directories = [
@@ -21,12 +21,14 @@ for directory in tmp_directories:
 
 namespace=UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
 
-# Create CryptocurrencyWallet SCO
+# Create PhoneNumber SCO
 
-example_CryptocurrencyWalletSCO = CryptocurrencyWallet(
-                    id="cryptocurrency-wallet--"+ str(uuid.uuid5(namespace, f"1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY")),
-                    address="1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY",
-                    
+example_PhoneNumberSCO = Phonenumber(
+                    id="phone-number--"+ str(uuid.uuid5(namespace, f"07890129093")),
+                    number="4407890129093",
+                    country="GBR",
+                    connection="Mobile",
+                    provider="Big Network"
                     )
 
 # Write the objects to the filestore
@@ -35,23 +37,23 @@ example_CryptocurrencyWalletSCO = CryptocurrencyWallet(
 ### Creating FileSystemStore and adding MarkingDefinitionSMO for each directory
 
 fs_directories = {
-    "tmp_object_store": example_CryptocurrencyWalletSCO
+    "tmp_object_store": example_PhoneNumberSCO
 }
 
-for directory, cryptocurrency_wallet_sco in fs_directories.items():
+for directory, phone_number_sco in fs_directories.items():
     fs_store = stix2.FileSystemStore(directory)
-    fs_store.add([cryptocurrency_wallet_sco])
+    fs_store.add([phone_number_sco])
 
 # Now move those files into the standardised locations for easy download
 
 final_directories = [
-    "objects/custom-object-examples"
+    "example_objects/scos"
 ]
 
 for directory in final_directories:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-shutil.move("tmp_object_store/cryptocurrency-wallet/cryptocurrency-wallet--" + str(uuid.uuid5(namespace, f"1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY")) + ".json", "objects/custom-object-examples/cryptocurrency-wallet--" + str(uuid.uuid5(namespace, f"1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY")) + ".json")
+shutil.move("tmp_object_store/phone-number/phone-number--" + str(uuid.uuid5(namespace, f"07890129093")) + ".json", "example_objects/scos/phone-number--" + str(uuid.uuid5(namespace, f"07890129093")) + ".json")
 
 shutil.rmtree("tmp_object_store")

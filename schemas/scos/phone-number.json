@@ -1,5 +1,5 @@
 {
-	"$id": "https://raw.githubusercontent.com/muchdogesec/stix4doge/main/schemas/scos/phone-number.json",
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/phone-number.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"title": "phone-number",
 	"description": "This extension creates a new SCO that can be used to represent phone numbers.",

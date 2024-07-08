@@ -48,13 +48,13 @@ for directory, bankaccount_sco in fs_directories.items():
 # Now move those files into the standardised locations for easy download
 
 final_directories = [
-    "objects/custom-object-examples"
+    "example_objects/scos"
 ]
 
 for directory in final_directories:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-shutil.move("tmp_object_store/bank-account/bank-account--" + str(uuid.uuid5(namespace, f"GB33BUKB20201555555555")) + ".json", "objects/custom-object-examples/bank-account--" + str(uuid.uuid5(namespace, f"GB33BUKB20201555555555")) + ".json")
+shutil.move("tmp_object_store/bank-account/bank-account--" + str(uuid.uuid5(namespace, f"GB33BUKB20201555555555")) + ".json", "example_objects/scos/bank-account--" + str(uuid.uuid5(namespace, f"GB33BUKB20201555555555")) + ".json")
 
 shutil.rmtree("tmp_object_store")

@@ -27,7 +27,7 @@ schema_base="https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/
 
 object_marking_refs=[
     "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487", # this is TLP:CLEAR
-    "marking-definition--" + str(uuid.uuid5(namespace, f"stix4doge")) # marking-definition--97ba4e8b-04f6-57e8-8f6e-3a0f0a7dc0fb
+    "marking-definition--" + str(uuid.uuid5(namespace, f"stix2extensions")) # 
 ]
 
 # Create New Extension Defintion SMO

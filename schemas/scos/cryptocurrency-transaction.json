@@ -1,5 +1,5 @@
 {
-	"$id": "https://raw.githubusercontent.com/muchdogesec/stix4doge/main/schemas/scos/cryptocurrency-transaction.json",
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/cryptocurrency-transaction.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"title": "cryptocurrency-transaction",
 	"description": "This extension creates a new SCO that can be used to represent cryptocurrency transactions.",

@@ -63,13 +63,13 @@ for directory, cryptocurrency_transaction_sco in fs_directories.items():
 # Now move those files into the standardised locations for easy download
 
 final_directories = [
-    "objects/custom-object-examples"
+    "example_objects/scos"
 ]
 
 for directory in final_directories:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-shutil.move("tmp_object_store/cryptocurrency-transaction/cryptocurrency-transaction--" + str(uuid.uuid5(namespace, f"3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5")) + ".json", "objects/custom-object-examples/cryptocurrency-transaction--" + str(uuid.uuid5(namespace, f"3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5")) + ".json")
+shutil.move("tmp_object_store/cryptocurrency-transaction/cryptocurrency-transaction--" + str(uuid.uuid5(namespace, f"3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5")) + ".json", "example_objects/scos/cryptocurrency-transaction--" + str(uuid.uuid5(namespace, f"3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5")) + ".json")
 
 shutil.rmtree("tmp_object_store")

@@ -1,5 +1,5 @@
 {
-	"$id": "https://raw.githubusercontent.com/muchdogesec/stix4doge/main/schemas/scos/user-agent.json",
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/user-agent.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"title": "user-agent",
 	"description": "This extension creates a new SCO that can be used to represent user agents used in HTTP request. It is designed to be used when the Network Traffic SCO with HTTP request extension cannot be used due to lack of request information needed for the required properties.",
