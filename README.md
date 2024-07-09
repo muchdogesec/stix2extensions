@@ -7,7 +7,11 @@ This repository is used to share custom STIX objects created by the threat intel
 It is useful for two use-cases, for those who want to:
 
 1. create their own custom STIX objects and make them easy to distribute
-2. easily use the custom STIX objects created by others in this repo 
+2. use the custom STIX objects created by others in this repo in a straight-forward way
+
+## tl;dr
+
+[![stix2extensions](https://img.youtube.com/vi/BbEruGoin8o/0.jpg)](https://www.youtube.com/watch?v=BbEruGoin8o)
 
 ## Structure of this repository
 
@@ -67,14 +71,13 @@ pip3 install .
 
 To add your own objects to this repo you must then do the following things:
 
-1. define a schema for it in the `schemas` directory
+1. define a schema for it in the `schemas` directory.
 2. create an entry for it in `stix2extensions` defining the properties
 3. add an entry in `generators/extension-definition.py` to auto generate the Extension Definition for your objects. Then run it `python3 generators/extension-definition.py`
-4. add an entry under `generators/example_objects/` for your custom object. This script should generate a dummy object to show others what it looks like. Then run it.
-5. run the 
-6. optional: add an icon for your new object in our [stix2icons repository](https://github.com/muchdogesec/stix2icons)
+4. optional: add an entry under `generators/example_objects/` for your custom object. This script should generate a dummy object to show others what it looks like (this is more likely to increase adoption). Then run the script `python3 generators/extension-definition.py`.
+5. optional: add an icon for your new object in our [stix2icons repository](https://github.com/muchdogesec/stix2icons). This will make it easy for graph viewers to render your object properly with an icon.
 
-For each of these steps, you can see examples of the existing objects which you can use as a template.
+For each of these steps, you can see examples of the existing objects which you can use as templates.
 
 Once done, you can then submit a PR to this repo and the DOGESEC team will check it looks good before merging it into the `main` branch so anyone can start using it.
 
