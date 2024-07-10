@@ -4,8 +4,6 @@ import os
 import shutil
 
 from uuid import UUID
-
-from stix2extensions.cryptocurrency_wallet import CryptocurrencyWallet
 from stix2extensions.cryptocurrency_exchange import CryptocurrencyExchange
 # create the directories
 
@@ -21,12 +19,12 @@ for directory in tmp_directories:
 
 namespace=UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
 
-# Create CryptocurrencyWallet SCO
+# Create CryptocurrencyExchange SCO
 
-example_CryptocurrencyWalletSCO = CryptocurrencyWallet(
-                    id="cryptocurrency-wallet--"+ str(uuid.uuid5(namespace, f"1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY")),
-                    address="1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY",
-                    exchange_ref="cryptocurrency-exchange--1ee9d44a-c962-59b5-adbf-e47cb3f03b92",
+example_CryptocurrencyExchangeSCO = CryptocurrencyExchange(
+                    id="cryptocurrency-exchange--"+ str(uuid.uuid5(namespace, f"coinbase.com")), # cryptocurrency-exchange--1ee9d44a-c962-59b5-adbf-e47cb3f03b92
+                    name="Coinbase",
+                    domain="coinbase.com",
                     )
 
 # Write the objects to the filestore
@@ -35,12 +33,12 @@ example_CryptocurrencyWalletSCO = CryptocurrencyWallet(
 ### Creating FileSystemStore and adding MarkingDefinitionSMO for each directory
 
 fs_directories = {
-    "tmp_object_store": example_CryptocurrencyWalletSCO
+    "tmp_object_store": example_CryptocurrencyExchangeSCO
 }
 
-for directory, cryptocurrency_wallet_sco in fs_directories.items():
+for directory, cryptocurrency_exchange_sco in fs_directories.items():
     fs_store = stix2.FileSystemStore(directory)
-    fs_store.add([cryptocurrency_wallet_sco])
+    fs_store.add([cryptocurrency_exchange_sco])
 
 # Now move those files into the standardised locations for easy download
 
@@ -52,6 +50,6 @@ for directory in final_directories:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-shutil.move("tmp_object_store/cryptocurrency-wallet/cryptocurrency-wallet--" + str(uuid.uuid5(namespace, f"1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY")) + ".json", "example_objects/scos/cryptocurrency-wallet--" + str(uuid.uuid5(namespace, f"1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY")) + ".json")
+shutil.move("tmp_object_store/cryptocurrency-exchange/cryptocurrency-exchange--" + str(uuid.uuid5(namespace, f"coinbase.com")) + ".json", "example_objects/scos/cryptocurrency-exchange--" + str(uuid.uuid5(namespace, f"coinbase.com")) + ".json")
 
 shutil.rmtree("tmp_object_store")

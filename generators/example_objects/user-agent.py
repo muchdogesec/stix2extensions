@@ -3,7 +3,6 @@ import stix2
 import os
 import shutil
 
-
 from uuid import UUID
 
 from stix2extensions.user_agent import UserAgent

@@ -3,9 +3,9 @@ import stix2
 import os
 import shutil
 
-
 from uuid import UUID
 from stix2extensions.cryptocurrency_transaction import CryptocurrencyTransaction
+from stix2extensions.cryptocurrency_exchange import CryptocurrencyExchange
 # create the directories
 
 tmp_directories = [
@@ -25,6 +25,7 @@ namespace=UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
 example_CryptocurrencyTransactionSCO = CryptocurrencyTransaction(
                     id="cryptocurrency-transaction--"+ str(uuid.uuid5(namespace, f"3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5")), # cryptocurrency-transaction--da6911a9-7f49-5d20-ae4e-f9154d1b9a39
                     symbol="BTC",
+                    exchange_ref="cryptocurrency-exchange--1ee9d44a-c962-59b5-adbf-e47cb3f03b92",
                     hash="3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5",
                     block_id="590001",
                     fee="0.00000728",
@@ -37,7 +38,7 @@ example_CryptocurrencyTransactionSCO = CryptocurrencyTransaction(
                     ],
                     output=[
                         {
-                            "address_ref": "cryptocurrency-wallet--3a3d6fb5-9eb1-499f-b2f6-3aae6b498f63",
+                            "address_ref": "cryptocurrency-wallet--b6ae6083-875f-5fe9-84b9-89e168f89406",
                             "amount": 0.80000000
                         },
                         {

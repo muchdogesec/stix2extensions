@@ -29,6 +29,10 @@
 					"type": "string",
 					"description": "The transaction hash."
 				},
+				"exchange_ref": {
+					"type": "string",
+					"description": "Defines the STIX ID of a cryptocurrency-exchange object if the exchange on which the transaction took place is known"
+				},
 				"hash": {
 					"type": "string",
 					"description": "The block ID of the transaction."
@@ -52,7 +56,7 @@
 						"properties": {
 					  		"address_ref": {
 								"type": "string",
-								"description": "Specifies a reference to a cryptocurrency-wallet STIX ID."
+								"description": "Defines the STIX ID of a cryptocurrency-wallet object"
 					  		},
 					  		"amount": {
 								"type": "number",
@@ -69,7 +73,7 @@
 						"properties": {
 					  		"address_ref": {
 								"type": "string",
-								"description": "Specifies a reference to a cryptocurrency-wallet STIX ID."
+								"description": "Defines the STIX ID of a cryptocurrency-wallet object"
 					  		},
 					  		"amount": {
 								"type": "number",

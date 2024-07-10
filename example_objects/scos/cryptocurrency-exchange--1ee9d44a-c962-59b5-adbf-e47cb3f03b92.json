@@ -1,0 +1,12 @@
+{
+    "type": "cryptocurrency-exchange",
+    "spec_version": "2.1",
+    "id": "cryptocurrency-exchange--1ee9d44a-c962-59b5-adbf-e47cb3f03b92",
+    "name": "Coinbase",
+    "domain": "coinbase.com",
+    "extensions": {
+        "extension-definition--300160bc-d10b-569b-9a1f-32802ec84c30": {
+            "extension_type": "new-sco"
+        }
+    }
+}

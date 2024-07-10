@@ -4,6 +4,7 @@
     "id": "cryptocurrency-transaction--d3b3642a-9759-5078-9fae-3a868238889c",
     "symbol": "BTC",
     "hash": "3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5",
+    "exchange_ref": "cryptocurrency-exchange--1ee9d44a-c962-59b5-adbf-e47cb3f03b92",
     "block_id": "590001",
     "fee": "0.00000728",
     "execution_time": "2022-10-02T15:22:21Z",
@@ -15,7 +16,7 @@
     ],
     "output": [
         {
-            "address_ref": "cryptocurrency-wallet--3a3d6fb5-9eb1-499f-b2f6-3aae6b498f63",
+            "address_ref": "cryptocurrency-wallet--b6ae6083-875f-5fe9-84b9-89e168f89406",
             "amount": 0.8
         },
         {

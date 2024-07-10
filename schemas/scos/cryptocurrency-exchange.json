@@ -1,8 +1,8 @@
 {
-	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/cryptocurrency-wallet.json",
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/cryptocurrency-exchange.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"title": "cryptocurrency-wallet",
-	"description": "This extension creates a new SCO that can be used to represent cryptocurrency wallets.",
+	"title": "cryptocurrency-exchange",
+	"description": "This extension creates a new SCO that can be used to represent cryptocurrency exchanges.",
 	"type": "object",
 	"allOf": [
 		{
@@ -12,22 +12,22 @@
 			"properties": {
 				"type": {
 					"type": "string",
-					"description": "The value of this property MUST be `cryptocurrency-wallet`.",
+					"description": "The value of this property MUST be `cryptocurrency-exchange`.",
 					"enum": [
-						"cryptocurrency-wallet"
+						"cryptocurrency-exchange"
 					]
 				},
 				"id": {
 					"title": "id",
-					"pattern": "^cryptocurrency-wallet--"
+					"pattern": "^cryptocurrency-exchange--"
 				},
-				"address": {
+				"name": {
 					"type": "string",
-					"description": "The hash of the wallet."
+					"description": "The name of the exchange."
 				},
-				"exchange_ref": {
+				"domain": {
 					"type": "string",
-					"description": "Defines the STIX ID of a cryptocurrency-exchange object if it is a custodial wallet managed by an exhange"
+					"description": "The domain of the exchange"
 				},
 				"extensions": {
 					"type": "object",

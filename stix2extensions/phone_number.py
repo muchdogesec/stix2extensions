@@ -16,7 +16,6 @@ _type = 'phone-number'
     ('country', StringProperty()),
     ('connection', StringProperty()),
     ('provider', StringProperty()),
-    ('object_marking_refs', ListProperty(ReferenceProperty(valid_types='marking-definition', spec_version='2.1'))),
     # ('extensions', ExtensionsProperty(spec_version='2.1'))
 ], extension_name=phone_number_ExtensionDefinitionSMO.id, id_contrib_props=['number'])
 class Phonenumber(object):

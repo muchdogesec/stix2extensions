@@ -19,7 +19,6 @@ _type = 'bank-account'
     ('holder_name', StringProperty()),
     ('iban_number', StringProperty(required=True)),
     ('swift_code', StringProperty()),
-    ('object_marking_refs', ListProperty(ReferenceProperty(valid_types='marking-definition', spec_version='2.1'))),
     # ('extensions', ExtensionsProperty(spec_version='2.1'))
 ], extension_name=bank_account_ExtensionDefinitionSMO.id, id_contrib_props=['iban_number'])
 class BankAccount(object):

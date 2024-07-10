@@ -23,7 +23,6 @@ _type = 'bank-card'
     ('valid_from', StringProperty()),
     ('valid_to', StringProperty()),
     ('security_code', StringProperty()),
-    ('object_marking_refs', ListProperty(ReferenceProperty(valid_types='marking-definition', spec_version='2.1'))),
     # ('extensions', ExtensionsProperty(spec_version='2.1'))
 ], extension_name=bank_card_ExtensionDefinitionSMO.id, id_contrib_props=['number'])
 class BankCard(object):
