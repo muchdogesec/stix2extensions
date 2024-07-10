@@ -5,7 +5,7 @@
     "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
-    "name": "Cryptocurrency Transaction",
+    "name": "Cryptocurrency Exchange",
     "description": "This extension creates a new SCO that can be used to represent cryptocurrency exchanges.",
     "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/cryptocurrency-exchange.json",
     "version": "1.0",
