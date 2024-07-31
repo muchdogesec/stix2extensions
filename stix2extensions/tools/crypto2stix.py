@@ -155,7 +155,7 @@ class BTC2Stix(Crypto2Stix):
             fee=str(tx_data["fee"] / 100000000),
             inputs=inputs,
             outputs=outputs,
-            hash=txn,
+            hash=txn['hash'],
         )
 
     def get_wallet_data(self, wallet_address):
