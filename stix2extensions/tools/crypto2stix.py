@@ -125,6 +125,7 @@ class Crypto2Stix:
 
 class BTC2Stix(Crypto2Stix):
     symbol = "BTC"
+    DIVIDER = 100000000
 
     def get_transaction_object(self, hash):
         return super().get_transaction_object(hash)
@@ -133,26 +134,24 @@ class BTC2Stix(Crypto2Stix):
         if isinstance(txn, str):
             url = f"https://blockchain.info/rawtx/{txn}"
             response = requests.get(url)
-            tx_data = response.json()
-        else:
-            tx_data = txn
+            txn = response.json()
 
         inputs = [
-            (inp["prev_out"]["addr"], inp["prev_out"]["value"] / 100000000)
-            for inp in tx_data["inputs"]
+            (inp["prev_out"]["addr"], inp["prev_out"]["value"] / self.DIVIDER)
+            for inp in txn["inputs"]
             if "addr" in inp["prev_out"]
         ]
         outputs = [
-            (out["addr"], out["value"] / 100000000)
-            for out in tx_data["out"]
+            (out["addr"], out["value"] / self.DIVIDER)
+            for out in txn["out"]
             if "addr" in out
         ]
-        block_id = str(tx_data["block_height"])
-        execution_time = datetime.utcfromtimestamp(tx_data["time"]).isoformat() + "Z"
+        block_id = str(txn["block_height"])
+        execution_time = datetime.utcfromtimestamp(txn["time"]).isoformat() + "Z"
         return TxnData(
             block_id=block_id,
             execution_time=execution_time,
-            fee=str(tx_data["fee"] / 100000000),
+            fee=str(txn["fee"] / self.DIVIDER),
             inputs=inputs,
             outputs=outputs,
             hash=txn['hash'],
