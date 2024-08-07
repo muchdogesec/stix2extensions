@@ -41,10 +41,6 @@
 					"type": "string",
 					"description": "The transaction fee."
 				},
-				"fee": {
-					"type": "string",
-					"description": "The transaction fee."
-				},
 				"execution_time": {
 					"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json",
 					"description": "The time of transaction."
