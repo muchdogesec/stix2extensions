@@ -29,14 +29,6 @@
 					"type": "string",
 					"description": "The transaction hash."
 				},
-				"exchange_ref": {
-					"type": "string",
-					"description": "Defines the STIX ID of a cryptocurrency-exchange object if the exchange on which the transaction took place is known"
-				},
-				"hash": {
-					"type": "string",
-					"description": "The block ID of the transaction."
-				},
 				"fee": {
 					"type": "string",
 					"description": "The transaction fee."

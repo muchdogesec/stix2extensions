@@ -14,8 +14,6 @@ _type = 'cryptocurrency-transaction'
     ('id', IDProperty(_type, spec_version='2.1')),
     ('symbol', StringProperty(required=True)),
     ('hash', StringProperty(required=True)),
-    ('exchange_ref', ReferenceProperty(valid_types='cryptocurrency-exchange', spec_version='2.1')),
-    ('block_id', StringProperty()),
     ('fee', StringProperty()),
     ('execution_time', TimestampProperty()),
     ('input', ListProperty(DictionaryProperty())),
