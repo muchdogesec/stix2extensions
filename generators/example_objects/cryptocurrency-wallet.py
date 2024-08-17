@@ -6,7 +6,6 @@ import shutil
 from uuid import UUID
 
 from stix2extensions.cryptocurrency_wallet import CryptocurrencyWallet
-from stix2extensions.cryptocurrency_exchange import CryptocurrencyExchange
 # create the directories
 
 tmp_directories = [
@@ -26,7 +25,7 @@ namespace=UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
 example_CryptocurrencyWalletSCO = CryptocurrencyWallet(
                     id="cryptocurrency-wallet--"+ str(uuid.uuid5(namespace, f"1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY")),
                     address="1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY",
-                    exchange_ref="cryptocurrency-exchange--1ee9d44a-c962-59b5-adbf-e47cb3f03b92",
+                    exchange_ref="identity--1ee9d44a-c962-59b5-adbf-e47cb3f03b92",
                     )
 
 # Write the objects to the filestore

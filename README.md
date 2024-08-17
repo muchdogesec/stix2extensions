@@ -49,7 +49,6 @@ This repository currently offers the following custom STIX objects:
 * `bank-card`: This extension creates a new SCO that can be used to represent bank cards.
 * `cryptocurrency-transaction`: This extension creates a new SCO that can be used to represent cryptocurrency transactions.
 * `cryptocurrency-wallet`: This extension creates a new SCO that can be used to represent cryptocurrency wallets.
-* `cryptocurrency-exchange`: This extension creates a new SCO that can be used to represent cryptocurrency exchanges.
 * `phone-number`: This extension creates a new SCO that can be used to represent phone numbers.
 * `user-agent`: This extension creates a new SCO that can be used to represent user agents used in HTTP request. It is designed to be used when the Network Traffic SCO with HTTP request extension cannot be used due to lack of request information needed for the required properties.
 
@@ -98,7 +97,6 @@ python3 generators/example_objects/bank-account.py && \
 python3 generators/example_objects/bank-card.py && \
 python3 generators/example_objects/cryptocurrency-transaction.py && \
 python3 generators/example_objects/cryptocurrency-wallet.py && \
-python3 generators/example_objects/cryptocurrency-exchange.py && \
 python3 generators/example_objects/phone-number.py && \
 python3 generators/example_objects/user-agent.py
 ```

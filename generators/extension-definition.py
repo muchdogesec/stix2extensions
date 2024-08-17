@@ -4,7 +4,6 @@ from stix2extensions._extensions import (
     bank_card_ExtensionDefinitionSMO,
     cryptocurrency_transaction_ExtensionDefinitionSMO,
     cryptocurrency_wallet_ExtensionDefinitionSMO,
-    cryptocurrency_exchange_ExtensionDefinitionSMO,
     phone_number_ExtensionDefinitionSMO,
     user_agent_ExtensionDefinitionSMO,
     Bundle,
@@ -23,7 +22,6 @@ if __name__ == '__main__':
     generator_scos.add_item("bank-card", bank_card_ExtensionDefinitionSMO)
     generator_scos.add_item("cryptocurrency-transaction", cryptocurrency_transaction_ExtensionDefinitionSMO)
     generator_scos.add_item("cryptocurrency-wallet", cryptocurrency_wallet_ExtensionDefinitionSMO)
-    generator_scos.add_item("cryptocurrency-exchange", cryptocurrency_exchange_ExtensionDefinitionSMO)
     generator_scos.add_item("phone-number", phone_number_ExtensionDefinitionSMO)
     generator_scos.add_item("user-agent", user_agent_ExtensionDefinitionSMO)
     # generator.add_item("YOUR-NEW-OBJECT", YOUR_NEW_OBJECT_ExtensionDefinitionSMO)

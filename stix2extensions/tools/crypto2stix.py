@@ -11,6 +11,7 @@ from .._extensions import (
     cryptocurrency_wallet_ExtensionDefinitionSMO,
 )
 
+# this is the oasis uuid
 WALLET_NAMESPACE_UUID = uuid.UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
 
 @dataclass

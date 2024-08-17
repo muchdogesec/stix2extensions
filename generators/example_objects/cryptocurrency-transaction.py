@@ -5,7 +5,6 @@ import shutil
 
 from uuid import UUID
 from stix2extensions.cryptocurrency_transaction import CryptocurrencyTransaction
-from stix2extensions.cryptocurrency_exchange import CryptocurrencyExchange
 # create the directories
 
 tmp_directories = [

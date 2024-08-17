@@ -27,7 +27,7 @@
 				},
 				"exchange_ref": {
 					"type": "string",
-					"description": "Defines the STIX ID of a cryptocurrency-exchange object if it is a custodial wallet managed by an exhange"
+					"description": "Defines the STIX ID of an identity object if it is a custodial wallet managed by an exhange"
 				},
 				"extensions": {
 					"type": "object",

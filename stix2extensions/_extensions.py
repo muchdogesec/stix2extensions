@@ -135,23 +135,6 @@ cryptocurrency_wallet_ExtensionDefinitionSMO = ExtensionDefinition(
                         object_marking_refs=object_marking_refs
                     )
 
-### Cryptocurrency Exchange SMO
-
-cryptocurrency_exchange_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"cryptocurrency-exchange")), # extension-definition--300160bc-d10b-569b-9a1f-32802ec84c30
-                        created_by_ref=created_by_ref,
-                        created=created,
-                        modified=modified,
-                        name="Cryptocurrency Exchange",
-                        description="This extension creates a new SCO that can be used to represent cryptocurrency exchanges.",
-                        schema=schema_base+"scos/cryptocurrency-exchange.json",
-                        version="1.0",
-                        extension_types=[
-                            "new-sco"
-                        ],
-                        object_marking_refs=object_marking_refs
-                    )
-
 ### Bank Account SMO
 
 bank_account_ExtensionDefinitionSMO = ExtensionDefinition(
