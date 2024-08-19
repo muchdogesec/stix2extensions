@@ -18,22 +18,22 @@
 							"properties": {
             					"extension_type": {
 									"enum": [
-										"property-extension"
+										"toplevel-property-extension"
 									]
-            					},
-            					"vulnerable_cpes": {
-            						"type": "array",
-          							"description": "A list of software object found in the pattern that are vulnerable.",
-						         	"items": {
-						            	"type": "string"
-						          	},
-						          	"minItems": 1
-						        }
+            					}
 						    },
-							"required": ["property-extension"]
+							"required": ["extension_type"]
 						},
 					"required": ["extension-definition--ad995824-2901-5f6e-890b-561130a239d4"]
 					}
+				},
+				"vulnerable_cpes": {
+					"type": "array",
+					"description": "A list of software object found in the pattern that are vulnerable.",
+					"items": {
+					"type": "string"
+					},
+					"minItems": 1
 				}
 			}
 		}

@@ -6,7 +6,7 @@ import shutil
 from uuid import UUID
 
 from stix2 import Indicator
-
+from stix2extensions._extensions import indicator_vulnerable_cpes_ExtensionDefinitionSMO
 # create the directories
 
 tmp_directories = [
@@ -39,7 +39,7 @@ example_IndicatorSDO = Indicator(
                         created=created,
                         modified=modified,
                         name="CVE-XXX-XXXX",
-                        pattern="([(software.cpe='cpe:2.3:a:hm-print_project:hm-print:1.2a:*:*:*:*:*:*:*' AND software.cpe='cpe:2.3:h:eq-3:homematic_ccu2:-:*:*:*:*:*:*:*')])",
+                        pattern="([(software:cpe='cpe:2.3:a:hm-print_project:hm-print:1.2a:*:*:*:*:*:*:*' AND software:cpe='cpe:2.3:h:eq-3:homematic_ccu2:-:*:*:*:*:*:*:*')])",
                         pattern_type="stix",
                         external_references=[
                             {
@@ -52,12 +52,12 @@ example_IndicatorSDO = Indicator(
                             "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487", # this is TLP:CLEAR
                             "marking-definition--" + str(uuid.uuid5(namespace, f"stix2extensions")) # marking-definition--97ba4e8b-04f6-57e8-8f6e-3a0f0a7dc0fb
                         ],
+                        vulnerable_cpes= [
+                            "cpe:2.3:a:hm-print_project:hm-print:1.2a:*:*:*:*:*:*:*"
+                        ],
                         extensions={
-							"extension-definition--ad995824-2901-5f6e-890b-561130a239d4": {
-								"extension_type": "property-extension",
-								"vulnerable_cpes": [
-								    "cpe:2.3:a:hm-print_project:hm-print:1.2a:*:*:*:*:*:*:*"
-								]
+							indicator_vulnerable_cpes_ExtensionDefinitionSMO.id: {
+								"extension_type": "toplevel-property-extension",
 							}
 						}
                     )

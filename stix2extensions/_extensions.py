@@ -164,8 +164,9 @@ vulnerability_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
                         schema=schema_base+"properties/vulnerability-scoring.json",
                         version="1.0",
                         extension_types=[
-                            "property-extension"
+                            "toplevel-property-extension"
                         ],
+                        extension_properties=["cvss_metrics", "epss_data"],
                         object_marking_refs=object_marking_refs
                     )
 
@@ -181,7 +182,8 @@ indicator_vulnerable_cpes_ExtensionDefinitionSMO = ExtensionDefinition(
                         schema=schema_base+"properties/indicator-vulnerable-cpes.json",
                         version="1.0",
                         extension_types=[
-                            "property-extension"
+                            "toplevel-property-extension"
                         ],
+                        extension_properties=["vulnerable_cpes"],
                         object_marking_refs=object_marking_refs
                     )
