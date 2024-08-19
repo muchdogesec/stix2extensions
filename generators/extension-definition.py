@@ -6,6 +6,8 @@ from stix2extensions._extensions import (
     cryptocurrency_wallet_ExtensionDefinitionSMO,
     phone_number_ExtensionDefinitionSMO,
     user_agent_ExtensionDefinitionSMO,
+    vulnerability_scoring_ExtensionDefinitionSMO,
+    indicator_vulnerable_cpes_ExtensionDefinitionSMO_ExtensionDefinitionSMO,
     Bundle,
     namespace
     )
@@ -24,6 +26,10 @@ if __name__ == '__main__':
     generator_scos.add_item("cryptocurrency-wallet", cryptocurrency_wallet_ExtensionDefinitionSMO)
     generator_scos.add_item("phone-number", phone_number_ExtensionDefinitionSMO)
     generator_scos.add_item("user-agent", user_agent_ExtensionDefinitionSMO)
+    generator_sdos = Generator("extension-definitions/properties")
+    generator_scos.add_item("vulnerability-scoring", vulnerability_scoring_ExtensionDefinitionSMO)
+    generator_scos.add_item("indicator-vulnerable-cpes", indicator_vulnerable_cpes_ExtensionDefinitionSMO_ExtensionDefinitionSMO)
+
     # generator.add_item("YOUR-NEW-OBJECT", YOUR_NEW_OBJECT_ExtensionDefinitionSMO)
     
     # Save all items for both generators

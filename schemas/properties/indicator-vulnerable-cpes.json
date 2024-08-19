@@ -1,0 +1,41 @@
+{
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/indicator-vulnerable-cpes.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "indicator-vulnerable-cpes",
+	"description": "This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern.",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/blob/master/schemas/sdos/indicator.json"
+		},
+		{
+			"properties": {
+				"extensions": {
+					"type": "object",
+					"properties": {
+						"extension-definition--ad995824-2901-5f6e-890b-561130a239d4": {
+							"type": "object",
+							"properties": {
+            					"extension_type": {
+									"enum": [
+										"property-extension"
+									]
+            					},
+            					"vulnerable_cpes": {
+            						"type": "array",
+          							"description": "A list of software object found in the pattern that are vulnerable.",
+						         	"items": {
+						            	"type": "string"
+						          	},
+						          	"minItems": 1
+						        }
+						    },
+							"required": ["property-extension"]
+						},
+					"required": ["extension-definition--ad995824-2901-5f6e-890b-561130a239d4"]
+					}
+				}
+			}
+		}
+	]
+}

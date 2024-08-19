@@ -151,3 +151,37 @@ bank_account_ExtensionDefinitionSMO = ExtensionDefinition(
                         ],
                         object_marking_refs=object_marking_refs
                     )
+
+### Vulnerability Scoring Extension SMO
+
+vulnerability_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"vulnerability-scoring")), # extension-definition--2c5c13af-ee92-5246-9ba7-0b958f8cd34a
+                        created_by_ref=created_by_ref,
+                        created=created,
+                        modified=modified,
+                        name="Vulnerability SDO Scoring Properties",
+                        description="This extension adds new properties to Vulnerbility SDOs to provide scoring.",
+                        schema=schema_base+"properties/vulnerability-scoring.json",
+                        version="1.0",
+                        extension_types=[
+                            "property-extension"
+                        ],
+                        object_marking_refs=object_marking_refs
+                    )
+
+### Indicator Vulnerable CPEs Extension SMO
+
+indicator_vulnerable_cpes_ExtensionDefinitionSMO = ExtensionDefinition(
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"indicator-vulnerable-cpes")), # extension-definition--ad995824-2901-5f6e-890b-561130a239d4
+                        created_by_ref=created_by_ref,
+                        created=created,
+                        modified=modified,
+                        name="Indicator SDO Vulnerable CPEs Properties",
+                        description="This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern.",
+                        schema=schema_base+"properties/indicator-vulnerable-cpes.json",
+                        version="1.0",
+                        extension_types=[
+                            "property-extension"
+                        ],
+                        object_marking_refs=object_marking_refs
+                    )
