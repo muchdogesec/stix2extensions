@@ -27,7 +27,7 @@
 					"required": ["extension-definition--ad995824-2901-5f6e-890b-561130a239d4"]
 					}
 				},
-				"vulnerable_cpes": {
+				"x_vulnerable_cpes": {
 					"type": "array",
 					"description": "A list of software object found in the pattern that are vulnerable.",
 					"items": {

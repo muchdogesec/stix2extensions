@@ -38,6 +38,7 @@ example_IndicatorSDO = Indicator(
                         created_by_ref=created_by_ref,
                         created=created,
                         modified=modified,
+                        valid_from=modified,
                         name="CVE-XXX-XXXX",
                         pattern="([(software:cpe='cpe:2.3:a:hm-print_project:hm-print:1.2a:*:*:*:*:*:*:*' AND software:cpe='cpe:2.3:h:eq-3:homematic_ccu2:-:*:*:*:*:*:*:*')])",
                         pattern_type="stix",
@@ -52,7 +53,7 @@ example_IndicatorSDO = Indicator(
                             "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487", # this is TLP:CLEAR
                             "marking-definition--" + str(uuid.uuid5(namespace, f"stix2extensions")) # marking-definition--97ba4e8b-04f6-57e8-8f6e-3a0f0a7dc0fb
                         ],
-                        vulnerable_cpes= [
+                        x_vulnerable_cpes= [
                             "cpe:2.3:a:hm-print_project:hm-print:1.2a:*:*:*:*:*:*:*"
                         ],
                         extensions={
