@@ -46,17 +46,13 @@
 					"type": "string",
 					"description": "3 letter currency code for card currency."
 				},
-				"issuer_name": {
+				"issuer_ref": {
 					"type": "string",
-					"description": "The name of the provider who issued the card. Usually a bank."
+					"description": "Defines the STIX ID Identity object of the issuer"
 				},
-				"issuer_country": {
+				"holder_ref": {
 					"type": "string",
-					"description": "The 3 digit code for the country of issue."
-				},
-				"holder_name": {
-					"type": "string",
-					"description": "The name on the card."
+					"description": "Defines the STIX ID Identity object of the holder"
 				},
 				"valid_from": {
 					"type": "string",

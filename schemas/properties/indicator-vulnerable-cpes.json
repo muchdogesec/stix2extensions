@@ -28,33 +28,36 @@
 					}
 				},
 				"x_cpes": {
-					"type": "object",
-					"properties": {
-						"vulnerable": {
-							"type": "object",
-						 	"properties": {
-						    	"criteria": {
-						      		"type": "string",
-						      		"description": "The criteria for the vulnerable CPE"
-						    	},
-						    	"matchCriteriaId": {
-						      		"type": "string",
-						      		"description": "The matchCriteriaId for the vulnerable CPE"
-						    	}
-						    }
-						},
-						"not_vulnerable": {
-							"type": "object",
-						 	"properties": {
-						    	"criteria": {
-						      		"type": "string",
-						      		"description": "The criteria for the not vulnerable CPE"
-						    	},
-						    	"matchCriteriaId": {
-						      		"type": "string",
-						      		"description": "The matchCriteriaId for the not vulnerable CPE"
-						    	}
-						    }
+					"type": "array",
+				 	"items": {
+				 		"type": "object",
+						"properties": {
+							"vulnerable": {
+								"type": "object",
+							 	"properties": {
+							    	"criteria": {
+							      		"type": "string",
+							      		"description": "The criteria for the vulnerable CPE"
+							    	},
+							    	"matchCriteriaId": {
+							      		"type": "string",
+							      		"description": "The matchCriteriaId for the vulnerable CPE"
+							    	}
+							    }
+							},
+							"not_vulnerable": {
+								"type": "object",
+							 	"properties": {
+							    	"criteria": {
+							      		"type": "string",
+							      		"description": "The criteria for the not vulnerable CPE"
+							    	},
+							    	"matchCriteriaId": {
+							      		"type": "string",
+							      		"description": "The matchCriteriaId for the not vulnerable CPE"
+							    	}
+							    }
+							}
 						}
 					}
 				}
