@@ -26,14 +26,18 @@
             "extension_type": "toplevel-property-extension"
         }
     },
-    "x_vulnerable_cpes": [
-        {
-            "criteria": "cpe:2.3:a:dell:powerscale_onefs:9.0.0:*:*:*:*:*:*:*",
-            "matchCriteriaId": "30687628-5C7F-4BB5-B990-93703294FDF0"
-        },
-        {
-            "criteria": "cpe:2.3:a:dell:powerscale_onefs:9.1.0:*:*:*:*:*:*:*",
-            "matchCriteriaId": "68291D44-DBE1-4923-A848-04E64288DC23"
-        }
-    ]
+    "x_cpes": {
+        "not_vulnerable": [
+            {
+                "criteria": "cpe:2.3:a:dell:powerscale_onefs:9.1.0:*:*:*:*:*:*:*",
+                "matchCriteriaId": "68291D44-DBE1-4923-A848-04E64288DC23"
+            }
+        ],
+        "vulnerable": [
+            {
+                "criteria": "cpe:2.3:a:dell:powerscale_onefs:9.0.0:*:*:*:*:*:*:*",
+                "matchCriteriaId": "30687628-5C7F-4BB5-B990-93703294FDF0"
+            }
+        ]
+    }
 }

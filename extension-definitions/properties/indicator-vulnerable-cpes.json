@@ -13,7 +13,7 @@
         "toplevel-property-extension"
     ],
     "extension_properties": [
-        "x_vulnerable_cpes"
+        "x_cpes"
     ],
     "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",

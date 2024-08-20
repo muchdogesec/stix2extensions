@@ -27,18 +27,36 @@
 					"required": ["extension-definition--ad995824-2901-5f6e-890b-561130a239d4"]
 					}
 				},
-				"x_vulnerable_cpes": {
+				"x_cpes": {
 					"type": "object",
-				 	"properties": {
-				    	"criteria": {
-				      		"type": "string",
-				      		"description": "The criteria for the vulnerable CPE"
-				    	},
-				    	"matchCriteriaId": {
-				      		"type": "string",
-				      		"description": "The matchCriteriaId for the vulnerable CPE"
-				    	}
-				    }
+					"properties": {
+						"vulnerable": {
+							"type": "object",
+						 	"properties": {
+						    	"criteria": {
+						      		"type": "string",
+						      		"description": "The criteria for the vulnerable CPE"
+						    	},
+						    	"matchCriteriaId": {
+						      		"type": "string",
+						      		"description": "The matchCriteriaId for the vulnerable CPE"
+						    	}
+						    }
+						},
+						"not_vulnerable": {
+							"type": "object",
+						 	"properties": {
+						    	"criteria": {
+						      		"type": "string",
+						      		"description": "The criteria for the not vulnerable CPE"
+						    	},
+						    	"matchCriteriaId": {
+						      		"type": "string",
+						      		"description": "The matchCriteriaId for the not vulnerable CPE"
+						    	}
+						    }
+						}
+					}
 				}
 			}
 		}

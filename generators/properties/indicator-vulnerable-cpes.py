@@ -53,16 +53,20 @@ example_IndicatorSDO = Indicator(
                             "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487", # this is TLP:CLEAR
                             "marking-definition--" + str(uuid.uuid5(namespace, f"stix2extensions")) # marking-definition--97ba4e8b-04f6-57e8-8f6e-3a0f0a7dc0fb
                         ],
-                        x_vulnerable_cpes= [
-                            {
-                                "criteria": "cpe:2.3:a:dell:powerscale_onefs:9.0.0:*:*:*:*:*:*:*",
-                                "matchCriteriaId": "30687628-5C7F-4BB5-B990-93703294FDF0"
-                            },
-                            {
-                                "criteria": "cpe:2.3:a:dell:powerscale_onefs:9.1.0:*:*:*:*:*:*:*",
-                                "matchCriteriaId": "68291D44-DBE1-4923-A848-04E64288DC23"
-                            }
-                        ],
+                        x_cpes= {
+                            "vulnerable": [
+                                {
+                                    "criteria": "cpe:2.3:a:dell:powerscale_onefs:9.0.0:*:*:*:*:*:*:*",
+                                    "matchCriteriaId": "30687628-5C7F-4BB5-B990-93703294FDF0"
+                                }
+                            ],
+                            "not_vulnerable": [
+                                {
+                                    "criteria": "cpe:2.3:a:dell:powerscale_onefs:9.1.0:*:*:*:*:*:*:*",
+                                    "matchCriteriaId": "68291D44-DBE1-4923-A848-04E64288DC23"
+                                }
+                            ]
+                        },
                         extensions={
 							indicator_vulnerable_cpes_ExtensionDefinitionSMO.id: {
 								"extension_type": "toplevel-property-extension",

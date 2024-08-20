@@ -184,6 +184,6 @@ indicator_vulnerable_cpes_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_types=[
                             "toplevel-property-extension"
                         ],
-                        extension_properties=["x_vulnerable_cpes"],
+                        extension_properties=["x_cpes"],
                         object_marking_refs=object_marking_refs
                     )
