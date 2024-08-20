@@ -40,7 +40,7 @@ example_IndicatorSDO = Indicator(
                         modified=modified,
                         valid_from=modified,
                         name="CVE-XXX-XXXX",
-                        pattern="([(software:cpe='cpe:2.3:a:hm-print_project:hm-print:1.2a:*:*:*:*:*:*:*' AND software:cpe='cpe:2.3:h:eq-3:homematic_ccu2:-:*:*:*:*:*:*:*')])",
+                        pattern="([(software:cpe='cpe:2.3:a:dell:powerscale_onefs:9.1.0:*:*:*:*:*:*:*' AND software:cpe='cpe:2.3:h:eq-3:homematic_ccu2:-:*:*:*:*:*:*:*')])",
                         pattern_type="stix",
                         external_references=[
                             {
@@ -54,7 +54,14 @@ example_IndicatorSDO = Indicator(
                             "marking-definition--" + str(uuid.uuid5(namespace, f"stix2extensions")) # marking-definition--97ba4e8b-04f6-57e8-8f6e-3a0f0a7dc0fb
                         ],
                         x_vulnerable_cpes= [
-                            "cpe:2.3:a:hm-print_project:hm-print:1.2a:*:*:*:*:*:*:*"
+                            {
+                                "criteria": "cpe:2.3:a:dell:powerscale_onefs:9.0.0:*:*:*:*:*:*:*",
+                                "matchCriteriaId": "30687628-5C7F-4BB5-B990-93703294FDF0"
+                            },
+                            {
+                                "criteria": "cpe:2.3:a:dell:powerscale_onefs:9.1.0:*:*:*:*:*:*:*",
+                                "matchCriteriaId": "68291D44-DBE1-4923-A848-04E64288DC23"
+                            }
                         ],
                         extensions={
 							indicator_vulnerable_cpes_ExtensionDefinitionSMO.id: {

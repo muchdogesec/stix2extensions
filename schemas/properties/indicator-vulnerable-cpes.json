@@ -28,12 +28,17 @@
 					}
 				},
 				"x_vulnerable_cpes": {
-					"type": "array",
-					"description": "A list of software object found in the pattern that are vulnerable.",
-					"items": {
-					"type": "string"
-					},
-					"minItems": 1
+					"type": "object",
+				 	"properties": {
+				    	"criteria": {
+				      		"type": "string",
+				      		"description": "The criteria for the vulnerable CPE"
+				    	},
+				    	"matchCriteriaId": {
+				      		"type": "string",
+				      		"description": "The matchCriteriaId for the vulnerable CPE"
+				    	}
+				    }
 				}
 			}
 		}
