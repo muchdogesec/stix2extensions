@@ -166,7 +166,7 @@ vulnerability_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_types=[
                             "toplevel-property-extension"
                         ],
-                        extension_properties=["cvss_metrics", "epss_data"],
+                        extension_properties=["cvss", "epss"],
                         object_marking_refs=object_marking_refs
                     )
 
