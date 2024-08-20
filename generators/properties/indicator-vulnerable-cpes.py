@@ -85,6 +85,6 @@ for directory in final_directories:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-shutil.move("tmp_object_store/indicator/indicator--" + str(uuid.uuid5(namespace, f"A demo Indicator")) + "/20200101000000000.json", "example_objects/sdos/indicator--" + str(uuid.uuid5(namespace, f"A demo Indicator")) + ".json")
+shutil.move("tmp_object_store/indicator/indicator--" + str(uuid.uuid5(namespace, f"A demo Indicator")) + "/20200101000000000.json", "example_objects/properties/indicator--" + str(uuid.uuid5(namespace, f"A demo Indicator")) + ".json")
 
 shutil.rmtree("tmp_object_store")
