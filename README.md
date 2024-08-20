@@ -86,19 +86,21 @@ Once done, you can then submit a PR to this repo and the DOGESEC team will check
 This script will generated the Extension Definition objects defining all of the custom objects in this repo (inc. any you've added at step 3);
 
 ```shell
-python3 generators/extension-definition.py
+python3 generators/smos/extension-definition.py
 ```
 
 If you want to see example of how to use this script to generate the custom objects (and what they look like), you can run the generator scripts (created at step 4, don't forget to add yours to the list);
 
 ```shell
-python3 generators/example_objects/weakness.py && \
-python3 generators/example_objects/bank-account.py && \
-python3 generators/example_objects/bank-card.py && \
-python3 generators/example_objects/cryptocurrency-transaction.py && \
-python3 generators/example_objects/cryptocurrency-wallet.py && \
-python3 generators/example_objects/phone-number.py && \
-python3 generators/example_objects/user-agent.py
+python3 generators/sdos/weakness.py && \
+python3 generators/scos/bank-account.py && \
+python3 generators/scos/bank-card.py && \
+python3 generators/scos/cryptocurrency-transaction.py && \
+python3 generators/scos/cryptocurrency-wallet.py && \
+python3 generators/scos/phone-number.py && \
+python3 generators/scos/user-agent.py && \
+python3 generators/properties/indicator-vulnerable-cpes.py && \
+python3 generators/properties/vulnerability-scoring.py
 ```
 
 #### A note about UUIDs in `generators`
