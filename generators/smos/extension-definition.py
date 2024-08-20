@@ -13,9 +13,10 @@ from stix2extensions._extensions import (
     )
 import uuid
 from stix2 import Bundle
+import sys
+sys.path.append('generators')
 
 if __name__ == '__main__':
-        
     from utils import Generator
     generator_sdos = Generator("extension-definitions/sdos")
     generator_sdos.add_item("weakness", weakness_ExtensionDefinitionSMO)
