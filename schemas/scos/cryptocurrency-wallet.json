@@ -25,9 +25,9 @@
 					"type": "string",
 					"description": "The hash of the wallet."
 				},
-				"exchange_ref": {
+				"holder_ref": {
 					"type": "string",
-					"description": "Defines the STIX ID of an identity object if it is a custodial wallet managed by an exhange"
+					"description": "Defines the STIX ID of an identity object of the owner. If it is a custodial wallet this could be an exhange, or otherwise a known person/organisation."
 				},
 				"extensions": {
 					"type": "object",
