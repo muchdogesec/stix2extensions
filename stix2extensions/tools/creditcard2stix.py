@@ -5,26 +5,8 @@ from stix2 import Relationship, Identity
 
 from ..bank_card import BankCard
 
-
 IDENTITY_NS = uuid.UUID("d287a5a4-facc-5254-9563-9e92e3e729ac")
 OASIS_NS    = uuid.UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
-
-def create_relationship(source_ref, target_ref):
-    relationship_id = f"relationship--{str(uuid.uuid5(IDENTITY_NS, f'{source_ref}+{target_ref}'))}"
-    return Relationship(
-        id=relationship_id,
-        relationship_type="issued-by",
-        created_by_ref="identity--d287a5a4-facc-5254-9563-9e92e3e729ac",
-        created="2020-01-01T00:00:00.000Z",
-        modified="2020-01-01T00:00:00.000Z",
-        source_ref=source_ref,
-        target_ref=target_ref,
-        object_marking_refs=[
-            "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
-            "marking-definition--d287a5a4-facc-5254-9563-9e92e3e729ac"
-        ]
-    )
-
 
 def get_bin_data(card_number, api_key):
     try:
@@ -96,18 +78,19 @@ def create_credit_card_stix(card_data, bin_data):
         if card_data.get(field):
             credit_card_data[field_mapping[field]] = card_data[field]
     
-    credit_card = BankCard(**credit_card_data)
-    return credit_card
+    return credit_card_data
 
 
 def create_objects(card_data, api_key):
     bin_data = get_bin_data(card_data['card_number'], api_key)
     card = create_credit_card_stix(card_data, bin_data)
+    retval = []
     if bin_data and bin_data['BIN']['valid']:
         identity = create_identity(bin_data)
-        relationship = create_relationship(identity.id, card.id)
-        return [card, identity, relationship]
-    return [card]
+        retval.append(identity)
+        card.update(issuer_ref=identity.id)
+    retval.insert(0, BankCard(**card))
+    return retval
 
 if __name__ == '__main__':
     import os
