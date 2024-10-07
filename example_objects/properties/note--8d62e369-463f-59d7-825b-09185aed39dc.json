@@ -18,9 +18,16 @@
             "extension_type": "toplevel-property-extension"
         }
     },
-    "x_epss": {
-        "date": "2024-08-18",
-        "percentile": "0.328570000",
-        "score": "0.000750000"
-    }
+    "x_epss": [
+        {
+            "date": "2024-08-19",
+            "percentile": "0.428920000",
+            "score": "0.000900000"
+        },
+        {
+            "date": "2024-08-18",
+            "percentile": "0.328570000",
+            "score": "0.000750000"
+        }
+    ]
 }

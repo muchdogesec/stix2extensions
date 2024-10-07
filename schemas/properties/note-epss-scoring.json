@@ -28,19 +28,22 @@
 					}
 				},
 				"x_epss": {
-					"type": "object",
-					"properties": {
-						"date": {
-							"type": "string",
-							"description": "The date of the EPSS score in the format YYYY-MM-DD"
-						},
-						"score": {
-							"type": "string",
-							"description": "The EPSS Score on listed date."
-						},
-						"percentile": {
-							"type": "string",
-							"description": "The EPSS Percentile on listed date."
+					"type": "array",
+				 	"items": {
+						"type": "object",
+						"properties": {
+							"date": {
+								"type": "string",
+								"description": "The date of the EPSS score in the format YYYY-MM-DD"
+							},
+							"score": {
+								"type": "string",
+								"description": "The EPSS Score on listed date."
+							},
+							"percentile": {
+								"type": "string",
+								"description": "The EPSS Percentile on listed date."
+							}
 						}
 					}
 				}

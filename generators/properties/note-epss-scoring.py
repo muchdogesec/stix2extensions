@@ -47,11 +47,18 @@ example_NoteSDO = Note(
                             "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487", # this is TLP:CLEAR
                             "marking-definition--" + str(uuid.uuid5(namespace, f"stix2extensions")) # marking-definition--97ba4e8b-04f6-57e8-8f6e-3a0f0a7dc0fb
                         ],
-                        x_epss={
-                            "date": "2024-08-18",
-                            "score": "0.000750000",
-                            "percentile": "0.328570000"
-                        },
+                        x_epss=[
+                            {
+                                "date": "2024-08-19",
+                                "score": "0.000900000",
+                                "percentile": "0.428920000"
+                            },
+                            {
+                                "date": "2024-08-18",
+                                "score": "0.000750000",
+                                "percentile": "0.328570000"
+                            }
+                        ],
                         extensions={
                             note_epss_scoring_ExtensionDefinitionSMO.id: {
                                     "extension_type": "toplevel-property-extension"
