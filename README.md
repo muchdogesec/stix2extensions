@@ -100,7 +100,8 @@ python3 generators/scos/cryptocurrency-wallet.py && \
 python3 generators/scos/phone-number.py && \
 python3 generators/scos/user-agent.py && \
 python3 generators/properties/indicator-vulnerable-cpes.py && \
-python3 generators/properties/vulnerability-scoring.py
+python3 generators/properties/vulnerability-scoring.py && \
+python3 generators/properties/note-epss-scoring.py
 ```
 
 #### A note about UUIDs in `generators`

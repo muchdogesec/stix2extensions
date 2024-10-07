@@ -8,6 +8,7 @@ from stix2extensions._extensions import (
     user_agent_ExtensionDefinitionSMO,
     vulnerability_scoring_ExtensionDefinitionSMO,
     indicator_vulnerable_cpes_ExtensionDefinitionSMO,
+    note_epss_scoring_ExtensionDefinitionSMO,
     Bundle,
     namespace
     )
@@ -30,6 +31,7 @@ if __name__ == '__main__':
     generator_properties = Generator("extension-definitions/properties")
     generator_properties.add_item("vulnerability-scoring", vulnerability_scoring_ExtensionDefinitionSMO)
     generator_properties.add_item("indicator-vulnerable-cpes", indicator_vulnerable_cpes_ExtensionDefinitionSMO)
+    generator_properties.add_item("note-epss-scoring", note_epss_scoring_ExtensionDefinitionSMO)
 
     # generator.add_item("YOUR-NEW-OBJECT", YOUR_NEW_OBJECT_ExtensionDefinitionSMO)
     

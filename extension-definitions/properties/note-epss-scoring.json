@@ -1,19 +1,19 @@
 {
     "type": "extension-definition",
     "spec_version": "2.1",
-    "id": "extension-definition--2c5c13af-ee92-5246-9ba7-0b958f8cd34a",
+    "id": "extension-definition--efd26d23-d37d-5cf2-ac95-a101e46ce11d",
     "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
-    "name": "Vulnerability SDO Scoring Properties",
-    "description": "This extension adds new properties to Vulnerbility SDOs to provide scoring.",
-    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/vulnerability-scoring.json",
+    "name": "Note SDO EPSS Scoring Properties",
+    "description": "This extension adds new properties to Note SDOs to capture EPSS scores for CVEs.",
+    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/note-epss-scoring.json",
     "version": "1.0",
     "extension_types": [
         "toplevel-property-extension"
     ],
     "extension_properties": [
-        "x_cvss"
+        "x_epss"
     ],
     "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",

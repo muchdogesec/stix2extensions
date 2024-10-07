@@ -5,8 +5,8 @@ import shutil
 
 from uuid import UUID
 
-from stix2 import Vulnerability
-from stix2extensions._extensions import vulnerability_scoring_ExtensionDefinitionSMO
+from stix2 import Note
+from stix2extensions._extensions import note_epss_scoring_ExtensionDefinitionSMO
 
 # create the directories
 
@@ -30,38 +30,30 @@ created_by_ref="identity--" + str(uuid.uuid5(namespace, f"dogesec-demo"))
 created="2020-01-01T00:00:00.000Z"
 modified="2020-01-01T00:00:00.000Z"
 
-# Create Vulnerability SDO object
+# Create NoteSDO object
 
-### vulnerability--20b0177f-7b3c-527c-b88c-fca16a0ebf5d
+### note--8d62e369-463f-59d7-825b-09185aed39dc
 
-example_VulnerabilitySDO = Vulnerability(
-                        id="vulnerability--"+ str(uuid.uuid5(namespace, f"A demo Vulnerability")),
+example_NoteSDO = Note(
+                        id="note--"+ str(uuid.uuid5(namespace, f"A demo EPSS Note")),
                         created_by_ref=created_by_ref,
                         created=created,
                         modified=modified,
-                        name="CVE-XXX-XXXX",
-                        external_references=[
-                            {
-                                "source_name": "cve",
-                                "url": "https://nvd.nist.gov/vuln/detail/CVE-XXX-XXXX",
-                                "external_id": "CVE-XXX-XXXX"
-                            }
+                        content="EPSS Score for CVE-XXX-XXXX",
+                        object_refs=[
+                            "vulnerability--20b0177f-7b3c-527c-b88c-fca16a0ebf5d"
                         ],
                         object_marking_refs=[
                             "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487", # this is TLP:CLEAR
                             "marking-definition--" + str(uuid.uuid5(namespace, f"stix2extensions")) # marking-definition--97ba4e8b-04f6-57e8-8f6e-3a0f0a7dc0fb
                         ],
-                        x_cvss={
-                            "v3_1": {
-                                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N",
-                                "exploitabilityScore": 1.7,
-                                "impactScore": 2.7,
-                                "baseScore": 4.8,
-                                "baseSeverity": "MEDIUM"
-                            }
+                        x_epss={
+                            "date": "2024-08-18",
+                            "score": "0.000750000",
+                            "percentile": "0.328570000"
                         },
                         extensions={
-                            vulnerability_scoring_ExtensionDefinitionSMO.id: {
+                            note_epss_scoring_ExtensionDefinitionSMO.id: {
                                     "extension_type": "toplevel-property-extension"
                             }
                         }
@@ -73,12 +65,12 @@ example_VulnerabilitySDO = Vulnerability(
 ### Creating FileSystemStore and adding MarkingDefinitionSMO for each directory
 
 fs_directories = {
-    "tmp_object_store": example_VulnerabilitySDO
+    "tmp_object_store": example_NoteSDO
 }
 
-for directory, vulnerability_sdo in fs_directories.items():
+for directory, note_sdo in fs_directories.items():
     fs_store = stix2.FileSystemStore(directory)
-    fs_store.add([vulnerability_sdo])
+    fs_store.add([note_sdo])
 
 # Now move those files into the standardised locations for easy download
 
@@ -90,6 +82,6 @@ for directory in final_directories:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-shutil.move("tmp_object_store/vulnerability/vulnerability--" + str(uuid.uuid5(namespace, f"A demo Vulnerability")) + "/20200101000000000.json", "example_objects/properties/vulnerability--" + str(uuid.uuid5(namespace, f"A demo Vulnerability")) + ".json")
+shutil.move("tmp_object_store/note/note--" + str(uuid.uuid5(namespace, f"A demo EPSS Note")) + "/20200101000000000.json", "example_objects/properties/note--" + str(uuid.uuid5(namespace, f"A demo EPSS Note")) + ".json")
 
 shutil.rmtree("tmp_object_store")

@@ -166,7 +166,9 @@ vulnerability_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_types=[
                             "toplevel-property-extension"
                         ],
-                        extension_properties=["x_cvss", "x_epss"],
+                        extension_properties=[
+                            "x_cvss",
+                        ],
                         object_marking_refs=object_marking_refs
                     )
 
@@ -184,6 +186,28 @@ indicator_vulnerable_cpes_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_types=[
                             "toplevel-property-extension"
                         ],
-                        extension_properties=["x_cpes"],
+                        extension_properties=[
+                            "x_cpes"
+                        ],
+                        object_marking_refs=object_marking_refs
+                    )
+
+### Note EPSS Scoring SMO
+
+note_epss_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"note-epss-scoring")), # extension-definition--efd26d23-d37d-5cf2-ac95-a101e46ce11d
+                        created_by_ref=created_by_ref,
+                        created=created,
+                        modified=modified,
+                        name="Note SDO EPSS Scoring Properties",
+                        description="This extension adds new properties to Note SDOs to capture EPSS scores for CVEs.",
+                        schema=schema_base+"properties/note-epss-scoring.json",
+                        version="1.0",
+                        extension_types=[
+                            "toplevel-property-extension"
+                        ],
+                        extension_properties=[
+                            "x_epss"
+                        ],
                         object_marking_refs=object_marking_refs
                     )

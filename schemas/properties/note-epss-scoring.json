@@ -1,0 +1,50 @@
+{
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/note-epss-scoring.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "note-epss-scoring",
+	"description": "This extension adds new properties to Note SDOs to capture EPSS scores for CVEs.",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/blob/master/schemas/sdos/note.json"
+		},
+		{
+			"properties": {
+				"extensions": {
+					"type": "object",
+					"properties": {
+						"extension-definition--": {
+							"type": "object",
+							"properties": {
+            					"extension_type": {
+									"enum": [
+										"toplevel-property-extension"
+									]
+            					}
+						    },
+							"required": ["extension_type"]
+						},
+					"required": ["extension-definition--efd26d23-d37d-5cf2-ac95-a101e46ce11d"]
+					}
+				},
+				"x_epss": {
+					"type": "object",
+					"properties": {
+						"date": {
+							"type": "string",
+							"description": "The date of the EPSS score in the format YYYY-MM-DD"
+						},
+						"score": {
+							"type": "string",
+							"description": "The EPSS Score on listed date."
+						},
+						"percentile": {
+							"type": "string",
+							"description": "The EPSS Percentile on listed date."
+						}
+					}
+				}
+			}
+		}
+	]
+}
