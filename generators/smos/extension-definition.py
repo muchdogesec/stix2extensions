@@ -1,3 +1,14 @@
+import uuid
+import hashlib
+import stix2
+import os
+import json
+import sys  # Missing import added here
+
+from stix2 import Bundle
+from stix2.base import STIXJSONEncoder
+from uuid import UUID
+
 from stix2extensions._extensions import (
     weakness_ExtensionDefinitionSMO,
     bank_account_ExtensionDefinitionSMO,
@@ -8,19 +19,21 @@ from stix2extensions._extensions import (
     user_agent_ExtensionDefinitionSMO,
     vulnerability_scoring_ExtensionDefinitionSMO,
     indicator_vulnerable_cpes_ExtensionDefinitionSMO,
-    note_epss_scoring_ExtensionDefinitionSMO,
-    Bundle,
-    namespace
-    )
-import uuid
-from stix2 import Bundle
-import sys
-sys.path.append('generators')
+    note_epss_scoring_ExtensionDefinitionSMO
+)
 
+sys.path.append('generators')  # sys is now imported, so this works
+
+from utils import Generator
+
+# Namespace UUID for generating UUIDv5
+namespace = UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
+
+# Create and save the objects using the Generator
 if __name__ == '__main__':
-    from utils import Generator
     generator_sdos = Generator("extension-definitions/sdos")
     generator_sdos.add_item("weakness", weakness_ExtensionDefinitionSMO)
+    
     generator_scos = Generator("extension-definitions/scos")
     generator_scos.add_item("bank-account", bank_account_ExtensionDefinitionSMO)
     generator_scos.add_item("bank-card", bank_card_ExtensionDefinitionSMO)
@@ -28,24 +41,44 @@ if __name__ == '__main__':
     generator_scos.add_item("cryptocurrency-wallet", cryptocurrency_wallet_ExtensionDefinitionSMO)
     generator_scos.add_item("phone-number", phone_number_ExtensionDefinitionSMO)
     generator_scos.add_item("user-agent", user_agent_ExtensionDefinitionSMO)
+    
     generator_properties = Generator("extension-definitions/properties")
     generator_properties.add_item("vulnerability-scoring", vulnerability_scoring_ExtensionDefinitionSMO)
     generator_properties.add_item("indicator-vulnerable-cpes", indicator_vulnerable_cpes_ExtensionDefinitionSMO)
     generator_properties.add_item("note-epss-scoring", note_epss_scoring_ExtensionDefinitionSMO)
 
-    # generator.add_item("YOUR-NEW-OBJECT", YOUR_NEW_OBJECT_ExtensionDefinitionSMO)
-    
-    # Save all items for both generators
+    # Save all items
     generator_sdos.save_all()
     generator_scos.save_all()
     generator_properties.save_all()
 
-    BundleofAllObjects = Bundle(
-                            id="bundle--" + str(uuid.uuid5(namespace, f"extension-definition-bundle")), # bundle--026bf1fc-bd8b-5556-a061-14ebe3e9b8de
-                            objects=list(generator_sdos.items.values()) + list(generator_scos.items.values()),
-                            allow_custom=True
-                        )
+    # Combine all objects from all generators into one bundle
+    all_objects = list(generator_sdos.items.values()) + list(generator_scos.items.values()) + list(generator_properties.items.values())
 
-    ## Print the bundle
+    # Sort the objects by their ID to ensure consistent order
+    all_objects = sorted(all_objects, key=lambda x: x['id'])
 
-    print(BundleofAllObjects.serialize(pretty=True))
+    # Create the STIX bundle
+    bundle_of_all_objects = {
+        "type": "bundle",
+        "objects": all_objects
+    }
+
+    # Serialize the objects for MD5 hash calculation (sort_keys ensures consistency)
+    bundle_objects_json_str = json.dumps(bundle_of_all_objects['objects'], cls=STIXJSONEncoder, sort_keys=True)
+
+    # Generate the MD5 hash of the objects
+    md5_hash = hashlib.md5(bundle_objects_json_str.encode('utf-8')).hexdigest()
+
+    # Generate UUIDv5 for the bundle using the namespace and MD5 hash
+    bundle_id = "bundle--" + str(uuid.uuid5(namespace, md5_hash))
+
+    # Create the final bundle with the calculated ID
+    final_bundle = Bundle(id=bundle_id, objects=all_objects, allow_custom=True)
+
+    # Save the bundle to a file
+    with open("extension-definitions/extension-definition-bundle.json", "w") as bundle_file:
+        json.dump(final_bundle, bundle_file, cls=STIXJSONEncoder, indent=4)
+
+    # Print the serialized bundle
+    print(final_bundle.serialize(pretty=True))
