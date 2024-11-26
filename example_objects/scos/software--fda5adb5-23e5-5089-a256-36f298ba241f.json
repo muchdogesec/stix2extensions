@@ -16,16 +16,17 @@
         }
     },
     "x_cpe_struct": {
+        "cpe_version": "2.3",
         "edition": "*",
         "language": "*",
         "other": "*",
+        "part": "a",
         "product": "egroupware",
         "sw_edition": "community",
-        "target_hw": "*",
-        "target_sw": "*",
-        "type": "a",
         "vendor": "egroupware",
+        "target_hw": "*",
         "version": "14.1.20140710",
+        "target_sw": "*",
         "update": "*"
     }
 }

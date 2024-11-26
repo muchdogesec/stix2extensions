@@ -33,7 +33,8 @@ example_SoftwareSCO = Software(
                         vendor="egroupware",
                         version="14.1.20140710",
                         x_cpe_struct={
-                            "type": "a",
+                            "cpe_version": "2.3",
+                            "part": "a",
                             "vendor": "egroupware",
                             "product": "egroupware",
                             "version": "14.1.20140710",
