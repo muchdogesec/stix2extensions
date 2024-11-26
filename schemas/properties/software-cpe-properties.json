@@ -1,0 +1,89 @@
+{
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/software-cpe-properties.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "software-cpe-properties",
+	"description": "This extension adds new properties to Software SCOs to capture full CPE information.",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/refs/heads/master/schemas/observables/software.json"
+		},
+		{
+			"properties": {
+				"extensions": {
+					"type": "object",
+					"properties": {
+						"extension-definition--": {
+							"type": "object",
+							"properties": {
+            					"extension_type": {
+									"enum": [
+										"toplevel-property-extension"
+									]
+            					}
+						    },
+							"required": ["extension_type"]
+						},
+					"required": ["extension-definition--82cad0bb-0906-5885-95cc-cafe5ee0a500"]
+					}
+				},
+				"x_cpe_struct": {
+					"type": "array",
+				 	"items": {
+						"type": "object",
+						"properties": {
+							"cpe_version": {
+								"type": "string",
+								"description": "The version of the CPE definition. The latest CPE definition version is 2.3."
+							},
+							"part": {
+								"type": "string",
+								"description": "May have 1 of 3 values: `a` for Applications, `h` for Hardware, `o` for Operating Systems"
+							},
+							"vendor": {
+								"type": "string",
+								"description": "Values for this attribute SHOULD describe or identify the person or organization that manufactured or created the product. Values for this attribute SHOULD be selected from an attribute-specific valid-values list, which MAY be defined by other specifications that utilize this specification. Any character string meeting the requirements for WFNs (cf. 5.3.2) MAY be specified as the value of the attribute."
+							},
+							"product": {
+								"type": "string",
+								"description": "The name of the system/package/component. `product` and `vendor` are sometimes identical. It can not contain spaces, slashes, or most special characters. An underscore should be used in place of whitespace characters."
+							},
+							"version": {
+								"type": "string",
+								"description": "Vendor-specific alphanumeric string characterizing the particular release version of the product."
+							},
+							"update": {
+								"type": "string",
+								"description": "Vendor-specific alphanumeric strings characterizing the particular update, service pack, or point release of the product."
+							},
+							"edition": {
+								"type": "string",
+								"description": "A further granularity describing the build of the system/package/component, beyond `version`."
+							},
+							"language": {
+								"type": "string",
+								"description": "A valid language tag as defined by IETF RFC 4646 entitled Tags for Identifying Languages. Examples include: en-us for US English, and zh-tw for Taiwanese Mandarin."
+							},
+							"sw_edition": {
+								"type": "string",
+								"description": "How the product is tailored to a particular market or class of end users."
+							},
+							"target_sw": {
+								"type": "string",
+								"description": "Software computing environment within which the product operates."
+							},
+							"target_hw": {
+								"type": "string",
+								"description": "Instruction set architecture (e.g., x86) on which the product operates."
+							},
+							"other": {
+								"type": "string",
+								"description": "Any other general descriptive or identifying information which is vendor- or product-specific and which does not logically fit anywhere else."
+							}
+						}
+					}
+				}
+			}
+		}
+	]
+}
