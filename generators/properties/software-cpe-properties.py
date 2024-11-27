@@ -20,7 +20,7 @@ for directory in tmp_directories:
 
 # Create SoftwareSCO object
 
-### software--
+### software--fda5adb5-23e5-5089-a256-36f298ba241f"
 
 example_SoftwareSCO = Software(
                         id="software--fda5adb5-23e5-5089-a256-36f298ba241f",
@@ -77,6 +77,6 @@ for directory in final_directories:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-shutil.move("tmp_object_store/software/software--fda5adb5-23e5-5089-a256-36f298ba241f.json", "example_objects/scos/software--fda5adb5-23e5-5089-a256-36f298ba241f.json")
+shutil.move("tmp_object_store/software/software--fda5adb5-23e5-5089-a256-36f298ba241f.json", "example_objects/properties/software--fda5adb5-23e5-5089-a256-36f298ba241f.json")
 
 shutil.rmtree("tmp_object_store")
