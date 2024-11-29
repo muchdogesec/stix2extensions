@@ -5,8 +5,8 @@ import shutil
 
 from uuid import UUID
 
-from stix2 import Note
-from stix2extensions._extensions import note_epss_scoring_ExtensionDefinitionSMO
+from stix2 import Report
+from stix2extensions._extensions import report_epss_scoring_ExtensionDefinitionSMO
 
 # create the directories
 
@@ -30,16 +30,17 @@ created_by_ref="identity--" + str(uuid.uuid5(namespace, f"dogesec-demo"))
 created="2020-01-01T00:00:00.000Z"
 modified="2020-01-01T00:00:00.000Z"
 
-# Create NoteSDO object
+# Create ReportSDO object
 
-### note--8d62e369-463f-59d7-825b-09185aed39dc
+### report--03081179-3df6-542e-b377-b43a5d542d0a
 
-example_NoteSDO = Note(
-                        id="note--"+ str(uuid.uuid5(namespace, f"A demo EPSS Note")),
+example_ReportSDO = Report(
+                        id="report--"+ str(uuid.uuid5(namespace, f"A demo EPSS Report")),
                         created_by_ref=created_by_ref,
                         created=created,
                         modified=modified,
-                        content="EPSS Score for CVE-XXX-XXXX",
+                        published=created,
+                        name="EPSS Scores: CVE-XXX-XXXX",
                         object_refs=[
                             "vulnerability--20b0177f-7b3c-527c-b88c-fca16a0ebf5d"
                         ],
@@ -60,7 +61,7 @@ example_NoteSDO = Note(
                             }
                         ],
                         extensions={
-                            note_epss_scoring_ExtensionDefinitionSMO.id: {
+                            report_epss_scoring_ExtensionDefinitionSMO.id: {
                                     "extension_type": "toplevel-property-extension"
                             }
                         }
@@ -72,12 +73,12 @@ example_NoteSDO = Note(
 ### Creating FileSystemStore and adding MarkingDefinitionSMO for each directory
 
 fs_directories = {
-    "tmp_object_store": example_NoteSDO
+    "tmp_object_store": example_ReportSDO
 }
 
-for directory, note_sdo in fs_directories.items():
+for directory, report_sdo in fs_directories.items():
     fs_store = stix2.FileSystemStore(directory)
-    fs_store.add([note_sdo])
+    fs_store.add([report_sdo])
 
 # Now move those files into the standardised locations for easy download
 
@@ -89,6 +90,6 @@ for directory in final_directories:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-shutil.move("tmp_object_store/note/note--" + str(uuid.uuid5(namespace, f"A demo EPSS Note")) + "/20200101000000000.json", "example_objects/properties/note--" + str(uuid.uuid5(namespace, f"A demo EPSS Note")) + ".json")
+shutil.move("tmp_object_store/report/report--" + str(uuid.uuid5(namespace, f"A demo EPSS Report")) + "/20200101000000000.json", "example_objects/properties/report--" + str(uuid.uuid5(namespace, f"A demo EPSS Report")) + ".json")
 
 shutil.rmtree("tmp_object_store")

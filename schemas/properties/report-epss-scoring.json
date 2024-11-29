@@ -1,12 +1,12 @@
 {
-	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/note-epss-scoring.json",
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/report-epss-scoring.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"title": "note-epss-scoring",
-	"description": "This extension adds new properties to Note SDOs to capture EPSS scores for CVEs.",
+	"title": "report-epss-scoring",
+	"description": "This extension adds new properties to Report SDOs to capture EPSS scores for CVEs.",
 	"type": "object",
 	"allOf": [
 		{
-			"$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/blob/master/schemas/sdos/note.json"
+			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/refs/heads/master/schemas/sdos/report.json"
 		},
 		{
 			"properties": {
@@ -24,7 +24,7 @@
 						    },
 							"required": ["extension_type"]
 						},
-					"required": ["extension-definition--efd26d23-d37d-5cf2-ac95-a101e46ce11d"]
+					"required": ["extension-definition--f80cce10-5ac0-58d1-9e7e-b4ed0cc4dbb9"]
 					}
 				},
 				"x_epss": {

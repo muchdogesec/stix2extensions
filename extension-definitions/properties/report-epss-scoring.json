@@ -1,13 +1,13 @@
 {
     "type": "extension-definition",
     "spec_version": "2.1",
-    "id": "extension-definition--efd26d23-d37d-5cf2-ac95-a101e46ce11d",
+    "id": "extension-definition--f80cce10-5ac0-58d1-9e7e-b4ed0cc4dbb9",
     "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
-    "name": "Note SDO EPSS Scoring Properties",
-    "description": "This extension adds new properties to Note SDOs to capture EPSS scores for CVEs.",
-    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/note-epss-scoring.json",
+    "name": "Report SDO EPSS Scoring Properties",
+    "description": "This extension adds new properties to Report SDOs to capture EPSS scores for CVEs.",
+    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/report-epss-scoring.json",
     "version": "1.0",
     "extension_types": [
         "toplevel-property-extension"
