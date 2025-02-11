@@ -214,7 +214,7 @@ report_epss_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
 
 ### Software CPE SMO
 
-software_cpe_properties_ExtensionDefinitionSMO= ExtensionDefinition(
+software_cpe_properties_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"software-cpe-properties")), # extension-definition--82cad0bb-0906-5885-95cc-cafe5ee0a500
                         created_by_ref=created_by_ref,
                         created=created,
@@ -230,4 +230,30 @@ software_cpe_properties_ExtensionDefinitionSMO= ExtensionDefinition(
                             "x_cpe_struct"
                         ],
                         object_marking_refs=object_marking_refs
+                    )
+
+attack_flow_ExtensionDefinitionSMO = ExtensionDefinition(
+                        type="extension-definition",
+                        id="extension-definition--fb9c968a-745b-4ade-9b25-c324172197f4",
+                        spec_version="2.1",
+                        created="2022-08-02T19:34:35.143Z",
+                        modified="2022-08-02T19:34:35.143Z",
+                        name="Attack Flow",
+                        description="Extends STIX 2.1 with features to create Attack Flows.",
+                        created_by_ref="identity--fb9c968a-745b-4ade-9b25-c324172197f4",
+                        schema="https://center-for-threat-informed-defense.github.io/attack-flow/stix/attack-flow-schema-2.0.0.json",
+                        version="2.0.0",
+                        extension_types=["new-sdo"],
+                        external_references=[
+                            {
+                                "source_name": "Documentation",
+                                "description": "Documentation for Attack Flow",
+                                "url": "https://center-for-threat-informed-defense.github.io/attack-flow",
+                            },
+                            {
+                                "source_name": "GitHub",
+                                "description": "Source code repository for Attack Flow",
+                                "url": "https://github.com/center-for-threat-informed-defense/attack-flow",
+                            },
+                        ],
                     )
