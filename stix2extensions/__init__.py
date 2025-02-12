@@ -5,3 +5,4 @@ from .cryptocurrency_wallet import CryptocurrencyWallet
 from .phone_number import Phonenumber
 from .user_agent import UserAgent
 from .weakness import Weakness
+from .attack_action import AttackAction, AttackFlow
