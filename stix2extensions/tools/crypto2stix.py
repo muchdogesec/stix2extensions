@@ -48,7 +48,7 @@ class Crypto2Stix:
             spec_version="2.1",
             symbol=self.symbol,
             hash=tx_data.hash,
-            block_id=tx_data.block_id,
+            # block_id=tx_data.block_id,
             fee=tx_data.fee,
             execution_time=tx_data.execution_time,
             input=[
@@ -65,11 +65,6 @@ class Crypto2Stix:
                 }
                 for addr, amount in tx_data.outputs
             ],
-            extensions={
-                cryptocurrency_transaction_ExtensionDefinitionSMO.id: {
-                    "extension_type": "new-sco"
-                }
-            },
         )
         return transaction_object
 

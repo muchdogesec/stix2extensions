@@ -18,7 +18,6 @@ _type = 'cryptocurrency-transaction'
     ('execution_time', TimestampProperty()),
     ('input', ListProperty(DictionaryProperty())),
     ('output', ListProperty(DictionaryProperty())),
-    # ('extensions', ExtensionsProperty(spec_version='2.1'))
 ], extension_name=cryptocurrency_transaction_ExtensionDefinitionSMO.id, id_contrib_props=['hash', 'symbol'])
 class CryptocurrencyTransaction(object):
     pass
