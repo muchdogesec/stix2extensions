@@ -61,8 +61,6 @@ def create_credit_card_stix(card_data, bin_data):
             scheme=bin_data['BIN']['scheme'],
             brand=bin_data['BIN']['brand'],
             currency=bin_data['BIN']['currency'],
-            issuer_name=bin_data['BIN']['issuer']['name'],
-            issuer_country=bin_data['BIN']['country']['alpha2'],
         )
         
     # Add optional fields if they are present and not empty
