@@ -61,6 +61,10 @@ def create_credit_card_stix(card_data, bin_data):
             scheme=bin_data['BIN']['scheme'],
             brand=bin_data['BIN']['brand'],
             currency=bin_data['BIN']['currency'],
+            #
+            level=bin_data['BIN']['level'],
+            is_commercial=bin_data['BIN']['is_commercial'] == 'true',
+            is_prepaid=bin_data['BIN']['is_prepaid'] == 'true',
         )
         
     # Add optional fields if they are present and not empty
