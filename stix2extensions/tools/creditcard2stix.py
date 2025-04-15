@@ -1,3 +1,4 @@
+from functools import lru_cache
 import logging
 import uuid
 import requests
@@ -8,6 +9,7 @@ from ..bank_card import BankCard
 IDENTITY_NS = uuid.UUID("d287a5a4-facc-5254-9563-9e92e3e729ac")
 OASIS_NS    = uuid.UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
 
+@lru_cache(maxsize=4096)
 def get_bin_data(card_number, api_key):
     try:
         bin_number = card_number[:6]
