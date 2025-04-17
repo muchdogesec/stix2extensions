@@ -1,3 +1,4 @@
+from functools import lru_cache
 import logging
 import uuid
 import requests
@@ -8,6 +9,7 @@ from ..bank_card import BankCard
 IDENTITY_NS = uuid.UUID("d287a5a4-facc-5254-9563-9e92e3e729ac")
 OASIS_NS    = uuid.UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
 
+@lru_cache(maxsize=4096)
 def get_bin_data(card_number, api_key):
     try:
         bin_number = card_number[:6]
@@ -61,6 +63,10 @@ def create_credit_card_stix(card_data, bin_data):
             scheme=bin_data['BIN']['scheme'],
             brand=bin_data['BIN']['brand'],
             currency=bin_data['BIN']['currency'],
+            #
+            level=bin_data['BIN']['level'],
+            is_commercial=bin_data['BIN']['is_commercial'] == 'true',
+            is_prepaid=bin_data['BIN']['is_prepaid'] == 'true',
         )
         
     # Add optional fields if they are present and not empty

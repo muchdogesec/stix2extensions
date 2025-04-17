@@ -66,6 +66,18 @@
 					"type": "string",
 					"description": "The cards security code. Usually 3 or 4 digits."
 				},
+				"level": {
+					"type": "string",
+					"description": "Card level describes the issuers classification. For example, classic level often refers to a basic or introductory level card with no monthly fees."
+				},
+				"is_commercial": {
+					"type": "boolean",
+					"description": "If the card is registered for commercial use (vs. personal use)."
+				},
+				"is_prepaid": {
+					"type": "boolean",
+					"description": "If the card is prepaid."
+				},
 				"extensions": {
 					"type": "object",
 					"properties": {
