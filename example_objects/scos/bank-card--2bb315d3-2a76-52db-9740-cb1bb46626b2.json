@@ -12,6 +12,9 @@
     "valid_from": "01/99",
     "valid_to": "01/00",
     "security_code": "999",
+    "level": "CLASSIC",
+    "is_commercial": false,
+    "is_prepaid": false,
     "extensions": {
         "extension-definition--7922f91a-ee77-58a5-8217-321ce6a2d6e0": {
             "extension_type": "new-sco"

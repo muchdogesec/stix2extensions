@@ -32,7 +32,10 @@ example_bankCardSCO = BankCard(
                     holder_ref="identity--9fcd0db9-8115-4e33-ae00-674806395cf1",
                     valid_from="01/99",
                     valid_to="01/00",
-                    security_code="999"
+                    security_code="999",
+                    level="CLASSIC",
+                    is_commercial=False,
+                    is_prepaid=False
                     )
 
 # Write the objects to the filestore
