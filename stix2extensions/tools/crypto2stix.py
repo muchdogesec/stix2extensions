@@ -1,6 +1,7 @@
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import UTC, datetime
 from itertools import chain
+import time
 from typing import Union
 import uuid
 import requests
@@ -118,43 +119,83 @@ class Crypto2Stix:
         return objects
             
 
-
 class BTC2Stix(Crypto2Stix):
     symbol = "BTC"
     DIVIDER = 100000000
 
     def get_transaction_object(self, hash):
-        return super().get_transaction_object(hash)
+        url = f"https://btcscan.org/api/tx/{hash}"
+        return self.make_request(url)
 
     def get_transaction_data(self, txn):
         if isinstance(txn, str):
-            url = f"https://blockchain.info/rawtx/{txn}"
-            response = requests.get(url)
-            txn = response.json()
+            txn = self.get_transaction_object(txn)
+        if isinstance(txn, TxnData):
+            return txn
 
-        inputs = [
-            (inp["prev_out"]["addr"], inp["prev_out"]["value"] / self.DIVIDER)
-            for inp in txn["inputs"]
-            if "addr" in inp["prev_out"]
-        ]
-        outputs = [
-            (out["addr"], out["value"] / self.DIVIDER)
-            for out in txn["out"]
-            if "addr" in out
-        ]
-        block_id = str(txn["block_height"])
-        execution_time = datetime.utcfromtimestamp(txn["time"]).isoformat() + "Z"
+        inputs = []
+        for inp in txn.get("vin", []):
+            prevout = self.parse_tx_address_and_value(inp.get("prevout", {}))
+            if prevout:
+                inputs.append(prevout)
+
+        outputs = []
+        for out in txn.get("vout", []):
+            out_parsed = self.parse_tx_address_and_value(out)
+            if out_parsed:
+                outputs.append(out_parsed)
+
+        status = txn.get("status", {})
+        block_id = str(status.get("block_height")) if status.get("block_height") else None
+        block_time = status.get("block_time")
+        execution_time = datetime.fromtimestamp(block_time, tz=UTC).isoformat() + "Z" if block_time else None
+
         return TxnData(
             block_id=block_id,
             execution_time=execution_time,
-            fee=str(txn["fee"] / self.DIVIDER),
+            fee=str(txn["fee"] / self.DIVIDER) if txn.get("fee") else "0",
             inputs=inputs,
             outputs=outputs,
-            hash=txn['hash'],
+            hash=txn.get("txid"),
         )
+    
 
     def get_wallet_data(self, wallet_address):
-        url = f"https://blockchain.info/rawaddr/{wallet_address}"
-        response = requests.get(url)
-        wallet_data = response.json()
-        return WalletData(address=wallet_address, transactions=wallet_data["txs"])
+        return WalletData(address=wallet_address, transactions=self.get_transactions_by_address(wallet_address))
+    
+    def get_transactions_by_address(self, address):
+        all_txns = []
+        last_seen_txid = None
+
+        while True:
+            url = f"https://btcscan.org/api/address/{address}/txs/chain"
+            if last_seen_txid:
+                url += f"/{last_seen_txid}"
+            batch = self.make_request(url)
+            if not batch:
+                break  # No more transactions
+            all_txns.extend(batch)
+            last_seen_txid = batch[-1]["txid"]
+        return all_txns
+    
+    @classmethod
+    def parse_tx_address_and_value(cls, out: dict):
+        if not out:
+            return
+        addr = out.get("scriptpubkey_address")
+        value = out.get("value")
+        if addr and value is not None:
+            return (addr, value / cls.DIVIDER)
+        
+    def make_request(self, url):
+        time.sleep(2)
+        print(url)
+        for attempt in range(5):
+            response = requests.get(url)
+            if response.status_code == 429:
+                time.sleep(20)
+                continue
+            response.raise_for_status()
+            return response.json()
+
+        raise Exception("Failed to fetch transaction data after 10 retries due to rate limits.")
