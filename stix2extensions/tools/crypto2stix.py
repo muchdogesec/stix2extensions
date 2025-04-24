@@ -148,7 +148,7 @@ class BTC2Stix(Crypto2Stix):
         status = txn.get("status", {})
         block_id = str(status.get("block_height")) if status.get("block_height") else None
         block_time = status.get("block_time")
-        execution_time = datetime.fromtimestamp(block_time, tz=UTC).isoformat() + "Z" if block_time else None
+        execution_time = datetime.fromtimestamp(block_time, tz=UTC) if block_time else None
 
         return TxnData(
             block_id=block_id,
@@ -188,12 +188,11 @@ class BTC2Stix(Crypto2Stix):
             return (addr, value / cls.DIVIDER)
         
     def make_request(self, url):
-        time.sleep(2)
-        print(url)
+        time.sleep(1)
         for attempt in range(5):
             response = requests.get(url)
             if response.status_code == 429:
-                time.sleep(20)
+                time.sleep(60)
                 continue
             response.raise_for_status()
             return response.json()
