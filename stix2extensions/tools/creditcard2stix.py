@@ -29,6 +29,24 @@ def get_bin_data(card_number, api_key):
         return None
 
 def create_identity(bin_data):
+    if not issuer['name']:
+        return Identity(
+            type="identity",
+            spec_version="2.1",
+            id="identity--643246fc-9204-5b4b-976d-2e605b355c24",
+            created_by_ref="identity--d287a5a4-facc-5254-9563-9e92e3e729ac",
+            created="2020-01-01T00:00:00.000Z",
+            modified="2020-01-01T00:00:00.000Z",
+            name="Unknown Bank",
+            identity_class="organization",
+            sectors=[
+                "financial-services"
+            ],
+            object_marking_refs=[
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--d287a5a4-facc-5254-9563-9e92e3e729ac"
+            ]
+        )
     issuer = bin_data['BIN']['issuer']
     country = bin_data['BIN']['country']
     name = f"{issuer['name']} ({country['alpha2']})"
