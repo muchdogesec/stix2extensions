@@ -29,6 +29,11 @@ def get_bin_data(card_number, api_key):
         return None
 
 def create_identity(bin_data):
+    issuer = bin_data['BIN']['issuer']
+    country = bin_data['BIN']['country']
+    name = f"{issuer['name']} ({country['alpha2']})"
+    identity_id = f"identity--{str(uuid.uuid5(IDENTITY_NS, name))}"
+
     if not issuer['name']:
         return Identity(
             type="identity",
@@ -47,10 +52,8 @@ def create_identity(bin_data):
                 "marking-definition--d287a5a4-facc-5254-9563-9e92e3e729ac"
             ]
         )
-    issuer = bin_data['BIN']['issuer']
-    country = bin_data['BIN']['country']
-    name = f"{issuer['name']} ({country['alpha2']})"
-    identity_id = f"identity--{str(uuid.uuid5(IDENTITY_NS, name))}"
+
+
     return Identity(
         id=identity_id,
         name=name,
