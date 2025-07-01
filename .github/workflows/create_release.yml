@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'main'  # run on all branches
+      - 'main'
 
 jobs:
   create-release:
