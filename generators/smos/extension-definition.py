@@ -3,7 +3,7 @@ import hashlib
 import stix2
 import os
 import json
-import sys  # Missing import added here
+import sys
 
 from stix2 import Bundle
 from stix2.base import STIXJSONEncoder
@@ -11,6 +11,7 @@ from uuid import UUID
 
 from stix2extensions._extensions import (
     weakness_ExtensionDefinitionSMO,
+    exploit_ExtensionDefinitionSMO,
     bank_account_ExtensionDefinitionSMO,
     bank_card_ExtensionDefinitionSMO,
     cryptocurrency_transaction_ExtensionDefinitionSMO,
@@ -23,7 +24,7 @@ from stix2extensions._extensions import (
     software_cpe_properties_ExtensionDefinitionSMO
 )
 
-sys.path.append('generators')  # sys is now imported, so this works
+sys.path.append('generators')
 
 from utils import Generator
 
@@ -34,6 +35,7 @@ namespace = UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
 if __name__ == '__main__':
     generator_sdos = Generator("extension-definitions/sdos")
     generator_sdos.add_item("weakness", weakness_ExtensionDefinitionSMO)
+    generator_sdos.add_item("exploit", exploit_ExtensionDefinitionSMO)
     
     generator_scos = Generator("extension-definitions/scos")
     generator_scos.add_item("bank-account", bank_account_ExtensionDefinitionSMO)

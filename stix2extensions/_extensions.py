@@ -84,6 +84,23 @@ weakness_ExtensionDefinitionSMO = ExtensionDefinition(
                         object_marking_refs=object_marking_refs
                     )
 
+### Exploit SMO
+
+exploit_ExtensionDefinitionSMO = ExtensionDefinition(
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"exploit")), # 
+                        created_by_ref=created_by_ref,
+                        created=created,
+                        modified=modified,
+                        name="Exploit",
+                        description="This extension creates a new SDO that can be used to represent exploits (of CVEs).",
+                        schema=schema_base+"sdos/exploit.json",
+                        version="1.0",
+                        extension_types=[
+                            "new-sdo"
+                        ],
+                        object_marking_refs=object_marking_refs
+                    )
+
 ### Bank Card SMO
 
 bank_card_ExtensionDefinitionSMO = ExtensionDefinition(
@@ -231,6 +248,8 @@ software_cpe_properties_ExtensionDefinitionSMO = ExtensionDefinition(
                         ],
                         object_marking_refs=object_marking_refs
                     )
+
+### Attack Flow SMO
 
 attack_flow_ExtensionDefinitionSMO = ExtensionDefinition(
                         type="extension-definition",
