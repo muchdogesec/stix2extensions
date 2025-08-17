@@ -104,6 +104,7 @@ If you want to see example of how to use this script to generate the custom obje
 
 ```shell
 python3 generators/sdos/weakness.py && \
+python3 generators/sdos/exploit.py && \
 python3 generators/scos/bank-account.py && \
 python3 generators/scos/bank-card.py && \
 python3 generators/scos/cryptocurrency-transaction.py && \
