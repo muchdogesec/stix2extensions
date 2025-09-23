@@ -1,6 +1,6 @@
 {
     "type": "bundle",
-    "id": "bundle--13f36e31-c160-5432-8ece-d77d975f3fc5",
+    "id": "bundle--f9363da2-977f-54ff-a30e-80f5f6f1eddd",
     "objects": [
         {
             "type": "extension-definition",
@@ -144,7 +144,7 @@
             "id": "extension-definition--82cad0bb-0906-5885-95cc-cafe5ee0a500",
             "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
             "created": "2020-01-01T00:00:00.000Z",
-            "modified": "2020-01-01T00:00:00.000Z",
+            "modified": "2025-09-23T15:47:00.000Z",
             "name": "Software SCO CPE Properties",
             "description": "This extension adds new properties to Software SCOs to capture CPE data.",
             "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/software-cpe-properties.json",
@@ -153,7 +153,10 @@
                 "toplevel-property-extension"
             ],
             "extension_properties": [
-                "x_cpe_struct"
+                "x_cpe_struct",
+                "revoked",
+                "created",
+                "modified"
             ],
             "object_marking_refs": [
                 "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
