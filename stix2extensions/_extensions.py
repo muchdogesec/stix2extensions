@@ -1,3 +1,4 @@
+from datetime import UTC, datetime
 import uuid
 import stix2
 import os
@@ -235,7 +236,7 @@ software_cpe_properties_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"software-cpe-properties")), # extension-definition--82cad0bb-0906-5885-95cc-cafe5ee0a500
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=modified,
+                        modified=datetime(2025, 9, 23, 15, 47, tz=UTC),
                         name="Software SCO CPE Properties",
                         description="This extension adds new properties to Software SCOs to capture CPE data.",
                         schema=schema_base+"properties/software-cpe-properties.json",
@@ -244,7 +245,10 @@ software_cpe_properties_ExtensionDefinitionSMO = ExtensionDefinition(
                             "toplevel-property-extension"
                         ],
                         extension_properties=[
-                            "x_cpe_struct"
+                            "x_cpe_struct",
+                            "revoked",
+                            "created",
+                            "modified",
                         ],
                         object_marking_refs=object_marking_refs
                     )
