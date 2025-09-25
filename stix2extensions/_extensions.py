@@ -246,9 +246,9 @@ software_cpe_properties_ExtensionDefinitionSMO = ExtensionDefinition(
                         ],
                         extension_properties=[
                             "x_cpe_struct",
-                            "revoked",
-                            "created",
-                            "modified",
+                            "x_revoked",
+                            "x_created",
+                            "x_modified",
                         ],
                         object_marking_refs=object_marking_refs
                     )

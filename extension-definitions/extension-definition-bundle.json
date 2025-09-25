@@ -1,6 +1,6 @@
 {
     "type": "bundle",
-    "id": "bundle--f9363da2-977f-54ff-a30e-80f5f6f1eddd",
+    "id": "bundle--ad3464d4-2f42-546d-9bb7-54253862120b",
     "objects": [
         {
             "type": "extension-definition",
@@ -154,9 +154,9 @@
             ],
             "extension_properties": [
                 "x_cpe_struct",
-                "revoked",
-                "created",
-                "modified"
+                "x_revoked",
+                "x_created",
+                "x_modified"
             ],
             "object_marking_refs": [
                 "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
