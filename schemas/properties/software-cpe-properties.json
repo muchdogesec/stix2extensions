@@ -16,12 +16,12 @@
 						"extension-definition--": {
 							"type": "object",
 							"properties": {
-            					"extension_type": {
+								"extension_type": {
 									"enum": [
 										"toplevel-property-extension"
 									]
-            					}
-						    },
+								}
+							},
 							"required": ["extension_type"]
 						},
 					"required": ["extension-definition--82cad0bb-0906-5885-95cc-cafe5ee0a500"]
@@ -82,6 +82,34 @@
 							}
 						}
 					}
+				},
+				"x_revoked": {
+					"type": "boolean",
+					"description": "The revoked property indicates whether the object has been revoked."
+				},
+				"x_created": {
+					"description": "The created property represents the time at which the first version of this object was created. The timstamp value MUST be precise to the nearest millisecond.",
+					"allOf": [
+						{
+							"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/timestamp.json"
+						},
+						{
+						"title": "timestamp_millis",
+						"pattern": "T\\d{2}:\\d{2}:\\d{2}\\.\\d{3,}Z$"
+						}
+					]
+				},
+				"x_modified": {
+				 	"description": "The modified property represents the time that this particular version of the object was modified. The timstamp value MUST be precise to the nearest millisecond.",
+					"allOf": [
+						{
+							"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/timestamp.json"
+						},
+						{
+							"title": "timestamp_millis",
+							"pattern": "T\\d{2}:\\d{2}:\\d{2}\\.\\d{3,}Z$"
+						}
+					]
 				}
 			}
 		}
