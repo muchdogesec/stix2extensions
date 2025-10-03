@@ -1,4 +1,4 @@
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timezone
 import uuid
 import stix2
 import os
@@ -40,7 +40,7 @@ phone_number_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"phone-number")), # extension-definition--14a97ee2-e666-5ada-a6bd-b7177f79e211
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=modified,
+                        modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Phone Number",
                         description="This extension creates a new SCO that can be used to represent phone numbers.",
                         schema=schema_base+"scos/phone-number.json",
@@ -57,7 +57,7 @@ cryptocurrency_transaction_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"cryptocurrency-transaction")), # extension-definition--151d042d-4dcf-5e44-843f-1024440318e5
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=modified,
+                        modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Cryptocurrency Transaction",
                         description="This extension creates a new SCO that can be used to represent cryptocurrency transactions.",
                         schema=schema_base+"scos/cryptocurrency-transaction.json",
@@ -74,7 +74,7 @@ weakness_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"weakness")), # extension-definition--31725edc-7d81-5db7-908a-9134f322284a
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=modified,
+                        modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Weakness",
                         description="This extension creates a new SDO that can be used to represent weaknesses (for CWEs).",
                         schema=schema_base+"sdos/weakness.json",
@@ -91,7 +91,7 @@ exploit_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"exploit")), # 
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=modified,
+                        modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Exploit",
                         description="This extension creates a new SDO that can be used to represent exploits (of CVEs).",
                         schema=schema_base+"sdos/exploit.json",
@@ -108,7 +108,7 @@ bank_card_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"bank-card")), # extension-definition--7922f91a-ee77-58a5-8217-321ce6a2d6e0
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=modified,
+                        modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Bank Card",
                         description="This extension creates a new SCO that can be used to represent bank cards.",
                         schema=schema_base+"scos/bank-card.json",
@@ -125,7 +125,7 @@ user_agent_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"user-agent")), # extension-definition--7ca5afee-0e4e-5813-b643-de51538658cc
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=modified,
+                        modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="User Agent",
                         description="This extension creates a new SCO that can be used to represent user agents used in HTTP request. It is designed to be used when the Network Traffic SCO with HTTP request extension cannot be used due to lack of request information needed for the required properties.",
                         schema=schema_base+"scos/user-agent.json",
@@ -142,7 +142,7 @@ cryptocurrency_wallet_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"cryptocurrency-wallet")), # extension-definition--be78509e-6958-51b1-8b26-d17ee0eba2d7
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=modified,
+                        modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Cryptocurrency Wallet",
                         description="This extension creates a new SCO that can be used to represent cryptocurrency wallets.",
                         schema=schema_base+"scos/cryptocurrency-wallet.json",
@@ -159,7 +159,7 @@ bank_account_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"bank-account")), # extension-definition--f19f3291-6a84-5674-b311-d75a925d5bd9
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=modified,
+                        modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Bank Account",
                         description="This extension creates a new SCO that can be used to represent bank account details.",
                         schema=schema_base+"scos/bank-account.json",
@@ -176,7 +176,7 @@ vulnerability_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"vulnerability-scoring")), # extension-definition--2c5c13af-ee92-5246-9ba7-0b958f8cd34a
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=modified,
+                        modified=datetime(2025, 10, 3, 0, 0, tzinfo=UTC),
                         name="Vulnerability SDO Scoring Properties",
                         description="This extension adds new properties to Vulnerbility SDOs to provide scoring.",
                         schema=schema_base+"properties/vulnerability-scoring.json",
@@ -196,7 +196,7 @@ indicator_vulnerable_cpes_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"indicator-vulnerable-cpes")), # extension-definition--ad995824-2901-5f6e-890b-561130a239d4
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=modified,
+                        modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Indicator SDO Vulnerable CPEs Properties",
                         description="This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern.",
                         schema=schema_base+"properties/indicator-vulnerable-cpes.json",
@@ -216,7 +216,7 @@ report_epss_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"report-epss-scoring")), # extension-definition--f80cce10-5ac0-58d1-9e7e-b4ed0cc4dbb9
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=modified,
+                        modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Report SDO EPSS Scoring Properties",
                         description="This extension adds new properties to Report SDOs to capture EPSS scores for CVEs.",
                         schema=schema_base+"properties/report-epss-scoring.json",
@@ -236,7 +236,7 @@ software_cpe_properties_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"software-cpe-properties")), # extension-definition--82cad0bb-0906-5885-95cc-cafe5ee0a500
                         created_by_ref=created_by_ref,
                         created=created,
-                        modified=datetime(2025, 9, 23, 15, 47, tzinfo=UTC),
+                        modified=datetime(2025, 10, 3, tzinfo=UTC),
                         name="Software SCO CPE Properties",
                         description="This extension adds new properties to Software SCOs to capture CPE data.",
                         schema=schema_base+"properties/software-cpe-properties.json",
@@ -248,7 +248,7 @@ software_cpe_properties_ExtensionDefinitionSMO = ExtensionDefinition(
                             "x_cpe_struct",
                             "x_revoked",
                             "x_created",
-                            "x_modified",
+                            "x_modified"
                         ],
                         object_marking_refs=object_marking_refs
                     )
