@@ -20,6 +20,7 @@ from stix2extensions._extensions import (
     phone_number_ExtensionDefinitionSMO,
     user_agent_ExtensionDefinitionSMO,
     vulnerability_scoring_ExtensionDefinitionSMO,
+    vulnerability_opencti_ExtensionDefinitionSMO,
     indicator_vulnerable_cpes_ExtensionDefinitionSMO,
     report_epss_scoring_ExtensionDefinitionSMO,
     software_cpe_properties_ExtensionDefinitionSMO
@@ -49,6 +50,7 @@ if __name__ == '__main__':
     
     generator_properties = Generator("extension-definitions/properties")
     generator_properties.add_item("vulnerability-scoring", vulnerability_scoring_ExtensionDefinitionSMO)
+    generator_properties.add_item("vulnerability-opencti", vulnerability_opencti_ExtensionDefinitionSMO)
     generator_properties.add_item("indicator-vulnerable-cpes", indicator_vulnerable_cpes_ExtensionDefinitionSMO)
     generator_properties.add_item("report-epss-scoring", report_epss_scoring_ExtensionDefinitionSMO)
     generator_properties.add_item("software-cpe-properties", software_cpe_properties_ExtensionDefinitionSMO)
