@@ -206,6 +206,27 @@ vulnerability_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
                         object_marking_refs=object_marking_refs
                     )
 
+### Vulnerability OpenCTI Extension SMO
+
+vulnerability_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"vulnerability-opencti")), # extension-definition--
+                        created_by_ref=created_by_ref,
+                        created=created,
+                        modified=modified,
+                        name="Vulnerability SDO OpenCTI Properties",
+                        description="This extension adds OpenCTI-specific properties to STIX Vulnerability SDOs, including CVSS v2/v3/v4 metrics, CWE, CISA KEV, and EPSS.",
+                        schema=schema_base+"properties/vulnerability-opencti.json",
+                        version="1.0",
+                        extension_types=[
+                            "toplevel-property-extension"
+                        ],
+                        extension_properties=[
+                            "x_cvss",
+                        ],
+                        object_marking_refs=object_marking_refs
+                    )
+
+
 ### Indicator Vulnerable CPEs Extension SMO
 
 indicator_vulnerable_cpes_ExtensionDefinitionSMO = ExtensionDefinition(

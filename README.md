@@ -100,22 +100,12 @@ This script will generated the Extension Definition objects defining all of the 
 python3 generators/smos/extension-definition.py
 ```
 
-If you want to see example of how to use this script to generate the custom objects (and what they look like), you can run the generator scripts (created at step 4, don't forget to add yours to the list);
+If you want to see example of how to use this script to generate the custom objects (and what they look like), you can run the generator scripts (created at step 4, don't forget to add yours);
 
 ```shell
-python3 generators/sdos/weakness.py && \
-python3 generators/sdos/exploit.py && \
-python3 generators/scos/bank-account.py && \
-python3 generators/scos/bank-card.py && \
-python3 generators/scos/cryptocurrency-transaction.py && \
-python3 generators/scos/cryptocurrency-wallet.py && \
-python3 generators/scos/data-source.py && \
-python3 generators/scos/phone-number.py && \
-python3 generators/scos/user-agent.py && \
-python3 generators/properties/indicator-vulnerable-cpes.py && \
-python3 generators/properties/vulnerability-scoring.py && \
-python3 generators/properties/report-epss-scoring.py && \
-python3 generators/properties/software-cpe-properties.py
+python3 generators/sdos/*.py && \
+python3 generators/scos/*.py && \
+python3 generators/properties/*.py
 ```
 
 #### A note about UUIDs in `generators`
