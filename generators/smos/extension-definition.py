@@ -23,7 +23,8 @@ from stix2extensions._extensions import (
     vulnerability_opencti_ExtensionDefinitionSMO,
     indicator_vulnerable_cpes_ExtensionDefinitionSMO,
     report_epss_scoring_ExtensionDefinitionSMO,
-    software_cpe_properties_ExtensionDefinitionSMO
+    software_cpe_properties_ExtensionDefinitionSMO,
+    location_opencti_ExtensionDefinitionSMO
 )
 
 sys.path.append('generators')
@@ -54,6 +55,8 @@ if __name__ == '__main__':
     generator_properties.add_item("indicator-vulnerable-cpes", indicator_vulnerable_cpes_ExtensionDefinitionSMO)
     generator_properties.add_item("report-epss-scoring", report_epss_scoring_ExtensionDefinitionSMO)
     generator_properties.add_item("software-cpe-properties", software_cpe_properties_ExtensionDefinitionSMO)
+    generator_properties.add_item("location-opencti", location_opencti_ExtensionDefinitionSMO)
+    
 
     # Save all items
     generator_sdos.save_all()

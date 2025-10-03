@@ -20,7 +20,7 @@ for directory in tmp_directories:
 
 # Create SoftwareSCO object
 
-### software--fda5adb5-23e5-5089-a256-36f298ba241f"
+### software--fda5adb5-23e5-5089-a256-36f298ba241f
 
 example_SoftwareSCO = Software(
                         id="software--fda5adb5-23e5-5089-a256-36f298ba241f",
