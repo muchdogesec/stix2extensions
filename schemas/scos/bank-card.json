@@ -6,20 +6,19 @@
 	"type": "object",
 	"allOf": [
 		{
-			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/refs/heads/master/schemas/common/cyber-observable-core.json"
+			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
 		},
 		{
 			"properties": {
 				"type": {
 					"type": "string",
 					"description": "The value of this property MUST be `bank-card`.",
-					"enum": [
-						"bank-card"
-					]
+					"enum": ["bank-card"]
 				},
 				"id": {
-					"title": "id",
-					"pattern": "^bank-card--"
+					"type": "string",
+					"pattern": "^bank-card--",
+					"examples": [""]
 				},
 				"format": {
 					"type": "string",
@@ -31,52 +30,66 @@
 					]
 				},
 				"number": {
-					"type": "string",
-					"description": "Full card number."
+					"type": "number",
+					"description": "Full card number.",
+					"examples": ["4242424242424242"]
 				},
 				"scheme": {
 					"type": "string",
-					"description": "Card scheme."
+					"description": "Card scheme.",
+					"examples": ["VISA"]
 				},
 				"brand": {
 					"type": "string",
-					"description": "Card brand."
+					"description": "Card brand.",
+					"examples": ["VISA"]
 				},
 				"currency": {
 					"type": "string",
-					"description": "3 letter currency code for card currency."
+					"description": "3 letter currency code for card currency.",
+					"examples": ["GBP"]
 				},
 				"issuer_ref": {
 					"type": "string",
-					"description": "Defines the STIX ID Identity object of the issuer"
+					"pattern": "^identity--",
+					"description": "Defines the STIX ID Identity object of the issuer",
+					"examples": ["identity--9bef1584-289b-41fe-81b4-a5d72b7746d6"]
 				},
 				"holder_ref": {
 					"type": "string",
-					"description": "Defines the STIX ID Identity object of the holder"
+					"pattern": "^identity--",
+					"description": "Defines the STIX ID Identity object of the holder",
+					"examples": ["identity--9fcd0db9-8115-4e33-ae00-674806395cf1"]
 				},
 				"valid_from": {
 					"type": "string",
-					"description": "The valid from date on the card in the format MM/YY."
+					"description": "The valid from date on the card in the format MM/YY.",
+					"examples": ["01/99"]
 				},
 				"valid_to": {
 					"type": "string",
-					"description": "The valid to date on the card in the format MM/YY."
+					"description": "The valid to date on the card in the format MM/YY.",
+					"examples": ["01/00"]
 				},
 				"security_code": {
 					"type": "string",
-					"description": "The cards security code. Usually 3 or 4 digits."
+					"description": "The cards security code. Usually 3 or 4 digits.",
+					"examples": ["999"]
 				},
 				"level": {
 					"type": "string",
-					"description": "Card level describes the issuers classification. For example, classic level often refers to a basic or introductory level card with no monthly fees."
+					"description": "Card level describes the issuers classification. For example, classic level often refers to a basic or introductory level card with no monthly fees.",
+					"examples": ["CLASSIC"]
 				},
 				"is_commercial": {
 					"type": "boolean",
-					"description": "If the card is registered for commercial use (vs. personal use)."
+					"description": "If the card is registered for commercial use (vs. personal use).",
+					"examples": [false]
 				},
 				"is_prepaid": {
 					"type": "boolean",
-					"description": "If the card is prepaid."
+					"description": "If the card is prepaid.",
+					"examples": [false]
 				},
 				"extensions": {
 					"type": "object",
@@ -84,16 +97,14 @@
 						"extension-definition--7922f91a-ee77-58a5-8217-321ce6a2d6e0": {
 							"type": "object",
 							"properties": {
-            					"extension_type": {
-									"enum": [
-										"new-sco"
-									]
-            					}
+								"extension_type": {
+									"enum": ["new-sco"]
+								}
 							},
-							"required": ["new-sco"]
-						},
+							"required": ["extension_type"]
+						}
+					},
 					"required": ["extension-definition--7922f91a-ee77-58a5-8217-321ce6a2d6e0"]
-					}
 				}
 			}
 		}
@@ -102,5 +113,5 @@
 		"type",
 		"id",
 		"extensions"
-  	]
+	]
 }
