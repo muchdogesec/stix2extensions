@@ -85,7 +85,7 @@ To add your own objects to this repo you must then do the following things:
 1. define a schema for it in the `schemas` directory.
 2. create an entry for it in `stix2extensions` defining the properties
 3. add an entry in `stix2extensions/_extensions.py` and `generators/extension-definition.py` to auto generate the Extension Definition for your objects. Then the script `python3 generators/extension-definition.py`
-4. optional: add an entry under `generators/example_objects/` for your custom object. This script should generate a dummy object to show others what it looks like (this is more likely to increase adoption). Then run the script `python3 generators/extension-definition.py`.
+4. optional: add an entry under `generators/example_objects/` for your custom object. This script should generate a dummy object to show others what it looks like (this is more likely to increase adoption). Then run the script `generators/scos/*.py`.
 5. optional: add an icon for your new object in our [stix2icons repository](https://github.com/muchdogesec/stix2icons). This will make it easy for graph viewers to render your object properly with an icon.
 
 For each of these steps, you can see examples of the existing objects which you can use as templates.
@@ -109,6 +109,7 @@ python3 generators/scos/bank-account.py && \
 python3 generators/scos/bank-card.py && \
 python3 generators/scos/cryptocurrency-transaction.py && \
 python3 generators/scos/cryptocurrency-wallet.py && \
+python3 generators/scos/data-source.py && \
 python3 generators/scos/phone-number.py && \
 python3 generators/scos/user-agent.py && \
 python3 generators/properties/indicator-vulnerable-cpes.py && \
