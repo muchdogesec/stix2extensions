@@ -105,7 +105,7 @@ weakness_ExtensionDefinitionSMO = ExtensionDefinition(
 ### Exploit SMO
 
 exploit_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"exploit")), # 
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"exploit")), # extension-definition--5a047f57-0149-59b6-a079-e2d7c7ac799a
                         created_by_ref=created_by_ref,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
@@ -268,6 +268,27 @@ vulnerability_opencti_ExtensionDefinitionSMO = ExtensionDefinition(
                             "x_opencti_cisa_kev",
                             "x_opencti_epss_score",
                             "x_opencti_epss_percentile"
+                        ],
+                        object_marking_refs=object_marking_refs
+                    )
+
+### Location OpenCTI Extension SMO
+
+location_opencti_ExtensionDefinitionSMO = ExtensionDefinition(
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"location-opencti")), # extension-definition--b9c1f945-80be-519d-9d7f-0cede26032e9
+                        created_by_ref=created_by_ref,
+                        created=created,
+                        modified=modified,
+                        name="Location SDO OpenCTI Properties",
+                        description="This extension adds OpenCTI-specific properties to STIX Location SDOs.",
+                        schema=schema_base+"properties/location-opencti",
+                        version="1.0",
+                        extension_types=[
+                            "toplevel-property-extension"
+                        ],
+                        extension_properties=[
+                            "x_opencti_aliases",
+                            "x_opencti_location_type"
                         ],
                         object_marking_refs=object_marking_refs
                     )
