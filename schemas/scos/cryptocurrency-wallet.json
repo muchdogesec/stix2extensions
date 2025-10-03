@@ -6,28 +6,30 @@
 	"type": "object",
 	"allOf": [
 		{
-			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/refs/heads/master/schemas/common/cyber-observable-core.json"
+			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
 		},
 		{
 			"properties": {
 				"type": {
 					"type": "string",
 					"description": "The value of this property MUST be `cryptocurrency-wallet`.",
-					"enum": [
-						"cryptocurrency-wallet"
-					]
+					"enum": ["cryptocurrency-wallet"]
 				},
 				"id": {
-					"title": "id",
-					"pattern": "^cryptocurrency-wallet--"
+					"type": "string",
+					"pattern": "^cryptocurrency-wallet--",
+					"examples": ["cryptocurrency-wallet--b6ae6083-875f-5fe9-84b9-89e168f89406"]
 				},
 				"address": {
 					"type": "string",
-					"description": "The hash of the wallet."
+					"description": "The hash of the wallet.",
+					"examples": ["1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY"]
 				},
 				"holder_ref": {
 					"type": "string",
-					"description": "Defines the STIX ID of an identity object of the owner. If it is a custodial wallet this could be an exhange, or otherwise a known person/organisation."
+					"pattern": "^identity--",
+					"description": "Defines the STIX ID of an identity object of the owner. If it is a custodial wallet this could be an exhange, or otherwise a known person/organisation.",
+					"examples": ["identity--1ee9d44a-c962-59b5-adbf-e47cb3f03b92"]
 				},
 				"extensions": {
 					"type": "object",
@@ -35,16 +37,14 @@
 						"extension-definition--be78509e-6958-51b1-8b26-d17ee0eba2d7": {
 							"type": "object",
 							"properties": {
-            					"extension_type": {
-									"enum": [
-										"new-sco"
-									]
-            					}
+								"extension_type": {
+									"enum": ["new-sco"]
+								}
 							},
-							"required": ["new-sco"]
-						},
+							"required": ["extension_type"]
+						}
+					},
 					"required": ["extension-definition--be78509e-6958-51b1-8b26-d17ee0eba2d7"]
-					}
 				}
 			}
 		}
@@ -53,5 +53,5 @@
 		"type",
 		"id",
 		"extensions"
-  	]
+	]
 }

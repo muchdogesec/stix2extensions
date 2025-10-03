@@ -39,30 +39,6 @@ The key parts of this repository are structured as follows;
 
 Each directory is structured by the STIX object type, either STIX Domain Objects (SDOs) or STIX Cyber Observable Objects (SDOs).
 
-## Custom objects currently available
-
-This repository currently offers the following custom STIX objects:
-
-### SDOs
-
-* `weakness`: This extension creates a new SDO that can be used to represent weaknesses (for CWEs).
-
-### SCOs
-
-* `bank-account`: This extension creates a new SCO that can be used to represent bank account details.
-* `bank-card`: This extension creates a new SCO that can be used to represent bank cards.
-* `cryptocurrency-transaction`: This extension creates a new SCO that can be used to represent cryptocurrency transactions.
-* `cryptocurrency-wallet`: This extension creates a new SCO that can be used to represent cryptocurrency wallets.
-* `phone-number`: This extension creates a new SCO that can be used to represent phone numbers.
-* `user-agent`: This extension creates a new SCO that can be used to represent user agents used in HTTP request. It is designed to be used when the Network Traffic SCO with HTTP request extension cannot be used due to lack of request information needed for the required properties.
-
-### Properties
-
-* Indicator SDO: This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern.
-* Note SDO: This extension adds new properties to Note SDOs to capture EPSS scores for CVEs.
-* Software CPE: This extension adds new properties to Software SCOs to capture full CPE information.
-* Vulnerability SDO: This extension adds new properties to Vulnerbility SDOs to provide scoring.
-
 ## Adding your own custom STIX objects to this repo
 
 ### Overview
@@ -85,7 +61,7 @@ To add your own objects to this repo you must then do the following things:
 1. define a schema for it in the `schemas` directory.
 2. create an entry for it in `stix2extensions` defining the properties
 3. add an entry in `stix2extensions/_extensions.py` and `generators/extension-definition.py` to auto generate the Extension Definition for your objects. Then the script `python3 generators/extension-definition.py`
-4. optional: add an entry under `generators/example_objects/` for your custom object. This script should generate a dummy object to show others what it looks like (this is more likely to increase adoption). Then run the script `python3 generators/extension-definition.py`.
+4. optional: add an entry under `generators/example_objects/` for your custom object. This script should generate a dummy object to show others what it looks like (this is more likely to increase adoption). Then run the script `generators/scos/*.py`.
 5. optional: add an icon for your new object in our [stix2icons repository](https://github.com/muchdogesec/stix2icons). This will make it easy for graph viewers to render your object properly with an icon.
 
 For each of these steps, you can see examples of the existing objects which you can use as templates.
@@ -100,21 +76,12 @@ This script will generated the Extension Definition objects defining all of the 
 python3 generators/smos/extension-definition.py
 ```
 
-If you want to see example of how to use this script to generate the custom objects (and what they look like), you can run the generator scripts (created at step 4, don't forget to add yours to the list);
+If you want to see example of how to use this script to generate the custom objects (and what they look like), you can run the generator scripts (created at step 4, don't forget to add yours);
 
 ```shell
-python3 generators/sdos/weakness.py && \
-python3 generators/sdos/exploit.py && \
-python3 generators/scos/bank-account.py && \
-python3 generators/scos/bank-card.py && \
-python3 generators/scos/cryptocurrency-transaction.py && \
-python3 generators/scos/cryptocurrency-wallet.py && \
-python3 generators/scos/phone-number.py && \
-python3 generators/scos/user-agent.py && \
-python3 generators/properties/indicator-vulnerable-cpes.py && \
-python3 generators/properties/vulnerability-scoring.py && \
-python3 generators/properties/report-epss-scoring.py && \
-python3 generators/properties/software-cpe-properties.py
+python3 generators/sdos/*.py && \
+python3 generators/scos/*.py && \
+python3 generators/properties/*.py
 ```
 
 #### A note about UUIDs in `generators`
