@@ -1,6 +1,6 @@
 {
     "type": "bundle",
-    "id": "bundle--a6c60b70-d548-5e38-bfeb-741f7e4ccb83",
+    "id": "bundle--4480fc15-c2ba-53d4-ac29-fc1c4383a2cc",
     "objects": [
         {
             "type": "extension-definition",
@@ -46,7 +46,7 @@
             "id": "extension-definition--2c5c13af-ee92-5246-9ba7-0b958f8cd34a",
             "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
             "created": "2020-01-01T00:00:00.000Z",
-            "modified": "2020-01-01T00:00:00.000Z",
+            "modified": "2025-10-03T00:00:00.000Z",
             "name": "Vulnerability SDO Scoring Properties",
             "description": "This extension adds new properties to Vulnerbility SDOs to provide scoring.",
             "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/vulnerability-scoring.json",
@@ -144,7 +144,7 @@
             "id": "extension-definition--82cad0bb-0906-5885-95cc-cafe5ee0a500",
             "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
             "created": "2020-01-01T00:00:00.000Z",
-            "modified": "2020-01-01T00:00:00.000Z",
+            "modified": "2025-10-03T00:00:00.000Z",
             "name": "Software SCO CPE Properties",
             "description": "This extension adds new properties to Software SCOs to capture CPE data.",
             "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/software-cpe-properties.json",
@@ -153,7 +153,10 @@
                 "toplevel-property-extension"
             ],
             "extension_properties": [
-                "x_cpe_struct"
+                "x_cpe_struct",
+                "x_revoked",
+                "x_created",
+                "x_modified"
             ],
             "object_marking_refs": [
                 "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
