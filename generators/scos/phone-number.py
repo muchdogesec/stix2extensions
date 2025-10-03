@@ -26,7 +26,7 @@ example_PhoneNumberSCO = Phonenumber(
                     id="phone-number--"+ str(uuid.uuid5(namespace, f"07890129093")),
                     number="4407890129093",
                     country="GBR",
-                    connection="Mobile",
+                    connection="mobile",
                     provider="Big Network"
                     )
 

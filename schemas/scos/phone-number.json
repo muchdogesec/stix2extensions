@@ -17,15 +17,18 @@
 				},
 				"id": {
 					"type": "string",
-					"pattern": "^phone-number--"
+					"pattern": "^phone-number--",
+					"examples": ["phone-number--60bc3ff5-37c4-5b5a-9aeb-6c4d116534bd"]
 				},
 				"number": {
 					"type": "string",
-					"description": "An E.164 formatted phone number."
+					"description": "An E.164 formatted phone number.",
+					"examples": ["4407890129093"]
 				},
 				"country": {
 					"type": "string",
-					"description": "Three digit ISO country code the number was issues. Should match intentional dialing prefix in number."
+					"description": "Three letter ISO (ISO-3166-1 alpha-3) country code the number was issues. Should match intentional dialing prefix in number.",
+					"examples": ["GBR"]
 				},
 				"connection" : {
 					"type": "string",
@@ -37,7 +40,8 @@
 				},
 				"provider": {
 					"type": "string",
-					"description": "The company that manages the number."
+					"description": "The company that manages the number.",
+					"examples": ["Big Network"]
 				},
 				"extensions": {
 					"type": "object",
@@ -45,16 +49,14 @@
 						"extension-definition--14a97ee2-e666-5ada-a6bd-b7177f79e211": {
 							"type": "object",
 							"properties": {
-            					"extension_type": {
-									"enum": [
-										"new-sco"
-									]
-            					}
+								"extension_type": {
+									"enum": ["new-sco"]
+								}
 							},
-							"required": ["new-sco"]
-						},
+							"required": ["extension_type"]
+						}
+					},
 					"required": ["extension-definition--14a97ee2-e666-5ada-a6bd-b7177f79e211"]
-					}
 				}
 			}
 		}
@@ -63,5 +65,5 @@
 		"type",
 		"id",
 		"extensions"
-  	]
+	]
 }
