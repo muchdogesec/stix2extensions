@@ -67,6 +67,23 @@ cryptocurrency_transaction_ExtensionDefinitionSMO = ExtensionDefinition(
                         object_marking_refs=object_marking_refs
                     )
 
+### Data Source SMO
+
+data_source_ExtensionDefinitionSMO = ExtensionDefinition(
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"data-source")), # extension-definition--afeeb724-bce2-575e-af3d-d705842ea84b
+                        created_by_ref=created_by_ref,
+                        created=created,
+                        modified=modified,
+                        name="Data Source",
+                        description="This extension creates a new SCO that can be used to represent data sources. Very similar to x-mitre-data-source objects used in ATT&CK.",
+                        schema=schema_base+"scos/data-source.json",
+                        version="1.0",
+                        extension_types=[
+                            "new-sco"
+                        ],
+                        object_marking_refs=object_marking_refs
+                    )
+
 ### Weakness SMO
 
 weakness_ExtensionDefinitionSMO = ExtensionDefinition(

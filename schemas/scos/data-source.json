@@ -1,0 +1,70 @@
+{
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/data-source.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "data-source",
+	"description": "This extension creates a new SCO that can be used to represent data sources. Very similar to x-mitre-data-source objects used in ATT&CK.",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/refs/heads/master/schemas/common/cyber-observable-core.json"
+		},
+		{
+			"properties": {
+				"type": {
+					"type": "string",
+					"description": "The value of this property MUST be `data-source`.",
+					"enum": [
+						"data-source"
+					]
+				},
+				"id": {
+					"title": "id",
+					"pattern": "^data-source--"
+				},
+				"name": {
+					"type": "string",
+					"description": "A human readable name for the log source."
+				},
+				"category": {
+					"type": "string",
+					"description": "The category value is used to select all log files written by a certain group of products, like firewalls or web server logs."
+				},
+				"product": {
+					"type": "string",
+					"description": "The product value is used to select all log outputs of a certain product. For example, all Windows Eventlog types including Security, System, Application and the new log types like AppLocker and Windows Defender."
+				},
+				"service": {
+					"type": "string",
+					"description": "Use the service value to select only a subset of a product's logs, like the sshd on Linux or the Security Eventlog on Windows systems."
+				},
+				"definition": {
+					"type": "string",
+					"description": "You may also see a definition field within logsource description. This can also provide more information about how to onboard the log data source correctly, and doesn't get included when completing logsource matching."
+				},
+				"extensions": {
+					"type": "object",
+					"properties": {
+						"extension-definition--afeeb724-bce2-575e-af3d-d705842ea84b": {
+							"type": "object",
+							"properties": {
+            					"extension_type": {
+									"enum": [
+										"new-sco"
+									]
+            					}
+							},
+							"required": ["new-sco"]
+						},
+					"required": ["extension-definition--afeeb724-bce2-575e-af3d-d705842ea84b"]
+					}
+				}
+			}
+		}
+	],
+	"required": [
+		"name",
+		"type",
+		"id",
+		"extensions"
+  	]
+}
