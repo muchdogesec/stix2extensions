@@ -6,44 +6,49 @@
 	"type": "object",
 	"allOf": [
 		{
-			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/refs/heads/master/schemas/common/cyber-observable-core.json"
+			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
 		},
 		{
 			"properties": {
 				"type": {
 					"type": "string",
 					"description": "The value of this property MUST be `bank-account`.",
-					"enum": [
-						"bank-account"
-					]
+					"enum": ["bank-account"]
 				},
 				"id": {
-					"title": "id",
-					"pattern": "^bank-account--"
+					"type": "string",
+					"pattern": "^bank-account--",
+					"examples": ["bank-account--fb76b7b8-8701-5d8b-a143-0283847f6638"]
 				},
 				"bank": {
 					"type": "string",
-					"description": "Name of the bank account the manages the account."
+					"description": "Name of the bank that manages the account.",
+					"examples": ["Big Bank"]
 				},
 				"country": {
 					"type": "string",
-					"description": "3 digit ISO country code for country of account."
+					"description": "3 letter ISO (ISO 3166-1 alpha-3) country code for country of account.",
+					"examples": ["GBR"]
 				},
 				"currency": {
 					"type": "string",
-					"description": "3 digit ISO currency code for currency of account."
+					"description": "3 letter ISO (ISO 4217) currency code for currency of account.",
+					"examples": ["GBP"]
 				},
 				"holder_name": {
 					"type": "string",
-					"description": "Name of the holder of the account."
+					"description": "Name of the holder of the account.",
+					"examples": ["DOGESEC"]
 				},
 				"iban_number": {
 					"type": "string",
-					"description": "Full IBAN number of the account."
+					"description": "Full IBAN number of the account.",
+					"examples": ["GB33BUKB20201555555555"]
 				},
 				"swift_code": {
 					"type": "string",
-					"description": "Full swift code of the account."
+					"description": "Full swift code of the account.",
+					"examples": ["DEMOGB22XXX"]
 				},
 				"extensions": {
 					"type": "object",
@@ -51,21 +56,19 @@
 						"extension-definition--f19f3291-6a84-5674-b311-d75a925d5bd9": {
 							"type": "object",
 							"properties": {
-            					"extension_type": {
-									"enum": [
-										"new-sco"
-									]
-            					}
+								"extension_type": {
+									"enum": ["new-sco"]
+								}
 							},
-							"required": ["new-sco"]
-						},
+							"required": ["extension_type"]
+						}
+					},
 					"required": ["extension-definition--f19f3291-6a84-5674-b311-d75a925d5bd9"]
-					}
 				}
 			}
 		}
 	],
-	"required": [
+	"required": [	
 		"type",
 		"id",
 		"extensions"

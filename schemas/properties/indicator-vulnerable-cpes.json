@@ -6,7 +6,7 @@
 	"type": "object",
 	"allOf": [
 		{
-			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/refs/heads/master/schemas/sdos/indicator.json"
+			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
 		},
 		{
 			"properties": {
@@ -16,47 +16,52 @@
 						"extension-definition--ad995824-2901-5f6e-890b-561130a239d4": {
 							"type": "object",
 							"properties": {
-            					"extension_type": {
+								"extension_type": {
 									"enum": [
 										"toplevel-property-extension"
 									]
-            					}
-						    },
+								}
+							},
 							"required": ["extension_type"]
-						},
+						}
+					},
 					"required": ["extension-definition--ad995824-2901-5f6e-890b-561130a239d4"]
-					}
 				},
 				"x_cpes": {
 					"type": "array",
-				 	"items": {
-				 		"type": "object",
+					"minItems": 1,
+					"items": {
+						"type": "object",
 						"properties": {
 							"vulnerable": {
 								"type": "object",
-							 	"properties": {
-							    	"criteria": {
-							      		"type": "string",
-							      		"description": "The criteria for the vulnerable CPE"
-							    	},
-							    	"matchCriteriaId": {
-							      		"type": "string",
-							      		"description": "The matchCriteriaId for the vulnerable CPE"
-							    	}
-							    }
+								"properties": {
+									"criteria": {
+										"type": "string",
+										"description": "The criteria for the vulnerable CPE",
+										"examples": ["cpe:2.3:a:dell:powerscale_onefs:9.1.0:*:*:*:*:*:*:*"]
+									},
+									"matchCriteriaId": {
+										"type": "string",
+										"description": "The matchCriteriaId for the vulnerable CPE",
+										"examples": ["68291D44-DBE1-4923-A848-04E64288DC23"]
+									}
+								}
 							},
 							"not_vulnerable": {
 								"type": "object",
-							 	"properties": {
-							    	"criteria": {
-							      		"type": "string",
-							      		"description": "The criteria for the not vulnerable CPE"
-							    	},
-							    	"matchCriteriaId": {
-							      		"type": "string",
-							      		"description": "The matchCriteriaId for the not vulnerable CPE"
-							    	}
-							    }
+								"properties": {
+									"criteria": {
+										"type": "string",
+										"description": "The criteria for the not vulnerable CPE",
+										"examples": ["cpe:2.3:a:campcodes:gym_management_system:1.0:*:*:*:*:*:*:*"]
+									},
+									"matchCriteriaId": {
+										"type": "string",
+										"description": "The matchCriteriaId for the not vulnerable CPE",
+										"examples": ["D6B26946-8BCC-4A6E-95D3-FC3E42A7754F"]
+									}
+								}
 							}
 						}
 					}

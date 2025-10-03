@@ -39,30 +39,6 @@ The key parts of this repository are structured as follows;
 
 Each directory is structured by the STIX object type, either STIX Domain Objects (SDOs) or STIX Cyber Observable Objects (SDOs).
 
-## Custom objects currently available
-
-This repository currently offers the following custom STIX objects:
-
-### SDOs
-
-* `weakness`: This extension creates a new SDO that can be used to represent weaknesses (for CWEs).
-
-### SCOs
-
-* `bank-account`: This extension creates a new SCO that can be used to represent bank account details.
-* `bank-card`: This extension creates a new SCO that can be used to represent bank cards.
-* `cryptocurrency-transaction`: This extension creates a new SCO that can be used to represent cryptocurrency transactions.
-* `cryptocurrency-wallet`: This extension creates a new SCO that can be used to represent cryptocurrency wallets.
-* `phone-number`: This extension creates a new SCO that can be used to represent phone numbers.
-* `user-agent`: This extension creates a new SCO that can be used to represent user agents used in HTTP request. It is designed to be used when the Network Traffic SCO with HTTP request extension cannot be used due to lack of request information needed for the required properties.
-
-### Properties
-
-* Indicator SDO: This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern.
-* Note SDO: This extension adds new properties to Note SDOs to capture EPSS scores for CVEs.
-* Software CPE: This extension adds new properties to Software SCOs to capture full CPE information.
-* Vulnerability SDO: This extension adds new properties to Vulnerbility SDOs to provide scoring.
-
 ## Adding your own custom STIX objects to this repo
 
 ### Overview
