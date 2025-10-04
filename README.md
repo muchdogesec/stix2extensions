@@ -9,10 +9,6 @@ It is useful for two use-cases, for those who want to:
 1. create their own custom STIX objects and make them easy to distribute
 2. use the custom STIX objects created by others in this repo in a straight-forward way
 
-## tl;dr
-
-[![stix2extensions](https://img.youtube.com/vi/BbEruGoin8o/0.jpg)](https://www.youtube.com/watch?v=BbEruGoin8o)
-
 ## Structure of this repository
 
 The key parts of this repository are structured as follows;
@@ -31,10 +27,15 @@ The key parts of this repository are structured as follows;
 │   ├── properties
 │   ├── sdos
 │   └── scos
-└── schemas # the schemas references in each extension-definition object
-    ├── properties
-    ├── sdos
-    └── scos
+├── schemas # the schemas references in each extension-definition object
+│   ├── properties
+│   ├── sdos
+│   └── scos
+└── remote-definitions # a collection of remote extension-definition objects not generated here
+    ├── README.md # details source of extensions
+    ├── x.json
+    ├── y.json
+    └── z.json
 ```
 
 Each directory is structured by the STIX object type, either STIX Domain Objects (SDOs) or STIX Cyber Observable Objects (SDOs).
