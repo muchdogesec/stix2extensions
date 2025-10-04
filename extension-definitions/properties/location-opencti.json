@@ -7,7 +7,7 @@
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "Location SDO OpenCTI Properties",
     "description": "This extension adds OpenCTI-specific properties to STIX Location SDOs.",
-    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/location-opencti",
+    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/location-opencti.json",
     "version": "1.0",
     "extension_types": [
         "toplevel-property-extension"
