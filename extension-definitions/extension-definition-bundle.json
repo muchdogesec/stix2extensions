@@ -1,6 +1,6 @@
 {
     "type": "bundle",
-    "id": "bundle--ef4653a4-150c-599e-89a7-1393c6ca7cbf",
+    "id": "bundle--99e73623-b393-5c54-beb3-1420749bb63f",
     "objects": [
         {
             "type": "extension-definition",
@@ -213,7 +213,7 @@
             "modified": "2020-01-01T00:00:00.000Z",
             "name": "Location SDO OpenCTI Properties",
             "description": "This extension adds OpenCTI-specific properties to STIX Location SDOs.",
-            "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/location-opencti",
+            "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/location-opencti.json",
             "version": "1.0",
             "extension_types": [
                 "toplevel-property-extension"

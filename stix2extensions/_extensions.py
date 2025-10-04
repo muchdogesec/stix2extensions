@@ -281,7 +281,7 @@ location_opencti_ExtensionDefinitionSMO = ExtensionDefinition(
                         modified=modified,
                         name="Location SDO OpenCTI Properties",
                         description="This extension adds OpenCTI-specific properties to STIX Location SDOs.",
-                        schema=schema_base+"properties/location-opencti",
+                        schema=schema_base+"properties/location-opencti.json",
                         version="1.0",
                         extension_types=[
                             "toplevel-property-extension"
