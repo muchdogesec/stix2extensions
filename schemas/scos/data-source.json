@@ -20,11 +20,6 @@
 					"pattern": "^data-source--",
 					"examples": ["data-source--22f83247-63ed-5ed6-acf3-8007448ff1c1"]
 				},
-				"name": {
-					"type": "string",
-					"description": "A human readable name for the log source.",
-					"examples": ["Powershell Script"]
-				},
 				"category": {
 					"type": "string",
 					"description": "The category value is used to select all log files written by a certain group of products, like firewalls or web server logs.",
@@ -64,7 +59,6 @@
 		}
 	],
 	"required": [
-		"name",
 		"type",
 		"id",
 		"extensions"
