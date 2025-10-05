@@ -3,6 +3,7 @@ import logging
 import uuid
 import requests
 from stix2 import Relationship, Identity
+from .._extensions import DOGESEC_IDENTITY_REF
 
 from ..bank_card import BankCard
 
@@ -39,7 +40,7 @@ def create_identity(bin_data):
             type="identity",
             spec_version="2.1",
             id="identity--643246fc-9204-5b4b-976d-2e605b355c24",
-            created_by_ref="identity--d287a5a4-facc-5254-9563-9e92e3e729ac",
+            created_by_ref=DOGESEC_IDENTITY_REF,
             created="2020-01-01T00:00:00.000Z",
             modified="2020-01-01T00:00:00.000Z",
             name="Unknown Bank",
@@ -62,7 +63,7 @@ def create_identity(bin_data):
         identity_class="organization",
         sectors=["financial-services"],
         contact_information=f"* Bank URL: {issuer['website']},\n* Bank Phone: {issuer['phone']}",
-        created_by_ref="identity--d287a5a4-facc-5254-9563-9e92e3e729ac",
+        created_by_ref=DOGESEC_IDENTITY_REF,
         object_marking_refs=[
             "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
             "marking-definition--d287a5a4-facc-5254-9563-9e92e3e729ac"

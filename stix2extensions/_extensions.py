@@ -19,7 +19,7 @@ namespace=UUID("1abb62b9-e513-5f55-8e73-8f6d7b55c237")
 
 ### dogesec
 
-created_by_ref="identity--" + str(uuid.uuid5(namespace, f"dogesec"))
+DOGESEC_IDENTITY_REF="identity--" + str(uuid.uuid5(namespace, f"dogesec"))
 created="2020-01-01T00:00:00.000Z"
 modified="2020-01-01T00:00:00.000Z"
 schema_base="https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/"
@@ -38,7 +38,7 @@ object_marking_refs=[
 
 phone_number_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"phone-number")), # extension-definition--14a97ee2-e666-5ada-a6bd-b7177f79e211
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Phone Number",
@@ -55,7 +55,7 @@ phone_number_ExtensionDefinitionSMO = ExtensionDefinition(
 
 cryptocurrency_transaction_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"cryptocurrency-transaction")), # extension-definition--151d042d-4dcf-5e44-843f-1024440318e5
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Cryptocurrency Transaction",
@@ -72,7 +72,7 @@ cryptocurrency_transaction_ExtensionDefinitionSMO = ExtensionDefinition(
 
 data_source_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"data-source")), # extension-definition--afeeb724-bce2-575e-af3d-d705842ea84b
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=modified,
                         name="Data Source",
@@ -89,7 +89,7 @@ data_source_ExtensionDefinitionSMO = ExtensionDefinition(
 
 weakness_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"weakness")), # extension-definition--31725edc-7d81-5db7-908a-9134f322284a
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Weakness",
@@ -106,7 +106,7 @@ weakness_ExtensionDefinitionSMO = ExtensionDefinition(
 
 exploit_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"exploit")), # extension-definition--5a047f57-0149-59b6-a079-e2d7c7ac799a
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Exploit",
@@ -123,7 +123,7 @@ exploit_ExtensionDefinitionSMO = ExtensionDefinition(
 
 bank_card_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"bank-card")), # extension-definition--7922f91a-ee77-58a5-8217-321ce6a2d6e0
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Bank Card",
@@ -140,7 +140,7 @@ bank_card_ExtensionDefinitionSMO = ExtensionDefinition(
 
 user_agent_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"user-agent")), # extension-definition--7ca5afee-0e4e-5813-b643-de51538658cc
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="User Agent",
@@ -157,7 +157,7 @@ user_agent_ExtensionDefinitionSMO = ExtensionDefinition(
 
 cryptocurrency_wallet_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"cryptocurrency-wallet")), # extension-definition--be78509e-6958-51b1-8b26-d17ee0eba2d7
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Cryptocurrency Wallet",
@@ -174,7 +174,7 @@ cryptocurrency_wallet_ExtensionDefinitionSMO = ExtensionDefinition(
 
 bank_account_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"bank-account")), # extension-definition--f19f3291-6a84-5674-b311-d75a925d5bd9
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Bank Account",
@@ -191,7 +191,7 @@ bank_account_ExtensionDefinitionSMO = ExtensionDefinition(
 
 vulnerability_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"vulnerability-scoring")), # extension-definition--2c5c13af-ee92-5246-9ba7-0b958f8cd34a
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2025, 10, 3, 0, 0, tzinfo=UTC),
                         name="Vulnerability SDO Scoring Properties",
@@ -211,7 +211,7 @@ vulnerability_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
 
 vulnerability_opencti_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"vulnerability-opencti")), # xtension-definition--ec658473-1319-53b4-879f-488e47805554
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=modified,
                         name="Vulnerability SDO OpenCTI Properties",
@@ -276,7 +276,7 @@ vulnerability_opencti_ExtensionDefinitionSMO = ExtensionDefinition(
 
 location_opencti_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"location-opencti")), # extension-definition--b9c1f945-80be-519d-9d7f-0cede26032e9
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=modified,
                         name="Location SDO OpenCTI Properties",
@@ -297,7 +297,7 @@ location_opencti_ExtensionDefinitionSMO = ExtensionDefinition(
 
 indicator_vulnerable_cpes_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"indicator-vulnerable-cpes")), # extension-definition--ad995824-2901-5f6e-890b-561130a239d4
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Indicator SDO Vulnerable CPEs Properties",
@@ -317,7 +317,7 @@ indicator_vulnerable_cpes_ExtensionDefinitionSMO = ExtensionDefinition(
 
 report_epss_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"report-epss-scoring")), # extension-definition--f80cce10-5ac0-58d1-9e7e-b4ed0cc4dbb9
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Report SDO EPSS Scoring Properties",
@@ -337,7 +337,7 @@ report_epss_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
 
 software_cpe_properties_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"software-cpe-properties")), # extension-definition--82cad0bb-0906-5885-95cc-cafe5ee0a500
-                        created_by_ref=created_by_ref,
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2025, 10, 3, tzinfo=UTC),
                         name="Software SCO CPE Properties",
@@ -366,7 +366,7 @@ attack_flow_ExtensionDefinitionSMO = ExtensionDefinition(
                         modified="2022-08-02T19:34:35.143Z",
                         name="Attack Flow",
                         description="Extends STIX 2.1 with features to create Attack Flows.",
-                        created_by_ref="identity--fb9c968a-745b-4ade-9b25-c324172197f4",
+                        created_by_ref=DOGESEC_IDENTITY_REF,
                         schema="https://center-for-threat-informed-defense.github.io/attack-flow/stix/attack-flow-schema-2.0.0.json",
                         version="2.0.0",
                         extension_types=["new-sdo"],
