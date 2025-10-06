@@ -101,7 +101,7 @@ If a credit card number returns data from BIN list (where `valid=true`) then an 
     "issuer_ref": "<stix id of the identity object generated for linked bank>",
 	"object_marking_refs": [
 	  	"marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-	  	"marking-definition--d287a5a4-facc-5254-9563-9e92e3e729ac"
+	  	"marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
 	],
     "extensions": {
         "extension-definition--7922f91a-ee77-58a5-8217-321ce6a2d6e0": {
@@ -111,7 +111,7 @@ If a credit card number returns data from BIN list (where `valid=true`) then an 
 }
 ```
 
-The UUID is generated using the namespace `00abedb4-aa42-466c-9c01-fed23315a9b7` (OASIS STIX namespace) and the `number` value.
+The UUID is generated using the namespace `60c0f466-511a-5419-9f7e-4814e696da40` (OASIS STIX namespace) and the `number` value.
 
 If a credit card pattern does not match that of an entry from BIN list (response is not 200 or where `valid=false`) a STIX object is generated, but without any of the lookup fields present.
 
@@ -135,12 +135,12 @@ For every unique bank_name and BIN.issuer.name and BIN.country.alpha2 a STIX 2.1
   "contact_information": "<BIN.issuer.website>",
   "object_marking_refs": [
   	"marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-  	"marking-definition--d287a5a4-facc-5254-9563-9e92e3e729ac"
+  	"marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
    ]
 }
 ```
 
-The UUID is generated using the namespace `d287a5a4-facc-5254-9563-9e92e3e729ac` and the `name` value.
+The UUID is generated using the namespace `60c0f466-511a-5419-9f7e-4814e696da40` and the `name` value.
 
 Note, if more than one credit card in the list has the same issuer (by name and country), only one Identity is created for it.
 
@@ -164,9 +164,9 @@ The bank is joined to the location object imported as follows.
     "description": "<BIN.issuer.name> is located at <LOCATION NAME>",
 	"object_marking_refs": [
 	  "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-	  "marking-definition--d287a5a4-facc-5254-9563-9e92e3e729ac"
+	  "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
 	]
 }
 ```
 
-uuid v5 namespace `d287a5a4-facc-5254-9563-9e92e3e729ac` values = `relationship_type`+`source_ref`+ `target_ref`
+uuid v5 namespace `60c0f466-511a-5419-9f7e-4814e696da40` values = `relationship_type`+`source_ref`+ `target_ref`
