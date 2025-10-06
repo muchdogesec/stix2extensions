@@ -13,11 +13,11 @@ _type = 'cryptocurrency-transaction'
     ('spec_version', StringProperty(fixed='2.1')),
     ('id', IDProperty(_type, spec_version='2.1')),
     ('symbol', StringProperty(required=True)),
-    ('hash', StringProperty(required=True)),
+    ('value', StringProperty(required=True)),
     ('fee', StringProperty()),
     ('execution_time', TimestampProperty()),
     ('input', ListProperty(DictionaryProperty())),
     ('output', ListProperty(DictionaryProperty())),
-], extension_name=cryptocurrency_transaction_ExtensionDefinitionSMO.id, id_contrib_props=['hash', 'symbol'])
+], extension_name=cryptocurrency_transaction_ExtensionDefinitionSMO.id, id_contrib_props=['value', 'symbol'])
 class CryptocurrencyTransaction(object):
     pass

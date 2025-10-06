@@ -20,7 +20,7 @@
 					"pattern": "^cryptocurrency-wallet--",
 					"examples": ["cryptocurrency-wallet--b6ae6083-875f-5fe9-84b9-89e168f89406"]
 				},
-				"address": {
+				"value": {
 					"type": "string",
 					"description": "The hash of the wallet.",
 					"examples": ["1KFHE7w8BhaENAswwryaoccDb6qcT6DbYY"]
