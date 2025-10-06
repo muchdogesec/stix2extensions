@@ -136,12 +136,12 @@ For every unique bank_name and BIN.issuer.name and BIN.country.alpha2 a STIX 2.1
   "contact_information": "<BIN.issuer.website>",
   "object_marking_refs": [
   	"marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-  	"marking-definition--d287a5a4-facc-5254-9563-9e92e3e729ac"
+  	"marking-definition--2345ea02-8f72-5db8-8f9c-0c44f3ed49f5"
    ]
 }
 ```
 
-The UUID is generated using the namespace `d287a5a4-facc-5254-9563-9e92e3e729ac` and the `name` value.
+The UUID is generated using the namespace `2345ea02-8f72-5db8-8f9c-0c44f3ed49f5` and the `name` value.
 
 Note, if more than one credit card in the list has the same issuer (by name and country), only one Identity is created for it.
 
