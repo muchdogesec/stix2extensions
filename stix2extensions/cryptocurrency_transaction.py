@@ -1,9 +1,13 @@
-
 from stix2 import CustomObservable
 from stix2.properties import (
-    ExtensionsProperty, ReferenceProperty,
-    IDProperty, ListProperty, StringProperty,
-    TimestampProperty, TypeProperty, DictionaryProperty
+    ExtensionsProperty,
+    ReferenceProperty,
+    IDProperty,
+    ListProperty,
+    StringProperty,
+    TimestampProperty,
+    TypeProperty,
+    DictionaryProperty,
 )
 from ._extensions import cryptocurrency_transaction_ExtensionDefinitionSMO
 
