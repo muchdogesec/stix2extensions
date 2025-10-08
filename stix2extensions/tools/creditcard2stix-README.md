@@ -96,10 +96,6 @@ If a credit card number returns data from BIN list (where `valid=true`) then an 
     "brand": "<lookup->BIN.brand>",
     "currency": "<lookup->BIN.currency>",
     "issuer_ref": "<stix id of the identity object generated for linked bank>",
-	"object_marking_refs": [
-	  	"marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-	  	"marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
-	],
     "extensions": {
         "extension-definition--7922f91a-ee77-58a5-8217-321ce6a2d6e0": {
             "extension_type": "new-sco"
