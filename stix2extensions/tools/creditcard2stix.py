@@ -10,7 +10,6 @@ from ..bank_card import BankCard
 
 
 UUID_NS = uuid.UUID("60c0f466-511a-5419-9f7e-4814e696da40")
-MARKING_REFS = S2E_MARKING_REFS
 
 
 @lru_cache(maxsize=4096)
@@ -68,7 +67,7 @@ def create_identity(bin_data):
             name="Unknown Bank",
             identity_class="organization",
             sectors=["financial-services"],
-            object_marking_refs=MARKING_REFS,
+            object_marking_refs=S2E_MARKING_REFS,
         )
 
     return Identity(
@@ -80,17 +79,14 @@ def create_identity(bin_data):
         sectors=["financial-services"],
         contact_information=f"* Bank URL: {issuer['website']},\n* Bank Phone: {issuer['phone']}",
         created_by_ref=DOGESEC_IDENTITY_REF,
-        object_marking_refs=MARKING_REFS,
+        object_marking_refs=S2E_MARKING_REFS,
     )
 
 
-def create_credit_card_stix(card_data, bin_data):
-    card_id = f"bank-card--{str(uuid.uuid5(UUID_NS, card_data['card_number']))}"
-
+def create_credit_card_stix(card_data: dict, bin_data: dict):
     credit_card_data = {
         "type": "bank-card",
         "spec_version": "2.1",
-        "id": card_id,
         "number": card_data["card_number"],
     }
     if bin_data:
@@ -150,7 +146,7 @@ def create_objects(card_data, api_key):
                     source_ref=identity.id,
                     target_ref=location["id"],
                     description=f"{bin_data['BIN']['issuer']['name']} is located at {bin_data['BIN']['country']['name']}",
-                    object_marking_refs=MARKING_REFS,
+                    object_marking_refs=S2E_MARKING_REFS,
                 )
             )
         retval.append(identity)

@@ -3,18 +3,12 @@ from datetime import UTC, datetime
 from itertools import chain
 import time
 from typing import Union
-import uuid
 import requests
 from ..cryptocurrency_transaction import CryptocurrencyTransaction
 from ..cryptocurrency_wallet import CryptocurrencyWallet
 from .._extensions import (
-    S2E_MARKING_REFS,
-    cryptocurrency_transaction_ExtensionDefinitionSMO,
     cryptocurrency_wallet_ExtensionDefinitionSMO,
 )
-
-# this is the oasis uuid
-WALLET_NAMESPACE_UUID = uuid.UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
 
 
 @dataclass
@@ -47,6 +41,7 @@ class Crypto2Stix:
         raise NotImplementedError("should be implemented in subclass")
 
     def create_transaction_object(self, tx_data: TxnData):
+        CryptocurrencyTransaction._id_contributing_properties
         transaction_object = CryptocurrencyTransaction(
             type="cryptocurrency-transaction",
             spec_version="2.1",
@@ -57,44 +52,38 @@ class Crypto2Stix:
             execution_time=tx_data.execution_time,
             input=[
                 {
-                    "address_ref": f"cryptocurrency-wallet--{str(uuid.uuid5(WALLET_NAMESPACE_UUID, addr))}",
+                    "address_ref": self.get_wallet_id(addr),
                     "amount": amount,
                 }
                 for addr, amount in tx_data.inputs
             ],
             output=[
                 {
-                    "address_ref": f"cryptocurrency-wallet--{str(uuid.uuid5(WALLET_NAMESPACE_UUID, addr))}",
+                    "address_ref": self.get_wallet_id(addr),
                     "amount": amount,
                 }
                 for addr, amount in tx_data.outputs
             ],
-            object_marking_refs=S2E_MARKING_REFS,
         )
         return transaction_object
 
-    def create_wallet_object(self, addr):
+    @staticmethod
+    def create_wallet_object(addr):
         # wallet = self.get_wallet_data(addr)
         return CryptocurrencyWallet(
             type="cryptocurrency-wallet",
             spec_version="2.1",
-            id=self.get_wallet_id(addr),
             value=addr,
             extensions={
                 cryptocurrency_wallet_ExtensionDefinitionSMO.id: {
                     "extension_type": "new-sco"
                 }
             },
-            object_marking_refs=S2E_MARKING_REFS,
         )
 
-    @staticmethod
-    def get_wallet_id(wallet_addr):
-        return f"cryptocurrency-wallet--{str(uuid.uuid5(WALLET_NAMESPACE_UUID, wallet_addr))}"
-
-    @staticmethod
-    def get_txn_id(txn_hash):
-        return f"cryptocurrency-transaction--{str(uuid.uuid5(WALLET_NAMESPACE_UUID, txn_hash))}"
+    @classmethod
+    def get_wallet_id(cls, wallet_addr):
+        return cls.create_wallet_object(wallet_addr).id
 
     def process_transaction(self, txn: Union[str, TxnData]):
         tx_data = self.get_transaction_data(txn)
