@@ -10,6 +10,16 @@ The script requires an API key for [BIN/IP Checker](https://rapidapi.com/trade-e
 
 [Source](https://miro.com/app/board/uXjVKnlbRaY=/)
 
+### Prerequisites
+
+For `creditcard2stix.py` to work you need to set
+
+* `CTIBUTLER_BASE_URL`: `'http://api.ctibutler.com'` (recommended)
+* `CTIBUTLER_API_KEY`:
+    * If using `'http://api.ctibutler.com'`, [get your API key here](http://app.ctibutler.com). Can be left blank if running locally.
+* `BIN_LIST_API_KEY`:
+    *  for enriching credit card extractions needed for extracting credit card information. [You get an API key here](https://rapidapi.com/trade-expanding-llc-trade-expanding-llc-default/api/bin-ip-checker)
+
 ### How it works
 
 BIN Check have an API that allows you to pass parts of a bank card to get more data about it (e.g. bank issuer, bank location, etc.).
