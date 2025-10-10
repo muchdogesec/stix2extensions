@@ -1,5 +1,5 @@
 from .bank_account import BankAccount
-from .bank_card import BankCard
+from .payment_card import PaymentCard
 from .cryptocurrency_transaction import CryptocurrencyTransaction
 from .cryptocurrency_wallet import CryptocurrencyWallet
 from .phone_number import Phonenumber

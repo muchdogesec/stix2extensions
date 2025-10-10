@@ -27,9 +27,9 @@ example_bankAccountSCO = BankAccount(
                     bank="Big Bank",
                     country="GBR",
                     currency="GBP",
-                    holder_name="DOGESEC",
-                    iban_number="GB33BUKB20201555555555",
-                    swift_code="DEMOGB22XXX",
+                    holder_ref="identity--fb76b7b8-8701-5d8b-a143-0283847f6638",
+                    iban="GB33BUKB20201555555555",
+                    bic="DEMOGB22XXX",
                     )
 
 # Write the objects to the filestore

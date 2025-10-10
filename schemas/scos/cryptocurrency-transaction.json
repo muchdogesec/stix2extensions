@@ -25,7 +25,7 @@
 					"description": "3 digit code for the cryptocurrency.",
 					"examples": ["BTC"]
 				},
-				"hash": {
+				"value": {
 					"type": "string",
 					"description": "The transaction hash.",
 					"examples": ["3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5"]

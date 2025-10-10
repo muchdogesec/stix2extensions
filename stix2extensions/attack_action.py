@@ -6,9 +6,6 @@ from stix2.properties import (
     TypeProperty,
 )
 
-from ._extensions import attack_flow_ExtensionDefinitionSMO
-
-
 _type = 'attack-flow'
 @CustomObject(_type, [
     ('type', TypeProperty(_type, spec_version='2.1')),
@@ -19,7 +16,7 @@ _type = 'attack-flow'
     ('scope', StringProperty(required=True)),
     ('start_refs', ListProperty(ReferenceProperty(valid_types=['attack-action']))),
     
-], extension_name=attack_flow_ExtensionDefinitionSMO.id)
+], extension_name='extension-definition--fb9c968a-745b-4ade-9b25-c324172197f4')
 class AttackFlow(object):
     pass
 
