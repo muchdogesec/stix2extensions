@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from functools import lru_cache
 import logging
 from urllib.parse import urljoin
@@ -6,7 +7,8 @@ import requests
 from stix2 import Relationship, Identity
 from .._extensions import DOGESEC_IDENTITY_REF, S2E_MARKING_REFS
 
-from ..bank_card import BankCard
+from ..payment_card import PaymentCard
+import os
 
 
 UUID_NS = uuid.UUID("60c0f466-511a-5419-9f7e-4814e696da40")
@@ -83,11 +85,23 @@ def create_identity(bin_data):
     )
 
 
+def create_card_holder(holder_name):
+    identity_id = f"identity--{str(uuid.uuid5(UUID_NS, f"card-holder+{holder_name}"))}"
+    return Identity(
+        id=identity_id,
+        name=holder_name,
+        created="2020-01-01T00:00:00.000Z",
+        modified="2020-01-01T00:00:00.000Z",
+        identity_class="individual",
+        sectors=["financial-services"],
+        created_by_ref=DOGESEC_IDENTITY_REF,
+        object_marking_refs=S2E_MARKING_REFS,
+    )
+
+
 def create_credit_card_stix(card_data: dict, bin_data: dict):
     credit_card_data = {
-        "type": "bank-card",
-        "spec_version": "2.1",
-        "number": card_data["card_number"],
+        "value": card_data["card_number"],
     }
     if bin_data:
         credit_card_data.update(
@@ -102,22 +116,30 @@ def create_credit_card_stix(card_data: dict, bin_data: dict):
         )
 
     # Add optional fields if they are present and not empty
-    optional_fields = [
-        "card_holder_name",
-        "card_valid_date",
-        "card_expiry_date",
-        "card_security_code",
-    ]
     field_mapping = {
-        "card_holder_name": "holder_name",
-        "card_valid_date": "valid_from",
-        "card_expiry_date": "valid_to",
         "card_security_code": "security_code",
     }
 
-    for field in optional_fields:
+    date_fields = {
+        "card_valid_date": "start_date",
+        "card_expiry_date": "expiration_date",
+    }
+
+    for field in field_mapping:
         if card_data.get(field):
             credit_card_data[field_mapping[field]] = card_data[field]
+
+    for k in date_fields:
+        if v := card_data.get(k):
+            timstamp = datetime.strptime(v, "%m/%y")
+            if "expir" in k:
+                first_of_next_month = (
+                    datetime(timstamp.year + 1, 1, 1)
+                    if timstamp.month == 12
+                    else datetime(timstamp.year, timstamp.month + 1, 1)
+                )
+                timstamp = first_of_next_month - timedelta(seconds=1)
+            credit_card_data[date_fields[k]] = timstamp
 
     return credit_card_data
 
@@ -128,7 +150,7 @@ def create_objects(card_data, api_key):
     retval = []
     if bin_data and bin_data["BIN"]["valid"]:
         identity = create_identity(bin_data)
-        if identity.contact_information:
+        if identity.get('contact_information'):
             location = get_country(bin_data["BIN"]["country"]["alpha2"])
             retval.append(location)
             r_uuid = str(
@@ -151,7 +173,11 @@ def create_objects(card_data, api_key):
             )
         retval.append(identity)
         card.update(issuer_ref=identity.id)
-    retval.insert(0, BankCard(**card))
+    if card_holder := card_data.get("card_holder_name"):
+        card_holder = create_card_holder(card_holder)
+        retval.append(card_holder)
+        card.update(holder_ref=card_holder['id'])
+    retval.insert(0, PaymentCard(**card))
     return retval
 
 
@@ -163,13 +189,24 @@ if __name__ == "__main__":
     print(
         serialize(
             create_objects(
-                {"card_number": "559666123232123112312312332"},
+                {
+                    "card_number": "559666123232123112312312332",
+                    "card_expiry_date": "02/28",
+                    "card_holder_name": "Sumud",
+                },
                 os.getenv("BIN_LIST_API_KEY"),
             )
         )
     )
     print(
         serialize(
-            create_objects({"card_number": "410540"}, os.getenv("BIN_LIST_API_KEY"))
+            create_objects(
+                {
+                    "card_number": "410540",
+                    "card_valid_date": "12/19",
+                    "card_expiry_date": "12/25",
+                },
+                os.getenv("BIN_LIST_API_KEY"),
+            )
         )
     )
