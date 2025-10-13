@@ -20,7 +20,7 @@
 					"pattern": "^user-agent--",
 					"examples": ["user-agent--d08657c2-d8fb-5eee-98a6-b431cb4fde72"]
 				},
-				"string": {
+				"value": {
 					"type": "string",
 					"description": "The full user agent string.",
 					"examples": ["Mozilla/5.0 (Linux; Android 11; Lenovo YT-J706X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36"]
