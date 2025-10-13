@@ -14,11 +14,50 @@ The script requires an API key for [BIN/IP Checker](https://rapidapi.com/trade-e
 
 For `creditcard2stix.py` to work you need to set
 
-* `CTIBUTLER_BASE_URL`: `'http://api.ctibutler.com'` (recommended)
+* `CTIBUTLER_BASE_URL`: `'http://api.ctibutler.com'`
 * `CTIBUTLER_API_KEY`:
     * If using `'http://api.ctibutler.com'`, [get your API key here](http://app.ctibutler.com). Can be left blank if running locally.
 * `BIN_LIST_API_KEY`:
     *  for enriching credit card extractions needed for extracting credit card information. [You get an API key here](https://rapidapi.com/trade-expanding-llc-trade-expanding-llc-default/api/bin-ip-checker)
+
+### Example usage
+
+```bash
+export BIN_LIST_API_KEY="<YOUR_RAPIDAPI_KEY>"
+export CTIBUTLER_BASE_URL="<YOUR_CTIBUTLER_BASE_URL>"
+export CTIBUTLER_API_KEY="<YOUR_CTIBUTLER_KEY>"
+```
+
+`creditcard2stix_quickstart.py`
+
+```python3
+from stix2.serialization import serialize
+from stix2extensions import PaymentCard
+
+def main():
+    # ⚠️ Use ONLY test/fake credit card data
+    card_data = {
+        "card_number": "5596661232321231"
+    }
+
+    bin_api_key = os.getenv("BIN_LIST_API_KEY")
+    if not bin_api_key:
+        raise SystemExit("Error: BIN_LIST_API_KEY is not set")
+
+    ctibutler_url = os.getenv("CTIBUTLER_BASE_URL")
+    ctibutler_key = os.getenv("CTIBUTLER_API_KEY")
+    if not ctibutler_url or not ctibutler_key:
+        print("⚠CTI Butler not configured: issuer location enrichment will be skipped.")
+
+    stix_objects = create_objects(card_data, bin_api_key)
+
+    print("\n=== STIX Output ===")
+    print(serialize(stix_objects, pretty=True))
+
+
+if __name__ == "__main__":
+    main()
+```
 
 ### How it works
 
