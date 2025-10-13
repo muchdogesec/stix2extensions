@@ -2,7 +2,7 @@
     "type": "bank-account",
     "spec_version": "2.1",
     "id": "bank-account--a7348a10-f1b6-5b3d-8908-0ca0f67a5fb5",
-    "country": "GBR",
+    "country_ref": "location--d9a1d93a-9141-4afe-9f67-95c357287f73",
     "currency": "GBP",
     "bank": "Big Bank",
     "holder_ref": "identity--fb76b7b8-8701-5d8b-a143-0283847f6638",

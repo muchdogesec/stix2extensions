@@ -21,9 +21,10 @@
 					"examples": ["bank-account--fb76b7b8-8701-5d8b-a143-0283847f6638"]
 				},
 
-				"country": {
+				"country_ref": {
 					"type": "string",
-					"description": "3 letter ISO (ISO 3166-1 alpha-3) country code for country of account.",
+					"pattern": "^location--",
+					"description": "Defines the STIX ID Location of the account.",
 					"examples": ["GBR"]
 				},
 				"issuer_ref": {
