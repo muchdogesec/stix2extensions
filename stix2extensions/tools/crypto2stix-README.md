@@ -12,6 +12,48 @@ crypto2stix is designed to take a crypto transaction or wallet hash, enrich them
 
 [Source](https://miro.com/app/board/uXjVKnlbRaY=/)
 
+-----
+
+### Example usage
+
+```python
+
+from stix2.serialization import serialize
+from stix2extensions.tools import crypto2stix
+
+
+def main():
+
+    btc2stix = crypto2stix.BTC2Stix()
+
+    wallet_objects = btc2stix.process_wallet(
+        "3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69", wallet_only=True
+    )
+
+    print("\n=== Wallet Output ===")
+    print(serialize(wallet_objects, pretty=True))
+
+    wallet_objects_with_transactions = btc2stix.process_wallet(
+        "bc1qq262qrz4nh85c0jyt9shuaaa6sfphmxu2haa5m", wallet_only=False
+    )
+
+    print("\n=== Wallet (With Transactions) ===")
+    print(serialize(wallet_objects_with_transactions, pretty=True))
+
+    transaction_objects = btc2stix.process_transaction(
+        "bf5537667863bc9557fd2aabc22d49916b37ef1f058e585683f82c31195c13e6"
+    )
+
+    print("\n=== Wallet (With Transactions) ===")
+    print(serialize(transaction_objects, pretty=True))
+
+
+if __name__ == "__main__":
+    main()
+```
+
+-----
+
 ### BTCScan
 
 https://btcscan.org/ provides details about bitcoin transactions.
@@ -143,27 +185,27 @@ The UUID is generated using the namespace `00abedb4-aa42-466c-9c01-fed23315a9b7`
     "id": "cryptocurrency-transaction--1e832ccc-78e2-5be5-b004-18ed031b6efe",
     "symbol": "BTC",
     "value": "<txid>",
-    "block_id": "<TODO>",
-    "fee": "<TODO>",
-    "execution_time": "<TODO>",
+    "block_id": "<status.block_height>",
+    "fee": "<fee>",
+    "execution_time": "<status.block_time>",
     "input": [
         {
-            "address_ref": "cryptocurrency-wallet--<TODO>",
-            "amount": "<TODO>"
+            "address_ref": "cryptocurrency-wallet--<generated-from-address>", //vin[*].prevout.scriptpubkey_address
+            "amount": "<vin[*].prevout.value>"
         },
         {
-            "address_ref": "cryptocurrency-wallet--<TODO>",
-            "amount": "<TODO>"
+            "address_ref": "cryptocurrency-wallet--<generated-from-address>", //vin[*].prevout.scriptpubkey_address
+            "amount": "<vin[*].prevout.value>"
         }
     ],
     "output": [
         {
-            "address_ref": "cryptocurrency-wallet--<TODO>",
-            "amount": "<TODO>"
+            "address_ref": "cryptocurrency-wallet--<generated-from-address>", //vout[*].scriptpubkey_address
+            "amount": "<vout[*].value>"
         },
         {
-            "address_ref": "cryptocurrency-wallet--<TODO>",
-            "amount": "<TODO>"
+            "address_ref": "cryptocurrency-wallet--<generated-from-address>", //vout[*].scriptpubkey_address
+            "amount": "<vout[*].value>"
         }
     ],
     "extensions": {

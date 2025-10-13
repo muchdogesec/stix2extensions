@@ -20,6 +20,7 @@ For `creditcard2stix.py` to work you need to set
 * `BIN_LIST_API_KEY`:
     *  for enriching credit card extractions needed for extracting credit card information. [You get an API key here](https://rapidapi.com/trade-expanding-llc-trade-expanding-llc-default/api/bin-ip-checker)
 
+-----
 ### Example usage
 
 ```bash
@@ -30,13 +31,17 @@ export CTIBUTLER_API_KEY="<YOUR_CTIBUTLER_KEY>"
 
 `creditcard2stix_quickstart.py`
 
-```python3
+```python
 from stix2.serialization import serialize
 from stix2extensions import PaymentCard
+from stix2extensions.tools import creditcard2stix
+import os
 
 def main():
     card_data = {
-        "card_number": "5596661232321231"
+        "card_number": "5596661232321231",
+        "card_holder_name": "Adesola Ajayi",
+        "card_expiry_date": "09/28",
     }
 
     bin_api_key = os.getenv("BIN_LIST_API_KEY")
@@ -48,7 +53,7 @@ def main():
     if not ctibutler_url or not ctibutler_key:
         print("CTI Butler not configured: issuer location enrichment will be skipped.")
 
-    stix_objects = create_objects(card_data, bin_api_key)
+    stix_objects = creditcard2stix.create_objects(card_data, bin_api_key)
 
     print("\n=== STIX Output ===")
     print(serialize(stix_objects, pretty=True))
@@ -57,6 +62,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+-----
 
 ### How it works
 
