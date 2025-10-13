@@ -119,15 +119,15 @@ exploit_ExtensionDefinitionSMO = ExtensionDefinition(
                         object_marking_refs=S2E_MARKING_REFS
                     )
 
-### Bank Card SMO
+### Payment Card SMO
 
-bank_card_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"payment-card")), # extension-definition--b160c6ee-26b6-591c-8885-c192db67cac9
+payment_card_ExtensionDefinitionSMO = ExtensionDefinition(
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"payment-card")), # extension-definition--
                         created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
-                        name="Bank Card",
-                        description="This extension creates a new SCO that can be used to represent bank cards.",
+                        name="Payment Card",
+                        description="This extension creates a new SCO that can be used to represent different types of payment card.",
                         schema=schema_base+"scos/payment-card.json",
                         version="1.0",
                         extension_types=[

@@ -20,35 +20,43 @@
 					"pattern": "^bank-account--",
 					"examples": ["bank-account--fb76b7b8-8701-5d8b-a143-0283847f6638"]
 				},
-				"bank": {
-					"type": "string",
-					"description": "Name of the bank that manages the account.",
-					"examples": ["Big Bank"]
-				},
+
 				"country": {
 					"type": "string",
 					"description": "3 letter ISO (ISO 3166-1 alpha-3) country code for country of account.",
 					"examples": ["GBR"]
+				},
+				"issuer_ref": {
+					"type": "string",
+					"pattern": "^identity--",
+					"description": "Defines the STIX ID Identity object of the issuer",
+					"examples": ["identity--9bef1584-289b-41fe-81b4-a5d72b7746d6"]
+				},
+				"holder_ref": {
+					"type": "string",
+					"pattern": "^identity--",
+					"description": "Defines the STIX ID Identity object of the holder",
+					"examples": ["identity--9fcd0db9-8115-4e33-ae00-674806395cf1"]
 				},
 				"currency": {
 					"type": "string",
 					"description": "3 letter ISO (ISO 4217) currency code for currency of account.",
 					"examples": ["GBP"]
 				},
-				"holder_name": {
-					"type": "string",
-					"description": "Name of the holder of the account.",
-					"examples": ["DOGESEC"]
-				},
-				"iban_number": {
+				"iban": {
 					"type": "string",
 					"description": "Full IBAN number of the account.",
 					"examples": ["GB33BUKB20201555555555"]
 				},
-				"swift_code": {
+				"bic": {
 					"type": "string",
-					"description": "Full swift code of the account.",
+					"description": "Full BIC (aka SWIFT) code of the account.",
 					"examples": ["DEMOGB22XXX"]
+				},
+				"account_number": {
+					"type": "string",
+					"description": "The account number.",
+					"examples": ["88888888"]
 				},
 				"extensions": {
 					"type": "object",

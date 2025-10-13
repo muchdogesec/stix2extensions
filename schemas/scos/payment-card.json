@@ -1,8 +1,8 @@
 {
-	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/bank-card.json",
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/payment-card.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"title": "bank-card",
-	"description": "This extension creates a new SCO that can be used to represent bank cards.",
+	"title": "payment-card",
+	"description": "This extension creates a new SCO that can be used to represent different types of payment card.",
 	"type": "object",
 	"allOf": [
 		{
@@ -12,12 +12,12 @@
 			"properties": {
 				"type": {
 					"type": "string",
-					"description": "The value of this property MUST be `bank-card`.",
-					"enum": ["bank-card"]
+					"description": "The value of this property MUST be `payment-card`.",
+					"enum": ["payment-card"]
 				},
 				"id": {
 					"type": "string",
-					"pattern": "^bank-card--",
+					"pattern": "^payment-card--",
 					"examples": [""]
 				},
 				"format": {
