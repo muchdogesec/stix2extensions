@@ -77,7 +77,7 @@
 								"type": "number",
 								"description": "The output amount.",
 								"examples": [0.04000000]
-					  		},
+					  		}
 						}
 					}
 				},
