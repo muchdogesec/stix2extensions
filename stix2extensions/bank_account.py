@@ -22,7 +22,7 @@ _type = 'bank-account'
     ('iban', StringProperty()),
     ('bic', StringProperty()),
     # ('extensions', ExtensionsProperty(spec_version='2.1'))
-], extension_name=bank_account_ExtensionDefinitionSMO.id, id_contrib_props=['iban', 'account_number'])
+], extension_name=bank_account_ExtensionDefinitionSMO.id, id_contrib_props=['iban', 'account_number', 'country_ref'])
 class BankAccount(object):
     def _check_object_constraints(self):
         self._check_at_least_one_property(['iban', 'account_number'])
