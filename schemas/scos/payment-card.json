@@ -61,14 +61,14 @@
 					"description": "Defines the STIX ID Identity object of the holder",
 					"examples": ["identity--9fcd0db9-8115-4e33-ae00-674806395cf1"]
 				},
-				"valid_from": {
+				"start_date": {
 					"type": "date-time",
-					"description": "The valid from date on the card in the format MM/YY.",
+					"description": "The valid from date on the card in datetime format.",
 					"examples": ["1999-01-01T00:00:00Z"]
 				},
-				"valid_to": {
+				"expiration_date": {
 					"type": "date-time",
-					"description": "The valid to date on the card in the format MM/YY.",
+					"description": "The expiration on the card in datetime format.",
 					"examples": ["000-01-02T23:59:59Z"]
 				},
 				"security_code": {

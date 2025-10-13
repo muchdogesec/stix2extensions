@@ -20,7 +20,6 @@ For `creditcard2stix.py` to work you need to set
 * `BIN_LIST_API_KEY`:
     *  for enriching credit card extractions needed for extracting credit card information. [You get an API key here](https://rapidapi.com/trade-expanding-llc-trade-expanding-llc-default/api/bin-ip-checker)
 
------
 ### Example usage
 
 ```bash
@@ -62,7 +61,6 @@ def main():
 if __name__ == "__main__":
     main()
 ```
------
 
 ### How it works
 
