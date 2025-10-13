@@ -14,6 +14,6 @@ _type = 'user-agent'
     ('id', IDProperty(_type, spec_version='2.1')),
     ('value', StringProperty(required=True)),
     # ('extensions', ExtensionsProperty(spec_version='2.1'))
-], extension_name=user_agent_ExtensionDefinitionSMO.id, id_contrib_props=['string'])
+], extension_name=user_agent_ExtensionDefinitionSMO.id, id_contrib_props=['value'])
 class UserAgent(object):
     pass
