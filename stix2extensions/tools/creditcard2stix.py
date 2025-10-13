@@ -86,7 +86,7 @@ def create_identity(bin_data):
 
 
 def create_card_holder(holder_name):
-    identity_id = f"identity--{str(uuid.uuid5(UUID_NS, f"card-holder+{holder_name}"))}"
+    identity_id = f"identity--"+str(uuid.uuid5(UUID_NS, f"card-holder+{holder_name}"))
     return Identity(
         id=identity_id,
         name=holder_name,
