@@ -140,7 +140,7 @@ If a credit card number returns data from BIN list (where `valid=true`) then an 
     "spec_version": "2.1",
     "id": "<payment-card--UUID V5>",
     "format": "<lookup->BIN.type>",
-    "number": "<csv->card_number>",
+    "value": "<csv->card_number>",
     "scheme": "<lookup->BIN.scheme>",
     "brand": "<lookup->BIN.brand>",
     "currency": "<lookup->BIN.currency>",

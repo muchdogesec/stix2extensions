@@ -21,7 +21,7 @@ namespace=UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
 
 # Create payment-card SCO
 
-example_bankCardSCO = PaymentCard(
+example_paymentCardSCO = PaymentCard(
                     id="payment-card--"+ str(uuid.uuid5(namespace, f"4242424242424242")), # payment-card--9ce64b19-095d-5187-a56b-79a82ae4066f
                     format="credit",
                     value="4242424242424242",
@@ -44,12 +44,12 @@ example_bankCardSCO = PaymentCard(
 ### Creating FileSystemStore and adding MarkingDefinitionSMO for each directory
 
 fs_directories = {
-    "tmp_object_store": example_bankCardSCO
+    "tmp_object_store": example_paymentCardSCO
 }
 
-for directory, bankcard_sco in fs_directories.items():
+for directory, paymentcard_sco in fs_directories.items():
     fs_store = stix2.FileSystemStore(directory)
-    fs_store.add([bankcard_sco])
+    fs_store.add([paymentcard_sco])
 
 # Now move those files into the standardised locations for easy download
 

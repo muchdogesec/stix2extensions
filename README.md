@@ -110,13 +110,13 @@ You can then easily use them in your code.
 For example, here I am generating a `bank-account`;
 
 ```python
-from stix2extensions import BankCard
+from stix2extensions import BankAccount
 
 # define UUID for generating UUIDv5s -- this is the OASIS namespace for SCOs https://github.com/oasis-open/cti-python-stix2/blob/master/stix2/base.py#L29
 
 namespace=UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
 
-# Create bank-card SCO
+# Create bank-account SCO
 
 example_bankAccountSCO = BankAccount(
                     bank="Big Bank",
