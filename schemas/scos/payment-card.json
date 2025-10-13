@@ -1,8 +1,8 @@
 {
-	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/bank-card.json",
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/payment-card.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"title": "bank-card",
-	"description": "This extension creates a new SCO that can be used to represent bank cards.",
+	"title": "payment-card",
+	"description": "This extension creates a new SCO that can be used to represent different types of payment card.",
 	"type": "object",
 	"allOf": [
 		{
@@ -12,12 +12,12 @@
 			"properties": {
 				"type": {
 					"type": "string",
-					"description": "The value of this property MUST be `bank-card`.",
-					"enum": ["bank-card"]
+					"description": "The value of this property MUST be `payment-card`.",
+					"enum": ["payment-card"]
 				},
 				"id": {
 					"type": "string",
-					"pattern": "^bank-card--",
+					"pattern": "^payment-card--",
 					"examples": [""]
 				},
 				"format": {
@@ -29,7 +29,7 @@
 						"prepaid"
 					]
 				},
-				"number": {
+				"value": {
 					"type": "number",
 					"description": "Full card number.",
 					"examples": ["4242424242424242"]
@@ -61,15 +61,15 @@
 					"description": "Defines the STIX ID Identity object of the holder",
 					"examples": ["identity--9fcd0db9-8115-4e33-ae00-674806395cf1"]
 				},
-				"valid_from": {
-					"type": "string",
-					"description": "The valid from date on the card in the format MM/YY.",
-					"examples": ["01/99"]
+				"start_date": {
+					"type": "date-time",
+					"description": "The valid from date on the card in datetime format.",
+					"examples": ["1999-01-01T00:00:00Z"]
 				},
-				"valid_to": {
-					"type": "string",
-					"description": "The valid to date on the card in the format MM/YY.",
-					"examples": ["01/00"]
+				"expiration_date": {
+					"type": "date-time",
+					"description": "The expiration on the card in datetime format.",
+					"examples": ["000-01-02T23:59:59Z"]
 				},
 				"security_code": {
 					"type": "string",

@@ -3,7 +3,7 @@
     "spec_version": "2.1",
     "id": "cryptocurrency-transaction--d3b3642a-9759-5078-9fae-3a868238889c",
     "symbol": "BTC",
-    "hash": "3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5",
+    "value": "3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5",
     "fee": "0.00000728",
     "execution_time": "2022-10-02T15:22:21Z",
     "input": [

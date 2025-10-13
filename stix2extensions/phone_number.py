@@ -12,11 +12,11 @@ _type = 'phone-number'
     ('type', TypeProperty(_type, spec_version='2.1')),
     ('spec_version', StringProperty(fixed='2.1')),
     ('id', IDProperty(_type, spec_version='2.1')),
-    ('number', StringProperty(required=True)),
+    ('value', StringProperty(required=True)),
     ('country', StringProperty()),
     ('connection', StringProperty()),
     ('provider', StringProperty()),
     # ('extensions', ExtensionsProperty(spec_version='2.1'))
-], extension_name=phone_number_ExtensionDefinitionSMO.id, id_contrib_props=['number'])
+], extension_name=phone_number_ExtensionDefinitionSMO.id, id_contrib_props=['value'])
 class Phonenumber(object):
     pass

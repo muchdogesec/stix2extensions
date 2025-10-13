@@ -13,7 +13,7 @@ from stix2extensions._extensions import (
     weakness_ExtensionDefinitionSMO,
     exploit_ExtensionDefinitionSMO,
     bank_account_ExtensionDefinitionSMO,
-    bank_card_ExtensionDefinitionSMO,
+    payment_card_ExtensionDefinitionSMO,
     cryptocurrency_transaction_ExtensionDefinitionSMO,
     cryptocurrency_wallet_ExtensionDefinitionSMO,
     data_source_ExtensionDefinitionSMO,
@@ -42,7 +42,7 @@ if __name__ == '__main__':
     
     generator_scos = Generator("extension-definitions/scos")
     generator_scos.add_item("bank-account", bank_account_ExtensionDefinitionSMO)
-    generator_scos.add_item("bank-card", bank_card_ExtensionDefinitionSMO)
+    generator_scos.add_item("payment-card", payment_card_ExtensionDefinitionSMO)
     generator_scos.add_item("cryptocurrency-transaction", cryptocurrency_transaction_ExtensionDefinitionSMO)
     generator_scos.add_item("cryptocurrency-wallet", cryptocurrency_wallet_ExtensionDefinitionSMO)
     generator_scos.add_item("data-source", data_source_ExtensionDefinitionSMO)

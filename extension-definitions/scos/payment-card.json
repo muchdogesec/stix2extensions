@@ -1,13 +1,13 @@
 {
     "type": "extension-definition",
     "spec_version": "2.1",
-    "id": "extension-definition--7922f91a-ee77-58a5-8217-321ce6a2d6e0",
+    "id": "extension-definition--b160c6ee-26b6-591c-8885-c192db67cac9",
     "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
-    "name": "Bank Card",
-    "description": "This extension creates a new SCO that can be used to represent bank cards.",
-    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/bank-card.json",
+    "name": "Payment Card",
+    "description": "This extension creates a new SCO that can be used to represent different types of payment card.",
+    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/scos/payment-card.json",
     "version": "1.0",
     "extension_types": [
         "new-sco"

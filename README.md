@@ -110,54 +110,41 @@ You can then easily use them in your code.
 For example, here I am generating a `bank-account`;
 
 ```python
-import uuid
-from uuid import UUID
-from stix2extensions import BankCard
+from stix2extensions import BankAccount
 
 # define UUID for generating UUIDv5s -- this is the OASIS namespace for SCOs https://github.com/oasis-open/cti-python-stix2/blob/master/stix2/base.py#L29
 
 namespace=UUID("00abedb4-aa42-466c-9c01-fed23315a9b7")
 
-# Create bank-card SCO
+# Create bank-account SCO
 
-example_bankCardSCO = BankCard(
-                    id="bank-card--"+ str(uuid.uuid5(namespace, f"4242424242424242")), # bank-card--9ce64b19-095d-5187-a56b-79a82ae4066f
-                    format="credit",
-                    number="4242424242424242",
-                    scheme="VISA",
-                    brand="VISA",
+example_bankAccountSCO = BankAccount(
+                    bank="Big Bank",
+                    country="GBR",
                     currency="GBP",
-                    issuer_name="Big Bank",
-                    issuer_country="GBR",
-                    holder_name="DOGESEC",
-                    valid_from="01/99",
-                    valid_to="01/00",
-                    security_code="999"
+                    holder_ref="identity--fb76b7b8-8701-5d8b-a143-0283847f6638",
+                    iban="GB33BUKB20201555555555",
+                    bic="DEMOGB22XXX",
                     )
 
-print(example_bankCardSCO)
+print(example_bankAccountSCO)
 ```
 
 Which prints the STIX object.
 
 ```json
 {
-    "type": "bank-card",
+    "type": "bank-account",
     "spec_version": "2.1",
-    "id": "bank-card--2bb315d3-2a76-52db-9740-cb1bb46626b2",
-    "format": "credit",
-    "number": "4242424242424242",
-    "scheme": "VISA",
-    "brand": "VISA",
+    "id": "bank-account--a7348a10-f1b6-5b3d-8908-0ca0f67a5fb5",
+    "country": "GBR",
     "currency": "GBP",
-    "issuer_name": "Big Bank",
-    "issuer_country": "GBR",
-    "holder_name": "DOGESEC",
-    "valid_from": "01/99",
-    "valid_to": "01/00",
-    "security_code": "999",
+    "bank": "Big Bank",
+    "holder_ref": "identity--fb76b7b8-8701-5d8b-a143-0283847f6638",
+    "iban": "GB33BUKB20201555555555",
+    "bic": "DEMOGB22XXX",
     "extensions": {
-        "extension-definition--7922f91a-ee77-58a5-8217-321ce6a2d6e0": {
+        "extension-definition--f19f3291-6a84-5674-b311-d75a925d5bd9": {
             "extension_type": "new-sco"
         }
     }

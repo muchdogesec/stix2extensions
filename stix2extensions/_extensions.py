@@ -26,7 +26,7 @@ schema_base="https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/
 
 ### mitre TLP:CLEAR and stix4doge
 
-object_marking_refs=[
+S2E_MARKING_REFS=[
     "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487", # this is TLP:CLEAR
     "marking-definition--" + str(uuid.uuid5(namespace, f"stix2extensions")) # 
 ]
@@ -48,7 +48,7 @@ phone_number_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_types=[
                             "new-sco"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### Cryptocurrency Transaction SMO
@@ -65,7 +65,7 @@ cryptocurrency_transaction_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_types=[
                             "new-sco"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### Data Source SMO
@@ -82,7 +82,7 @@ data_source_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_types=[
                             "new-sco"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### Weakness SMO
@@ -99,7 +99,7 @@ weakness_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_types=[
                             "new-sdo"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### Exploit SMO
@@ -116,24 +116,24 @@ exploit_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_types=[
                             "new-sdo"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
-### Bank Card SMO
+### Payment Card SMO
 
-bank_card_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"bank-card")), # extension-definition--7922f91a-ee77-58a5-8217-321ce6a2d6e0
+payment_card_ExtensionDefinitionSMO = ExtensionDefinition(
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"payment-card")), # extension-definition--
                         created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
-                        name="Bank Card",
-                        description="This extension creates a new SCO that can be used to represent bank cards.",
-                        schema=schema_base+"scos/bank-card.json",
+                        name="Payment Card",
+                        description="This extension creates a new SCO that can be used to represent different types of payment card.",
+                        schema=schema_base+"scos/payment-card.json",
                         version="1.0",
                         extension_types=[
                             "new-sco"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### User Agent SMO
@@ -150,7 +150,7 @@ user_agent_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_types=[
                             "new-sco"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### Cryptocurrency Wallet SMO
@@ -167,7 +167,7 @@ cryptocurrency_wallet_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_types=[
                             "new-sco"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### Bank Account SMO
@@ -184,7 +184,7 @@ bank_account_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_types=[
                             "new-sco"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### Vulnerability Scoring Extension SMO
@@ -204,7 +204,7 @@ vulnerability_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_properties=[
                             "x_cvss",
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### Vulnerability OpenCTI Extension SMO
@@ -269,7 +269,7 @@ vulnerability_opencti_ExtensionDefinitionSMO = ExtensionDefinition(
                             "x_opencti_epss_score",
                             "x_opencti_epss_percentile"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### Location OpenCTI Extension SMO
@@ -290,7 +290,7 @@ location_opencti_ExtensionDefinitionSMO = ExtensionDefinition(
                             "x_opencti_aliases",
                             "x_opencti_location_type"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### Indicator Vulnerable CPEs Extension SMO
@@ -310,7 +310,7 @@ indicator_vulnerable_cpes_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_properties=[
                             "x_cpes"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### Report EPSS Scoring SMO
@@ -330,7 +330,7 @@ report_epss_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
                         extension_properties=[
                             "x_epss"
                         ],
-                        object_marking_refs=object_marking_refs
+                        object_marking_refs=S2E_MARKING_REFS
                     )
 
 ### Software CPE SMO
@@ -353,33 +353,5 @@ software_cpe_properties_ExtensionDefinitionSMO = ExtensionDefinition(
                             "x_created",
                             "x_modified"
                         ],
-                        object_marking_refs=object_marking_refs
-                    )
-
-### Attack Flow SMO
-
-attack_flow_ExtensionDefinitionSMO = ExtensionDefinition(
-                        type="extension-definition",
-                        id="extension-definition--fb9c968a-745b-4ade-9b25-c324172197f4",
-                        spec_version="2.1",
-                        created="2022-08-02T19:34:35.143Z",
-                        modified="2022-08-02T19:34:35.143Z",
-                        name="Attack Flow",
-                        description="Extends STIX 2.1 with features to create Attack Flows.",
-                        created_by_ref="identity--fb9c968a-745b-4ade-9b25-c324172197f4",
-                        schema="https://center-for-threat-informed-defense.github.io/attack-flow/stix/attack-flow-schema-2.0.0.json",
-                        version="2.0.0",
-                        extension_types=["new-sdo"],
-                        external_references=[
-                            {
-                                "source_name": "Documentation",
-                                "description": "Documentation for Attack Flow",
-                                "url": "https://center-for-threat-informed-defense.github.io/attack-flow",
-                            },
-                            {
-                                "source_name": "GitHub",
-                                "description": "Source code repository for Attack Flow",
-                                "url": "https://github.com/center-for-threat-informed-defense/attack-flow",
-                            },
-                        ],
+                        object_marking_refs=S2E_MARKING_REFS
                     )

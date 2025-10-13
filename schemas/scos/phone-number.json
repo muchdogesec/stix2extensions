@@ -20,7 +20,7 @@
 					"pattern": "^phone-number--",
 					"examples": ["phone-number--60bc3ff5-37c4-5b5a-9aeb-6c4d116534bd"]
 				},
-				"number": {
+				"value": {
 					"type": "string",
 					"description": "An E.164 formatted phone number.",
 					"examples": ["4407890129093"]
