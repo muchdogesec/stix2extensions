@@ -35,7 +35,6 @@ from stix2.serialization import serialize
 from stix2extensions import PaymentCard
 
 def main():
-    # ⚠️ Use ONLY test/fake credit card data
     card_data = {
         "card_number": "5596661232321231"
     }
@@ -47,7 +46,7 @@ def main():
     ctibutler_url = os.getenv("CTIBUTLER_BASE_URL")
     ctibutler_key = os.getenv("CTIBUTLER_API_KEY")
     if not ctibutler_url or not ctibutler_key:
-        print("⚠CTI Butler not configured: issuer location enrichment will be skipped.")
+        print("CTI Butler not configured: issuer location enrichment will be skipped.")
 
     stix_objects = create_objects(card_data, bin_api_key)
 
