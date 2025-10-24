@@ -313,6 +313,33 @@ indicator_vulnerable_cpes_ExtensionDefinitionSMO = ExtensionDefinition(
                         object_marking_refs=S2E_MARKING_REFS
                     )
 
+### Indicator Sigma Rule Extension SMO
+
+indicator_sigma_rule_ExtensionDefinitionSMO = ExtensionDefinition(
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"indicator-sigma-rule")), # extension-definition--
+                        created_by_ref=DOGESEC_IDENTITY_REF,
+                        created=created,
+                        modified=datetime(2020, 1, 1, tzinfo=UTC),
+                        name="Indicator SDO Sigma Rule Properties",
+                        description="This extension adds new properties to Indicator SDOs to capture Sigma Rule specific data.",
+                        schema=schema_base+"properties/indicator-sigma-rule.json",
+                        version="1.0",
+                        extension_types=[
+                            "toplevel-property-extension"
+                        ],
+                        extension_properties=[
+                            "x_sigma_type",
+                            "x_sigma_level",
+                            "x_sigma_status",
+                            "x_sigma_license",
+                            "x_sigma_fields",
+                            "x_sigma_falsepositives",
+                            "x_sigma_scope"
+                        ],
+                        object_marking_refs=S2E_MARKING_REFS
+                    )
+
+
 ### Report EPSS Scoring SMO
 
 report_epss_scoring_ExtensionDefinitionSMO = ExtensionDefinition(
