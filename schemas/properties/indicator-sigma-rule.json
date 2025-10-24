@@ -1,0 +1,79 @@
+{
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/indicator-sigma-rule.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "indicator-sigma-rule",
+	"description": "This extension adds new properties to Indicator SDOs to capture Sigma Rule specific data.",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
+		},
+		{
+			"properties": {
+				"extensions": {
+					"type": "object",
+					"properties": {
+						"extension-definition--c16c84c5-9cfd-50a2-970d-09c0ff2700f7": {
+							"type": "object",
+							"properties": {
+								"extension_type": {
+									"enum": [
+										"toplevel-property-extension"
+									]
+								}
+							},
+							"required": ["extension_type"]
+						}
+					},
+					"required": ["extension-definition--c16c84c5-9cfd-50a2-970d-09c0ff2700f7"]
+				},
+				"x_sigma_type": {
+					"type": "string",
+					"description": "The type of Sigma Rule",
+					"enum": ["base","correlation"]
+				},
+				"x_sigma_level": {
+					"type": "string",
+					"description": "The level field contains one of five string values. It describes the criticality of a triggered rule.",
+					"enum": ["informational","low","medium","high","critical"]
+				},
+				"x_sigma_status": {
+					"type": "string",
+					"description": "Declares the status of the rule.",
+					"enum": ["stable","test","experimental","deprecated","unsupported"]
+				},
+				"x_sigma_license": {
+					"type": "string",
+					"description": "License of the rule according the SPDX ID specification.",
+					"examples": ["mit"]
+				},
+
+				"x_sigma_falsepositives": {
+					"type": "array",
+					"description": "A list of known false positives that may occur.",
+					"items": {
+						"type": "string"
+						},
+					"examples": [["Verify whether the user identity, user agent, and/or hostname should be making changes in your environment."]]
+				},
+				"x_sigma_fields": {
+					"type": "array",
+					"description": "A list of log fields that could be interesting in further analysis of the event and should be displayed to the analyst.",
+					"items": {
+						"type": "string"
+						},
+					"examples": [["Image", "CommandLine", "ParentImage"]]
+				},
+				"x_sigma_scope": {
+					"type": "array",
+					"description": "A list of the intended scopes of the rule. This would allow you to define if a rule is meant to trigger on specific set of types of machines that might have a specific software installed.",
+					"items": {
+						"type": "string"
+						},
+					"examples": [["server"]]
+				}
+			}
+
+		}
+	]
+}
