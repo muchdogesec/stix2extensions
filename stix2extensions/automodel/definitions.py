@@ -5,6 +5,7 @@ from typing_extensions import Annotated
 
 
 _UUID_RE = r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+STIX_ID_RE = r"^[a-z][a-z0-9]*(-[a-z0-9]+)*--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
 
 
 def _reference_regex_from_valid_types(valid_types):
@@ -12,6 +13,7 @@ def _reference_regex_from_valid_types(valid_types):
         valid_types = [valid_types]
     types_pattern = "|".join(valid_types)
     return rf"^({types_pattern})--{_UUID_RE}$"
+
 
 class ExtensionDict(Dict[str, Dict]):
     """Dict with fixed keys and pattern-based dynamic keys."""

@@ -1,13 +1,17 @@
 import contextlib
 from datetime import UTC, datetime
 import json
+import uuid
 from pydantic_core import PydanticUndefined
 import stix2
 from stix2.properties import Property
 import stix2.properties as stixprops
+from stix2.registry import class_for_type
+from polyfactory.factories.pydantic_factory import ModelFactory
+
 from stix2.v21.base import _STIXBase
 import stix2.utils
-from typing import Literal, List, Any, Optional, Type, TYPE_CHECKING
+from typing import Annotated, Literal, List, Any, Optional, Type, TYPE_CHECKING
 from pydantic import (
     BaseModel,
     Field,
@@ -22,8 +26,23 @@ from pydantic import (
     create_model,
 )
 
-from .definitions import ExtensionDict, _reference_regex_from_valid_types
+from .definitions import STIX_ID_RE, ExtensionDict, _reference_regex_from_valid_types
 
+namespace=uuid.UUID("1abb62b9-e513-5f55-8e73-8f6d7b55c237")
+
+### dogesec
+
+DOGESEC_IDENTITY_REF="identity--" + str(uuid.uuid5(namespace, f"dogesec"))
+created="2020-01-01T00:00:00.000Z"
+modified="2020-01-01T00:00:00.000Z"
+schema_base="https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/"
+
+### mitre TLP:CLEAR and stix4doge
+
+S2E_MARKING_REFS=[
+    "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487", # this is TLP:CLEAR
+    "marking-definition--" + str(uuid.uuid5(namespace, f"stix2extensions")) # 
+]
 
 class S2EProperty:
     field_name = ""
@@ -35,9 +54,20 @@ class S2EProperty:
         self.title = title
         self.property: Property = property
 
+    def add_example(self, *examples):
+        self.examples = self.examples or []
+        self.examples.extend(examples)
+
+AUTOMODEL_REGISTRY: list[Type['ExtendedStixType']] = []
+
 if TYPE_CHECKING:
     class ExtendedProperty(Property):
         _s2e_properties: S2EProperty = None
+
+class ExtendedStixType(_STIXBase):
+    pydantic_model: BaseModel
+    schema: dict
+    extension_definition: stix2.ExtensionDefinition
 
 
 def pydantic_type(property: 'ExtendedProperty'):
@@ -51,7 +81,8 @@ def pydantic_type(property: 'ExtendedProperty'):
     if isinstance(property, stixprops.IDProperty):
         property.required = True
         regex = _reference_regex_from_valid_types(property._s2e_properties.parent_type)
-        return constr(pattern=regex)
+        property._s2e_properties.add_example(property._s2e_properties.parent_type+'--'+str(uuid.uuid5(namespace, property._s2e_properties.parent_type+'example')))
+        return Annotated[str, StringConstraints(pattern=regex), Field(examples=[property._s2e_properties.parent_type + '--' + str(uuid.uuid5(namespace, property._s2e_properties.parent_type + str(i))) for i in range(3)])]
 
     if isinstance(property, stixprops.TypeProperty):
         property.required = True
@@ -74,8 +105,9 @@ def pydantic_type(property: 'ExtendedProperty'):
             valid_types = list(getattr(property, "specifics", []))
             regex = _reference_regex_from_valid_types(valid_types)
             if regex:
-                return constr(pattern=regex)
-        return StrictStr
+                return Annotated[str, StringConstraints(pattern=regex), Field(examples=[_t + '--' + str(uuid.uuid5(namespace, _t)) for _t in valid_types])]
+        else:
+            return Annotated[str, StringConstraints(pattern=STIX_ID_RE)]
 
     if hasattr(stixprops, "ExternalReferenceProperty") and isinstance(
         property, stixprops.ExternalReferenceProperty
@@ -135,7 +167,7 @@ def transform_examples(obj):
 
 def pydantic_field(property: 'ExtendedProperty'):
         typ = pydantic_type(property)
-        examples=getattr(property, 'examples', None) or []
+        examples=property._s2e_properties.examples or []
         kwargs = dict()
         if not getattr(property, "required", None):
             typ = Optional[typ]
@@ -167,7 +199,27 @@ def extend_property(property: 'Property|ExtendedProperty', description=None, exa
     return property
 
 
-def auto_model(cls: Type[_STIXBase]) -> Type[BaseModel]:
+def get_extension(cls: Type[_STIXBase], extension_name, _extension_type):
+    try:
+        NameExtension = class_for_type(extension_name, "2.1", "extensions")
+    except:
+        @stix2.CustomExtension(type=extension_name, properties={})
+        class NameExtension:
+            extension_type = _extension_type
+    return NameExtension
+
+def generate_examples(model: Type[BaseModel]):
+    class ExampleFactory(ModelFactory):
+        __model__ = model
+        __use_examples__ = True
+    instance = ExampleFactory().build(factory_use_construct=True).model_dump()
+    del instance['id']
+    del instance['granular_markings']
+    return model.stix_class(**instance)
+
+def auto_model(cls: Type[ExtendedStixType]):
+    if cls in AUTOMODEL_REGISTRY:
+        return cls
     annotations = dict(getattr(cls, "__annotations__", {}))
 
     fields = {}
@@ -181,10 +233,34 @@ def auto_model(cls: Type[_STIXBase]) -> Type[BaseModel]:
         annotations[attr] = fields[attr][0]
     # print(fields, annotations)
     # Set __annotations__ so that help(), etc. work properly
+    extension_type = 'new-sco' if stix2.v21._Observable in cls.mro() else 'new-sdo'
+    cls.with_extension = get_extension(cls, cls._type, extension_type)
     cls.__annotations__ = annotations
     # Create and return the Pydantic model
     model = create_model(cls.__name__, **fields, __base__=BaseModel)
+    cls.pydantic_model = model
+    model.stix_class = cls
+    cls.__doc__ = cls.__doc__ or getattr(cls, 'description', None)
     model.__doc__ = cls.__doc__
-    model.stix_schema = model.model_json_schema(mode="validation")
-    model.stix_schema["$schema"] = "https://json-schema.org/draft/2020-12/schema"
-    return model
+    cls.schema = model.model_json_schema(mode="validation")
+    cls.schema["$schema"] = "https://json-schema.org/draft/2020-12/schema"
+    cls.extension_definition = create_extension(cls, extension_type)
+    AUTOMODEL_REGISTRY.append(cls)
+    return cls
+
+def create_extension(cls: Type[_STIXBase], extension_type) -> stix2.ExtensionDefinition:
+    id = "extension-definition--" + str(uuid.uuid5(namespace, cls._type))
+    return stix2.ExtensionDefinition(
+        id="extension-definition--" + str(uuid.uuid5(namespace, cls._type)),
+        created_by_ref=DOGESEC_IDENTITY_REF,
+        created=created,
+        modified=datetime(2020, 1, 1, tzinfo=UTC),
+        name=cls.__name__,
+        description=getattr(cls, 'ext_description', cls.__doc__),
+        schema=schema_base+f"{extension_type}/{cls._type}.json",
+        version=getattr(cls, 'ext_version', "1.0"),
+        extension_types=[
+            extension_type
+        ],
+        object_marking_refs=S2E_MARKING_REFS
+    )
