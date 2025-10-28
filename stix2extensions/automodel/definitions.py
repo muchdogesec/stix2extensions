@@ -77,6 +77,7 @@ class Gen(GenerateJsonSchema):
                 dict(properties=props),
             ]
             json_schema["$schema"] = "https://json-schema.org/draft/2020-12/schema"
-            json_schema["title"] = cls.stix_class._type
+            if hasattr(cls.stix_class, '_type'):
+                json_schema["title"] = cls.stix_class._type
         super()._update_class_schema(json_schema, cls, config)
         return json_schema

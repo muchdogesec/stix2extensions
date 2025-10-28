@@ -1,3 +1,4 @@
+from typing import OrderedDict
 from stix2 import CustomObservable
 from stix2.properties import (
     ListProperty,
@@ -5,12 +6,22 @@ from stix2.properties import (
     TimestampProperty,
     DictionaryProperty,
     FloatProperty,
+    ReferenceProperty,
+    EmbeddedObjectProperty,
 )
 
 from stix2extensions.automodel.automodel import extend_property, auto_model
+from stix2.v21.base import _STIXBase21
 
 
 _type = "cryptocurrency-transaction"
+
+@auto_model
+class AddressAndAmount(_STIXBase21):
+    _properties = OrderedDict([
+        ("amount", FloatProperty(min=0)),
+        ("address_ref", ReferenceProperty(valid_types="cryptocurrency-wallet")),
+    ])
 
 
 @auto_model
@@ -52,14 +63,14 @@ _type = "cryptocurrency-transaction"
         (
             "input",
             extend_property(
-                ListProperty(DictionaryProperty()),
+                ListProperty(EmbeddedObjectProperty(type=AddressAndAmount)),
                 description="Input addresses and amounts for the transaction",
             ),
         ),
         (
             "output",
             extend_property(
-                ListProperty(DictionaryProperty()),
+                ListProperty(EmbeddedObjectProperty(type=AddressAndAmount)),
                 description="Output addresses and amounts for the transaction",
             ),
         ),

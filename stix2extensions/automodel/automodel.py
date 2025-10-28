@@ -120,8 +120,8 @@ def pydantic_type(property: "ExtendedProperty"):
         return Literal[property._s2e_properties.parent_type]
 
     if isinstance(property, stixprops.EmbeddedObjectProperty):
-        if hasattr(property.type, "PydanticModel"):
-            return property.type.PydanticModel
+        if hasattr(property.type, "pydantic_model"):
+            return property.type.pydantic_model
         return dict
 
     if isinstance(
@@ -276,6 +276,7 @@ def auto_model(cls: Type[ExtendedStixType]):
     if cls in AUTOMODEL_REGISTRY:
         return cls
     annotations = dict(getattr(cls, "__annotations__", {}))
+    model_type = getattr(cls, '_type', None)
 
     fields = {}
     value: "ExtendedProperty"
@@ -283,16 +284,13 @@ def auto_model(cls: Type[ExtendedStixType]):
         if attr == "first_name":
             pass
         cls._properties[attr] = extend_property(value)
-        value._s2e_properties.parent_type = cls._type
+        value._s2e_properties.parent_type = model_type
         fields[attr] = pydantic_field(value)
         annotations[attr] = fields[attr][0]
     # print(fields, annotations)
     # Set __annotations__ so that help(), etc. work properly
-    extension_type = "new-sco" if stix2.v21._Observable in cls.mro() else "new-sdo"
-    if not hasattr(cls, "extension_definition") and not hasattr(cls, "with_extension"):
-        cls.extension_definition = create_extension_definition(cls, extension_type)
-    if not hasattr(cls, "with_extension"):
-        cls.with_extension = get_extension(cls, extension_type)
+    if model_type:
+        create_model_extras(cls)
     cls.__annotations__ = annotations
     # Create and return the Pydantic model
     model = create_model(cls.__name__, **fields, __base__=BaseModel)
@@ -305,6 +303,13 @@ def auto_model(cls: Type[ExtendedStixType]):
         cls.schema["$defs"] = defs
     AUTOMODEL_REGISTRY.append(cls)
     return cls
+
+def create_model_extras(cls):
+    extension_type = "new-sco" if stix2.v21._Observable in cls.mro() else "new-sdo"
+    if not hasattr(cls, "extension_definition") and not hasattr(cls, "with_extension"):
+        cls.extension_definition = create_extension_definition(cls, extension_type)
+    if not hasattr(cls, "with_extension"):
+        cls.with_extension = get_extension(cls, extension_type)
 
 
 def create_extension_definition(

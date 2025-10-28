@@ -12,6 +12,8 @@ ext_dir = base/'extensions'
 ext_dir.mkdir(parents=True, exist_ok=True)
 schema_dir.mkdir(parents=True, exist_ok=True)
 for model in AUTOMODEL_REGISTRY:
+    if not hasattr(model, '_type'):
+        continue
     k = model._type
     path: Path = schema_dir/(k+'.json')
     ext_path: Path = ext_dir/(k+'.json')
