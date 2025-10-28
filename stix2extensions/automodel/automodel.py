@@ -8,7 +8,6 @@ import stix2
 from stix2.properties import Property
 import stix2.properties as stixprops
 from stix2.registry import class_for_type
-from polyfactory.factories.pydantic_factory import ModelFactory
 
 from stix2.v21.base import _STIXBase, _Extension
 import stix2.utils
@@ -215,15 +214,6 @@ def get_extension(cls: Type[ExtendedStixType], _extension_type):
         class NameExtension:
             extension_type = _extension_type
     return NameExtension
-
-def generate_examples(model: Type[BaseModel]):
-    class ExampleFactory(ModelFactory):
-        __model__ = model
-        __use_examples__ = True
-    instance = ExampleFactory().build(factory_use_construct=True).model_dump()
-    del instance['id']
-    del instance['granular_markings']
-    return model.stix_class(**instance)
 
 def auto_model(cls: Type[ExtendedStixType]):
     if cls in AUTOMODEL_REGISTRY:

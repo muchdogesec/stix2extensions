@@ -21,7 +21,8 @@ classifiers = [
 ]
 dependencies = [
     "stix2",
-    "requests"
+    "requests",
+    "pydantic",
     ]
 [project.urls]
 Homepage = "https://github.com/muchdogesec/stix2extensions"
