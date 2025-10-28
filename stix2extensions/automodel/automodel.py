@@ -1,5 +1,6 @@
 import contextlib
 from datetime import UTC, datetime
+from enum import Enum, EnumType
 import json
 import uuid
 from pydantic_core import PydanticUndefined
@@ -9,12 +10,13 @@ import stix2.properties as stixprops
 from stix2.registry import class_for_type
 from polyfactory.factories.pydantic_factory import ModelFactory
 
-from stix2.v21.base import _STIXBase
+from stix2.v21.base import _STIXBase, _Extension
 import stix2.utils
 from typing import Annotated, Literal, List, Any, Optional, Type, TYPE_CHECKING
 from pydantic import (
     BaseModel,
     Field,
+    RootModel,
     constr,
     conint,
     confloat,
@@ -26,7 +28,7 @@ from pydantic import (
     create_model,
 )
 
-from .definitions import STIX_ID_RE, ExtensionDict, _reference_regex_from_valid_types
+from .definitions import STIX_ID_RE, ExtensionDict, Gen, _reference_regex_from_valid_types
 
 namespace=uuid.UUID("1abb62b9-e513-5f55-8e73-8f6d7b55c237")
 
@@ -68,6 +70,7 @@ class ExtendedStixType(_STIXBase):
     pydantic_model: BaseModel
     schema: dict
     extension_definition: stix2.ExtensionDefinition
+    with_extension: Type['_Extension']
 
 
 def pydantic_type(property: 'ExtendedProperty'):
@@ -117,7 +120,7 @@ def pydantic_type(property: 'ExtendedProperty'):
         return dict
 
     if isinstance(property, stixprops.EnumProperty):
-        return Literal[tuple(property.allowed)]
+        return make_enum(property.allowed)
     
     if isinstance(property, (stixprops.IntegerProperty, stixprops.FloatProperty)):
         constraints = {}
@@ -128,10 +131,9 @@ def pydantic_type(property: 'ExtendedProperty'):
         return confloat(**constraints) if isinstance(property, stixprops.FloatProperty) else conint(**constraints)
     
     if isinstance(property, stixprops.OpenVocabProperty) and hasattr(property, 'allowed'):
-        rv = StrictStr
         if hasattr(property, 'allowed'):
-            rv |= Literal[tuple(property.allowed)]
-        return rv
+            return make_enum(property.allowed) | StrictStr
+        return StrictStr
         
 
     
@@ -159,6 +161,11 @@ def pydantic_type(property: 'ExtendedProperty'):
             return ptype
 
     return Any
+
+def make_enum(lst: list|EnumType):
+    if isinstance(lst, EnumType):
+        return lst
+    return Literal[tuple(lst)]
 
 def transform_examples(obj):
     if obj == stix2.utils.NOW:
@@ -199,9 +206,10 @@ def extend_property(property: 'Property|ExtendedProperty', description=None, exa
     return property
 
 
-def get_extension(cls: Type[_STIXBase], extension_name, _extension_type):
+def get_extension(cls: Type[ExtendedStixType], _extension_type):
+    extension_name = cls.extension_definition['id']
     try:
-        NameExtension = class_for_type(extension_name, "2.1", "extensions")
+        NameExtension = class_for_type(cls.extension_definition['id'], "2.1", "extensions")
     except:
         @stix2.CustomExtension(type=extension_name, properties={})
         class NameExtension:
@@ -234,7 +242,10 @@ def auto_model(cls: Type[ExtendedStixType]):
     # print(fields, annotations)
     # Set __annotations__ so that help(), etc. work properly
     extension_type = 'new-sco' if stix2.v21._Observable in cls.mro() else 'new-sdo'
-    cls.with_extension = get_extension(cls, cls._type, extension_type)
+    if not hasattr(cls, 'extension_definition') and not hasattr(cls, 'with_extension'):
+        cls.extension_definition = create_extension_definition(cls, extension_type)
+    if not hasattr(cls, 'with_extension'):
+        cls.with_extension = get_extension(cls, extension_type)
     cls.__annotations__ = annotations
     # Create and return the Pydantic model
     model = create_model(cls.__name__, **fields, __base__=BaseModel)
@@ -242,13 +253,13 @@ def auto_model(cls: Type[ExtendedStixType]):
     model.stix_class = cls
     cls.__doc__ = cls.__doc__ or getattr(cls, 'description', None)
     model.__doc__ = cls.__doc__
-    cls.schema = model.model_json_schema(mode="validation")
-    cls.schema["$schema"] = "https://json-schema.org/draft/2020-12/schema"
-    cls.extension_definition = create_extension(cls, extension_type)
+    cls.schema = model.model_json_schema(mode="validation", schema_generator=Gen)
+    if defs := cls.schema.pop('$defs', None):
+        cls.schema['$defs'] = defs
     AUTOMODEL_REGISTRY.append(cls)
     return cls
 
-def create_extension(cls: Type[_STIXBase], extension_type) -> stix2.ExtensionDefinition:
+def create_extension_definition(cls: Type[_STIXBase], extension_type) -> stix2.ExtensionDefinition:
     id = "extension-definition--" + str(uuid.uuid5(namespace, cls._type))
     return stix2.ExtensionDefinition(
         id="extension-definition--" + str(uuid.uuid5(namespace, cls._type)),
