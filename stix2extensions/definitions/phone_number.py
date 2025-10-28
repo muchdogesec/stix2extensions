@@ -1,15 +1,9 @@
 from stix2 import CustomObservable
 from stix2.properties import (
-    ExtensionsProperty,
-    ReferenceProperty,
-    IDProperty,
-    ListProperty,
     StringProperty,
-    TypeProperty,
 )
 
 from stix2extensions.automodel.automodel import auto_model, extend_property
-from .._extensions import phone_number_ExtensionDefinitionSMO
 
 _type = "phone-number"
 

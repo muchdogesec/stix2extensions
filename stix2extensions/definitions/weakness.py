@@ -1,23 +1,13 @@
-from enum import StrEnum, auto
+from enum import StrEnum
 from stix2 import CustomObject
 from stix2.properties import (
-    ReferenceProperty,
-    IDProperty,
     ListProperty,
     StringProperty,
-    TimestampProperty,
-    TypeProperty,
-    BooleanProperty,
     OpenVocabProperty,
     EnumProperty,
 )
-from stix2.v21.common import (
-    ExternalReference,
-)
-from stix2.utils import NOW
 
 from stix2extensions.automodel.automodel import auto_model, extend_property
-from .._extensions import weakness_ExtensionDefinitionSMO
 
 
 _type = "weakness"

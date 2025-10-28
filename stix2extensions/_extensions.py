@@ -11,6 +11,9 @@ from stix2 import ExtensionDefinition
 from stix2 import FileSystemStore
 from uuid import UUID
 
+from stix2extensions.definitions.phone_number import Phonenumber
+from stix2extensions import definitions
+
 # define UUID for generating UUIDv5s
 
 namespace=UUID("1abb62b9-e513-5f55-8e73-8f6d7b55c237")
@@ -36,156 +39,39 @@ S2E_MARKING_REFS=[
 
 ### Phone number SMO
 
-phone_number_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"phone-number")), # extension-definition--14a97ee2-e666-5ada-a6bd-b7177f79e211
-                        created_by_ref=DOGESEC_IDENTITY_REF,
-                        created=created,
-                        modified=datetime(2020, 1, 1, tzinfo=UTC),
-                        name="Phone Number",
-                        description="This extension creates a new SCO that can be used to represent phone numbers.",
-                        schema=schema_base+"scos/phone-number.json",
-                        version="1.0",
-                        extension_types=[
-                            "new-sco"
-                        ],
-                        object_marking_refs=S2E_MARKING_REFS
-                    )
+phone_number_ExtensionDefinitionSMO = Phonenumber.extension_definition
 
 ### Cryptocurrency Transaction SMO
 
-cryptocurrency_transaction_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"cryptocurrency-transaction")), # extension-definition--151d042d-4dcf-5e44-843f-1024440318e5
-                        created_by_ref=DOGESEC_IDENTITY_REF,
-                        created=created,
-                        modified=datetime(2020, 1, 1, tzinfo=UTC),
-                        name="Cryptocurrency Transaction",
-                        description="This extension creates a new SCO that can be used to represent cryptocurrency transactions.",
-                        schema=schema_base+"scos/cryptocurrency-transaction.json",
-                        version="1.0",
-                        extension_types=[
-                            "new-sco"
-                        ],
-                        object_marking_refs=S2E_MARKING_REFS
-                    )
+cryptocurrency_transaction_ExtensionDefinitionSMO = definitions.CryptocurrencyTransaction.extension_definition
 
 ### Data Source SMO
 
-data_source_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"data-source")), # extension-definition--afeeb724-bce2-575e-af3d-d705842ea84b
-                        created_by_ref=DOGESEC_IDENTITY_REF,
-                        created=created,
-                        modified=modified,
-                        name="Data Source",
-                        description="This extension creates a new SCO that can be used to represent data sources. Very similar to x-mitre-data-source objects used in ATT&CK.",
-                        schema=schema_base+"scos/data-source.json",
-                        version="1.0",
-                        extension_types=[
-                            "new-sco"
-                        ],
-                        object_marking_refs=S2E_MARKING_REFS
-                    )
+data_source_ExtensionDefinitionSMO = definitions.DataSource.extension_definition
 
 ### Weakness SMO
 
-weakness_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"weakness")), # extension-definition--31725edc-7d81-5db7-908a-9134f322284a
-                        created_by_ref=DOGESEC_IDENTITY_REF,
-                        created=created,
-                        modified=datetime(2020, 1, 1, tzinfo=UTC),
-                        name="Weakness",
-                        description="This extension creates a new SDO that can be used to represent weaknesses (for CWEs).",
-                        schema=schema_base+"sdos/weakness.json",
-                        version="1.0",
-                        extension_types=[
-                            "new-sdo"
-                        ],
-                        object_marking_refs=S2E_MARKING_REFS
-                    )
+weakness_ExtensionDefinitionSMO = definitions.Weakness.extension_definition
 
 ### Exploit SMO
 
-exploit_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"exploit")), # extension-definition--5a047f57-0149-59b6-a079-e2d7c7ac799a
-                        created_by_ref=DOGESEC_IDENTITY_REF,
-                        created=created,
-                        modified=datetime(2020, 1, 1, tzinfo=UTC),
-                        name="Exploit",
-                        description="This extension creates a new SDO that can be used to represent exploits (of CVEs).",
-                        schema=schema_base+"sdos/exploit.json",
-                        version="1.0",
-                        extension_types=[
-                            "new-sdo"
-                        ],
-                        object_marking_refs=S2E_MARKING_REFS
-                    )
+exploit_ExtensionDefinitionSMO = definitions.Exploit.extension_definition
 
 ### Payment Card SMO
 
-payment_card_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"payment-card")), # extension-definition--
-                        created_by_ref=DOGESEC_IDENTITY_REF,
-                        created=created,
-                        modified=datetime(2020, 1, 1, tzinfo=UTC),
-                        name="Payment Card",
-                        description="This extension creates a new SCO that can be used to represent different types of payment card.",
-                        schema=schema_base+"scos/payment-card.json",
-                        version="1.0",
-                        extension_types=[
-                            "new-sco"
-                        ],
-                        object_marking_refs=S2E_MARKING_REFS
-                    )
+payment_card_ExtensionDefinitionSMO = definitions.PaymentCard.extension_definition
 
 ### User Agent SMO
 
-user_agent_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"user-agent")), # extension-definition--7ca5afee-0e4e-5813-b643-de51538658cc
-                        created_by_ref=DOGESEC_IDENTITY_REF,
-                        created=created,
-                        modified=datetime(2020, 1, 1, tzinfo=UTC),
-                        name="User Agent",
-                        description="This extension creates a new SCO that can be used to represent user agents used in HTTP request. It is designed to be used when the Network Traffic SCO with HTTP request extension cannot be used due to lack of request information needed for the required properties.",
-                        schema=schema_base+"scos/user-agent.json",
-                        version="1.0",
-                        extension_types=[
-                            "new-sco"
-                        ],
-                        object_marking_refs=S2E_MARKING_REFS
-                    )
+user_agent_ExtensionDefinitionSMO = definitions.UserAgent.extension_definition
 
 ### Cryptocurrency Wallet SMO
 
-cryptocurrency_wallet_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"cryptocurrency-wallet")), # extension-definition--be78509e-6958-51b1-8b26-d17ee0eba2d7
-                        created_by_ref=DOGESEC_IDENTITY_REF,
-                        created=created,
-                        modified=datetime(2020, 1, 1, tzinfo=UTC),
-                        name="Cryptocurrency Wallet",
-                        description="This extension creates a new SCO that can be used to represent cryptocurrency wallets.",
-                        schema=schema_base+"scos/cryptocurrency-wallet.json",
-                        version="1.0",
-                        extension_types=[
-                            "new-sco"
-                        ],
-                        object_marking_refs=S2E_MARKING_REFS
-                    )
+cryptocurrency_wallet_ExtensionDefinitionSMO = definitions.CryptocurrencyWallet.extension_definition
 
 ### Bank Account SMO
 
-bank_account_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"bank-account")), # extension-definition--f19f3291-6a84-5674-b311-d75a925d5bd9
-                        created_by_ref=DOGESEC_IDENTITY_REF,
-                        created=created,
-                        modified=datetime(2020, 1, 1, tzinfo=UTC),
-                        name="Bank Account",
-                        description="This extension creates a new SCO that can be used to represent bank account details.",
-                        schema=schema_base+"scos/bank-account.json",
-                        version="1.0",
-                        extension_types=[
-                            "new-sco"
-                        ],
-                        object_marking_refs=S2E_MARKING_REFS
-                    )
+bank_account_ExtensionDefinitionSMO = definitions.BankAccount.extension_definition
 
 ### Vulnerability Scoring Extension SMO
 

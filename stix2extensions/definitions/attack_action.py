@@ -1,11 +1,8 @@
 from stix2 import CustomObject
 from stix2.properties import (
-    ExtensionsProperty,
     ReferenceProperty,
-    IDProperty,
     ListProperty,
     StringProperty,
-    TypeProperty,
 )
 
 from stix2extensions.automodel.automodel import extend_property, auto_model

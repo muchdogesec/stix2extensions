@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Dict, Literal
 from pydantic import BaseModel
 from pydantic_core import core_schema
@@ -39,8 +40,17 @@ class ExtensionDict(Dict[str, Dict]):
         }
 
 
+class Timestamp(RootModel):
+    root: datetime
+
+
 class Gen(GenerateJsonSchema):
     def generate_inner(self, schema):
+        if schema.get("cls") == Timestamp:
+            super().generate_inner(schema)
+            return {
+                "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json"
+            }
         json_schema = super().generate_inner(schema)
         return json_schema
 
@@ -67,5 +77,6 @@ class Gen(GenerateJsonSchema):
                 dict(properties=props),
             ]
             json_schema["$schema"] = "https://json-schema.org/draft/2020-12/schema"
+            json_schema["title"] = cls.stix_class._type
         super()._update_class_schema(json_schema, cls, config)
         return json_schema

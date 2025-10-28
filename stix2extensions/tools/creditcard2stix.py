@@ -7,7 +7,7 @@ import requests
 from stix2 import Relationship, Identity
 from .._extensions import DOGESEC_IDENTITY_REF, S2E_MARKING_REFS
 
-from ..payment_card import PaymentCard
+from .. import PaymentCard
 import os
 
 
@@ -105,7 +105,7 @@ def create_credit_card_stix(card_data: dict, bin_data: dict):
     }
     if bin_data:
         credit_card_data.update(
-            format=bin_data["BIN"]["type"],
+            format=bin_data["BIN"]["type"].lower(),
             scheme=bin_data["BIN"]["scheme"],
             brand=bin_data["BIN"]["brand"],
             currency=bin_data["BIN"]["currency"],

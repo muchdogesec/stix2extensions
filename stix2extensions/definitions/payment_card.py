@@ -1,19 +1,13 @@
 from stix2 import CustomObservable
 from stix2.properties import (
-    ExtensionsProperty,
     ReferenceProperty,
-    IDProperty,
-    ListProperty,
     StringProperty,
     BooleanProperty,
     TimestampProperty,
-    TypeProperty,
     EnumProperty,
 )
 
-from stix2extensions.automodel import automodel
 from stix2extensions.automodel.automodel import auto_model, extend_property
-from .._extensions import payment_card_ExtensionDefinitionSMO
 
 _type = "payment-card"
 

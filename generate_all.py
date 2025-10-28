@@ -1,4 +1,3 @@
-# print(MySTIXObject.model_json_schema(mode="validation"))
 import json
 from pathlib import Path
 

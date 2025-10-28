@@ -1,16 +1,10 @@
 from stix2 import CustomObservable
 from stix2.properties import (
-    ExtensionsProperty,
     ReferenceProperty,
-    IDProperty,
-    ListProperty,
     StringProperty,
-    TypeProperty,
 )
 
-from stix2extensions.automodel import automodel
 from stix2extensions.automodel.automodel import auto_model, extend_property
-from .._extensions import cryptocurrency_wallet_ExtensionDefinitionSMO
 
 _type = "cryptocurrency-wallet"
 
