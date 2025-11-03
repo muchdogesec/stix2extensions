@@ -33,4 +33,4 @@ _type = "cryptocurrency-wallet"
     id_contrib_props=["value"],
 )
 class CryptocurrencyWallet(object):
-    pass
+    description = "This extension creates a new SCO that can be used to represent cryptocurrency wallets."

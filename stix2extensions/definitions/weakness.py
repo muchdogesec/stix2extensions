@@ -141,4 +141,4 @@ class COMMON_CONSEQUENCES_OV(StrEnum):
     ],
 )
 class Weakness(object):
-    pass
+    description = "This extension creates a new SDO that can be used to represent weaknesses (for CWEs)."

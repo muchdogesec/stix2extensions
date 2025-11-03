@@ -121,4 +121,4 @@ _type = "payment-card"
     id_contrib_props=["value"],
 )
 class PaymentCard(object):
-    pass
+    description = "This extension creates a new SCO that can be used to represent different types of payment card."

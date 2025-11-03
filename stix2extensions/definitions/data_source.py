@@ -55,4 +55,4 @@ _type = "data-source"
     id_contrib_props=["category", "product", "service"],
 )
 class DataSource(object):
-    pass
+    description = "This extension creates a new SCO that can be used to represent data sources. Very similar to x-mitre-data-source objects used in ATT&CK."

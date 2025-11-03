@@ -48,4 +48,6 @@ _type = "phone-number"
     id_contrib_props=["value"],
 )
 class Phonenumber(object):
-    pass
+    description = (
+        "This extension creates a new SCO that can be used to represent phone numbers."
+    )
