@@ -35,7 +35,7 @@ modified="2020-01-01T00:00:00.000Z"
 ### location--c06ee555-6c92-5d41-9e55-8abb490cb7c1
 
 example_opencti_LocationSDO = Location(
-                        id="location--"+ str(uuid.uuid5(namespace, f"A Demo Location")),
+                        id="location--"+ str(uuid.uuid5(namespace, f"example_opencti_LocationSDO")),
                         created_by_ref=created_by_ref,
                         created=created,
                         modified=modified,
@@ -111,6 +111,6 @@ for directory in final_directories:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-shutil.move("tmp_object_store/location/location--" + str(uuid.uuid5(namespace, f"A Demo Location")) + "/20200101000000000.json", "example_objects/properties/location--" + str(uuid.uuid5(namespace, f"A Demo Location")) + ".json")
+shutil.move("tmp_object_store/location/location--" + str(uuid.uuid5(namespace, f"example_opencti_LocationSDO")) + "/20200101000000000.json", "example_objects/properties/location--" + str(uuid.uuid5(namespace, f"example_opencti_LocationSDO")) + ".json")
 
 shutil.rmtree("tmp_object_store")

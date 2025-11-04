@@ -382,3 +382,23 @@ software_cpe_properties_ExtensionDefinitionSMO = ExtensionDefinition(
                         ],
                         object_marking_refs=S2E_MARKING_REFS
                     )
+
+### Identity OpenCTI Extension SMO
+
+identity_opencti_ExtensionDefinitionSMO = ExtensionDefinition(
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"identity-opencti")), # extension-definition--
+                        created_by_ref=DOGESEC_IDENTITY_REF,
+                        created=created,
+                        modified=datetime(2020, 1, 1, tzinfo=UTC),
+                        name="Identity SDO OpenCTI Properties",
+                        description="This extension adds new properties to Identity SDOs to capture OpenCTI specific data.",
+                        schema=schema_base+"properties/identity-opencti",
+                        version="1.0",
+                        extension_types=[
+                            "toplevel-property-extension"
+                        ],
+                        extension_properties=[
+                            "x_opencti_aliases"
+                        ],
+                        object_marking_refs=S2E_MARKING_REFS
+                    )

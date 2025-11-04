@@ -25,7 +25,8 @@ from stix2extensions._extensions import (
     report_epss_scoring_ExtensionDefinitionSMO,
     software_cpe_properties_ExtensionDefinitionSMO,
     location_opencti_ExtensionDefinitionSMO,
-    indicator_sigma_rule_ExtensionDefinitionSMO
+    indicator_sigma_rule_ExtensionDefinitionSMO,
+    identity_opencti_ExtensionDefinitionSMO
 )
 
 sys.path.append('generators')
@@ -57,7 +58,8 @@ if __name__ == '__main__':
     generator_properties.add_item("report-epss-scoring", report_epss_scoring_ExtensionDefinitionSMO)
     generator_properties.add_item("software-cpe-properties", software_cpe_properties_ExtensionDefinitionSMO)
     generator_properties.add_item("location-opencti", location_opencti_ExtensionDefinitionSMO)
-    generator_properties.add_item("indicator-sigma_rule", indicator_sigma_rule_ExtensionDefinitionSMO)
+    generator_properties.add_item("indicator-sigma-rule", indicator_sigma_rule_ExtensionDefinitionSMO)
+    generator_properties.add_item("identity-opencti", identity_opencti_ExtensionDefinitionSMO)
 
     # Save all items
     generator_sdos.save_all()
