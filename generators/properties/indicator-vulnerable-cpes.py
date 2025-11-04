@@ -34,7 +34,7 @@ modified="2020-01-01T00:00:00.000Z"
 ### indicator--f23c4675-951d-5490-8203-f0e568c1feb8
 
 example_IndicatorSDO = Indicator(
-                        id="indicator--"+ str(uuid.uuid5(namespace, f"A demo Indicator")),
+                        id="indicator--"+ str(uuid.uuid5(namespace, f"example_IndicatorSDO")),
                         created_by_ref=created_by_ref,
                         created=created,
                         modified=modified,
@@ -97,6 +97,6 @@ for directory in final_directories:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-shutil.move("tmp_object_store/indicator/indicator--" + str(uuid.uuid5(namespace, f"A demo Indicator")) + "/20200101000000000.json", "example_objects/properties/indicator--" + str(uuid.uuid5(namespace, f"A demo Indicator")) + ".json")
+shutil.move("tmp_object_store/indicator/indicator--" + str(uuid.uuid5(namespace, f"example_IndicatorSDO")) + "/20200101000000000.json", "example_objects/properties/indicator--" + str(uuid.uuid5(namespace, f"example_IndicatorSDO")) + ".json")
 
 shutil.rmtree("tmp_object_store")

@@ -1,7 +1,7 @@
 {
     "type": "indicator",
     "spec_version": "2.1",
-    "id": "indicator--f23c4675-951d-5490-8203-f0e568c1feb8",
+    "id": "indicator--05feb53a-15c1-5c31-8613-0c9c2d937d70",
     "created_by_ref": "identity--e1db4e59-c7f9-5ec0-bd55-10004728a167",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",

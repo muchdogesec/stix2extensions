@@ -17,7 +17,6 @@
     },
     "x_revoked": false,
     "x_created": "2020-01-01T00:00:00.000Z",
-    "x_modified": "2020-01-01T00:00:00.000Z",
     "x_cpe_struct": {
         "cpe_version": "2.3",
         "edition": "*",
@@ -31,5 +30,6 @@
         "version": "14.1.20140710",
         "target_sw": "*",
         "update": "*"
-    }
+    },
+    "x_modified": "2020-01-01T00:00:00.000Z"
 }

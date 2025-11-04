@@ -35,7 +35,7 @@ modified="2020-01-01T00:00:00.000Z"
 ### report--03081179-3df6-542e-b377-b43a5d542d0a
 
 example_ReportSDO = Report(
-                        id="report--"+ str(uuid.uuid5(namespace, f"A demo EPSS Report")),
+                        id="report--"+ str(uuid.uuid5(namespace, f"example_ReportSDO")),
                         created_by_ref=created_by_ref,
                         created=created,
                         modified=modified,
@@ -90,6 +90,6 @@ for directory in final_directories:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-shutil.move("tmp_object_store/report/report--" + str(uuid.uuid5(namespace, f"A demo EPSS Report")) + "/20200101000000000.json", "example_objects/properties/report--" + str(uuid.uuid5(namespace, f"A demo EPSS Report")) + ".json")
+shutil.move("tmp_object_store/report/report--" + str(uuid.uuid5(namespace, f"example_ReportSDO")) + "/20200101000000000.json", "example_objects/properties/report--" + str(uuid.uuid5(namespace, f"example_ReportSDO")) + ".json")
 
 shutil.rmtree("tmp_object_store")
