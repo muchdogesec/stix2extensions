@@ -1,6 +1,6 @@
 {
     "type": "bundle",
-    "id": "bundle--f706fc18-8be3-5a8e-867c-da60355048b5",
+    "id": "bundle--913cceb8-6e83-568c-9b3f-ede29da1d691",
     "objects": [
         {
             "type": "extension-definition",
@@ -283,7 +283,7 @@
             "modified": "2020-01-01T00:00:00.000Z",
             "name": "Identity SDO OpenCTI Properties",
             "description": "This extension adds new properties to Identity SDOs to capture OpenCTI specific data.",
-            "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/identity-opencti",
+            "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/identity-opencti.json",
             "version": "1.0",
             "extension_types": [
                 "toplevel-property-extension"
