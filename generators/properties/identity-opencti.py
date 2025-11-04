@@ -23,7 +23,7 @@ namespace=UUID("1abb62b9-e513-5f55-8e73-8f6d7b55c237")
 
 # Create Identity SDO object
 
-### identity--330e2030-1dc2-45e6-be13-9342b102621b
+### identity--400e3858-6042-592c-83b5-5aac8bcaf24e
 
 example_IdentitySDO = Identity(
                         id="identity--"+ str(uuid.uuid5(namespace, f"example_IdentitySDO")),
