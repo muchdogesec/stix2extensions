@@ -392,7 +392,7 @@ identity_opencti_ExtensionDefinitionSMO = ExtensionDefinition(
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
                         name="Identity SDO OpenCTI Properties",
                         description="This extension adds new properties to Identity SDOs to capture OpenCTI specific data.",
-                        schema=schema_base+"properties/identity-opencti",
+                        schema=schema_base+"properties/identity-opencti.json",
                         version="1.0",
                         extension_types=[
                             "toplevel-property-extension"
