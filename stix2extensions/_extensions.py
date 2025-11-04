@@ -316,7 +316,7 @@ indicator_vulnerable_cpes_ExtensionDefinitionSMO = ExtensionDefinition(
 ### Indicator Sigma Rule Extension SMO
 
 indicator_sigma_rule_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"indicator-sigma-rule")), # extension-definition--
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"indicator-sigma-rule")), # extension-definition--c16c84c5-9cfd-50a2-970d-09c0ff2700f7
                         created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),
@@ -386,7 +386,7 @@ software_cpe_properties_ExtensionDefinitionSMO = ExtensionDefinition(
 ### Identity OpenCTI Extension SMO
 
 identity_opencti_ExtensionDefinitionSMO = ExtensionDefinition(
-                        id="extension-definition--" + str(uuid.uuid5(namespace, f"identity-opencti")), # extension-definition--
+                        id="extension-definition--" + str(uuid.uuid5(namespace, f"identity-opencti")), # extension-definition--d51e8a52-ddab-5fc0-bee3-59d371c66cf6
                         created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
                         modified=datetime(2020, 1, 1, tzinfo=UTC),

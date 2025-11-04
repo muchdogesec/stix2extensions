@@ -13,7 +13,7 @@
 				"extensions": {
 					"type": "object",
 					"properties": {
-						"extension-definition--": {
+						"extension-definition--d51e8a52-ddab-5fc0-bee3-59d371c66cf6": {
 							"type": "object",
 							"properties": {
 								"extension_type": {
@@ -25,7 +25,7 @@
 							"required": ["extension_type"]
 						}
 					},
-					"required": ["extension-definition--"]
+					"required": ["extension-definition--d51e8a52-ddab-5fc0-bee3-59d371c66cf6"]
 				},
 				"x_opencti_aliases": {
 					"type": "array",
