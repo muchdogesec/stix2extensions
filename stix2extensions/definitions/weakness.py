@@ -1,3 +1,4 @@
+from datetime import UTC, datetime
 from enum import StrEnum
 from stix2 import CustomObject
 from stix2.properties import (
@@ -7,7 +8,7 @@ from stix2.properties import (
     EnumProperty,
 )
 
-from stix2extensions.automodel.automodel import auto_model, extend_property
+from stix2extensions.automodel.automodel import ExtensionType, auto_model, extend_property
 
 
 _type = "weakness"
@@ -115,7 +116,7 @@ class COMMON_CONSEQUENCES_OV(StrEnum):
         (
             "likelihood_of_exploit",
             extend_property(
-                ListProperty(EnumProperty(allowed=["High", "Medium", "Low"])),
+                EnumProperty(allowed=["High", "Medium", "Low"]),
                 description="Likelihood that the weakness can be successfully exploited",
             ),
         ),
@@ -140,5 +141,6 @@ class COMMON_CONSEQUENCES_OV(StrEnum):
         ),
     ],
 )
-class Weakness(object):
+class Weakness(ExtensionType):
     description = "This extension creates a new SDO that can be used to represent weaknesses (for CWEs)."
+    extension_modified = datetime(2025, 11, 5, tzinfo=UTC)

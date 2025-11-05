@@ -3,7 +3,7 @@ from stix2.properties import (
     StringProperty,
 )
 
-from stix2extensions.automodel.automodel import auto_model, extend_property
+from stix2extensions.automodel.automodel import ExtensionType, auto_model, extend_property
 
 _type = "data-source"
 
@@ -54,5 +54,5 @@ _type = "data-source"
     ],
     id_contrib_props=["category", "product", "service"],
 )
-class DataSource(object):
+class DataSource(ExtensionType):
     description = "This extension creates a new SCO that can be used to represent data sources. Very similar to x-mitre-data-source objects used in ATT&CK."

@@ -3,7 +3,7 @@ from stix2.properties import (
     StringProperty,
 )
 
-from stix2extensions.automodel.automodel import auto_model, extend_property
+from stix2extensions.automodel.automodel import ExtensionType, auto_model, extend_property
 
 _type = "phone-number"
 
@@ -47,7 +47,7 @@ _type = "phone-number"
     ],
     id_contrib_props=["value"],
 )
-class Phonenumber(object):
+class Phonenumber(ExtensionType):
     description = (
         "This extension creates a new SCO that can be used to represent phone numbers."
     )

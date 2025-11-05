@@ -36,8 +36,7 @@ namespace = uuid.UUID("1abb62b9-e513-5f55-8e73-8f6d7b55c237")
 ### dogesec
 
 DOGESEC_IDENTITY_REF = "identity--" + str(uuid.uuid5(namespace, f"dogesec"))
-created = "2020-01-01T00:00:00.000Z"
-modified = "2020-01-01T00:00:00.000Z"
+CONST_CREATED = datetime(2020, 1, 1, tzinfo=UTC)
 schema_base = (
     "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/"
 )
@@ -73,7 +72,14 @@ if TYPE_CHECKING:
         _s2e_properties: S2EProperty = None
 
 
-class ExtendedStixType(_STIXBase):
+class ExtensionType(object):
+    description: str | None
+    extension_version: str = "1.0"
+    extension_modified: datetime | str = None
+    extension_created: datetime | str = CONST_CREATED
+
+
+class ExtendedStixType(_STIXBase, ExtensionType):
     pydantic_model: BaseModel
     schema: dict
     extension_definition: stix2.ExtensionDefinition
@@ -152,8 +158,6 @@ def pydantic_type(property: "ExtendedProperty"):
     if hasattr(stixprops, "ExternalReferenceProperty") and isinstance(
         property, stixprops.ExternalReferenceProperty
     ):
-        if hasattr(property, "type") and hasattr(property.type, "PydanticModel"):
-            return property.type.PydanticModel
         return dict
 
     if isinstance(property, stixprops.EnumProperty):
@@ -276,7 +280,7 @@ def auto_model(cls: Type[ExtendedStixType]):
     if cls in AUTOMODEL_REGISTRY:
         return cls
     annotations = dict(getattr(cls, "__annotations__", {}))
-    model_type = getattr(cls, '_type', None)
+    model_type = getattr(cls, "_type", None)
 
     fields = {}
     value: "ExtendedProperty"
@@ -304,7 +308,8 @@ def auto_model(cls: Type[ExtendedStixType]):
     AUTOMODEL_REGISTRY.append(cls)
     return cls
 
-def create_model_extras(cls):
+
+def create_model_extras(cls: ExtendedStixType):
     extension_type = "new-sco" if stix2.v21._Observable in cls.mro() else "new-sdo"
     if not hasattr(cls, "extension_definition") and not hasattr(cls, "with_extension"):
         cls.extension_definition = create_extension_definition(cls, extension_type)
@@ -313,18 +318,21 @@ def create_model_extras(cls):
 
 
 def create_extension_definition(
-    cls: Type[_STIXBase], extension_type
+    cls: Type[ExtendedStixType], extension_type
 ) -> stix2.ExtensionDefinition:
     id = "extension-definition--" + str(uuid.uuid5(namespace, cls._type))
+    cls.extension_created = getattr(cls, 'extension_created', ExtensionType.extension_created)
+    cls.extension_modified = getattr(cls, 'extension_created', cls.extension_created)
+    cls.extension_version = getattr(cls, 'extension_version', ExtensionType.extension_version)
     return stix2.ExtensionDefinition(
         id="extension-definition--" + str(uuid.uuid5(namespace, cls._type)),
         created_by_ref=DOGESEC_IDENTITY_REF,
-        created=created,
-        modified=datetime(2020, 1, 1, tzinfo=UTC),
+        created=cls.extension_created,
+        modified=cls.extension_modified,
         name=cls.__name__,
-        description=getattr(cls, "ext_description", cls.__doc__),
+        description=getattr(cls, "extension_description", cls.__doc__),
         schema=schema_base + f"{extension_type}/{cls._type}.json",
-        version=getattr(cls, "ext_version", "1.0"),
+        version=cls.extension_version or "1.0",
         extension_types=[extension_type],
         object_marking_refs=S2E_MARKING_REFS,
     )
