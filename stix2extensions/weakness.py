@@ -23,7 +23,7 @@ _type = 'weakness'
     ('description', StringProperty()),
     ('revoked', BooleanProperty(default=lambda: False)),
     ('modes_of_introduction', ListProperty(StringProperty)),
-    ('likelihood_of_exploit', ListProperty(StringProperty)),
+    ('likelihood_of_exploit', StringProperty()),
     ('common_consequences', ListProperty(StringProperty)),
     ('detection_methods', ListProperty(StringProperty)),
     ('external_references', ListProperty(ExternalReference)),

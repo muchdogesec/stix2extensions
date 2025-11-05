@@ -39,12 +39,9 @@
 					}
 				},
 				"likelihood_of_exploit": {
-					"type": "array",
-					"items": {
-						"type": "string",
-						"description": "Qualitative likelihood that the weakness will be exploited in the wild.",
-						"examples": ["Medium"]
-					}
+					"type": "string",
+					"description": "Qualitative likelihood that the weakness will be exploited in the wild.",
+					"examples": ["Medium"]
 				},
 				"common_consequences": {
 					"type": "array",
