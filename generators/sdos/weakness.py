@@ -42,9 +42,7 @@ example_WeaknessSDO = Weakness(
                         modes_of_introduction=[
                             "Implementation"
                         ],
-                        likelihood_of_exploit=[
-                            "Medium"
-                        ],
+                        likelihood_of_exploit="Medium",
                         common_consequences=[
                             "Confidentiality",
                             "Integrity"

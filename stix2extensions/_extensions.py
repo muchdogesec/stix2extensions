@@ -91,7 +91,7 @@ weakness_ExtensionDefinitionSMO = ExtensionDefinition(
                         id="extension-definition--" + str(uuid.uuid5(namespace, f"weakness")), # extension-definition--31725edc-7d81-5db7-908a-9134f322284a
                         created_by_ref=DOGESEC_IDENTITY_REF,
                         created=created,
-                        modified=datetime(2020, 1, 1, tzinfo=UTC),
+                        modified=datetime(2025, 11, 5, tzinfo=UTC),
                         name="Weakness",
                         description="This extension creates a new SDO that can be used to represent weaknesses (for CWEs).",
                         schema=schema_base+"sdos/weakness.json",
