@@ -5,6 +5,7 @@ from stix2extensions.automodel.automodel import AUTOMODEL_REGISTRY
 
 import json
 
+from stix2extensions.automodel.definitions import get_title
 # Generate Schema for all objects registered (writes to file)
 base = Path("automodel_generated/")
 schema_dir = base/'schemas'
@@ -13,8 +14,9 @@ ext_dir.mkdir(parents=True, exist_ok=True)
 schema_dir.mkdir(parents=True, exist_ok=True)
 for model in AUTOMODEL_REGISTRY:
     if not hasattr(model, '_type'):
+        print(model)
         continue
-    k = model._type
+    k = get_title(model)
     path: Path = schema_dir/(k+'.json')
     ext_path: Path = ext_dir/(k+'.json')
     print(path, model.__name__)

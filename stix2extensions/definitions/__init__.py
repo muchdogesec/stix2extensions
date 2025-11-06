@@ -8,3 +8,4 @@ from .weakness import Weakness
 from .attack_action import AttackAction, AttackFlow
 from .exploit import Exploit
 from .data_source import DataSource
+from .properties import *

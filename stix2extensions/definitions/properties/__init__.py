@@ -1,0 +1,2 @@
+from .vulnerability_opencti import VulnerabilityOpenCTIPropertiesExtension
+from .vulnerability_scoring import VulnerabilityScoringExtension
