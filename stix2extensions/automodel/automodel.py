@@ -10,7 +10,7 @@ from pydantic.json_schema import SkipJsonSchema
 
 from stix2.v21.base import _STIXBase, _Extension
 import stix2.utils
-from typing import Annotated, Literal, List, Any, Optional, Type, TYPE_CHECKING
+from typing import Annotated, ClassVar, Literal, List, Any, Optional, Type, TYPE_CHECKING
 from pydantic import (
     BaseModel,
     Field,
@@ -29,6 +29,7 @@ from .definitions import (
     Gen,
     Timestamp,
     _reference_regex_from_valid_types,
+    get_properties,
 )
 
 namespace = uuid.UUID("1abb62b9-e513-5f55-8e73-8f6d7b55c237")
@@ -86,6 +87,8 @@ class ExtendedStixType(_STIXBase, ExtensionType):
     schema: dict
     extension_definition: stix2.ExtensionDefinition
     with_extension: Type["_Extension"]
+    _properties: ClassVar[dict[str, Property]]
+
 
 
 def pydantic_type(property: "ExtendedProperty"):
@@ -283,10 +286,11 @@ def auto_model(cls: Type[ExtendedStixType]):
 
     fields = {}
     value: "ExtendedProperty"
-    for attr, value in list(cls._properties.items()):
+    properties = get_properties(cls)
+    for attr, value in list(properties.items()):
         if attr == "extension_type":
             continue
-        cls._properties[attr] = extend_property(value)
+        properties[attr] = extend_property(value)
         value._s2e_properties.parent_type = model_type
         fields[attr] = pydantic_field(value)
         annotations[attr] = fields[attr][0]
@@ -344,7 +348,7 @@ def create_extension_definition(
         cls, "extension_version", ExtensionType.extension_version
     )
     properties = (
-        list(filter(lambda x: x != "extension_type", cls._properties))
+        list(filter(lambda x: x != "extension_type", get_properties(cls)))
         if extension_type in ["property-extension", "toplevel-property-extension"]
         else None
     )

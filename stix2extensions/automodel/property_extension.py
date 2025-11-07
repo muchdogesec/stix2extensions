@@ -18,5 +18,6 @@ def CustomPropertyExtension(extension_id: str, extension_type: ExtensionTypes, p
     def wrapper(cls):
         cls.extension_type = extension_type
         cls.initial_type = initial_type
-        return stix2.CustomExtension(extension_id, properties)(cls)
+        new_cls = stix2.CustomExtension(extension_id, properties)(cls)
+        return new_cls
     return wrapper

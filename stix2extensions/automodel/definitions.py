@@ -29,6 +29,9 @@ def get_title(cls: Type['ExtendedStixType']):
     return getattr(cls, "initial_type", cls._type)
 
 
+def get_properties(cls: Type['ExtendedStixType']):
+    return getattr(cls, "_toplevel_properties", cls._properties)
+
 class ExtensionDict(Dict[str, Dict]):
     """Dict with fixed keys and pattern-based dynamic keys."""
 
