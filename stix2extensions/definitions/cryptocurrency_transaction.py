@@ -10,13 +10,13 @@ from stix2.properties import (
     EmbeddedObjectProperty,
 )
 
-from stix2extensions.automodel.automodel import ExtensionType, extend_property, auto_model
+from stix2extensions.automodel.automodel import ExtensionType, extend_property, automodel
 from stix2.v21.base import _STIXBase21
 
 
 _type = "cryptocurrency-transaction"
 
-@auto_model
+@automodel
 class AddressAndAmount(_STIXBase21):
     _properties = OrderedDict([
         ("amount", FloatProperty(min=0)),
@@ -24,7 +24,7 @@ class AddressAndAmount(_STIXBase21):
     ])
 
 
-@auto_model
+@automodel
 @CustomObservable(
     "cryptocurrency-transaction",
     [

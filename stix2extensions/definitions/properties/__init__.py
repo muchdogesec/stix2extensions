@@ -1,2 +1,6 @@
 from .vulnerability_opencti import VulnerabilityOpenCTIPropertiesExtension
 from .vulnerability_scoring import VulnerabilityScoringExtension
+from .software_cpe_properties import SoftwareCpePropertiesExtension
+from .report_epss_scoring import ReportEPSSScoring
+from .location_opencti import LocationOpenCTIPropertyExtension
+from .indicators_vulnerable_cpe import IndicatorVulnerableCPEPropertyExtension

@@ -10,7 +10,16 @@ from pydantic.json_schema import SkipJsonSchema
 
 from stix2.v21.base import _STIXBase, _Extension
 import stix2.utils
-from typing import Annotated, ClassVar, Literal, List, Any, Optional, Type, TYPE_CHECKING
+from typing import (
+    Annotated,
+    ClassVar,
+    Literal,
+    List,
+    Any,
+    Optional,
+    Type,
+    TYPE_CHECKING,
+)
 from pydantic import (
     BaseModel,
     Field,
@@ -27,8 +36,8 @@ from .definitions import (
     STIX_ID_RE,
     ExtensionDict,
     Gen,
-    Timestamp,
     _reference_regex_from_valid_types,
+    get_extension_type_name,
     get_properties,
 )
 
@@ -38,8 +47,8 @@ namespace = uuid.UUID("1abb62b9-e513-5f55-8e73-8f6d7b55c237")
 
 DOGESEC_IDENTITY_REF = "identity--" + str(uuid.uuid5(namespace, f"dogesec"))
 CONST_CREATED = datetime(2020, 1, 1, tzinfo=UTC)
-schema_base = (
-    "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/"
+SCHEMA_BASE = (
+    "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/automodel_generated/schemas/"
 )
 
 ### mitre TLP:CLEAR and stix4doge
@@ -54,11 +63,19 @@ class S2EProperty:
     field_name = ""
     parent_type = ""
 
-    def __init__(self, property, description=None, examples=None, title=None):
+    def __init__(
+        self,
+        property,
+        description=None,
+        examples=None,
+        title=None,
+        pydantic_kwargs=None,
+    ):
         self.description = description
         self.examples = examples
         self.title = title
         self.property: Property = property
+        self.pydantic_kwargs = pydantic_kwargs or {}
 
     def add_example(self, *examples):
         self.examples = self.examples or []
@@ -88,7 +105,6 @@ class ExtendedStixType(_STIXBase, ExtensionType):
     extension_definition: stix2.ExtensionDefinition
     with_extension: Type["_Extension"]
     _properties: ClassVar[dict[str, Property]]
-
 
 
 def pydantic_type(property: "ExtendedProperty"):
@@ -131,8 +147,13 @@ def pydantic_type(property: "ExtendedProperty"):
         return Literal[property._s2e_properties.parent_type]
 
     if isinstance(property, stixprops.EmbeddedObjectProperty):
+        if (
+            isinstance(property.type, stixprops.Property)
+            or stixprops.Property in property.type.mro()
+        ):
+            return pydantic_type(property.type)
         if hasattr(property.type, "pydantic_model") or _STIXBase in property.type.mro():
-            return auto_model(property.type).pydantic_model
+            return automodel(property.type).pydantic_model
         return dict
 
     if isinstance(
@@ -201,7 +222,7 @@ def pydantic_type(property: "ExtendedProperty"):
         stixprops.SelectorProperty: constr(pattern=stixprops.SELECTOR_REGEX.pattern),
         stixprops.IDProperty: StrictStr,
         stixprops.TypeProperty: StrictStr,
-        stixprops.TimestampProperty: Timestamp,
+        stixprops.TimestampProperty: datetime,
         stixprops.HashesProperty: dict,
         stixprops.ExtensionsProperty: ExtensionDict,
         stixprops.DictionaryProperty: dict,
@@ -233,7 +254,7 @@ def transform_examples(obj):
 def pydantic_field(property: "ExtendedProperty"):
     typ = pydantic_type(property)
     examples = property._s2e_properties.examples or []
-    kwargs = dict()
+    kwargs = property._s2e_properties.pydantic_kwargs
     if not getattr(property, "required", None):
         typ = typ | SkipJsonSchema[None]
         kwargs.update(default=None, json_schema_extra=schema_remove_default)
@@ -256,12 +277,20 @@ def pydantic_field(property: "ExtendedProperty"):
 
 
 def extend_property(
-    property: "Property|ExtendedProperty", description=None, examples=None, title=None
+    property: "Property|ExtendedProperty",
+    description=None,
+    examples=None,
+    title=None,
+    **pydantic_kwargs,
 ):
     if hasattr(property, "_s2e_properties"):
         return property
     property._s2e_properties = S2EProperty(
-        property, description=description, examples=examples, title=title
+        property,
+        description=description,
+        examples=examples,
+        title=title,
+        pydantic_kwargs=pydantic_kwargs,
     )
     return property
 
@@ -278,7 +307,7 @@ def get_extension(cls: Type[ExtendedStixType], _extension_type):
     return NameExtension
 
 
-def auto_model(cls: Type[ExtendedStixType]):
+def automodel(cls: Type[ExtendedStixType]):
     if cls in AUTOMODEL_REGISTRY:
         return cls
     annotations = dict(getattr(cls, "__annotations__", {}))
@@ -332,9 +361,6 @@ def create_model_extras(cls: Type[ExtendedStixType]):
     if not getattr(cls, "with_extension", None):
         cls.with_extension = get_extension(cls, extension_type)
 
-    if stix2.v21._Extension in cls.mro():
-        pass
-
 
 def create_extension_definition(
     cls: Type[ExtendedStixType], extension_type
@@ -359,7 +385,7 @@ def create_extension_definition(
         modified=cls.extension_modified,
         name=getattr(cls, "name", cls.__name__),
         description=getattr(cls, "extension_description", cls.__doc__),
-        schema=schema_base + f"{extension_type}/{cls._type}.json",
+        schema=SCHEMA_BASE + f"{get_extension_type_name(cls)}/{cls._type}.json",
         version=cls.extension_version or "1.0",
         extension_types=[extension_type],
         object_marking_refs=S2E_MARKING_REFS,

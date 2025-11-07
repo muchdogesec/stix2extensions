@@ -25,12 +25,28 @@ def _reference_regex_from_valid_types(valid_types):
     types_pattern = "|".join(valid_types)
     return rf"^({types_pattern})--{_UUID_RE}$"
 
-def get_title(cls: Type['ExtendedStixType']):
+
+def get_extension_type_name(model: Type["ExtendedStixType"]):
+    from stix2 import base
+
+    if base._Extension in model.mro():
+        dir = "properties"
+    elif base._DomainObject in model.mro():
+        dir = "sdos"
+    elif base._Observable in model.mro():
+        dir = "scos"
+    else:
+        dir = "misc"
+    return dir
+
+
+def get_title(cls: Type["ExtendedStixType"]):
     return getattr(cls, "initial_type", cls._type)
 
 
-def get_properties(cls: Type['ExtendedStixType']):
+def get_properties(cls: Type["ExtendedStixType"]):
     return getattr(cls, "_toplevel_properties", cls._properties)
+
 
 class ExtensionDict(Dict[str, Dict]):
     """Dict with fixed keys and pattern-based dynamic keys."""
@@ -54,19 +70,11 @@ class ExtensionDict(Dict[str, Dict]):
         }
 
 
-class Timestamp(RootModel):
-    root: datetime
-
-
 class Gen(GenerateJsonSchema):
-    def generate_inner(self, schema):
-        if schema.get("cls") == Timestamp:
-            super().generate_inner(schema)
-            return {
-                "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json"
-            }
-        json_schema = super().generate_inner(schema)
-        return json_schema
+    def datetime_schema(self, schema):
+        return {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json"
+        }
 
     def _update_class_schema(self, json_schema, cls, config):
         if hasattr(cls, "stix_class"):
@@ -87,7 +95,7 @@ class Gen(GenerateJsonSchema):
                     "external_references",
                 ]
             }
-            if stix_cls.__name__ == 'VulnerabilityOpenCTIProperties':
+            if stix_cls.__name__ == "VulnerabilityOpenCTIProperties":
                 pass
             extension_instance = None
             if hasattr(stix_cls, "extension_definition"):
@@ -96,7 +104,7 @@ class Gen(GenerateJsonSchema):
             elif _Extension in stix_cls.mro():
                 extension_id = stix_cls._type
                 extension_instance = stix_cls()
-            
+
             if extension_instance:
                 props["extensions"] = dict(
                     type="object",
@@ -109,7 +117,9 @@ class Gen(GenerateJsonSchema):
                     },
                     required=[extension_id],
                 )
-            if getattr(stix_cls, 'base_schema', None):
+                required: list = json_schema.setdefault("required", [])
+                required.append("extensions")
+            if getattr(stix_cls, "base_schema", None):
                 json_schema["allOf"] = [
                     {"$ref": stix_cls.base_schema},
                     dict(properties=props),

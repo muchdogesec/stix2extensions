@@ -8,7 +8,7 @@ from stix2.properties import (
     EnumProperty,
 )
 
-from stix2extensions.automodel.automodel import ExtensionType, auto_model, extend_property
+from stix2extensions.automodel.automodel import ExtensionType, automodel, extend_property
 
 
 _type = "weakness"
@@ -79,7 +79,7 @@ class COMMON_CONSEQUENCES_OV(StrEnum):
     Accountability = "Accountability"
 
 
-@auto_model
+@automodel
 @CustomObject(
     "weakness",
     [

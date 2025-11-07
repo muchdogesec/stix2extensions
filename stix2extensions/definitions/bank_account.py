@@ -4,13 +4,13 @@ from stix2.properties import (
     StringProperty,
 )
 
-from stix2extensions.automodel.automodel import extend_property, auto_model
+from stix2extensions.automodel.automodel import extend_property, automodel
 
 
 _type = "bank-account"
 
 
-@auto_model
+@automodel
 @CustomObservable(
     _type,
     [

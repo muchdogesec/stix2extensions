@@ -7,12 +7,12 @@ from stix2.properties import (
     EnumProperty,
 )
 
-from stix2extensions.automodel.automodel import ExtensionType, auto_model, extend_property
+from stix2extensions.automodel.automodel import ExtensionType, automodel, extend_property
 
 _type = "payment-card"
 
 
-@auto_model
+@automodel
 @CustomObservable(
     _type,
     [

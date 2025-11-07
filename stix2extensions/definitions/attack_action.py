@@ -5,12 +5,12 @@ from stix2.properties import (
     StringProperty,
 )
 
-from stix2extensions.automodel.automodel import extend_property, auto_model
+from stix2extensions.automodel.automodel import extend_property, automodel
 
 _type = "attack-flow"
 
 
-@auto_model
+@automodel
 @CustomObject(
     _type,
     [
