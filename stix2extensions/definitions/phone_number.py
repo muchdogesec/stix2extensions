@@ -3,7 +3,7 @@ from stix2.properties import (
     StringProperty,
 )
 
-from stix2extensions.automodel.automodel import ExtensionType, automodel, extend_property
+from stix2extensions.automodel import ExtensionType, automodel, extend_property
 
 _type = "phone-number"
 

@@ -5,7 +5,7 @@ from stix2.properties import (
     StringProperty,
 )
 
-from stix2extensions.automodel.automodel import extend_property, automodel
+from stix2extensions.automodel import extend_property, automodel
 
 _type = "attack-flow"
 

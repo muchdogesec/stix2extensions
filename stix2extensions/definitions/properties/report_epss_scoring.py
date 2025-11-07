@@ -7,10 +7,10 @@ from stix2.properties import (
     FloatProperty,
 )
 
-from stix2extensions.automodel.automodel import automodel, extend_property
+from stix2extensions.automodel import automodel, extend_property
 
 
-from stix2extensions.automodel.automodel import (
+from stix2extensions.automodel import (
     ExtensionType,
     automodel,
     extend_property,
@@ -37,7 +37,7 @@ class EpssStruct(ExtensionType, _STIXBase21):
                 "score",
                 extend_property(
                     FloatProperty(min=0, max=1),
-                    description="EPSS score (0.0–1.0) estimating probability of exploitation.",
+                    description="EPSS score (0.0 - 1.0) estimating probability of exploitation.",
                     examples=[0.11],
                 ),
             ),
@@ -45,7 +45,7 @@ class EpssStruct(ExtensionType, _STIXBase21):
                 "percentile",
                 extend_property(
                     FloatProperty(min=0, max=1),
-                    description="EPSS percentile (0.0–1.0) relative to other vulnerabilities.",
+                    description="EPSS percentile (0.0 - 1.0) relative to other vulnerabilities.",
                     examples=[0.89],
                 ),
             ),

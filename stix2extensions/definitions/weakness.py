@@ -8,7 +8,7 @@ from stix2.properties import (
     EnumProperty,
 )
 
-from stix2extensions.automodel.automodel import ExtensionType, automodel, extend_property
+from stix2extensions.automodel import ExtensionType, automodel, extend_property
 
 
 _type = "weakness"
