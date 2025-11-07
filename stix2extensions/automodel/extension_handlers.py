@@ -50,7 +50,7 @@ def get_extension(cls: Type[ExtendedStixType], _extension_type):
         class NameExtension:
             extension_type = _extension_type
 
-    return NameExtension
+    return extension_name, NameExtension
 
 
 def create_model_extras(cls: Type[ExtendedStixType]):
@@ -62,6 +62,7 @@ def create_model_extras(cls: Type[ExtendedStixType]):
         cls.base_schema = "https://github.com/oasis-open/cti-stix2-json-schemas/raw/refs/heads/master/schemas/common/core.json"
     elif stix2_v21_base._Extension in cls.mro():
         extension_type = cls.extension_type
+        cls.extension_klass = cls
         cls.with_extension = cls
     else:
         return
@@ -71,7 +72,7 @@ def create_model_extras(cls: Type[ExtendedStixType]):
     ) or stix2_v21_base._Extension in cls.mro():
         cls.extension_definition = create_extension_definition(cls, extension_type)
     if not getattr(cls, "with_extension", None):
-        cls.with_extension = get_extension(cls, extension_type)
+        cls.with_extension, cls.extension_klass = get_extension(cls, extension_type)
 
 
 def create_extension_definition(

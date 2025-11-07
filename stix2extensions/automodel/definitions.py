@@ -100,7 +100,7 @@ class Gen(GenerateJsonSchema):
             extension_instance = None
             if hasattr(stix_cls, "extension_definition"):
                 extension_id = stix_cls.extension_definition["id"]
-                extension_instance = stix_cls.with_extension()
+                extension_instance = stix_cls.extension_klass()
             elif _Extension in stix_cls.mro():
                 extension_id = stix_cls._type
                 extension_instance = stix_cls()
