@@ -38,7 +38,6 @@ class Crypto2Stix:
         raise NotImplementedError("should be implemented in subclass")
 
     def create_transaction_object(self, tx_data: TxnData):
-        CryptocurrencyTransaction._id_contributing_properties
         transaction_object = CryptocurrencyTransaction(
             type="cryptocurrency-transaction",
             spec_version="2.1",

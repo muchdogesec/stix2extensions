@@ -5,7 +5,7 @@ from urllib.parse import urljoin
 import uuid
 import requests
 from stix2 import Relationship, Identity
-from .._extensions import DOGESEC_IDENTITY_REF, S2E_MARKING_REFS
+from ..automodel.constants import DOGESEC_IDENTITY_REF, S2E_MARKING_REFS
 
 from .. import PaymentCard
 import os
@@ -152,25 +152,26 @@ def create_objects(card_data, api_key):
         identity = create_identity(bin_data)
         if identity.get('contact_information'):
             location = get_country(bin_data["BIN"]["country"]["alpha2"])
-            retval.append(location)
-            r_uuid = str(
-                uuid.uuid5(UUID_NS, f'located-at+{identity.id}+{location["id"]}')
-            )
-            retval.append(
-                Relationship(
-                    type="relationship",
-                    spec_version="2.1",
-                    id="relationship--" + r_uuid,
-                    created_by_ref="identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
-                    created="2020-01-01T00:00:00.000Z",
-                    modified="2020-01-01T00:00:00.000Z",
-                    relationship_type="located-at",
-                    source_ref=identity.id,
-                    target_ref=location["id"],
-                    description=f"{bin_data['BIN']['issuer']['name']} is located at {bin_data['BIN']['country']['name']}",
-                    object_marking_refs=S2E_MARKING_REFS,
+            if location:
+                retval.append(location)
+                r_uuid = str(
+                    uuid.uuid5(UUID_NS, f'located-at+{identity.id}+{location["id"]}')
                 )
-            )
+                retval.append(
+                    Relationship(
+                        type="relationship",
+                        spec_version="2.1",
+                        id="relationship--" + r_uuid,
+                        created_by_ref="identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+                        created="2020-01-01T00:00:00.000Z",
+                        modified="2020-01-01T00:00:00.000Z",
+                        relationship_type="located-at",
+                        source_ref=identity.id,
+                        target_ref=location["id"],
+                        description=f"{bin_data['BIN']['issuer']['name']} is located at {bin_data['BIN']['country']['name']}",
+                        object_marking_refs=S2E_MARKING_REFS,
+                    )
+                )
         retval.append(identity)
         card.update(issuer_ref=identity.id)
     if card_holder := card_data.get("card_holder_name"):
