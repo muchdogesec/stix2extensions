@@ -2,155 +2,17 @@
 
 This guide walks you through everything you need to create a new STIX Extension.
 
-## 0. Create a skeleton definition file
+stix2extensions will allow you to;
 
-Before starting you need to decide if you wish to create:
+1. Create a new SDO, or
+2. Create a new SCO, or
+3. Add new properties to an existing SDO or SCO
 
-1. A new SDO
-2. A new SCO
-3. new properties for an SDO/SCO
+---
 
-In `definitions/` you will find the following directories that contain the definitions based on each of these options;
+## 0. Set up 
 
-```
-definitions/
-├── sdos/
-├── scos/
-└── properties/
-```
-
-## 1. Create a new SDO
-
-### 1.1 Create a skeleton file
-
-You should add a new file in either `definitions/sdos` and name it in the structure `<OBJECT TYPE (SNAKE CASE).py`.
-
-For example, `my-new-sdo` would use the file name `definitions/sdos/my_new_sdo.py`
-
-### 1.2 Define imports
-
-TODO: https://github.com/muchdogesec/stix2extensions/issues/69
-
-### 1.3 Define the object structure
-
-At this point it is best to consult the examples the already exist in `definitions/sdos/`
-
-Here is a snippet from `weakness.py`;
-
-```python
-@automodel
-@CustomObject(
-    "weakness",
-    [
-        (
-            "name",
-            extend_property(
-                StringProperty(required=True),
-                description="Name of the weakness as defined in CWE",
-                examples=["Buffer Overflow", "SQL Injection"],
-            ),
-        ),
-        (
-            "description",
-            extend_property(
-                StringProperty(),
-                description="Detailed description of the weakness",
-                examples=[
-                    "A buffer overflow occurs when data exceeds the allocated buffer memory, potentially allowing code execution."
-                ],
-            ),
-        ),
-        (
-            "likelihood_of_exploit",
-            extend_property(
-                EnumProperty(allowed=["High", "Medium", "Low"]),
-                description="Likelihood that the weakness can be successfully exploited",
-            ),
-        ),
-        (
-            "common_consequences",
-            extend_property(
-                ListProperty(
-                    extend_property(
-                        OpenVocabProperty(allowed=COMMON_CONSEQUENCES_OV),
-                        description="Typical impact categories resulting from exploitation of this weakness.",
-                    )
-                ),
-                description="Typical impacts or consequences resulting from the weakness",
-            ),
-        )
-    ]
-)
-```
-
-**What each piece does:**
-
-* `@automodel`: Adds the usual model “plumbing” (constructor, validation, etc.) so you can instantiate the object like a normal Python class.
-* `@CustomObject("weakness", [...])`: Registers a new STIX object type with the name `weakness`.
-	* The first argument (`weakness`) is the STIX type name (what will appear in the type field of the object) and should match the filename.
-	* The second argument is a list of property definitions...
-
-Each property is a tuple of:
-
-```python
-("<property_name>", <property_definition>)
-```
-
-For example:
-
-```python
-(
-    "name",
-    extend_property(
-        StringProperty(required=True),
-        description="Name of the weakness as defined in CWE",
-        examples=["Buffer Overflow", "SQL Injection"],
-    ),
-)
-```
-
-* `name`: the property name.
-* `StringProperty(required=True)`: the data type and requirements.
-* `description`: a clear description of this property that is used in generated docs / schema.
-* `examples`: example value(s) for this property that are used in generated docs / schema.
-
-You must always pass these four values for each property you are defining.
-
-[You can get a full list of data types available to use here](https://stix2.readthedocs.io/en/latest/api/stix2.properties.html). Again, to see what is possible when defining properties for your object, consult the existing objects which show a good range of examples/
-
-
-### Define the class
-
-```python
-class Weakness(ExtensionType):
-    description = "This extension creates a new SDO that can be used to represent weaknesses (for CWEs)."
-    extension_modified = datetime(2025, 11, 5, tzinfo=UTC)
-```
-
-### If you are creating a new SDO / SCO
-
-You should add a new file in either `definitions/sdos` or `definitions/scos` (depending on object type) and name it in the structure `<OBJECT TYPE (KEBAB CASE).py`.
-
-For example, `bank-account` would use `definitions/scos/bank_account.py`
-
-### If you are adding properties to an existing SDO / SCO
-
-You should add a new file in `definitions/properties` in the format `<OBJECT TYPE BEING EXTENDED_<SHORT DESCRIPTION>.py`
-
-For example, for Identity object extended with OpenCTI properties you could name it `identity_opencti.py`
-
-
-
-## 2. Decide what you need to import
-
-
-
-
-## 3. Define the 
-
-### Overview
-
-First clone this repo, and set it up:
+### 0.1 Install the requirements
 
 ```shell
 # clone the latest code
@@ -163,19 +25,234 @@ source stix2extensions-venv/bin/activate
 pip3 install .
 ```
 
-To add your own objects to this repo you must then do the following things:
+### 0.2 Understand the directory structure
 
-1. define a schema for it in the `schemas` directory.
-2. create an entry for it in `stix2extensions` defining the properties
-3. add an entry in `stix2extensions/_extensions.py` and `generators/extension-definition.py` to auto generate the Extension Definition for your objects. Then the script `python3 generators/extension-definition.py`
-4. optional: add an entry under `generators/example_objects/` for your custom object. This script should generate a dummy object to show others what it looks like (this is more likely to increase adoption). Then run the script `generators/scos/*.py`.
-5. optional: add an icon for your new object in our [stix2icons repository](https://github.com/muchdogesec/stix2icons). This will make it easy for graph viewers to render your object properly with an icon.
+In `definitions/` you will find the following directories that contain the definitions (Python files used to generate all assets) based on each of the available extension creation options;
+
+```
+definitions/
+├── sdos/
+├── scos/
+└── properties/
+```
+
+---
+
+## 1. Create a new SDO
+
+### 1.1 Create a skeleton file
+
+You should add a new file in `definitions/sdos` and name it in the structure `<OBJECT TYPE (SNAKE CASE).py`.
+
+For example, `nation-state` would use the file name `definitions/sdos/nation_state.py`
+
+### 1.2 Define the object structure
+
+Here is a demo `nation_state.py` that I will use to show the basics of modelling an object in your definition file;
+
+```python
+_type = "nation-state"
+
+@automodel
+@CustomObject(
+    _type,
+    [
+        (
+            "name",
+            extend_property(
+                StringProperty(required=True),
+                description="The name of the Nation State",
+                examples=["Russian Federation", "The Democratic People's Republic of Korea"],
+            ),
+        ),
+        (
+            "description",
+            extend_property(
+                StringProperty(),
+                description="Detailed description of the Nation State",
+                examples=[
+                    "North Korea’s (DPRK) cyber activities are among the most aggressive and well-organized state-sponsored operations globally, blending espionage, financial crime, and disruptive attacks to advance regime objectives."
+                ],
+            ),
+        ),
+        (
+            "location_ref",
+            extend_property(
+                ReferenceProperty(valid_types="location", spec_version="2.1"),
+                description="STIX location object representing the political captial of the Nation State",
+                examples=["location--d5c93aa7-eaa5-5dc8-8dfa-c15f1f51fbaa"],
+            ),
+        )
+    ]
+)
+```
+
+**What each piece does:**
+
+* `_type = "nation-state"`: defines the object type 
+* `@automodel`: Adds the usual model “plumbing” (constructor, validation, etc.) so you can instantiate the object like a normal Python class.
+* `@CustomObject(_type, [...])`: Registers a new STIX object (SDO) type with the name `weakness`.
+	* The first argument (`_type`) calls the type
+	* The second argument is a list of property definitions...
+
+Each property is a tuple of:
+
+```python
+("<property_name>", <property_definition>)
+```
+
+For example:
+
+```python
+        (
+            "name",
+            extend_property(
+                StringProperty(required=True),
+                description="The name of the Nation State",
+                examples=["Russian Federation", "The Democratic People's Republic of Korea"],
+            ),
+        ),
+```
+
+* `name`: the property name.
+* `StringProperty(required=True)`: the data type and requirements.
+* `description`: a clear description of this property that is used in generated docs / schema.
+* `examples`: example value(s) for this property that are used in generated docs / schema.
+
+You must always pass these four values for each property you are defining.
+
+[You can get a full list of data types available to use here](https://stix2.readthedocs.io/en/latest/api/stix2.properties.html).
+
+To really understand what is possible when generating an object, see this demo object:
+
+TODO
+
+### 1.3 Define the class
+
+Inside your custom STIX object class, you sjpi;d define metadata about the extension itself — such as its purpose and last modification date.
+
+```python
+class Weakness(ExtensionType):
+    description = "This extension creates a new SDO that can be used to represent weaknesses (for CWEs)."
+    extension_created = datetime(2020, 1, 1, tzinfo=UTC)
+    extension_modified = datetime(2025, 11, 5, tzinfo=UTC)
+```
+
+* `description`: will be used in the Extension Definition objects `description` and for the `description` of the schema
+* `extension_created`: will be used as the `created` date of the Extension Definition. Do not change this once it has been set
+* `extension_modified`: will be used as the `modified` date of the Extension Definition. Update this on any modification to the object.
+
+### 1.4 Generate the extension assets
+
+You can not run the script to generate your 
+
+```shell
+
+```
+
+---
+
+## 2. Create a new SCO
+
+### 2.1 Create a skeleton file
+
+You should add a new file in `definitions/scos` and name it in the structure `<OBJECT TYPE (SNAKE CASE).py`.
+
+For example, `my-new-sco` would use the file name `definitions/scos/my_new_sco.py`
+
+### 2.2 Define the object structure
+
+First read 1.2.
+
+Compared to generating SDOs, there are a few differences. I will highlight these by showing SDO option -> SCO change required
+
+* `@CustomObject` -> `@CustomObservable`: SCOs are defined with `@CustomObservable`
+* add `id_contrib_props=["iban", "account_number"],`: SDO IDs use random UUIDv4s. SCOs use UUIDv5s. You NEED to specify all the properties that should be used to generate the UUID.
+
+#### A note about UUIDv5s
+
+For all SCO object generation scripts the OASIS namespace `00abedb4-aa42-466c-9c01-fed23315a9b7` will be used (as because generation is done by the stix2 Python library where this namespace is used).
+
+### 2.3 Define the class
+
+First read 1.3.
+
+Compared to generating SDOs, there is one difference I will highlight these by showing SDO option -> SCO change required
+
+* add `at_least_one_of`: this is different to required because ??? TODO
+
+### 2.4 Generate the extension assets
+
+See 1.4.
+
+---
+
+## 3. Add new properties to an existing SDO or SCO
+
+### 3.1 Create a skeleton file
+
+You should add a new file in `definitions/properties` and name it in the structure `<OBJECT TYPE EXTENDED>_<SHORT IDENTIFIER>(SNAKE CASE).py`.
+
+For example, if you were extending an Identity objects to include new alias fields you might name it `identity_extended_aliases.py`. 
+
+Generally the `<SHORT IDENTIFIER>` can be anything, but it MUST result in a unique filename.
 
 
+### 3.2 Define the object structure
 
+Here is a basic example defining new properties for my identity object
 
-#### A note about UUIDs in `generators`
+```python
+@automodel
+@CustomPropertyExtension(
+    extension_id="identity-extended-aliases",
+    properties=OrderedDict(
+        [
+            (
+                "aliases",
+                extend_property(
+                    StringProperty(),
+                    description="Aliases this identity goes by",
+                    examples=["CompanyX"],
+                ),
+            ),
+            (
+                "nicknames",
+                extend_property(
+                    StringProperty(),
+                    description="Nicknames for this identity",
+                    examples=["X"],
+                ),
+            ),
+        ]
+    ),
+    extension_type=ExtensionTypes.TOPLEVEL_PROPERTY_EXTENSION,
+)
+```
 
-Note, all of the SDO `id`s in this repo are generated by the namespace `1abb62b9-e513-5f55-8e73-8f6d7b55c237`. This is a randomly generated UUIDv4. It is used to ensure the objects generated by the code in this repo have persistent UUIDs on each update.
+There is not a lot of difference to what is described in 1.2, they key differences being...
 
-For all SCO object generation scripts we use the OASIS namespace `00abedb4-aa42-466c-9c01-fed23315a9b7`.
+* `@CustomPropertyExtension`: Registers a new the new properties
+    * The first argument (`extension_id`) defines the name of the extension. This will be used to generate schema file name and the UUID of the Extension Definition object
+    * The second argument (`properties=OrderedDict`) is contains a list of the new properties you wish to add. Note we use `OrderedDict` TODO
+    * The third arguement (`extension_type`) defines what type of extension you want to use. Currently stix2extension only supports `toplevel-property-extension` so you must always use `ExtensionTypes.TOPLEVEL_PROPERTY_EXTENSION`.[Consult the STIX specification (Extension Types Enumeration) if you are unsure if this is right for you](https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_f23s79k9bdhl)
+
+### 3.3 Define the class
+
+Again, similar to 1.3 but the this time also required you to pass `base_schema`, e.g.
+
+```python
+class IndicatorVulnerableCPEPropertyExtension(ExtensionType):
+    base_schema = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
+    description = "This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern."
+```
+
+* `base_schema`: points to the schema of the object you are extending. Generally speaking you can find these:
+    * [for Core STIX SDOs](https://github.com/oasis-open/cti-stix2-json-schemas/tree/master/schemas/sdos)
+    * [for Core STIX SCOs](https://github.com/oasis-open/cti-stix2-json-schemas/tree/master/schemas/observables)
+
+**IMPORTANT**: We recommend only extending the Core STIX objects in this way. For Custom STIX objects defined in this repo it is usually always better to modify the Custom object the itself and submit your changes in tis way.
+
+### 3.4 Generate the extension assets
+
+See 1.4.
