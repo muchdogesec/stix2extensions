@@ -11,7 +11,7 @@ _type = "cryptocurrency-wallet"
 
 @automodel
 @CustomObservable(
-    "cryptocurrency-wallet",
+    _type,
     [
         (
             "value",

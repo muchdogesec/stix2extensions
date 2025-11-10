@@ -95,8 +95,6 @@ class Gen(GenerateJsonSchema):
                     "external_references",
                 ]
             }
-            if stix_cls.__name__ == "VulnerabilityOpenCTIProperties":
-                pass
             extension_instance = None
             if hasattr(stix_cls, "extension_definition"):
                 extension_id = stix_cls.extension_definition["id"]
@@ -119,9 +117,9 @@ class Gen(GenerateJsonSchema):
                 )
                 required: list = json_schema.setdefault("required", [])
                 required.append("extensions")
-            if getattr(stix_cls, "base_schema", None):
+            if getattr(stix_cls, "base_schema_ref", None):
                 json_schema["allOf"] = [
-                    {"$ref": stix_cls.base_schema},
+                    {"$ref": stix_cls.base_schema_ref},
                     dict(properties=props),
                 ]
             else:

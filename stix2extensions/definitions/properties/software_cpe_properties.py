@@ -128,43 +128,41 @@ class CPEStruct(ExtensionType, _STIXBase21):
 @automodel
 @CustomPropertyExtension(
     "software-cpe-properties",
-    properties=OrderedDict(
-        [
-            (
-                "x_cpe_struct",
-                extend_property(
-                    ListProperty(EmbeddedObjectProperty(type=CPEStruct)),
-                    description="List of CPE structures.",
-                ),
+    [
+        (
+            "x_cpe_struct",
+            extend_property(
+                ListProperty(EmbeddedObjectProperty(type=CPEStruct)),
+                description="List of CPE structures.",
             ),
-            (
-                "x_revoked",
-                extend_property(
-                    BooleanProperty(),
-                    description="The revoked property indicates whether the object has been revoked.",
-                    examples=[True],
-                ),
+        ),
+        (
+            "x_revoked",
+            extend_property(
+                BooleanProperty(),
+                description="The revoked property indicates whether the object has been revoked.",
+                examples=[True],
             ),
-            (
-                "x_created",
-                extend_property(
-                    TimestampProperty(),
-                    description="The created property represents the time at which the first version of this object was created. Must be precise to the nearest millisecond.",
-                    examples=["2020-01-01T00:00:00.000Z"],
-                ),
+        ),
+        (
+            "x_created",
+            extend_property(
+                TimestampProperty(),
+                description="The created property represents the time at which the first version of this object was created. Must be precise to the nearest millisecond.",
+                examples=["2020-01-01T00:00:00.000Z"],
             ),
-            (
-                "x_modified",
-                extend_property(
-                    TimestampProperty(),
-                    description="The modified property represents the time that this particular version of the object was modified. Must be precise to the nearest millisecond.",
-                    examples=["2020-01-01T00:00:00.000Z"],
-                ),
+        ),
+        (
+            "x_modified",
+            extend_property(
+                TimestampProperty(),
+                description="The modified property represents the time that this particular version of the object was modified. Must be precise to the nearest millisecond.",
+                examples=["2020-01-01T00:00:00.000Z"],
             ),
-        ]
-    ),
+        ),
+    ],
     extension_type=ExtensionTypes.TOPLEVEL_PROPERTY_EXTENSION,
 )
 class SoftwareCpePropertiesExtension(ExtensionType):
-    base_schema = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/observables/software.json"
+    base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/observables/software.json"
     description = "This extension adds new properties to Software SCOs to capture full CPE information."

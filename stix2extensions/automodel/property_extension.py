@@ -9,12 +9,14 @@ from stix2.v21.vocab import (
 
 
 class ExtensionTypes(enum.StrEnum):
-    PROPERTY_EXTENSION = EXTENSION_TYPE_PROPERTY_EXTENSION
+    # PROPERTY_EXTENSION = EXTENSION_TYPE_PROPERTY_EXTENSION
     TOPLEVEL_PROPERTY_EXTENSION = EXTENSION_TYPE_TOPLEVEL_PROPERTY_EXTENSION
 
 
 def CustomPropertyExtension(
-    extension_id: str, extension_type: ExtensionTypes, properties
+    extension_id: str,
+    properties,
+    extension_type: ExtensionTypes,
 ):
     initial_type = extension_id
     assert extension_type in ExtensionTypes, "unsupported extension_type"

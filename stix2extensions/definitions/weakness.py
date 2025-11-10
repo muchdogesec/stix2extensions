@@ -54,18 +54,6 @@ VOCAB__MODES_OF_INTRODUCTION = [
     "Distribution",
 ]
 
-VOCAB__COMMON_CONSEQUENCES = [
-    "Confidentiality",
-    "Integrity",
-    "Availability",
-    "Authentication",
-    "Authorization",
-    "Other",
-    "Access Control",
-    "Non-Repudiation",
-    "Accountability",
-]
-
 
 class COMMON_CONSEQUENCES_OV(StrEnum):
     Confidentiality = "Confidentiality"
@@ -143,4 +131,6 @@ class COMMON_CONSEQUENCES_OV(StrEnum):
 )
 class Weakness(ExtensionType):
     description = "This extension creates a new SDO that can be used to represent weaknesses (for CWEs)."
+    extension_created = datetime(2020, 1, 1, tzinfo=UTC)
     extension_modified = datetime(2025, 11, 5, tzinfo=UTC)
+    extension_version = "1.1"

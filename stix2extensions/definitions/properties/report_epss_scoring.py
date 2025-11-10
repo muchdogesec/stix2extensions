@@ -56,19 +56,17 @@ class EpssStruct(ExtensionType, _STIXBase21):
 @automodel
 @CustomPropertyExtension(
     "report-epss-scoring",
-    properties=OrderedDict(
-        [
-            (
-                "x_epss",
-                extend_property(
-                    ListProperty(EmbeddedObjectProperty(type=EpssStruct)),
-                    description="List of EPSS score entries with date, score, and percentile.",
-                ),
+    [
+        (
+            "x_epss",
+            extend_property(
+                ListProperty(EmbeddedObjectProperty(type=EpssStruct)),
+                description="List of EPSS score entries with date, score, and percentile.",
             ),
-        ]
-    ),
+        ),
+    ],
     extension_type=ExtensionTypes.TOPLEVEL_PROPERTY_EXTENSION,
 )
 class ReportEPSSScoring(ExtensionType):
-    base_schema = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/report.json"
+    base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/report.json"
     description = "This extension adds new properties to Report SDOs to capture EPSS scores for CVEs."

@@ -30,7 +30,7 @@ class ExtensionType(object):
     extension_version: str = "1.0"
     extension_modified: datetime | str = None
     extension_created: datetime | str = CONST_CREATED
-    base_schema: str = None
+    base_schema_ref: str = None
 
 
 class ExtendedStixType(_STIXBase, ExtensionType):
@@ -56,10 +56,10 @@ def get_extension(cls: Type[ExtendedStixType], _extension_type):
 def create_model_extras(cls: Type[ExtendedStixType]):
     if stix2_v21_base._Observable in cls.mro():
         extension_type = "new-sco"
-        cls.base_schema = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
+        cls.base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
     elif stix2_v21_base._DomainObject in cls.mro():
         extension_type = "new-sdo"
-        cls.base_schema = "https://github.com/oasis-open/cti-stix2-json-schemas/raw/refs/heads/master/schemas/common/core.json"
+        cls.base_schema_ref = "https://github.com/oasis-open/cti-stix2-json-schemas/raw/refs/heads/master/schemas/common/core.json"
     elif stix2_v21_base._Extension in cls.mro():
         extension_type = cls.extension_type
         cls.extension_klass = cls

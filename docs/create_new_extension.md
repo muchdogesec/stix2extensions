@@ -239,15 +239,15 @@ There is not a lot of difference to what is described in 1.2, they key differenc
 
 ### 3.3 Define the class
 
-Again, similar to 1.3 but the this time also required you to pass `base_schema`, e.g.
+Again, similar to 1.3 but the this time also required you to pass `base_schema_ref`, e.g.
 
 ```python
 class IndicatorVulnerableCPEPropertyExtension(ExtensionType):
-    base_schema = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
+    base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
     description = "This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern."
 ```
 
-* `base_schema`: points to the schema of the object you are extending. Generally speaking you can find these:
+* `base_schema_ref`: points to the schema of the object you are extending. Generally speaking you can find these:
     * [for Core STIX SDOs](https://github.com/oasis-open/cti-stix2-json-schemas/tree/master/schemas/sdos)
     * [for Core STIX SCOs](https://github.com/oasis-open/cti-stix2-json-schemas/tree/master/schemas/observables)
 

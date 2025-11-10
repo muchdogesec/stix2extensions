@@ -21,29 +21,27 @@ from stix2extensions.automodel.property_extension import (
 @automodel
 @CustomPropertyExtension(
     "location-opencti",
-    properties=OrderedDict(
-        [
-            (
-                "x_opencti_aliases",
-                extend_property(
-                    StringProperty(),
-                    description="Two and three letter country code for the Country. Only used for Country location types",
-                    examples=["US", "USA"],
-                ),
+    [
+        (
+            "x_opencti_aliases",
+            extend_property(
+                StringProperty(),
+                description="Two and three letter country code for the Country. Only used for Country location types",
+                examples=["US", "USA"],
             ),
-            (
-                "x_opencti_location_type",
-                extend_property(
-                    EnumProperty(allowed=["Country", "Region"]),
-                    description="The type of location",
-                ),
+        ),
+        (
+            "x_opencti_location_type",
+            extend_property(
+                EnumProperty(allowed=["Country", "Region"]),
+                description="The type of location",
             ),
-        ]
-    ),
+        ),
+    ],
     extension_type=ExtensionTypes.TOPLEVEL_PROPERTY_EXTENSION,
 )
 class LocationOpenCTIPropertyExtension(ExtensionType):
-    base_schema = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/location.json"
+    base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/location.json"
     description = (
         "This extension adds OpenCTI-specific properties to STIX Location SDOs."
     )

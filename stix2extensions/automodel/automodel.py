@@ -12,12 +12,12 @@ from .definitions import (
     get_properties,
 )
 
-from .property_converters import (  # New imports
+from .property_converters import (
     extend_property,
     pydantic_field,
     ExtendedProperty,  # For TYPE_CHECKING
 )
-from .extension_handlers import (  # New imports
+from .extension_handlers import (
     ExtendedStixType,
     create_model_extras,
 )

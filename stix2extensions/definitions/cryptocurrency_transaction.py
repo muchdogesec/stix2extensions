@@ -26,7 +26,7 @@ class AddressAndAmount(_STIXBase21):
 
 @automodel
 @CustomObservable(
-    "cryptocurrency-transaction",
+    _type,
     [
         (
             "symbol",

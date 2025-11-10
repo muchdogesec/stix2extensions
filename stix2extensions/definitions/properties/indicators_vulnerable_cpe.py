@@ -71,19 +71,17 @@ class SoftwareCriteriaList(ExtensionType, _STIXBase21):
 @automodel
 @CustomPropertyExtension(
     "indicator-vulnerable-cpes",
-    properties=OrderedDict(
-        [
-            (
-                "x_cpes",
-                extend_property(
-                    EmbeddedObjectProperty(type=SoftwareCriteriaList),
-                    description="List of CPE entries including vulnerable and not vulnerable objects.",
-                ),
+    [
+        (
+            "x_cpes",
+            extend_property(
+                EmbeddedObjectProperty(type=SoftwareCriteriaList),
+                description="List of CPE entries including vulnerable and not vulnerable objects.",
             ),
-        ]
-    ),
+        ),
+    ],
     extension_type=ExtensionTypes.TOPLEVEL_PROPERTY_EXTENSION,
 )
 class IndicatorVulnerableCPEPropertyExtension(ExtensionType):
-    base_schema = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
+    base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
     description = "This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern."
