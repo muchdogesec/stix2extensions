@@ -138,16 +138,17 @@ class Weakness(ExtensionType):
     extension_modified = datetime(2025, 11, 5, tzinfo=UTC)
 ```
 
-* `description`: will be used in the Extension Definition objects `description` and for the `description` of the schema
-* `extension_created`: will be used as the `created` date of the Extension Definition. Do not change this once it has been set
-* `extension_modified`: will be used as the `modified` date of the Extension Definition. Update this on any modification to the object.
+* `description`: (string) will be used in the Extension Definition objects `description` and for the `description` of the schema
+* `extension_created`: (datetime) will be used as the `created` date of the Extension Definition. defaults to `2020-01-01` if not set. Do not change this once it has been set.
+* `extension_modified`: (datetime) will be used as the `modified` date of the Extension Definition. defaults to the same value as `extension_created` if not set. Update this on any modification to the object.
+* `extension_version`: (string) Will be used as the `version` property of the extension definition. defaults to `1.0`
 
 ### 1.4 Generate the extension assets
 
 You can not run the script to generate your 
 
 ```shell
-
+python generate_all.py
 ```
 
 ---
