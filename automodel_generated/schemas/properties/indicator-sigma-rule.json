@@ -89,7 +89,7 @@
                         "type": "object"
                     },
                     "properties": {
-                        "extension-definition--aaeb338f-400e-5b4a-9857-ad747669a77a": {
+                        "extension-definition--c16c84c5-9cfd-50a2-970d-09c0ff2700f7": {
                             "const": {
                                 "extension_type": "toplevel-property-extension"
                             },
@@ -97,7 +97,7 @@
                         }
                     },
                     "required": [
-                        "extension-definition--aaeb338f-400e-5b4a-9857-ad747669a77a"
+                        "extension-definition--c16c84c5-9cfd-50a2-970d-09c0ff2700f7"
                     ],
                     "type": "object"
                 }

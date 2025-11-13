@@ -29,7 +29,7 @@
                         "type": "object"
                     },
                     "properties": {
-                        "extension-definition--8467cc63-5d49-5447-aa38-64fb06191501": {
+                        "extension-definition--b9c1f945-80be-519d-9d7f-0cede26032e9": {
                             "const": {
                                 "extension_type": "toplevel-property-extension"
                             },
@@ -37,7 +37,7 @@
                         }
                     },
                     "required": [
-                        "extension-definition--8467cc63-5d49-5447-aa38-64fb06191501"
+                        "extension-definition--b9c1f945-80be-519d-9d7f-0cede26032e9"
                     ],
                     "type": "object"
                 }

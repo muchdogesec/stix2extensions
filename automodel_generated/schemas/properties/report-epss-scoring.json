@@ -19,7 +19,7 @@
                         "type": "object"
                     },
                     "properties": {
-                        "extension-definition--d24fa1f2-98c7-5ea7-a41c-ea8c282aef3b": {
+                        "extension-definition--f80cce10-5ac0-58d1-9e7e-b4ed0cc4dbb9": {
                             "const": {
                                 "extension_type": "toplevel-property-extension"
                             },
@@ -27,7 +27,7 @@
                         }
                     },
                     "required": [
-                        "extension-definition--d24fa1f2-98c7-5ea7-a41c-ea8c282aef3b"
+                        "extension-definition--f80cce10-5ac0-58d1-9e7e-b4ed0cc4dbb9"
                     ],
                     "type": "object"
                 }
