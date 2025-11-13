@@ -69,7 +69,7 @@ class COMMON_CONSEQUENCES_OV(StrEnum):
 
 @automodel
 @CustomObject(
-    "weakness",
+    _type,
     [
         (
             "name",

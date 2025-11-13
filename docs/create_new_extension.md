@@ -46,7 +46,68 @@ You should add a new file in `definitions/sdos` and name it in the structure `<O
 
 For example, `nation-state` would use the file name `definitions/sdos/nation_state.py`
 
-### 1.2 Define the object structure
+### 1.2 Define imports
+
+Thus all depends on the structure of you object.
+
+```python
+from datetime import UTC, datetime
+from enum import StrEnum
+
+from stix2 import CustomObject
+
+from stix2.properties import (
+    ListProperty,
+    StringProperty,
+    OpenVocabProperty,
+    EnumProperty,
+)
+
+from stix2extensions.automodel import ExtensionType, automodel, extend_property
+```
+
+Let me try and break this down...
+
+```python
+from datetime import UTC, datetime
+```
+
+Used to generate Extension Definition `created` and `modified` times in expected format (see 1.4).
+
+```python
+from enum import StrEnum
+```
+
+Optional. Only required where `EnumProperty` is used in the object. See `weakness.py` for a good example.
+
+**A small note on imports**: You can use other libraries to support the generation of data for the schema examples. `enum` and `datetime` are just two examples for this documentation.
+
+```python
+from stix2 import CustomObject
+```
+
+This line is always required for SDOs. Defines that it is an SDO type object.
+
+```python
+from stix2.properties import (
+    ListProperty,
+    StringProperty,
+    OpenVocabProperty,
+    EnumProperty,
+)
+```
+
+This depends on the datatypes you will use for the values inside your object.
+
+[The available options are defined in the stix2 library here](https://stix2.readthedocs.io/en/latest/api/stix2.properties.html?highlight=listproperty)
+
+```python
+from stix2extensions.automodel import ExtensionType, automodel, extend_property
+```
+
+Always required to import the scaffolding to generate the output.
+
+### 1.3 Define the object structure
 
 Here is a demo `nation_state.py` that I will use to show the basics of modelling an object in your definition file;
 
@@ -115,19 +176,13 @@ For example:
 ```
 
 * `name`: the property name.
-* `StringProperty(required=True)`: the data type and requirements.
+* `StringProperty(required=True)`: the data type and requirements. [You can get a full list of data types available to use here](https://stix2.readthedocs.io/en/latest/api/stix2.properties.html). Remember to import them properly (see 1.2).
 * `description`: a clear description of this property that is used in generated docs / schema.
 * `examples`: example value(s) for this property that are used in generated docs / schema.
 
 You must always pass these four values for each property you are defining.
 
-[You can get a full list of data types available to use here](https://stix2.readthedocs.io/en/latest/api/stix2.properties.html).
-
-To really understand what is possible when generating an object, see this demo object:
-
-TODO
-
-### 1.3 Define the class
+### 1.4 Define the class
 
 Inside your custom STIX object class, you sjpi;d define metadata about the extension itself — such as its purpose and last modification date.
 
@@ -136,6 +191,7 @@ class Weakness(ExtensionType):
     description = "This extension creates a new SDO that can be used to represent weaknesses (for CWEs)."
     extension_created = datetime(2020, 1, 1, tzinfo=UTC)
     extension_modified = datetime(2025, 11, 5, tzinfo=UTC)
+    extension_version = "1.1"
 ```
 
 * `description`: (string) will be used in the Extension Definition objects `description` and for the `description` of the schema
@@ -143,7 +199,7 @@ class Weakness(ExtensionType):
 * `extension_modified`: (datetime) will be used as the `modified` date of the Extension Definition. defaults to the same value as `extension_created` if not set. Update this on any modification to the object.
 * `extension_version`: (string) Will be used as the `version` property of the extension definition. defaults to `1.0`
 
-### 1.4 Generate the extension assets
+### 1.5 Generate the extension assets
 
 You can not run the script to generate your 
 
@@ -163,7 +219,7 @@ For example, `my-new-sco` would use the file name `definitions/scos/my_new_sco.p
 
 ### 2.2 Define the object structure
 
-First read 1.2.
+First read 1.3.
 
 Compared to generating SDOs, there are a few differences. I will highlight these by showing SDO option -> SCO change required
 
@@ -176,7 +232,7 @@ For all SCO object generation scripts the OASIS namespace `00abedb4-aa42-466c-9c
 
 ### 2.3 Define the class
 
-First read 1.3.
+First read 1.4.
 
 Compared to generating SDOs, there is one difference I will highlight these by showing SDO option -> SCO change required
 
@@ -184,7 +240,7 @@ Compared to generating SDOs, there is one difference I will highlight these by s
 
 ### 2.4 Generate the extension assets
 
-See 1.4.
+See 1.5.
 
 ---
 
@@ -231,7 +287,7 @@ Here is a basic example defining new properties for my identity object
 )
 ```
 
-There is not a lot of difference to what is described in 1.2, they key differences being...
+There is not a lot of difference to what is described in 1.3, they key differences being...
 
 * `@CustomPropertyExtension`: Registers a new the new properties
     * The first argument (`extension_id`) defines the name of the extension. This will be used to generate schema file name and the UUID of the Extension Definition object
@@ -240,7 +296,7 @@ There is not a lot of difference to what is described in 1.2, they key differenc
 
 ### 3.3 Define the class
 
-Again, similar to 1.3 but the this time also required you to pass `base_schema_ref`, e.g.
+Again, similar to 1.4 but the this time also required you to pass `base_schema_ref`, e.g.
 
 ```python
 class IndicatorVulnerableCPEPropertyExtension(ExtensionType):
@@ -256,4 +312,4 @@ class IndicatorVulnerableCPEPropertyExtension(ExtensionType):
 
 ### 3.4 Generate the extension assets
 
-See 1.4.
+See 1.5.

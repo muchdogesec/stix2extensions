@@ -10,7 +10,7 @@ _type = "data-source"
 
 @automodel
 @CustomObservable(
-    "data-source",
+    _type,
     [
         (
             "category",
