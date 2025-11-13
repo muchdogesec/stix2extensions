@@ -17,7 +17,7 @@
                 "id": {
                     "examples": [
                         "cryptocurrency-transaction--b218f99a-75e5-5095-a7d9-67644e5ed2c6",
-                        "cryptocurrency-transaction--e08bb3ec-590b-481c-9e53-7beeb3fc7b7c"
+                        "cryptocurrency-transaction--d2a67f05-e8b4-4401-aaad-695c5519a8ab"
                     ],
                     "pattern": "^(cryptocurrency-transaction)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
                     "title": "Id",

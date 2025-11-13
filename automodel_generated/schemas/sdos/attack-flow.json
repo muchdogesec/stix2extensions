@@ -17,7 +17,7 @@
                 "id": {
                     "examples": [
                         "attack-flow--6a06b607-d620-5b63-b192-bdb63c0e83a5",
-                        "attack-flow--09e8041c-c8c0-40fb-b302-a31c84a575e2"
+                        "attack-flow--2ea620a1-33b8-4934-a844-336a27e4de8f"
                     ],
                     "pattern": "^(attack-flow)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
                     "title": "Id",
