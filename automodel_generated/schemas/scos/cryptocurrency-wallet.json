@@ -17,7 +17,7 @@
                 "id": {
                     "examples": [
                         "cryptocurrency-wallet--fa5ffd58-b766-5bd1-b44f-3d8633dd095f",
-                        "cryptocurrency-wallet--45296b2e-3d54-4255-9d8d-e721ffcdea31"
+                        "cryptocurrency-wallet--764f447a-ec86-4ffc-aed5-97bd36a6d328"
                     ],
                     "pattern": "^(cryptocurrency-wallet)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
                     "title": "Id",

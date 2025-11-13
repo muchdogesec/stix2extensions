@@ -17,7 +17,7 @@
                 "id": {
                     "examples": [
                         "bank-account--c742fd04-0019-5aad-9692-65d9ca7aa259",
-                        "bank-account--12005fbd-d241-4e69-bc82-5523e1c0bc88"
+                        "bank-account--cdfbab28-8a95-45ca-af3b-741e4f0e4809"
                     ],
                     "pattern": "^(bank-account)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
                     "title": "Id",

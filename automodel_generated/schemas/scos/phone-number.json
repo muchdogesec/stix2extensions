@@ -17,7 +17,7 @@
                 "id": {
                     "examples": [
                         "phone-number--e9e16172-09cd-507a-8cc2-98c08c7c2820",
-                        "phone-number--6f8b09fc-f290-45b8-a59a-58c3794156bf"
+                        "phone-number--0e7a957b-f94c-43ca-aafb-1a1dd1be4b78"
                     ],
                     "pattern": "^(phone-number)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
                     "title": "Id",
