@@ -4,11 +4,8 @@ from itertools import chain
 import time
 from typing import Union
 import requests
-from ..cryptocurrency_transaction import CryptocurrencyTransaction
-from ..cryptocurrency_wallet import CryptocurrencyWallet
-from .._extensions import (
-    cryptocurrency_wallet_ExtensionDefinitionSMO,
-)
+from .. import CryptocurrencyTransaction
+from .. import CryptocurrencyWallet
 
 
 @dataclass
@@ -41,7 +38,6 @@ class Crypto2Stix:
         raise NotImplementedError("should be implemented in subclass")
 
     def create_transaction_object(self, tx_data: TxnData):
-        CryptocurrencyTransaction._id_contributing_properties
         transaction_object = CryptocurrencyTransaction(
             type="cryptocurrency-transaction",
             spec_version="2.1",
@@ -75,7 +71,7 @@ class Crypto2Stix:
             spec_version="2.1",
             value=addr,
             extensions={
-                cryptocurrency_wallet_ExtensionDefinitionSMO.id: {
+                CryptocurrencyWallet.extension_definition['id']: {
                     "extension_type": "new-sco"
                 }
             },

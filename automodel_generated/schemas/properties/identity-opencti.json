@@ -1,0 +1,45 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/identity.json"
+        },
+        {
+            "properties": {
+                "x_opencti_aliases": {
+                    "examples": [
+                        "Agriculture",
+                        "Agribusiness",
+                        "Food Production",
+                        "Nutritional Supplements"
+                    ],
+                    "title": "X Opencti Aliases",
+                    "type": "string"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--d51e8a52-ddab-5fc0-bee3-59d371c66cf6": {
+                            "const": {
+                                "extension_type": "toplevel-property-extension"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--d51e8a52-ddab-5fc0-bee3-59d371c66cf6"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension adds new properties to Identity SDOs to capture OpenCTI specific data.",
+    "required": [
+        "extensions"
+    ],
+    "title": "identity-opencti",
+    "type": "object"
+}

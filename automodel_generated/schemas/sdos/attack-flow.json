@@ -1,0 +1,85 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/raw/refs/heads/master/schemas/common/core.json"
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "attack-flow",
+                    "examples": [
+                        "attack-flow"
+                    ],
+                    "title": "Type",
+                    "type": "string"
+                },
+                "id": {
+                    "examples": [
+                        "attack-flow--6a06b607-d620-5b63-b192-bdb63c0e83a5"
+                    ],
+                    "pattern": "^(attack-flow)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Id",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique name of the attack flow, representing a sequence of related attack actions",
+                    "title": "Name",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Detailed description of the attack flow, including its purpose and impact",
+                    "title": "Description",
+                    "type": "string"
+                },
+                "scope": {
+                    "description": "Scope or environment in which this attack flow is applicable, e.g., enterprise network, cloud",
+                    "title": "Scope",
+                    "type": "string"
+                },
+                "start_refs": {
+                    "description": "References to the initial attack-action(s) that start this attack flow",
+                    "items": {
+                        "examples": [
+                            "attack-action--fcb6dfe9-32f9-5f5d-9329-9c7421653c5e"
+                        ],
+                        "pattern": "^(attack-action)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                        "type": "string"
+                    },
+                    "title": "Start Refs",
+                    "type": "array"
+                },
+                "revoked": {
+                    "examples": [
+                        false
+                    ],
+                    "title": "Revoked",
+                    "type": "boolean"
+                },
+                "labels": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Labels",
+                    "type": "array"
+                },
+                "confidence": {
+                    "title": "Confidence",
+                    "type": "integer"
+                },
+                "lang": {
+                    "title": "Lang",
+                    "type": "string"
+                }
+            }
+        }
+    ],
+    "required": [
+        "type",
+        "id",
+        "name",
+        "scope"
+    ],
+    "title": "attack-flow",
+    "type": "object"
+}

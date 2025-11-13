@@ -1,0 +1,92 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
+        },
+        {
+            "properties": {
+                "x_cpes": {
+                    "$ref": "#/$defs/SoftwareCriteriaList",
+                    "description": "List of CPE entries including vulnerable and not vulnerable objects.",
+                    "title": "X Cpes"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--ad995824-2901-5f6e-890b-561130a239d4": {
+                            "const": {
+                                "extension_type": "toplevel-property-extension"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--ad995824-2901-5f6e-890b-561130a239d4"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern.",
+    "required": [
+        "extensions"
+    ],
+    "title": "indicator-vulnerable-cpes",
+    "type": "object",
+    "$defs": {
+        "SoftwareCriteria": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "properties": {
+                "criteria": {
+                    "description": "The criteria for the CPE",
+                    "examples": [
+                        "cpe:2.3:a:dell:powerscale_onefs:9.1.0:*:*:*:*:*:*:*"
+                    ],
+                    "title": "Criteria",
+                    "type": "string"
+                },
+                "matchCriteriaId": {
+                    "description": "The matchCriteriaId for the CPE",
+                    "examples": [
+                        "68291D44-DBE1-4923-A848-04E64288DC23"
+                    ],
+                    "title": "Matchcriteriaid",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "criteria",
+                "matchCriteriaId"
+            ],
+            "title": "SoftwareCriteria",
+            "type": "object"
+        },
+        "SoftwareCriteriaList": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "properties": {
+                "vulnerable": {
+                    "description": "List of CPE Matches that are vulnerable",
+                    "items": {
+                        "$ref": "#/$defs/SoftwareCriteria"
+                    },
+                    "title": "Vulnerable",
+                    "type": "array"
+                },
+                "not_vulnerable": {
+                    "description": "List of CPE Matches that are NOT vulnerable",
+                    "items": {
+                        "$ref": "#/$defs/SoftwareCriteria"
+                    },
+                    "title": "Not Vulnerable",
+                    "type": "array"
+                }
+            },
+            "title": "SoftwareCriteriaList",
+            "type": "object"
+        }
+    }
+}

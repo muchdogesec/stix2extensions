@@ -1,0 +1,62 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "user-agent",
+                    "examples": [
+                        "user-agent"
+                    ],
+                    "title": "Type",
+                    "type": "string"
+                },
+                "id": {
+                    "examples": [
+                        "user-agent--5b933e42-aa70-5379-9e4f-c503c03473cb"
+                    ],
+                    "pattern": "^(user-agent)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Id",
+                    "type": "string"
+                },
+                "string": {
+                    "description": "Full user-agent string reported by the client",
+                    "examples": [
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+                    ],
+                    "title": "String",
+                    "type": "string"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--7ca5afee-0e4e-5813-b643-de51538658cc": {
+                            "const": {
+                                "extension_type": "new-sco"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--7ca5afee-0e4e-5813-b643-de51538658cc"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension creates a new SCO that can be used to represent user agents used in HTTP request. It is designed to be used when the Network Traffic SCO with HTTP request extension cannot be used due to lack of request information needed for the required properties.",
+    "required": [
+        "type",
+        "id",
+        "string",
+        "extensions"
+    ],
+    "title": "user-agent",
+    "type": "object"
+}

@@ -1,0 +1,164 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "payment-card",
+                    "examples": [
+                        "payment-card"
+                    ],
+                    "title": "Type",
+                    "type": "string"
+                },
+                "id": {
+                    "examples": [
+                        "payment-card--72e0ada9-4cec-5a57-803e-79f93da2e102"
+                    ],
+                    "pattern": "^(payment-card)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Id",
+                    "type": "string"
+                },
+                "format": {
+                    "description": "The type of card.",
+                    "enum": [
+                        "credit",
+                        "debit",
+                        "prepaid"
+                    ],
+                    "title": "Format",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Full card number.",
+                    "examples": [
+                        "4111111111111111",
+                        "4242424242424242"
+                    ],
+                    "title": "Value",
+                    "type": "string"
+                },
+                "scheme": {
+                    "description": "Card scheme or network",
+                    "examples": [
+                        "VISA",
+                        "MASTERCARD",
+                        "AMEX"
+                    ],
+                    "title": "Scheme",
+                    "type": "string"
+                },
+                "brand": {
+                    "description": "Card brand or product name",
+                    "examples": [
+                        "VISA",
+                        "MASTERCARD",
+                        "AMEX"
+                    ],
+                    "title": "Brand",
+                    "type": "string"
+                },
+                "currency": {
+                    "description": "3 letter ISO (ISO 4217) currency code for currency card is denominated in.",
+                    "examples": [
+                        "USD",
+                        "EUR",
+                        "GBP"
+                    ],
+                    "title": "Currency",
+                    "type": "string"
+                },
+                "issuer_ref": {
+                    "description": "STIX Identity reference to the issuing financial institution",
+                    "examples": [
+                        "identity--9bef1584-289b-41fe-81b4-a5d72b7746d6"
+                    ],
+                    "pattern": "^(identity)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Issuer Ref",
+                    "type": "string"
+                },
+                "holder_ref": {
+                    "description": "STIX identity eference to the cardholder identity",
+                    "examples": [
+                        "identity--9fcd0db9-8115-4e33-ae00-674806395cf1"
+                    ],
+                    "pattern": "^(identity)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Holder Ref",
+                    "type": "string"
+                },
+                "start_date": {
+                    "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json",
+                    "description": "The valid from date on the card in datetime format.",
+                    "examples": [
+                        "2023-01-01T00:00:00Z"
+                    ],
+                    "title": "Start Date"
+                },
+                "expiration_date": {
+                    "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json",
+                    "description": "The expiration on the card in datetime format.e",
+                    "examples": [
+                        "2026-12-31T23:59:59Z"
+                    ],
+                    "title": "Expiration Date"
+                },
+                "security_code": {
+                    "description": "Card security code (CVV/CVC) where applicable",
+                    "examples": [
+                        "123",
+                        "1234"
+                    ],
+                    "title": "Security Code",
+                    "type": "string"
+                },
+                "level": {
+                    "description": "Card level describes the issuers classification. For example, classic level often refers to a basic or introductory level card with no monthly fees.",
+                    "examples": [
+                        "CLASSIC"
+                    ],
+                    "title": "Level",
+                    "type": "string"
+                },
+                "is_commercial": {
+                    "description": "If the card is registered for commercial use (vs. personal use).",
+                    "title": "Is Commercial",
+                    "type": "boolean"
+                },
+                "is_prepaid": {
+                    "description": "If the card is prepaid",
+                    "title": "Is Prepaid",
+                    "type": "boolean"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--b160c6ee-26b6-591c-8885-c192db67cac9": {
+                            "const": {
+                                "extension_type": "new-sco"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--b160c6ee-26b6-591c-8885-c192db67cac9"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension creates a new SCO that can be used to represent different types of payment card.",
+    "required": [
+        "type",
+        "id",
+        "value",
+        "extensions"
+    ],
+    "title": "payment-card",
+    "type": "object"
+}

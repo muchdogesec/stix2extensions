@@ -1,0 +1,93 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "phone-number",
+                    "examples": [
+                        "phone-number"
+                    ],
+                    "title": "Type",
+                    "type": "string"
+                },
+                "id": {
+                    "examples": [
+                        "phone-number--e9e16172-09cd-507a-8cc2-98c08c7c2820"
+                    ],
+                    "pattern": "^(phone-number)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Id",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "An E.164 formatted phone number.",
+                    "examples": [
+                        "14155552671",
+                        "442071838750"
+                    ],
+                    "title": "Value",
+                    "type": "string"
+                },
+                "country": {
+                    "description": "Three letter ISO (ISO-3166-1 alpha-3) country code the number was issues. Should match intentional dialing prefix in number.",
+                    "examples": [
+                        "USA",
+                        "GBR",
+                        "DEU"
+                    ],
+                    "title": "Country",
+                    "type": "string"
+                },
+                "connection": {
+                    "description": "The type of connection the number resolves to.",
+                    "examples": [
+                        "mobile",
+                        "landline",
+                        "VoIP"
+                    ],
+                    "title": "Connection",
+                    "type": "string"
+                },
+                "provider": {
+                    "description": "Telecommunications provider or carrier of the phone number",
+                    "examples": [
+                        "Verizon",
+                        "AT&T",
+                        "Vodafone"
+                    ],
+                    "title": "Provider",
+                    "type": "string"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--14a97ee2-e666-5ada-a6bd-b7177f79e211": {
+                            "const": {
+                                "extension_type": "new-sco"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--14a97ee2-e666-5ada-a6bd-b7177f79e211"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension creates a new SCO that can be used to represent phone numbers.",
+    "required": [
+        "type",
+        "id",
+        "value",
+        "extensions"
+    ],
+    "title": "phone-number",
+    "type": "object"
+}

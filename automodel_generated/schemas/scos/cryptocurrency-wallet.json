@@ -1,0 +1,71 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "cryptocurrency-wallet",
+                    "examples": [
+                        "cryptocurrency-wallet"
+                    ],
+                    "title": "Type",
+                    "type": "string"
+                },
+                "id": {
+                    "examples": [
+                        "cryptocurrency-wallet--fa5ffd58-b766-5bd1-b44f-3d8633dd095f"
+                    ],
+                    "pattern": "^(cryptocurrency-wallet)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Id",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Cryptocurrency wallet address or identifier",
+                    "examples": [
+                        "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kygt080"
+                    ],
+                    "title": "Value",
+                    "type": "string"
+                },
+                "holder_ref": {
+                    "description": "Defines the STIX ID of an identity object of the owner. If it is a custodial wallet this could be an exhange, or otherwise a known person/organisation.",
+                    "examples": [
+                        "identity--1ee9d44a-c962-59b5-adbf-e47cb3f03b92"
+                    ],
+                    "pattern": "^(identity)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Holder Ref",
+                    "type": "string"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--be78509e-6958-51b1-8b26-d17ee0eba2d7": {
+                            "const": {
+                                "extension_type": "new-sco"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--be78509e-6958-51b1-8b26-d17ee0eba2d7"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension creates a new SCO that can be used to represent cryptocurrency wallets.",
+    "required": [
+        "type",
+        "id",
+        "value",
+        "extensions"
+    ],
+    "title": "cryptocurrency-wallet",
+    "type": "object"
+}

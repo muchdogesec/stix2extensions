@@ -1,0 +1,203 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/raw/refs/heads/master/schemas/common/core.json"
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "weakness",
+                    "examples": [
+                        "weakness"
+                    ],
+                    "title": "Type",
+                    "type": "string"
+                },
+                "id": {
+                    "examples": [
+                        "weakness--4c582776-1dfc-596b-86c0-54e9d1a8da3c"
+                    ],
+                    "pattern": "^(weakness)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Id",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the weakness as defined in CWE",
+                    "examples": [
+                        "Buffer Overflow",
+                        "SQL Injection"
+                    ],
+                    "title": "Name",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Detailed description of the weakness",
+                    "examples": [
+                        "A buffer overflow occurs when data exceeds the allocated buffer memory, potentially allowing code execution."
+                    ],
+                    "title": "Description",
+                    "type": "string"
+                },
+                "modes_of_introduction": {
+                    "description": "Ways in which the weakness can be introduced into software or systems",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "Architecture and Design",
+                                    "Implementation",
+                                    "System Configuration",
+                                    "Requirements",
+                                    "Operation",
+                                    "Patching and Maintenance",
+                                    "Manufacturing",
+                                    "Installation",
+                                    "Integration",
+                                    "Bundling",
+                                    "Build and Compilation",
+                                    "Policy",
+                                    "Documentation",
+                                    "Testing",
+                                    "Distribution"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "title": "Modes Of Introduction",
+                    "type": "array"
+                },
+                "likelihood_of_exploit": {
+                    "description": "Likelihood that the weakness can be successfully exploited",
+                    "enum": [
+                        "High",
+                        "Medium",
+                        "Low"
+                    ],
+                    "title": "Likelihood Of Exploit",
+                    "type": "string"
+                },
+                "common_consequences": {
+                    "description": "Typical impacts or consequences resulting from the weakness",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/COMMON_CONSEQUENCES_OV"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "title": "Common Consequences",
+                    "type": "array"
+                },
+                "detection_methods": {
+                    "description": "Methods or techniques used to detect this weakness",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "enum": [
+                                    "Manual Analysis",
+                                    "Automated Analysis",
+                                    "Automated Static Analysis - Source Code",
+                                    "Simulation / Emulation",
+                                    "Formal Verification",
+                                    "Fuzzing",
+                                    "Automated Static Analysis",
+                                    "Dynamic Analysis with Manual Results Interpretation",
+                                    "Dynamic Analysis with Automated Results Interpretation",
+                                    "Architecture or Design Review",
+                                    "Manual Static Analysis - Source Code",
+                                    "Automated Dynamic Analysis",
+                                    "Manual Static Analysis - Binary or Bytecode",
+                                    "Automated Static Analysis - Binary or Bytecode",
+                                    "Black Box",
+                                    "White Box",
+                                    "Manual Static Analysis",
+                                    "Other",
+                                    "Manual Dynamic Analysis"
+                                ],
+                                "type": "string"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    },
+                    "title": "Detection Methods",
+                    "type": "array"
+                },
+                "revoked": {
+                    "examples": [
+                        false
+                    ],
+                    "title": "Revoked",
+                    "type": "boolean"
+                },
+                "labels": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Labels",
+                    "type": "array"
+                },
+                "confidence": {
+                    "title": "Confidence",
+                    "type": "integer"
+                },
+                "lang": {
+                    "title": "Lang",
+                    "type": "string"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--31725edc-7d81-5db7-908a-9134f322284a": {
+                            "const": {
+                                "extension_type": "new-sdo"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--31725edc-7d81-5db7-908a-9134f322284a"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension creates a new SDO that can be used to represent weaknesses (for CWEs).",
+    "required": [
+        "type",
+        "id",
+        "name",
+        "extensions"
+    ],
+    "title": "weakness",
+    "type": "object",
+    "$defs": {
+        "COMMON_CONSEQUENCES_OV": {
+            "enum": [
+                "Confidentiality",
+                "Integrity",
+                "Availability",
+                "Authentication",
+                "Authorization",
+                "Other",
+                "Access Control",
+                "Non-Repudiation",
+                "Accountability"
+            ],
+            "title": "COMMON_CONSEQUENCES_OV",
+            "type": "string"
+        }
+    }
+}

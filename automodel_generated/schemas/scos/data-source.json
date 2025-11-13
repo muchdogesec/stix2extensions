@@ -1,0 +1,94 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "data-source",
+                    "examples": [
+                        "data-source"
+                    ],
+                    "title": "Type",
+                    "type": "string"
+                },
+                "id": {
+                    "examples": [
+                        "data-source--9892f5c7-036d-54c0-b59b-2c8d1e004aaf"
+                    ],
+                    "pattern": "^(data-source)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Id",
+                    "type": "string"
+                },
+                "category": {
+                    "description": "The category value is used to select all log files written by a certain group of products, like firewalls or web server logs.",
+                    "examples": [
+                        "ps_script",
+                        "process_creation",
+                        "network_connection",
+                        "file_event"
+                    ],
+                    "title": "Category",
+                    "type": "string"
+                },
+                "product": {
+                    "description": "The product value is used to select all log outputs of a certain product. For example, all Windows Eventlog types including Security, System, Application and the new log types like AppLocker and Windows Defender.",
+                    "examples": [
+                        "windows",
+                        "linux",
+                        "nginx",
+                        "sysmon"
+                    ],
+                    "title": "Product",
+                    "type": "string"
+                },
+                "service": {
+                    "description": "Use the service value to select only a subset of a product's logs, like the sshd on Linux or the Security Eventlog on Windows systems.",
+                    "examples": [
+                        "security",
+                        "systemd",
+                        "sshd",
+                        "auditd"
+                    ],
+                    "title": "Service",
+                    "type": "string"
+                },
+                "definition": {
+                    "description": "You may also see a definition field within logsource description. This can also provide more information about how to onboard the log data source correctly, and doesn't get included when completing logsource matching.",
+                    "examples": [
+                        "Windows Security Event Logs for authentication and access events"
+                    ],
+                    "title": "Definition",
+                    "type": "string"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--afeeb724-bce2-575e-af3d-d705842ea84b": {
+                            "const": {
+                                "extension_type": "new-sco"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--afeeb724-bce2-575e-af3d-d705842ea84b"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension creates a new SCO that can be used to represent data sources. Very similar to x-mitre-data-source objects used in ATT&CK.",
+    "required": [
+        "type",
+        "id",
+        "extensions"
+    ],
+    "title": "data-source",
+    "type": "object"
+}

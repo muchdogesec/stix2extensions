@@ -1,0 +1,120 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "bank-account",
+                    "examples": [
+                        "bank-account"
+                    ],
+                    "title": "Type",
+                    "type": "string"
+                },
+                "id": {
+                    "examples": [
+                        "bank-account--c742fd04-0019-5aad-9692-65d9ca7aa259"
+                    ],
+                    "pattern": "^(bank-account)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Id",
+                    "type": "string"
+                },
+                "country": {
+                    "description": "3 letter ISO (ISO 3166-1 alpha-3). Country where the bank account is registered",
+                    "examples": [
+                        "USA",
+                        "DEU",
+                        "KSA",
+                        "NGA"
+                    ],
+                    "title": "Country",
+                    "type": "string"
+                },
+                "currency": {
+                    "description": "3 letter ISO (ISO 4217) currency code for currency of account.",
+                    "examples": [
+                        "USD",
+                        "EUR",
+                        "SAR",
+                        "NGN"
+                    ],
+                    "title": "Currency",
+                    "type": "string"
+                },
+                "issuer_ref": {
+                    "description": "STIX reference to the entity that issued the account (typically a bank)",
+                    "examples": [
+                        "identity--9bef1584-289b-41fe-81b4-a5d72b7746d6"
+                    ],
+                    "pattern": "^(identity)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Issuer Ref",
+                    "type": "string"
+                },
+                "holder_ref": {
+                    "description": "STIX reference to the account holder identity",
+                    "examples": [
+                        "dentity--9fcd0db9-8115-4e33-ae00-674806395cf1"
+                    ],
+                    "pattern": "^(identity)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Holder Ref",
+                    "type": "string"
+                },
+                "account_number": {
+                    "description": "The account number assigned by the bank to the customer",
+                    "examples": [
+                        "1234567890",
+                        "987654321"
+                    ],
+                    "title": "Account Number",
+                    "type": "string"
+                },
+                "iban": {
+                    "description": "Full IBAN number of the account.",
+                    "examples": [
+                        "GB29 NWBK 6016 1331 9268 19",
+                        "DE89 3704 0044 0532 0130 00"
+                    ],
+                    "title": "Iban",
+                    "type": "string"
+                },
+                "bic": {
+                    "description": "Full BIC (aka SWIFT) code of the account.",
+                    "examples": [
+                        "DEUTDEFF",
+                        "NWBKGB2L"
+                    ],
+                    "title": "Bic",
+                    "type": "string"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--f19f3291-6a84-5674-b311-d75a925d5bd9": {
+                            "const": {
+                                "extension_type": "new-sco"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--f19f3291-6a84-5674-b311-d75a925d5bd9"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension creates a new SCO that can be used to represent bank account details.",
+    "required": [
+        "type",
+        "id",
+        "extensions"
+    ],
+    "title": "bank-account",
+    "type": "object"
+}

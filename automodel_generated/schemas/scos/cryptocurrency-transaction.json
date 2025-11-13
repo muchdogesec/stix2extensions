@@ -1,0 +1,128 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "cryptocurrency-transaction",
+                    "examples": [
+                        "cryptocurrency-transaction"
+                    ],
+                    "title": "Type",
+                    "type": "string"
+                },
+                "id": {
+                    "examples": [
+                        "cryptocurrency-transaction--b218f99a-75e5-5095-a7d9-67644e5ed2c6"
+                    ],
+                    "pattern": "^(cryptocurrency-transaction)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Id",
+                    "type": "string"
+                },
+                "symbol": {
+                    "description": "3 digit code for the cryptocurrency.",
+                    "examples": [
+                        "BTC",
+                        "ETH"
+                    ],
+                    "title": "Symbol",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The transaction hash.",
+                    "examples": [
+                        "0.0125"
+                    ],
+                    "title": "Value",
+                    "type": "string"
+                },
+                "fee": {
+                    "description": "The transaction fee.",
+                    "examples": [
+                        7.28e-06,
+                        0.1
+                    ],
+                    "minimum": 0,
+                    "title": "Fee",
+                    "type": "number"
+                },
+                "execution_time": {
+                    "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json",
+                    "description": "Timestamp when the transaction was executed",
+                    "examples": [
+                        "2024-06-15T12:45:30Z"
+                    ],
+                    "title": "Execution Time"
+                },
+                "input": {
+                    "description": "Input addresses and amounts for the transaction",
+                    "items": {
+                        "$ref": "#/$defs/AddressAndAmount"
+                    },
+                    "title": "Input",
+                    "type": "array"
+                },
+                "output": {
+                    "description": "Output addresses and amounts for the transaction",
+                    "items": {
+                        "$ref": "#/$defs/AddressAndAmount"
+                    },
+                    "title": "Output",
+                    "type": "array"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--151d042d-4dcf-5e44-843f-1024440318e5": {
+                            "const": {
+                                "extension_type": "new-sco"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--151d042d-4dcf-5e44-843f-1024440318e5"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension creates a new SCO that can be used to represent cryptocurrency transactions.",
+    "required": [
+        "type",
+        "id",
+        "symbol",
+        "value",
+        "extensions"
+    ],
+    "title": "cryptocurrency-transaction",
+    "type": "object",
+    "$defs": {
+        "AddressAndAmount": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "properties": {
+                "amount": {
+                    "minimum": 0,
+                    "title": "Amount",
+                    "type": "number"
+                },
+                "address_ref": {
+                    "examples": [
+                        "cryptocurrency-wallet--be78509e-6958-51b1-8b26-d17ee0eba2d7"
+                    ],
+                    "pattern": "^(cryptocurrency-wallet)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Address Ref",
+                    "type": "string"
+                }
+            },
+            "title": "AddressAndAmount",
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,80 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/report.json"
+        },
+        {
+            "properties": {
+                "x_epss": {
+                    "description": "List of EPSS score entries with date, score, and percentile.",
+                    "items": {
+                        "$ref": "#/$defs/EpssStruct"
+                    },
+                    "title": "X Epss",
+                    "type": "array"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--f80cce10-5ac0-58d1-9e7e-b4ed0cc4dbb9": {
+                            "const": {
+                                "extension_type": "toplevel-property-extension"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--f80cce10-5ac0-58d1-9e7e-b4ed0cc4dbb9"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension adds new properties to Report SDOs to capture EPSS scores for CVEs.",
+    "required": [
+        "extensions"
+    ],
+    "title": "report-epss-scoring",
+    "type": "object",
+    "$defs": {
+        "EpssStruct": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "properties": {
+                "date": {
+                    "description": "The date of the EPSS score in the format YYYY-MM-DD",
+                    "examples": [
+                        "2020-01-01"
+                    ],
+                    "title": "Date",
+                    "type": "string"
+                },
+                "score": {
+                    "description": "EPSS score (0.0 - 1.0) estimating probability of exploitation.",
+                    "examples": [
+                        0.11
+                    ],
+                    "maximum": 1,
+                    "minimum": 0,
+                    "title": "Score",
+                    "type": "number"
+                },
+                "percentile": {
+                    "description": "EPSS percentile (0.0 - 1.0) relative to other vulnerabilities.",
+                    "examples": [
+                        0.89
+                    ],
+                    "maximum": 1,
+                    "minimum": 0,
+                    "title": "Percentile",
+                    "type": "number"
+                }
+            },
+            "title": "EpssStruct",
+            "type": "object"
+        }
+    }
+}

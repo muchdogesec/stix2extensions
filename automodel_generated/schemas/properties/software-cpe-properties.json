@@ -1,0 +1,174 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/observables/software.json"
+        },
+        {
+            "properties": {
+                "x_cpe_struct": {
+                    "description": "List of CPE structures.",
+                    "items": {
+                        "$ref": "#/$defs/CPEStruct"
+                    },
+                    "title": "X Cpe Struct",
+                    "type": "array"
+                },
+                "x_revoked": {
+                    "description": "The revoked property indicates whether the object has been revoked.",
+                    "examples": [
+                        true
+                    ],
+                    "title": "X Revoked",
+                    "type": "boolean"
+                },
+                "x_created": {
+                    "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json",
+                    "description": "The created property represents the time at which the first version of this object was created. Must be precise to the nearest millisecond.",
+                    "examples": [
+                        "2020-01-01T00:00:00.000Z"
+                    ],
+                    "title": "X Created"
+                },
+                "x_modified": {
+                    "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/timestamp.json",
+                    "description": "The modified property represents the time that this particular version of the object was modified. Must be precise to the nearest millisecond.",
+                    "examples": [
+                        "2020-01-01T00:00:00.000Z"
+                    ],
+                    "title": "X Modified"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--82cad0bb-0906-5885-95cc-cafe5ee0a500": {
+                            "const": {
+                                "extension_type": "toplevel-property-extension"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--82cad0bb-0906-5885-95cc-cafe5ee0a500"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension adds new properties to Software SCOs to capture full CPE information.",
+    "required": [
+        "extensions"
+    ],
+    "title": "software-cpe-properties",
+    "type": "object",
+    "$defs": {
+        "CPEStruct": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "properties": {
+                "cpe_version": {
+                    "description": "The version of the CPE definition. The latest CPE definition version is 2.3.",
+                    "examples": [
+                        "2.3"
+                    ],
+                    "title": "Cpe Version",
+                    "type": "string"
+                },
+                "part": {
+                    "description": "May have 1 of 3 values: `a` for Applications, `h` for Hardware, `o` for Operating Systems",
+                    "enum": [
+                        "a",
+                        "h",
+                        "o"
+                    ],
+                    "title": "Part",
+                    "type": "string"
+                },
+                "vendor": {
+                    "description": "Values for this attribute SHOULD describe or identify the person or organization that manufactured or created the product.",
+                    "examples": [
+                        "google"
+                    ],
+                    "title": "Vendor",
+                    "type": "string"
+                },
+                "product": {
+                    "description": "The name of the system/package/component. `product` and `vendor` are sometimes identical. It can not contain spaces, slashes, or most special characters.",
+                    "examples": [
+                        "chrome"
+                    ],
+                    "title": "Product",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "Vendor-specific alphanumeric string characterizing the particular release version of the product.",
+                    "examples": [
+                        "9.0.597.63"
+                    ],
+                    "title": "Version",
+                    "type": "string"
+                },
+                "update": {
+                    "description": "Vendor-specific alphanumeric strings characterizing the particular update, service pack, or point release of the product.",
+                    "examples": [
+                        "*"
+                    ],
+                    "title": "Update",
+                    "type": "string"
+                },
+                "edition": {
+                    "description": "A further granularity describing the build of the system/package/component, beyond `version`.",
+                    "examples": [
+                        "*"
+                    ],
+                    "title": "Edition",
+                    "type": "string"
+                },
+                "language": {
+                    "description": "A valid language tag as defined by IETF RFC 4646 entitled Tags for Identifying Languages.",
+                    "examples": [
+                        "*"
+                    ],
+                    "title": "Language",
+                    "type": "string"
+                },
+                "sw_edition": {
+                    "description": "How the product is tailored to a particular market or class of end users.",
+                    "examples": [
+                        "*"
+                    ],
+                    "title": "Sw Edition",
+                    "type": "string"
+                },
+                "target_sw": {
+                    "description": "Software computing environment within which the product operates.",
+                    "examples": [
+                        "*"
+                    ],
+                    "title": "Target Sw",
+                    "type": "string"
+                },
+                "target_hw": {
+                    "description": "Instruction set architecture (e.g., x86) on which the product operates.",
+                    "examples": [
+                        "*"
+                    ],
+                    "title": "Target Hw",
+                    "type": "string"
+                },
+                "other": {
+                    "description": "Any other general descriptive or identifying information which is vendor- or product-specific and which does not logically fit anywhere else.",
+                    "examples": [
+                        "*"
+                    ],
+                    "title": "Other",
+                    "type": "string"
+                }
+            },
+            "title": "CPEStruct",
+            "type": "object"
+        }
+    }
+}

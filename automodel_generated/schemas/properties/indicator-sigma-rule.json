@@ -1,0 +1,113 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
+        },
+        {
+            "properties": {
+                "x_sigma_type": {
+                    "description": "The type of Sigma Rule",
+                    "enum": [
+                        "base",
+                        "correlation"
+                    ],
+                    "title": "X Sigma Type",
+                    "type": "string"
+                },
+                "x_sigma_level": {
+                    "description": "The level field contains one of five string values. It describes the criticality of a triggered rule.",
+                    "enum": [
+                        "informational",
+                        "low",
+                        "medium",
+                        "high",
+                        "critical"
+                    ],
+                    "title": "X Sigma Level",
+                    "type": "string"
+                },
+                "x_sigma_status": {
+                    "description": "Declares the status of the rule.",
+                    "enum": [
+                        "stable",
+                        "test",
+                        "experimental",
+                        "deprecated",
+                        "unsupported"
+                    ],
+                    "title": "X Sigma Status",
+                    "type": "string"
+                },
+                "x_sigma_license": {
+                    "description": "License of the rule according the SPDX ID specification.",
+                    "examples": [
+                        "mit",
+                        "0BSD"
+                    ],
+                    "title": "X Sigma License",
+                    "type": "string"
+                },
+                "x_sigma_falsepositives": {
+                    "description": "A list of known false positives that may occur.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "X Sigma Falsepositives",
+                    "type": "array"
+                },
+                "x_sigma_fields": {
+                    "description": "A list of log fields that could be interesting in further analysis of the event and should be displayed to the analyst.",
+                    "examples": [
+                        [
+                            "Image",
+                            "CommandLine",
+                            "ParentImage"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "X Sigma Fields",
+                    "type": "array"
+                },
+                "x_sigma_scope": {
+                    "description": "A list of the intended scopes of the rule. This would allow you to define if a rule is meant to trigger on specific set of types of machines that might have a specific software installed.",
+                    "examples": [
+                        [
+                            "server"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "X Sigma Scope",
+                    "type": "array"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--c16c84c5-9cfd-50a2-970d-09c0ff2700f7": {
+                            "const": {
+                                "extension_type": "toplevel-property-extension"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--c16c84c5-9cfd-50a2-970d-09c0ff2700f7"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension adds new properties to Indicator SDOs to capture Sigma Rule specific data.",
+    "required": [
+        "extensions"
+    ],
+    "title": "indicator-sigma-rule",
+    "type": "object"
+}

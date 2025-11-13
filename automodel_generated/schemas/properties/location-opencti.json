@@ -1,0 +1,53 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/location.json"
+        },
+        {
+            "properties": {
+                "x_opencti_aliases": {
+                    "description": "Two and three letter country code for the Country. Only used for Country location types",
+                    "examples": [
+                        "US",
+                        "USA"
+                    ],
+                    "title": "X Opencti Aliases",
+                    "type": "string"
+                },
+                "x_opencti_location_type": {
+                    "description": "The type of location",
+                    "enum": [
+                        "Country",
+                        "Region"
+                    ],
+                    "title": "X Opencti Location Type",
+                    "type": "string"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--b9c1f945-80be-519d-9d7f-0cede26032e9": {
+                            "const": {
+                                "extension_type": "toplevel-property-extension"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--b9c1f945-80be-519d-9d7f-0cede26032e9"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension adds OpenCTI-specific properties to STIX Location SDOs.",
+    "required": [
+        "extensions"
+    ],
+    "title": "location-opencti",
+    "type": "object"
+}
