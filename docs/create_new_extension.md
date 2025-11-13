@@ -189,17 +189,17 @@ This is a very simple example of defining the object structure. See the other ex
 Inside your custom STIX object class, you sjpi;d define metadata about the extension itself — such as its purpose and last modification date.
 
 ```python
-class Weakness(ExtensionType):
-    description = "This extension creates a new SDO that can be used to represent weaknesses (for CWEs)."
+class NationState(ExtensionType):
+    description = "This extension creates a new SDO to represent Nation States."
     extension_created = datetime(2020, 1, 1, tzinfo=UTC)
     extension_modified = datetime(2025, 11, 5, tzinfo=UTC)
     extension_version = "1.1"
 ```
 
-* `description`: (string) will be used in the Extension Definition objects `description` and for the `description` of the schema
-* `extension_created`: (datetime) will be used as the `created` date of the Extension Definition. defaults to `2020-01-01` if not set. Do not change this once it has been set.
-* `extension_modified`: (datetime) will be used as the `modified` date of the Extension Definition. defaults to the same value as `extension_created` if not set. Update this on any modification to the object.
-* `extension_version`: (string) Will be used as the `version` property of the extension definition. defaults to `1.0`
+* `description` [REQUIRED]: (string) will be used in the Extension Definition objects `description` and for the `description` of the schema
+* `extension_created` [OPTIONAL, defaults to `2020-01-01` if not set]: (datetime) will be used as the `created` date of the Extension Definition. Do not change this (or add it later) once your first version is published.
+* `extension_modified` [defaults to `extension_created` if not set, ALWAYS set to current date when modifying published Extension]: (datetime) will be used as the `modified` date of the Extension Definition.
+* `extension_version` [OPTIONAL, defaults to `1.0` if not set]: (string) Will be used as the `version` property of the extension definition.
 
 ### 1.5 Generate the extension assets
 
