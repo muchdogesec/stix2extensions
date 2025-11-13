@@ -21,7 +21,7 @@
                         "type": "object"
                     },
                     "properties": {
-                        "extension-definition--03a1cc51-368b-5785-b866-45cc2c39809a": {
+                        "extension-definition--d9d0d7a0-483c-5db0-8eb4-32f305384b4c": {
                             "const": {
                                 "extension_type": "toplevel-property-extension"
                             },
@@ -29,7 +29,7 @@
                         }
                     },
                     "required": [
-                        "extension-definition--03a1cc51-368b-5785-b866-45cc2c39809a"
+                        "extension-definition--d9d0d7a0-483c-5db0-8eb4-32f305384b4c"
                     ],
                     "type": "object"
                 }
@@ -40,6 +40,6 @@
     "required": [
         "extensions"
     ],
-    "title": "indicator-opencti",
+    "title": "identity-opencti",
     "type": "object"
 }
