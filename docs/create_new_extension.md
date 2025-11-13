@@ -182,6 +182,8 @@ For example:
 
 You must always pass these four values for each property you are defining.
 
+This is a very simple example of defining the object structure. See the other existing objects for examples of what can be done.
+
 ### 1.4 Define the class
 
 Inside your custom STIX object class, you sjpi;d define metadata about the extension itself — such as its purpose and last modification date.
@@ -217,28 +219,34 @@ You should add a new file in `definitions/scos` and name it in the structure `<O
 
 For example, `my-new-sco` would use the file name `definitions/scos/my_new_sco.py`
 
-### 2.2 Define the object structure
+### 2.2 Define imports
 
-First read 1.3.
+First read 1.2.
 
-Compared to generating SDOs, there are a few differences. I will highlight these by showing SDO option -> SCO change required
+The only difference being you should always use `from stix2 import CustomObservable` NOT `from stix2 import CustomObject` to declare that this is an SCO type object.
 
-* `@CustomObject` -> `@CustomObservable`: SCOs are defined with `@CustomObservable`
-* add `id_contrib_props=["iban", "account_number"],`: SDO IDs use random UUIDv4s. SCOs use UUIDv5s. You NEED to specify all the properties that should be used to generate the UUID.
+### 2.3 Define the object structure
+
+First read 2.3.
+
+There are two important differences: 
+
+1. always use `@CustomObservable(` NOT `@CustomObject(` because this will be an SCO.
+2. add `id_contrib_props=["PROPERTY"],`: SDO IDs use random UUIDv4s. SCOs use UUIDv5s. You must specify one or more properties that will be used to generate the UUID. These should be atomic, stable values—for example, an IP address object should use the IP address string itself. This guarantees that the same real-world object (e.g., the same IP) always results in the same STIX ID.
 
 #### A note about UUIDv5s
 
 For all SCO object generation scripts the OASIS namespace `00abedb4-aa42-466c-9c01-fed23315a9b7` will be used (as because generation is done by the stix2 Python library where this namespace is used).
 
-### 2.3 Define the class
+### 2.4 Define the class
 
 First read 1.4.
 
 Compared to generating SDOs, there is one difference I will highlight these by showing SDO option -> SCO change required
 
-* add `at_least_one_of`: this is different to required because ??? TODO
+* add `at_least_one_of` defining a list of properties where at least one must exist. Generally this should match the list of `id_contrib_props` defined at 2.3.
 
-### 2.4 Generate the extension assets
+### 2.5 Generate the extension assets
 
 See 1.5.
 
