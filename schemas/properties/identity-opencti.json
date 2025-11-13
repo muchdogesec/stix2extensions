@@ -1,0 +1,41 @@
+{
+	"$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/schemas/properties/identity-sigma-rule.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "identity-sigma-rule",
+	"description": "This extension adds new properties to Identity SDOs to capture OpenCTI specific data.",
+	"type": "object",
+	"allOf": [
+		{
+			"$ref": "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/identity.json"
+		},
+		{
+			"properties": {
+				"extensions": {
+					"type": "object",
+					"properties": {
+						"extension-definition--d51e8a52-ddab-5fc0-bee3-59d371c66cf6": {
+							"type": "object",
+							"properties": {
+								"extension_type": {
+									"enum": [
+										"toplevel-property-extension"
+									]
+								}
+							},
+							"required": ["extension_type"]
+						}
+					},
+					"required": ["extension-definition--d51e8a52-ddab-5fc0-bee3-59d371c66cf6"]
+				},
+				"x_opencti_aliases": {
+					"type": "array",
+					"description": "A list of aliases used by OpenCTI",
+					"items": {
+						"type": "string"
+						},
+					"examples": [["Agriculture", "Agribusiness", "Food Production", "Nutritional Supplements"]]
+				}
+			}
+		}
+	]
+}
