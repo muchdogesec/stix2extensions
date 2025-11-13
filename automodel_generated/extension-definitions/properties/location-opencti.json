@@ -6,7 +6,7 @@
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "LocationOpenCTIPropertyExtension",
-    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/automodel_generated/schemas/properties/extension-definition--b9c1f945-80be-519d-9d7f-0cede26032e9.json",
+    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/automodel_generated/schemas/properties/location-opencti.json",
     "version": "1.0",
     "extension_types": [
         "toplevel-property-extension"

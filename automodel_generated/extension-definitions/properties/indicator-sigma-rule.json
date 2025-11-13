@@ -6,7 +6,7 @@
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "IndicatorSigmaRulePropertyExtension",
-    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/automodel_generated/schemas/properties/extension-definition--c16c84c5-9cfd-50a2-970d-09c0ff2700f7.json",
+    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/automodel_generated/schemas/properties/indicator-sigma-rule.json",
     "version": "1.0",
     "extension_types": [
         "toplevel-property-extension"

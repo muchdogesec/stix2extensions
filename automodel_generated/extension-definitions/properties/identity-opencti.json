@@ -6,7 +6,7 @@
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "IdentityOpenCTIPropertyExtension",
-    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/automodel_generated/schemas/properties/extension-definition--d51e8a52-ddab-5fc0-bee3-59d371c66cf6.json",
+    "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/automodel_generated/schemas/properties/identity-opencti.json",
     "version": "1.0",
     "extension_types": [
         "toplevel-property-extension"
