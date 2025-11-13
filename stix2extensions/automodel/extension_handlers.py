@@ -93,8 +93,12 @@ def create_extension_definition(
         else None
     )
     title = get_title(cls)
+    if cls._type.startswith('extension-definition--'):
+        stix_id = cls._type
+    else:
+        stix_id = "extension-definition--" + str(uuid.uuid5(S2E_NAMESPACE, cls._type))
     return stix2.ExtensionDefinition(
-        id="extension-definition--" + str(uuid.uuid5(S2E_NAMESPACE, cls._type)),
+        id=stix_id,
         created_by_ref=DOGESEC_IDENTITY_REF,
         created=cls.extension_created,
         modified=cls.extension_modified,
