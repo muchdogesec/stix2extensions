@@ -1,0 +1,34 @@
+name: Auto-Generate Objects and Schemas
+
+on:
+  pull_request:
+
+jobs:
+  autogen:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: regenerate all schema and extension-definition files
+        run: |
+          pip install .
+          rm -r automodel_generated/
+          python generate_all.py
+
+      - name: Commit & push generated changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: auto-generate data"
+            git push
+          else
+            echo "✅ No generated changes to commit."
+          fi
