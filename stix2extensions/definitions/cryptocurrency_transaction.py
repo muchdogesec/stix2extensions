@@ -10,6 +10,7 @@ from stix2.properties import (
 )
 
 from stix2extensions.automodel import ExtensionType, extend_property, automodel
+
 from stix2.v21.base import _STIXBase21
 
 

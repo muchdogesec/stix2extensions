@@ -9,9 +9,6 @@ from stix2.properties import (
     TimestampProperty,
 )
 
-from stix2extensions.automodel import automodel, extend_property
-
-
 from stix2extensions.automodel import (
     ExtensionType,
     automodel,
