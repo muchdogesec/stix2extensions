@@ -10,7 +10,7 @@ from stix2extensions.automodel.definitions import get_extension_type_name, get_t
 # Generate Schema for all objects registered (writes to file)
 base_dir = Path("automodel_generated/")
 schema_dir = base_dir/'schemas'
-ext_dir = base_dir/'extensions'
+ext_dir = base_dir/'extension-definitions'
 ext_dir.mkdir(parents=True, exist_ok=True)
 schema_dir.mkdir(parents=True, exist_ok=True)
 

@@ -4,7 +4,6 @@ from stix2.properties import (
     ListProperty,
     StringProperty,
     TimestampProperty,
-    DictionaryProperty,
     FloatProperty,
     ReferenceProperty,
     EmbeddedObjectProperty,
