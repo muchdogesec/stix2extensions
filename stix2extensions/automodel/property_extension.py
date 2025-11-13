@@ -3,12 +3,13 @@ import uuid
 from .constants import S2E_NAMESPACE
 import stix2
 from stix2.v21.vocab import (
-    EXTENSION_TYPE_PROPERTY_EXTENSION,
+    # EXTENSION_TYPE_PROPERTY_EXTENSION,
     EXTENSION_TYPE_TOPLEVEL_PROPERTY_EXTENSION,
 )
 
 
 class ExtensionTypes(enum.StrEnum):
+    # PROPERTY_EXTENSION not currently supported b/c requires different schema gen logic and we don't use this extension type
     # PROPERTY_EXTENSION = EXTENSION_TYPE_PROPERTY_EXTENSION
     TOPLEVEL_PROPERTY_EXTENSION = EXTENSION_TYPE_TOPLEVEL_PROPERTY_EXTENSION
 
