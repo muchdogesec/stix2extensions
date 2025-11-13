@@ -13,12 +13,10 @@ It is useful for two use-cases, for those who want to:
 
 To submit your own STIX Extension Definition:
 
-1. follow the logi
-2. 
-3. submit a PR to this repository for review
+1. follow the logic described in `docs/create_new_extension`
+2. submit a PR to this repository for review
 
-Once your object has been accepted, it will then be easily importable 
-
+Once your object has been accepted, it will then be easily importable...
 
 ## Using custom object or properties defined in STIX Extension Definition
 
@@ -68,9 +66,7 @@ Which prints the STIX object.
 
 ### Misc
 
-Note, this repository also contains two scripts under `stix2extensions/tools`; 1) `creditcard2stix.py`, and 2) `crypto2stix.py`. These are utilities we use in our products.
-
-You should use the core repositories for this data [creditcard2stix](https://github.com/muchdogesec/creditcard2stix) and [crypto2stix](https://github.com/muchdogesec/crypto2stix) respectively.
+Note, this repository also contains two scripts under `stix2extensions/tools`; 1) `creditcard2stix.py`, and 2) `crypto2stix.py`. These are utilities we use in our products to generate enrichments to the `cryptocurrency-wallet`, `cryptocurrency-transaction`, and `bank-card` objects.
 
 ## Support
 
