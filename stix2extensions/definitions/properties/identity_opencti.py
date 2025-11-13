@@ -16,7 +16,7 @@ from stix2extensions.automodel.property_extension import (
 
 @automodel
 @CustomPropertyExtension(
-    "indicator-opencti",
+    "identity-opencti",
     [
         (
             "x_opencti_aliases",
