@@ -6,6 +6,7 @@ from stix2.properties import (
 
 from stix2extensions.automodel import extend_property, automodel
 
+
 _type = "bank-account"
 
 
