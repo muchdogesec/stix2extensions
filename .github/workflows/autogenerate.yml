@@ -18,7 +18,7 @@ jobs:
       - name: regenerate all schema and extension-definition files
         run: |
           pip install .
-          rm -r automodel_generated/
+          rm -rf automodel_generated/
           python generate_all.py
 
       - name: Commit & push generated changes
