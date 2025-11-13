@@ -14,6 +14,7 @@ from stix2.properties import Property
 from .definitions import (
     get_extension_type_name,
     get_properties,
+    get_title,
 )
 from .constants import (
     S2E_NAMESPACE,
@@ -91,6 +92,7 @@ def create_extension_definition(
         if extension_type in ["property-extension", "toplevel-property-extension"]
         else None
     )
+    title = get_title(cls)
     return stix2.ExtensionDefinition(
         id="extension-definition--" + str(uuid.uuid5(S2E_NAMESPACE, cls._type)),
         created_by_ref=DOGESEC_IDENTITY_REF,
@@ -98,7 +100,7 @@ def create_extension_definition(
         modified=cls.extension_modified,
         name=getattr(cls, "name", cls.__name__),
         description=getattr(cls, "extension_description", cls.__doc__),
-        schema=SCHEMA_BASE + f"{get_extension_type_name(cls)}/{cls._type}.json",
+        schema=SCHEMA_BASE + f"{get_extension_type_name(cls)}/{title}.json",
         version=cls.extension_version or "1.0",
         extension_types=[extension_type],
         object_marking_refs=S2E_MARKING_REFS,
