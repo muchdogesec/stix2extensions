@@ -8,7 +8,7 @@ from stix2.properties import (
 )
 
 from stix2extensions.automodel import (
-    ExtensionType,
+    AutomodelExtensionBase,
     automodel,
     extend_property,
 )
@@ -18,7 +18,7 @@ from stix2extensions.automodel.property_extension import (
 )
 
 
-class EpssStruct(ExtensionType, _STIXBase21):
+class EpssStruct(AutomodelExtensionBase, _STIXBase21):
     _properties = OrderedDict(
         [
             (
@@ -64,6 +64,6 @@ class EpssStruct(ExtensionType, _STIXBase21):
     ],
     extension_type=ExtensionTypes.TOPLEVEL_PROPERTY_EXTENSION,
 )
-class ReportEPSSScoring(ExtensionType):
+class ReportEPSSScoring(AutomodelExtensionBase):
     base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/report.json"
     description = "This extension adds new properties to Report SDOs to capture EPSS scores for CVEs."

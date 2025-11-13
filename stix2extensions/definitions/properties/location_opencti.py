@@ -4,7 +4,7 @@ from stix2.properties import (
 )
 
 from stix2extensions.automodel import (
-    ExtensionType,
+    AutomodelExtensionBase,
     automodel,
     extend_property,
 )
@@ -36,7 +36,7 @@ from stix2extensions.automodel.property_extension import (
     ],
     extension_type=ExtensionTypes.TOPLEVEL_PROPERTY_EXTENSION,
 )
-class LocationOpenCTIPropertyExtension(ExtensionType):
+class LocationOpenCTIPropertyExtension(AutomodelExtensionBase):
     base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/location.json"
     description = (
         "This extension adds OpenCTI-specific properties to STIX Location SDOs."

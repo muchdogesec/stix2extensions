@@ -9,7 +9,7 @@ from stix2.properties import (
     EmbeddedObjectProperty,
 )
 
-from stix2extensions.automodel import ExtensionType, extend_property, automodel
+from stix2extensions.automodel import AutomodelExtensionBase, extend_property, automodel
 from stix2.v21.base import _STIXBase21
 
 
@@ -76,5 +76,5 @@ class AddressAndAmount(_STIXBase21):
     ],
     id_contrib_props=["value", "symbol"],
 )
-class CryptocurrencyTransaction(ExtensionType):
+class CryptocurrencyTransaction(AutomodelExtensionBase):
     description = "This extension creates a new SCO that can be used to represent cryptocurrency transactions."

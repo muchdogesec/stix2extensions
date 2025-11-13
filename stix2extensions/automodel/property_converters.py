@@ -223,7 +223,8 @@ def pydantic_field(property: "ExtendedProperty"):
         kwargs.update(default_factory=default_fn)
         kwargs.pop("default", None)
         with contextlib.suppress(Exception):
-            examples.append(transform_examples(default_fn()))
+            if not examples:
+                examples.append(transform_examples(default_fn()))
     if getattr(property, "required", None):
         kwargs.pop("default_factory", None)
     if examples:

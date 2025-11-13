@@ -1,6 +1,7 @@
 from .automodel import automodel, AUTOMODEL_REGISTRY
 from .extension_handlers import (
-    ExtensionType,
-    ExtendedStixType,
+    AutomodelExtensionBase,
+    AutomodelStixType,
 )
+from .property_extension import CustomPropertyExtension, ExtensionTypes
 from .property_converters import extend_property

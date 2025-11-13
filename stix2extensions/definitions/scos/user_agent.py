@@ -3,7 +3,7 @@ from stix2.properties import (
     StringProperty,
 )
 
-from stix2extensions.automodel import ExtensionType, automodel, extend_property
+from stix2extensions.automodel import AutomodelExtensionBase, automodel, extend_property
 
 _type = "user-agent"
 
@@ -25,5 +25,5 @@ _type = "user-agent"
     ],
     id_contrib_props=["string"],
 )
-class UserAgent(ExtensionType):
+class UserAgent(AutomodelExtensionBase):
     description = "This extension creates a new SCO that can be used to represent user agents used in HTTP request. It is designed to be used when the Network Traffic SCO with HTTP request extension cannot be used due to lack of request information needed for the required properties."

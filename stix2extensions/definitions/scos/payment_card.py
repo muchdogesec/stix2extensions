@@ -7,7 +7,7 @@ from stix2.properties import (
     EnumProperty,
 )
 
-from stix2extensions.automodel import ExtensionType, automodel, extend_property
+from stix2extensions.automodel import AutomodelExtensionBase, automodel, extend_property
 
 _type = "payment-card"
 
@@ -120,5 +120,5 @@ _type = "payment-card"
     ],
     id_contrib_props=["value"],
 )
-class PaymentCard(ExtensionType):
+class PaymentCard(AutomodelExtensionBase):
     description = "This extension creates a new SCO that can be used to represent different types of payment card."

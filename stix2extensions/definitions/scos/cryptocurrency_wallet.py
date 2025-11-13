@@ -4,7 +4,7 @@ from stix2.properties import (
     StringProperty,
 )
 
-from stix2extensions.automodel import ExtensionType, automodel, extend_property
+from stix2extensions.automodel import AutomodelExtensionBase, automodel, extend_property
 
 _type = "cryptocurrency-wallet"
 
@@ -32,5 +32,5 @@ _type = "cryptocurrency-wallet"
     ],
     id_contrib_props=["value"],
 )
-class CryptocurrencyWallet(ExtensionType):
+class CryptocurrencyWallet(AutomodelExtensionBase):
     description = "This extension creates a new SCO that can be used to represent cryptocurrency wallets."

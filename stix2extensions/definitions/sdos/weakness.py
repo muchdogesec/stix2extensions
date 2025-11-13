@@ -8,7 +8,7 @@ from stix2.properties import (
     EnumProperty,
 )
 
-from stix2extensions.automodel import ExtensionType, automodel, extend_property
+from stix2extensions.automodel import AutomodelExtensionBase, automodel, extend_property
 
 
 _type = "weakness"
@@ -129,7 +129,7 @@ class COMMON_CONSEQUENCES_OV(StrEnum):
         ),
     ],
 )
-class Weakness(ExtensionType):
+class Weakness(AutomodelExtensionBase):
     description = "This extension creates a new SDO that can be used to represent weaknesses (for CWEs)."
     extension_created = datetime(2020, 1, 1, tzinfo=UTC)
     extension_modified = datetime(2025, 11, 5, tzinfo=UTC)

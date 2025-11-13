@@ -10,7 +10,7 @@ from stix2.properties import (
 )
 
 from stix2extensions.automodel import (
-    ExtensionType,
+    AutomodelExtensionBase,
     automodel,
     extend_property,
 )
@@ -20,7 +20,7 @@ from stix2extensions.automodel.property_extension import (
 )
 
 
-class CPEStruct(ExtensionType, _STIXBase21):
+class CPEStruct(AutomodelExtensionBase, _STIXBase21):
     _properties = OrderedDict(
         [
             (
@@ -160,6 +160,6 @@ class CPEStruct(ExtensionType, _STIXBase21):
     ],
     extension_type=ExtensionTypes.TOPLEVEL_PROPERTY_EXTENSION,
 )
-class SoftwareCpePropertiesExtension(ExtensionType):
+class SoftwareCpePropertiesExtension(AutomodelExtensionBase):
     base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/observables/software.json"
     description = "This extension adds new properties to Software SCOs to capture full CPE information."

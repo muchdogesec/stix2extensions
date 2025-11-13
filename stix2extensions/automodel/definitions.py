@@ -12,7 +12,7 @@ from stix2.base import _Extension
 
 
 if typing.TYPE_CHECKING:
-    from .automodel import ExtendedStixType
+    from .automodel import AutomodelStixType
 
 
 _UUID_RE = r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
@@ -26,7 +26,7 @@ def _reference_regex_from_valid_types(valid_types):
     return rf"^({types_pattern})--{_UUID_RE}$"
 
 
-def get_extension_type_name(model: Type["ExtendedStixType"]):
+def get_extension_type_name(model: Type["AutomodelStixType"]):
     from stix2 import base
 
     if base._Extension in model.mro():
@@ -40,11 +40,11 @@ def get_extension_type_name(model: Type["ExtendedStixType"]):
     return dir
 
 
-def get_title(cls: Type["ExtendedStixType"]):
+def get_title(cls: Type["AutomodelStixType"]):
     return getattr(cls, "initial_type", cls._type)
 
 
-def get_properties(cls: Type["ExtendedStixType"]):
+def get_properties(cls: Type["AutomodelStixType"]):
     return getattr(cls, "_toplevel_properties", cls._properties)
 
 
@@ -78,7 +78,7 @@ class Gen(GenerateJsonSchema):
 
     def _update_class_schema(self, json_schema, cls, config):
         if hasattr(cls, "stix_class"):
-            stix_cls: Type["ExtendedStixType"] = cls.stix_class
+            stix_cls: Type["AutomodelStixType"] = cls.stix_class
             props = {
                 k: v
                 for k, v in json_schema.pop("properties").items()

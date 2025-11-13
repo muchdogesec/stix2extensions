@@ -18,14 +18,14 @@ from .property_converters import (
     ExtendedProperty,  # For TYPE_CHECKING
 )
 from .extension_handlers import (
-    ExtendedStixType,
+    AutomodelStixType,
     create_model_extras,
 )
 
-AUTOMODEL_REGISTRY: list[Type["ExtendedStixType"]] = []
+AUTOMODEL_REGISTRY: list[Type["AutomodelStixType"]] = []
 
 
-def automodel(cls: Type[ExtendedStixType]):
+def automodel(cls: Type[AutomodelStixType]):
     if cls in AUTOMODEL_REGISTRY:
         return cls
     annotations = dict(getattr(cls, "__annotations__", {}))

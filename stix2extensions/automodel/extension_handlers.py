@@ -24,7 +24,7 @@ from .constants import (
 )
 
 
-class ExtensionType(object):
+class AutomodelExtensionBase(object):
     name: str
     description: str | None
     extension_version: str = "1.0"
@@ -33,7 +33,7 @@ class ExtensionType(object):
     base_schema_ref: str = None
 
 
-class ExtendedStixType(_STIXBase, ExtensionType):
+class AutomodelStixType(_STIXBase, AutomodelExtensionBase):
     pydantic_model: BaseModel
     schema: dict
     extension_definition: stix2.ExtensionDefinition
@@ -41,7 +41,7 @@ class ExtendedStixType(_STIXBase, ExtensionType):
     _properties: ClassVar[dict[str, Property]]
 
 
-def get_extension(cls: Type[ExtendedStixType], _extension_type):
+def get_extension(cls: Type[AutomodelStixType], _extension_type):
     extension_name = cls.extension_definition["id"]
     NameExtension = class_for_type(cls.extension_definition["id"], "2.1", "extensions")
     if not NameExtension:
@@ -53,7 +53,7 @@ def get_extension(cls: Type[ExtendedStixType], _extension_type):
     return extension_name, NameExtension
 
 
-def create_model_extras(cls: Type[ExtendedStixType]):
+def create_model_extras(cls: Type[AutomodelStixType]):
     if stix2_v21_base._Observable in cls.mro():
         extension_type = "new-sco"
         cls.base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/common/cyber-observable-core.json"
@@ -76,15 +76,15 @@ def create_model_extras(cls: Type[ExtendedStixType]):
 
 
 def create_extension_definition(
-    cls: Type[ExtendedStixType], extension_type
+    cls: Type[AutomodelStixType], extension_type
 ) -> stix2.ExtensionDefinition:
     id = "extension-definition--" + str(uuid.uuid5(S2E_NAMESPACE, cls._type))
     cls.extension_created = getattr(
-        cls, "extension_created", ExtensionType.extension_created
+        cls, "extension_created", AutomodelExtensionBase.extension_created
     )
     cls.extension_modified = getattr(cls, "extension_created", cls.extension_created)
     cls.extension_version = getattr(
-        cls, "extension_version", ExtensionType.extension_version
+        cls, "extension_version", AutomodelExtensionBase.extension_version
     )
     properties = (
         list(filter(lambda x: x != "extension_type", get_properties(cls)))

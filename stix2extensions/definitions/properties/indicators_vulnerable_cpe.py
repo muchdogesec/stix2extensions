@@ -7,7 +7,7 @@ from stix2.properties import (
 )
 
 from stix2extensions.automodel import (
-    ExtensionType,
+    AutomodelExtensionBase,
     automodel,
     extend_property,
 )
@@ -17,7 +17,7 @@ from stix2extensions.automodel.property_extension import (
 )
 
 
-class SoftwareCriteria(ExtensionType, _STIXBase21):
+class SoftwareCriteria(AutomodelExtensionBase, _STIXBase21):
     _properties = OrderedDict(
         [
             (
@@ -40,7 +40,7 @@ class SoftwareCriteria(ExtensionType, _STIXBase21):
     )
 
 
-class SoftwareCriteriaList(ExtensionType, _STIXBase21):
+class SoftwareCriteriaList(AutomodelExtensionBase, _STIXBase21):
     _properties = OrderedDict(
         [
             (
@@ -79,6 +79,6 @@ class SoftwareCriteriaList(ExtensionType, _STIXBase21):
     ],
     extension_type=ExtensionTypes.TOPLEVEL_PROPERTY_EXTENSION,
 )
-class IndicatorVulnerableCPEPropertyExtension(ExtensionType):
+class IndicatorVulnerableCPEPropertyExtension(AutomodelExtensionBase):
     base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
     description = "This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern."
