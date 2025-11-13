@@ -16,8 +16,7 @@
                 },
                 "id": {
                     "examples": [
-                        "weakness--4c582776-1dfc-596b-86c0-54e9d1a8da3c",
-                        "weakness--11daf30c-dd85-455b-a6b0-8cf14b359b84"
+                        "weakness--4c582776-1dfc-596b-86c0-54e9d1a8da3c"
                     ],
                     "pattern": "^(weakness)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
                     "title": "Id",

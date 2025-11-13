@@ -16,8 +16,7 @@
                 },
                 "id": {
                     "examples": [
-                        "data-source--9892f5c7-036d-54c0-b59b-2c8d1e004aaf",
-                        "data-source--44e19436-f30a-4cc3-bc44-0696eae953c4"
+                        "data-source--9892f5c7-036d-54c0-b59b-2c8d1e004aaf"
                     ],
                     "pattern": "^(data-source)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
                     "title": "Id",

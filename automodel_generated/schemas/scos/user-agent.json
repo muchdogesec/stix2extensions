@@ -16,8 +16,7 @@
                 },
                 "id": {
                     "examples": [
-                        "user-agent--5b933e42-aa70-5379-9e4f-c503c03473cb",
-                        "user-agent--5d80e33c-679f-4082-90cb-666f7718b402"
+                        "user-agent--5b933e42-aa70-5379-9e4f-c503c03473cb"
                     ],
                     "pattern": "^(user-agent)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
                     "title": "Id",

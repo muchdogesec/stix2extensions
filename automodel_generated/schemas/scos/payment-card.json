@@ -16,8 +16,7 @@
                 },
                 "id": {
                     "examples": [
-                        "payment-card--72e0ada9-4cec-5a57-803e-79f93da2e102",
-                        "payment-card--57fa922a-c875-4203-9b53-85fa7b04d4c6"
+                        "payment-card--72e0ada9-4cec-5a57-803e-79f93da2e102"
                     ],
                     "pattern": "^(payment-card)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
                     "title": "Id",
