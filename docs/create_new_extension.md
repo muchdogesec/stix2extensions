@@ -262,8 +262,28 @@ For example, if you were extending an Identity objects to include new alias fiel
 
 Generally the `<SHORT IDENTIFIER>` can be anything, but it MUST result in a unique filename.
 
+### 3.2 Define imports
 
-### 3.2 Define the object structure
+Compared to 1.2 (SDO) and 2.2 (SCO) the imports are slightly different here.
+
+There is no need to import `CustomObservable` or `CustomObject` from stix2. Instead, you need to import from stix2extensions the following
+
+```python
+from stix2extensions.automodel.property_extension import (
+    CustomPropertyExtension,
+    ExtensionTypes,
+)
+```
+
+In the examples you will also see
+
+```python
+from typing import OrderedDict
+```
+
+Whilst this is optional, it is recommended so you can define the order the properties appear (see. 3.3)
+
+### 3.3 Define the object structure
 
 Here is a basic example defining new properties for my identity object
 
@@ -295,14 +315,14 @@ Here is a basic example defining new properties for my identity object
 )
 ```
 
-There is not a lot of difference to what is described in 1.3, they key differences being...
+The structure here is slightly different to 1.4 and 2.4...
 
 * `@CustomPropertyExtension`: Registers a new the new properties
     * The first argument (`extension_id`) defines the name of the extension. This will be used to generate schema file name and the UUID of the Extension Definition object
-    * The second argument (`properties=OrderedDict`) is contains a list of the new properties you wish to add. Note we use `OrderedDict` TODO
-    * The third arguement (`extension_type`) defines what type of extension you want to use. Currently stix2extension only supports `toplevel-property-extension` so you must always use `ExtensionTypes.TOPLEVEL_PROPERTY_EXTENSION`.[Consult the STIX specification (Extension Types Enumeration) if you are unsure if this is right for you](https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_f23s79k9bdhl)
+    * The second argument (`properties=OrderedDict`) is contains a list of the new properties you wish to add. We use `OrderedDict` to ensure the properties appear in this order. This is optional, but if used be sure to import it (see 3.2)
+    * The third argument (`extension_type`) defines what type of extension you want to use. Currently stix2extension only supports `toplevel-property-extension` so you must always use `ExtensionTypes.TOPLEVEL_PROPERTY_EXTENSION`.[Consult the STIX specification (Extension Types Enumeration) if you are unsure if this is right for you](https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_f23s79k9bdhl)
 
-### 3.3 Define the class
+### 3.4 Define the class
 
 Again, similar to 1.4 but the this time also required you to pass `base_schema_ref`, e.g.
 
@@ -310,14 +330,17 @@ Again, similar to 1.4 but the this time also required you to pass `base_schema_r
 class IndicatorVulnerableCPEPropertyExtension(ExtensionType):
     base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
     description = "This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern."
+    extension_created = datetime(2020, 1, 1, tzinfo=UTC)
+    extension_modified = datetime(2025, 11, 5, tzinfo=UTC)
+    extension_version = "1.0"
 ```
 
-* `base_schema_ref`: points to the schema of the object you are extending. Generally speaking you can find these:
+* `base_schema_ref`: points to the schema of the object you are extending. Generally speaking you can find these schemas here:
     * [for Core STIX SDOs](https://github.com/oasis-open/cti-stix2-json-schemas/tree/master/schemas/sdos)
     * [for Core STIX SCOs](https://github.com/oasis-open/cti-stix2-json-schemas/tree/master/schemas/observables)
 
-**IMPORTANT**: We recommend only extending the Core STIX objects in this way. For Custom STIX objects defined in this repo it is usually always better to modify the Custom object the itself and submit your changes in tis way.
+**IMPORTANT**: We recommend only extending the Core STIX objects in this way. For Custom STIX objects defined in this repo it is usually always better to modify the Custom object itself and submit a PR to have it improved.
 
-### 3.4 Generate the extension assets
+### 3.5 Generate the extension assets
 
 See 1.5.
