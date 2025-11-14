@@ -190,13 +190,13 @@ Inside your custom STIX object class, you sjpi;d define metadata about the exten
 
 ```python
 class NationState(ExtensionType):
-    description = "This extension creates a new SDO to represent Nation States."
+    extension_description = "This extension creates a new SDO to represent Nation States."
     extension_created = datetime(2020, 1, 1, tzinfo=UTC)
     extension_modified = datetime(2025, 11, 5, tzinfo=UTC)
     extension_version = "1.1"
 ```
 
-* `description` [REQUIRED]: (string) will be used in the Extension Definition objects `description` and for the `description` of the schema
+* `extension_description` [REQUIRED]: (string) will be used in the Extension Definition objects `description` and for the `description` of the schema
 * `extension_created` [OPTIONAL, defaults to `2020-01-01` if not set]: (datetime) will be used as the `created` date of the Extension Definition. Do not change this (or add it later) once your first version is published.
 * `extension_modified` [defaults to `extension_created` if not set, ALWAYS set to current date when modifying published Extension]: (datetime) will be used as the `modified` date of the Extension Definition.
 * `extension_version` [OPTIONAL, defaults to `1.0` if not set]: (string) Will be used as the `version` property of the extension definition.
@@ -329,7 +329,7 @@ Again, similar to 1.4 but the this time also required you to pass `base_schema_r
 ```python
 class IndicatorVulnerableCPEPropertyExtension(ExtensionType):
     base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
-    description = "This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern."
+    extension_description = "This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern."
     extension_created = datetime(2020, 1, 1, tzinfo=UTC)
     extension_modified = datetime(2025, 11, 5, tzinfo=UTC)
     extension_version = "1.0"
