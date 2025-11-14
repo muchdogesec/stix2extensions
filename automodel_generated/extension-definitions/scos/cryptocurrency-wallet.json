@@ -6,6 +6,7 @@
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "CryptocurrencyWallet",
+    "description": "This extension creates a new SCO that can be used to represent cryptocurrency wallets.",
     "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/automodel_generated/schemas/scos/cryptocurrency-wallet.json",
     "version": "1.0",
     "extension_types": [

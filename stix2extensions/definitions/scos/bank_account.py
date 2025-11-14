@@ -74,7 +74,7 @@ _type = "bank-account"
     id_contrib_props=["iban", "account_number"],
 )
 class BankAccount(object):
-    description = "This extension creates a new SCO that can be used to represent bank account details."
+    extension_description = "This extension creates a new SCO that can be used to represent bank account details."
     at_least_one_of = ["iban", "account_number"]
 
     def _check_object_constraints(self):

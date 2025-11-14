@@ -49,7 +49,7 @@ def automodel(cls: Type[AutomodelStixType]):
     model = create_model(cls.__name__, **fields, __base__=BaseModel)
     cls.pydantic_model = model
     model.stix_class = cls
-    cls.__doc__ = cls.__doc__ or getattr(cls, "description", None)
+    cls.__doc__ = cls.__doc__ or getattr(cls, "extension_description", None)
     model.__doc__ = cls.__doc__
     cls.schema = model.model_json_schema(mode="validation", schema_generator=Gen)
     if defs := cls.schema.pop("$defs", None):

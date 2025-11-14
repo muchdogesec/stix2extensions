@@ -81,4 +81,4 @@ class SoftwareCriteriaList(AutomodelExtensionBase, _STIXBase21):
 )
 class IndicatorVulnerableCPEPropertyExtension(AutomodelExtensionBase):
     base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
-    description = "This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern."
+    extension_description = "This extension adds new properties to Indicator SDOs to list CPE vulnerable inside a pattern."

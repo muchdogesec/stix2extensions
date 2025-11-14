@@ -66,4 +66,4 @@ class EpssStruct(AutomodelExtensionBase, _STIXBase21):
 )
 class ReportEPSSScoring(AutomodelExtensionBase):
     base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/report.json"
-    description = "This extension adds new properties to Report SDOs to capture EPSS scores for CVEs."
+    extension_description = "This extension adds new properties to Report SDOs to capture EPSS scores for CVEs."
