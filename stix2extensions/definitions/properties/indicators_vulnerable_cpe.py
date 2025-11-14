@@ -46,18 +46,14 @@ class SoftwareCriteriaList(AutomodelExtensionBase, _STIXBase21):
             (
                 "vulnerable",
                 extend_property(
-                    EmbeddedObjectProperty(
-                        type=ListProperty(EmbeddedObjectProperty(SoftwareCriteria))
-                    ),
+                    ListProperty(EmbeddedObjectProperty(SoftwareCriteria)),
                     description="List of CPE Matches that are vulnerable",
                 ),
             ),
             (
                 "not_vulnerable",
                 extend_property(
-                    EmbeddedObjectProperty(
-                        type=ListProperty(EmbeddedObjectProperty(SoftwareCriteria))
-                    ),
+                    ListProperty(EmbeddedObjectProperty(SoftwareCriteria)),
                     description="List of CPE Matches that are NOT vulnerable",
                 ),
             ),
