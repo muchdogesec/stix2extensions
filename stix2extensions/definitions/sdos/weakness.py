@@ -130,7 +130,7 @@ class COMMON_CONSEQUENCES_OV(StrEnum):
     ],
 )
 class Weakness(AutomodelExtensionBase):
-    description = "This extension creates a new SDO that can be used to represent weaknesses (for CWEs)."
+    extension_description = "This extension creates a new SDO that can be used to represent weaknesses (for CWEs)."
     extension_created = datetime(2020, 1, 1, tzinfo=UTC)
     extension_modified = datetime(2025, 11, 5, tzinfo=UTC)
     extension_version = "1.1"

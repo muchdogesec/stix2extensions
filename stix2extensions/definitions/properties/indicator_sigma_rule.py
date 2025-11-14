@@ -87,4 +87,4 @@ from stix2extensions.automodel import (
 )
 class IndicatorSigmaRulePropertyExtension(AutomodelExtensionBase):
     base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/indicator.json"
-    description = "This extension adds new properties to Indicator SDOs to capture Sigma Rule specific data."
+    extension_description = "This extension adds new properties to Indicator SDOs to capture Sigma Rule specific data."

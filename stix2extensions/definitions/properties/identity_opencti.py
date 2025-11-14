@@ -30,4 +30,4 @@ from stix2extensions.automodel.property_extension import (
 )
 class IdentityOpenCTIPropertyExtension(AutomodelExtensionBase):
     base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/sdos/identity.json"
-    description = "This extension adds new properties to Identity SDOs to capture OpenCTI specific data."
+    extension_description = "This extension adds new properties to Identity SDOs to capture OpenCTI specific data."

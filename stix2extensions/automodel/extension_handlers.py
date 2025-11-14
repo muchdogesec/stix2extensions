@@ -26,8 +26,8 @@ from .constants import (
 
 
 class AutomodelExtensionBase(object):
-    name: str
-    description: str | None
+    extension_name: str
+    extension_description: str | None
     extension_version: str = "1.0"
     extension_modified: datetime | str = None
     extension_created: datetime | str = CONST_CREATED
@@ -102,7 +102,7 @@ def create_extension_definition(
         created_by_ref=DOGESEC_IDENTITY_REF,
         created=cls.extension_created,
         modified=cls.extension_modified,
-        name=getattr(cls, "name", cls.__name__),
+        name=getattr(cls, "extension_name", cls.__name__),
         description=getattr(cls, "extension_description", cls.__doc__),
         schema=SCHEMA_BASE + f"{get_extension_type_name(cls)}/{title}.json",
         version=cls.extension_version or "1.0",
