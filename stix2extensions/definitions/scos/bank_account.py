@@ -15,11 +15,11 @@ _type = "bank-account"
     _type,
     [
         (
-            "country",
+            "country_ref",
             extend_property(
-                StringProperty(),
-                description="3 letter ISO (ISO 3166-1 alpha-3). Country where the bank account is registered",
-                examples=["USA", "DEU", "KSA", "NGA"],
+                ReferenceProperty(valid_types="location"),
+                description="STIX reference to the Location of the account.",
+                examples=["location--4e9a8b79-6776-56e3-b72c-cb19a086b6a8", "location--14c8eade-a3b5-5ec3-8850-b3c82d4cee38"],
             ),
         ),
         (

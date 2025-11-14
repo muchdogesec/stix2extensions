@@ -27,7 +27,7 @@ class EpssStruct(AutomodelExtensionBase, _STIXBase21):
                     StringProperty(),
                     description="The date of the EPSS score in the format YYYY-MM-DD",
                     examples=["2020-01-01"],
-                    pydantic_kwargs=dict(pattern=r"^\d{4}-\d{2}-\d{2}$"),
+                    pattern=r"^\d{4}-\d{2}-\d{2}$",
                 ),
             ),
             (

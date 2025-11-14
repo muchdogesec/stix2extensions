@@ -13,7 +13,7 @@ _type = "user-agent"
     _type,
     [
         (
-            "string",
+            "value",
             extend_property(
                 StringProperty(required=True),
                 description="Full user-agent string reported by the client",
@@ -23,7 +23,7 @@ _type = "user-agent"
             ),
         ),
     ],
-    id_contrib_props=["string"],
+    id_contrib_props=["value"],
 )
 class UserAgent(AutomodelExtensionBase):
     description = "This extension creates a new SCO that can be used to represent user agents used in HTTP request. It is designed to be used when the Network Traffic SCO with HTTP request extension cannot be used due to lack of request information needed for the required properties."
