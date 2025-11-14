@@ -129,8 +129,8 @@ class CPEStruct(AutomodelExtensionBase, _STIXBase21):
         (
             "x_cpe_struct",
             extend_property(
-                ListProperty(EmbeddedObjectProperty(type=CPEStruct)),
-                description="List of CPE structures.",
+                EmbeddedObjectProperty(type=CPEStruct),
+                description="Expanded struct of CPE values.",
             ),
         ),
         (
