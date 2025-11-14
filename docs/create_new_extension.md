@@ -27,13 +27,20 @@ pip3 install .
 
 ### 0.2 Understand the directory structure
 
-In `definitions/` you will find the following directories that contain the definitions (Python files used to generate all assets) based on each of the available extension creation options;
+In `stix2extensions/definitions/` you will find the following directories that contain the definitions (Python files used to generate all assets) based on each of the available extension creation options;
 
 ```
-definitions/
-├── sdos/
-├── scos/
-└── properties/
+stix2extensions/
+└── definitions/
+    ├── sdos/
+    │   ├── weakness.py
+    │   └── ... 
+    ├── scos/
+    │   ├── cryptocurrency-wallet.py
+    │   └── ...
+    └── properties/
+        ├── identity-opencti.py
+        └── ...
 ```
 
 ---
