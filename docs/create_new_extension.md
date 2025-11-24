@@ -216,6 +216,32 @@ You can not run the script to generate your
 python generate_all.py
 ```
 
+### 1.6 Create an example object
+
+You'll also see examples directories nested as follows
+
+```txt
+stix2extensions/
+└── examples/
+    ├── sdos/
+    │   ├── weakness.py
+    │   └── ... 
+    ├── scos/
+    │   ├── cryptocurrency-wallet.py
+    │   └── ...
+    └── properties/
+        ├── identity-opencti.py
+        └── ...
+```
+
+You should create an example script to show an example of generating your object.
+
+You can not run the script to generate your 
+
+```shell
+python3 stix2extensions/examples/generate.py
+```
+
 ---
 
 ## 2. Create a new SCO
@@ -256,6 +282,10 @@ Compared to generating SDOs, there is one difference I will highlight these by s
 ### 2.5 Generate the extension assets
 
 See 1.5.
+
+### 2.6 Create an example object
+
+See 1.6.
 
 ---
 
@@ -351,3 +381,7 @@ class IndicatorVulnerableCPEPropertyExtension(ExtensionType):
 ### 3.5 Generate the extension assets
 
 See 1.5.
+
+### 3.6 Create an example object
+
+See 1.6.
