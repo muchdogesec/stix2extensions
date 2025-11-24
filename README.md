@@ -4,23 +4,24 @@
 
 This repository is used to share custom STIX objects and STIX object extensions created by the threat intelligence community.
 
-It is useful for two use-cases, for those who want to:
+It is useful for two use-cases, to:
 
-1. create their own custom STIX objects and make them easy to distribute
-2. use the custom STIX objects created by others in a straight-forward way
+1. create your own custom STIX objects or extensions and making them easy to distribute
+2. use custom STIX objects created by others in a straight-forward way
 
-## Submitting your own STIX Extension Definition
+## Create your own STIX Object/Extension
 
-To submit your own STIX Extension Definition:
+To create your own STIX SDO, SCO or extension of an existing object, follow the instructions here: `docs/create_new_extension.md`
 
-1. follow the logic described in `docs/create_new_extension`
-2. submit a PR to this repository for review
+Whilst it is completely optional, we welcome the submission of your creation via a PR to this repository.
 
-Once your object has been accepted, it will then be easily importable...
+Once your object has been accepted, it will then be distributed via this package.
 
-## Using custom object or properties defined in STIX Extension Definition
+## Use a custom STIX Object/Extension defined in this repository
 
 If you want to generate a custom STIX object found in this repo in your project (e.g. use the `bank-accont` STIX object to model bank accounts in your research) you can install the package and import it directly into your project.
+
+First install the library:
 
 ```shell
 pip3 install stix2extensions

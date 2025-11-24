@@ -1,0 +1,23 @@
+{
+    "type": "payment-card",
+    "spec_version": "2.1",
+    "id": "payment-card--2bb315d3-2a76-52db-9740-cb1bb46626b2",
+    "format": "credit",
+    "value": "4242424242424242",
+    "scheme": "VISA",
+    "brand": "VISA",
+    "currency": "GBP",
+    "issuer_ref": "identity--9bef1584-289b-41fe-81b4-a5d72b7746d6",
+    "holder_ref": "identity--9fcd0db9-8115-4e33-ae00-674806395cf1",
+    "start_date": "1999-01-01T00:00:00Z",
+    "expiration_date": "2000-01-02T23:59:59Z",
+    "security_code": "999",
+    "level": "CLASSIC",
+    "is_commercial": false,
+    "is_prepaid": false,
+    "extensions": {
+        "extension-definition--b160c6ee-26b6-591c-8885-c192db67cac9": {
+            "extension_type": "new-sco"
+        }
+    }
+}

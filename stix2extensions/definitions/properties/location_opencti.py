@@ -1,6 +1,7 @@
 from stix2.properties import (
     StringProperty,
     EnumProperty,
+    ListProperty
 )
 
 from stix2extensions.automodel import (
@@ -21,9 +22,10 @@ from stix2extensions.automodel.property_extension import (
         (
             "x_opencti_aliases",
             extend_property(
-                StringProperty(),
+                ListProperty(
+                    extend_property(StringProperty(), examples=["US", "USA"]),
+                ),
                 description="Two and three letter country code for the Country. Only used for Country location types",
-                examples=["US", "USA"],
             ),
         ),
         (

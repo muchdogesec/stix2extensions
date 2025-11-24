@@ -1,0 +1,13 @@
+{
+    "type": "data-source",
+    "spec_version": "2.1",
+    "id": "data-source--22f83247-63ed-5ed6-acf3-8007448ff1c1",
+    "category": "ps_script",
+    "product": "windows",
+    "definition": "Script Block Logging must be enabled",
+    "extensions": {
+        "extension-definition--afeeb724-bce2-575e-af3d-d705842ea84b": {
+            "extension_type": "new-sco"
+        }
+    }
+}

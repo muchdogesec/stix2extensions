@@ -1,0 +1,35 @@
+{
+    "type": "software",
+    "spec_version": "2.1",
+    "id": "software--fda5adb5-23e5-5089-a256-36f298ba241f",
+    "name": "EGroupware 14.1.20140710 Community Edition",
+    "cpe": "cpe:2.3:a:egroupware:egroupware:14.1.20140710:*:*:*:community:*:*:*",
+    "swid": "A1F2EAFC-0523-4257-A9EA-94462CA2BDB8",
+    "languages": [
+        "en"
+    ],
+    "vendor": "egroupware",
+    "version": "14.1.20140710",
+    "extensions": {
+        "extension-definition--82cad0bb-0906-5885-95cc-cafe5ee0a500": {
+            "extension_type": "toplevel-property-extension"
+        }
+    },
+    "x_modified": "2020-01-01T00:00:00Z",
+    "x_revoked": false,
+    "x_cpe_struct": {
+        "cpe_version": "2.3",
+        "part": "a",
+        "vendor": "egroupware",
+        "product": "egroupware",
+        "version": "14.1.20140710",
+        "update": "*",
+        "edition": "*",
+        "language": "*",
+        "sw_edition": "community",
+        "target_sw": "*",
+        "target_hw": "*",
+        "other": "*"
+    },
+    "x_created": "2020-01-01T00:00:00Z"
+}

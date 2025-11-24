@@ -7,14 +7,12 @@
         {
             "properties": {
                 "x_opencti_aliases": {
-                    "examples": [
-                        "Agriculture",
-                        "Agribusiness",
-                        "Food Production",
-                        "Nutritional Supplements"
-                    ],
+                    "description": "A list of aliases used by OpenCTI",
+                    "items": {
+                        "type": "string"
+                    },
                     "title": "X Opencti Aliases",
-                    "type": "string"
+                    "type": "array"
                 },
                 "extensions": {
                     "additionalProperties": {
