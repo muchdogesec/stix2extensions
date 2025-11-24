@@ -6,9 +6,7 @@ from stix2extensions.definitions.properties import (
     ReportEPSSScoring,
 )
 
-report_epss_scoring_ExtensionDefinitionSMO = (
-    ReportEPSSScoring.extension_definition
-)
+report_epss_scoring_ExtensionDefinitionSMO = ReportEPSSScoring.extension_definition
 
 # define UUID for generating UUIDv5s -- use stix2extensions namespace as this is an SDO
 namespace = UUID("1abb62b9-e513-5f55-8e73-8f6d7b55c237")
@@ -37,7 +35,9 @@ example_ReportSDO = Report(
         {"date": "2024-08-18", "score": "0.000750000", "percentile": "0.328570000"},
     ],
     extensions={
-        report_epss_scoring_ExtensionDefinitionSMO.id: {"extension_type": "toplevel-property-extension"}
+        report_epss_scoring_ExtensionDefinitionSMO.id: {
+            "extension_type": "toplevel-property-extension"
+        }
     },
 )
 

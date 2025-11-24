@@ -40,9 +40,7 @@ def generate_examples(repo_root: Path):
                 continue
 
             for obj in examples:
-                obj_id = getattr(obj, "id", None) or getattr(obj, "ID", None)
-                if not obj_id:
-                    raise ValueError(f"Object in {module_name} has no id")
+                obj_id = obj['id']
 
                 filename = dest_dir / f"{obj_id}.json"
                 data = obj.serialize(indent=4)

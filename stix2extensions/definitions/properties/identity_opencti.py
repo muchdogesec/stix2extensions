@@ -18,7 +18,7 @@ from stix2extensions.automodel.property_extension import (
 @CustomPropertyExtension(
     "identity-opencti",
     [
-                (
+        (
             "x_opencti_aliases",
             extend_property(
                 ListProperty(extend_property(StringProperty(), examples=["Agriculture", "Agribusiness", "Food Production", "Nutritional Supplements"])),

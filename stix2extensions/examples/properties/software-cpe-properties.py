@@ -40,7 +40,9 @@ example_SoftwareSCO = Software(
     x_created="2020-01-01T00:00:00.000Z",
     x_modified="2020-01-01T00:00:00.000Z",
     extensions={
-        software_cpe_properties_ExtensionDefinitionSMO.id: {"extension_type": "toplevel-property-extension"}
+        software_cpe_properties_ExtensionDefinitionSMO.id: {
+            "extension_type": "toplevel-property-extension"
+        }
     },
 )
 
