@@ -22,12 +22,12 @@
                     "title": "Id",
                     "type": "string"
                 },
-                "string": {
+                "value": {
                     "description": "Full user-agent string reported by the client",
                     "examples": [
                         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
                     ],
-                    "title": "String",
+                    "title": "Value",
                     "type": "string"
                 },
                 "extensions": {
@@ -54,7 +54,7 @@
     "required": [
         "type",
         "id",
-        "string",
+        "value",
         "extensions"
     ],
     "title": "user-agent",

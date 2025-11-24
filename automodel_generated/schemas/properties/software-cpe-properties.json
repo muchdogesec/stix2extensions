@@ -7,12 +7,9 @@
         {
             "properties": {
                 "x_cpe_struct": {
-                    "description": "List of CPE structures.",
-                    "items": {
-                        "$ref": "#/$defs/CPEStruct"
-                    },
-                    "title": "X Cpe Struct",
-                    "type": "array"
+                    "$ref": "#/$defs/CPEStruct",
+                    "description": "Expanded struct of CPE values.",
+                    "title": "X Cpe Struct"
                 },
                 "x_revoked": {
                     "description": "The revoked property indicates whether the object has been revoked.",

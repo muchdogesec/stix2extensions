@@ -77,4 +77,4 @@ class AddressAndAmount(_STIXBase21):
     id_contrib_props=["value", "symbol"],
 )
 class CryptocurrencyTransaction(AutomodelExtensionBase):
-    description = "This extension creates a new SCO that can be used to represent cryptocurrency transactions."
+    extension_description = "This extension creates a new SCO that can be used to represent cryptocurrency transactions."

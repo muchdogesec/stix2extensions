@@ -6,6 +6,7 @@
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "Weakness",
+    "description": "This extension creates a new SDO that can be used to represent weaknesses (for CWEs).",
     "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/automodel_generated/schemas/sdos/weakness.json",
     "version": "1.1",
     "extension_types": [

@@ -129,8 +129,8 @@ class CPEStruct(AutomodelExtensionBase, _STIXBase21):
         (
             "x_cpe_struct",
             extend_property(
-                ListProperty(EmbeddedObjectProperty(type=CPEStruct)),
-                description="List of CPE structures.",
+                EmbeddedObjectProperty(type=CPEStruct),
+                description="Expanded struct of CPE values.",
             ),
         ),
         (
@@ -162,4 +162,4 @@ class CPEStruct(AutomodelExtensionBase, _STIXBase21):
 )
 class SoftwareCpePropertiesExtension(AutomodelExtensionBase):
     base_schema_ref = "https://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/master/schemas/observables/software.json"
-    description = "This extension adds new properties to Software SCOs to capture full CPE information."
+    extension_description = "This extension adds new properties to Software SCOs to capture full CPE information."
