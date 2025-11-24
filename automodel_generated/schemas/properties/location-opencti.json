@@ -8,12 +8,11 @@
             "properties": {
                 "x_opencti_aliases": {
                     "description": "Two and three letter country code for the Country. Only used for Country location types",
-                    "examples": [
-                        "US",
-                        "USA"
-                    ],
+                    "items": {
+                        "type": "string"
+                    },
                     "title": "X Opencti Aliases",
-                    "type": "string"
+                    "type": "array"
                 },
                 "x_opencti_location_type": {
                     "description": "The type of location",

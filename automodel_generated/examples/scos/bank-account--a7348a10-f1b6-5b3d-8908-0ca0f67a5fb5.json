@@ -1,0 +1,16 @@
+{
+    "type": "bank-account",
+    "spec_version": "2.1",
+    "id": "bank-account--a7348a10-f1b6-5b3d-8908-0ca0f67a5fb5",
+    "country_ref": "location--d9a1d93a-9141-4afe-9f67-95c357287f73",
+    "currency": "GBP",
+    "issuer_ref": "identity--ed196432-19f4-5803-85b3-32397722bdc5",
+    "holder_ref": "identity--fb76b7b8-8701-5d8b-a143-0283847f6638",
+    "iban": "GB33BUKB20201555555555",
+    "bic": "DEMOGB22XXX",
+    "extensions": {
+        "extension-definition--f19f3291-6a84-5674-b311-d75a925d5bd9": {
+            "extension_type": "new-sco"
+        }
+    }
+}
