@@ -19,7 +19,7 @@
             "extension_type": "toplevel-property-extension"
         }
     },
+    "x_sigma_status": "stable",
     "x_sigma_type": "base",
-    "x_sigma_level": "medium",
-    "x_sigma_status": "stable"
+    "x_sigma_level": "medium"
 }
