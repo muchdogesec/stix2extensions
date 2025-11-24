@@ -15,9 +15,6 @@
             "extension_type": "toplevel-property-extension"
         }
     },
-    "x_modified": "2020-01-01T00:00:00Z",
-    "x_revoked": false,
-    "x_created": "2020-01-01T00:00:00Z",
     "x_cpe_struct": {
         "cpe_version": "2.3",
         "part": "a",
@@ -31,5 +28,8 @@
         "target_sw": "*",
         "target_hw": "*",
         "other": "*"
-    }
+    },
+    "x_modified": "2020-01-01T00:00:00Z",
+    "x_created": "2020-01-01T00:00:00Z",
+    "x_revoked": false
 }

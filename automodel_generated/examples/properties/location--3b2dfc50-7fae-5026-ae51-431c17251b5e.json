@@ -45,9 +45,9 @@
             "extension_type": "toplevel-property-extension"
         }
     },
+    "x_opencti_location_type": "Country",
     "x_opencti_aliases": [
         "EGY",
         "EG"
-    ],
-    "x_opencti_location_type": "Country"
+    ]
 }
