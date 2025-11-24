@@ -14,6 +14,8 @@ ext_dir = base_dir/'extension-definitions'
 ext_dir.mkdir(parents=True, exist_ok=True)
 schema_dir.mkdir(parents=True, exist_ok=True)
 
+print("Generating Automodel Schemas and Extension Definitions...")
+print("==================================")
 for model in AUTOMODEL_REGISTRY:
     if not hasattr(model, '_type'):
         continue
@@ -28,3 +30,9 @@ for model in AUTOMODEL_REGISTRY:
     if hasattr(model, 'extension_definition'):
         ext_path.parent.mkdir(parents=True, exist_ok=True)
         ext_path.write_text(model.extension_definition.serialize(indent=4))
+
+# Generate Examples for all example files (writes to file)
+from stix2extensions.examples.generate import generate_examples
+print("==================================")
+print("Generating example STIX object JSON files...")
+generate_examples(Path("."))
