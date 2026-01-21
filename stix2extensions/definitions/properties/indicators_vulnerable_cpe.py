@@ -4,6 +4,7 @@ from stix2.properties import (
     ListProperty,
     EmbeddedObjectProperty,
     StringProperty,
+    ReferenceProperty,
 )
 
 from stix2extensions.automodel import (
@@ -34,6 +35,14 @@ class SoftwareCriteria(AutomodelExtensionBase, _STIXBase21):
                     StringProperty(required=True),
                     description="The matchCriteriaId for the CPE",
                     examples=["68291D44-DBE1-4923-A848-04E64288DC23"],
+                ),
+            ),
+            (
+                "match_criteria_ref",
+                extend_property(
+                    ReferenceProperty(valid_types=["grouping"]),
+                    description="The STIX ID for the grouping associated with this criteria",
+                    examples=["grouping--01234567-89ab-cdef-0123-456789abcdef"],
                 ),
             ),
         ]
