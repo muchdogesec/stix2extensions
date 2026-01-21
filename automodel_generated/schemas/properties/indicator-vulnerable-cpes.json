@@ -56,6 +56,15 @@
                     ],
                     "title": "Matchcriteriaid",
                     "type": "string"
+                },
+                "match_criteria_ref": {
+                    "description": "The STIX ID for the grouping associated with this criteria",
+                    "examples": [
+                        "grouping--01234567-89ab-cdef-0123-456789abcdef"
+                    ],
+                    "pattern": "^(grouping)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Match Criteria Ref",
+                    "type": "string"
                 }
             },
             "required": [
