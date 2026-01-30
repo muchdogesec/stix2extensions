@@ -2,10 +2,8 @@
     "type": "cryptocurrency-transaction",
     "spec_version": "2.1",
     "id": "cryptocurrency-transaction--d3b3642a-9759-5078-9fae-3a868238889c",
-    "symbol": "BTC",
-    "value": "3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5",
-    "fee": 7.28e-06,
     "execution_time": "2022-10-02T15:22:21Z",
+    "fee": 7.28e-06,
     "input": [
         {
             "amount": 0.84,
@@ -22,6 +20,8 @@
             "address_ref": "cryptocurrency-wallet--4d18102a-f35a-4176-9509-f96a3370d067"
         }
     ],
+    "symbol": "BTC",
+    "value": "3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5",
     "extensions": {
         "extension-definition--151d042d-4dcf-5e44-843f-1024440318e5": {
             "extension_type": "new-sco"

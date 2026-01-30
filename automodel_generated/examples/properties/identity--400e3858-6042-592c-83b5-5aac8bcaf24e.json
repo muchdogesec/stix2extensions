@@ -8,6 +8,12 @@
     "name": "Agriculture and agribusiness",
     "description": "Private entities specialized in the growth, culture, transport and transformation of plants or livestock for food.",
     "identity_class": "class",
+    "x_opencti_aliases": [
+        "Agriculture",
+        "Agribusiness",
+        "Food Production",
+        "Nutritional Supplements"
+    ],
     "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
         "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
@@ -16,11 +22,5 @@
         "extension-definition--d51e8a52-ddab-5fc0-bee3-59d371c66cf6": {
             "extension_type": "toplevel-property-extension"
         }
-    },
-    "x_opencti_aliases": [
-        "Agriculture",
-        "Agribusiness",
-        "Food Production",
-        "Nutritional Supplements"
-    ]
+    }
 }
