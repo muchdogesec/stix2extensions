@@ -49,9 +49,9 @@ stix2extensions/
 
 ### 1.1 Create a skeleton file
 
-You should add a new file in `definitions/sdos` and name it in the structure `<OBJECT TYPE (SNAKE CASE).py`.
+You should add a new file in `stix2extensions/definitions/sdos` and name it in the structure `<OBJECT TYPE (SNAKE CASE).py`.
 
-For example, `nation-state` would use the file name `definitions/sdos/nation_state.py`
+For example, `nation-state` would use the file name `stix2extensions/definitions/sdos/nation_state.py`
 
 ### 1.2 Define imports
 
