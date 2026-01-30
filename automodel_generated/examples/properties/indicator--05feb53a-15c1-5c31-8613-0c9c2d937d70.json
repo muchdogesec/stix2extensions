@@ -10,22 +10,6 @@
     "pattern_type": "stix",
     "pattern_version": "2.1",
     "valid_from": "2020-01-01T00:00:00Z",
-    "external_references": [
-        {
-            "source_name": "cve",
-            "url": "https://nvd.nist.gov/vuln/detail/CVE-XXX-XXXX",
-            "external_id": "CVE-XXX-XXXX"
-        }
-    ],
-    "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
-        "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
-    ],
-    "extensions": {
-        "extension-definition--ad995824-2901-5f6e-890b-561130a239d4": {
-            "extension_type": "toplevel-property-extension"
-        }
-    },
     "x_cpes": {
         "vulnerable": [
             {
@@ -39,5 +23,21 @@
                 "matchCriteriaId": "68291D44-DBE1-4923-A848-04E64288DC23"
             }
         ]
-    }
+    },
+    "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+        "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+    ],
+    "extensions": {
+        "extension-definition--ad995824-2901-5f6e-890b-561130a239d4": {
+            "extension_type": "toplevel-property-extension"
+        }
+    },
+    "external_references": [
+        {
+            "source_name": "cve",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-XXX-XXXX",
+            "external_id": "CVE-XXX-XXXX"
+        }
+    ]
 }

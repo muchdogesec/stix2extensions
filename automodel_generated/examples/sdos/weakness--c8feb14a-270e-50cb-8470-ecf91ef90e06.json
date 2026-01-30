@@ -6,24 +6,17 @@
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "CWE Demo",
-    "description": "A demo weakness",
-    "modes_of_introduction": [
-        "Implementation"
-    ],
-    "likelihood_of_exploit": "Medium",
     "common_consequences": [
         "Confidentiality",
         "Integrity"
     ],
+    "description": "A demo weakness",
     "detection_methods": [
         "Automated Static Analysis"
     ],
-    "external_references": [
-        {
-            "source_name": "cwe",
-            "url": "http://cwe.mitre.org/data/definitions/117.html",
-            "external_id": "CWE-117"
-        }
+    "likelihood_of_exploit": "Medium",
+    "modes_of_introduction": [
+        "Implementation"
     ],
     "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
@@ -33,5 +26,12 @@
         "extension-definition--31725edc-7d81-5db7-908a-9134f322284a": {
             "extension_type": "new-sdo"
         }
-    }
+    },
+    "external_references": [
+        {
+            "source_name": "cwe",
+            "url": "http://cwe.mitre.org/data/definitions/117.html",
+            "external_id": "CWE-117"
+        }
+    ]
 }
