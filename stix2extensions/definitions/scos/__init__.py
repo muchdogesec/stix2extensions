@@ -6,3 +6,4 @@ from .phone_number import Phonenumber
 from .user_agent import UserAgent
 from .attack_action import AttackAction, AttackFlow
 from .data_source import DataSource
+from .ai_prompt import AiPrompt

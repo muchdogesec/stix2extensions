@@ -49,9 +49,9 @@ stix2extensions/
 
 ### 1.1 Create a skeleton file
 
-You should add a new file in `definitions/sdos` and name it in the structure `<OBJECT TYPE (SNAKE CASE).py`.
+You should add a new file in `stix2extensions/definitions/sdos` and name it in the structure `<OBJECT TYPE (SNAKE CASE).py`.
 
-For example, `nation-state` would use the file name `definitions/sdos/nation_state.py`
+For example, `nation-state` would use the file name `stix2extensions/definitions/sdos/nation_state.py`
 
 ### 1.2 Define imports
 
@@ -210,6 +210,8 @@ class NationState(ExtensionType):
 
 ### 1.5 Generate the extension assets
 
+Now update `stix2extensions/definitions/sdos/__init__.py` to include your new class.
+
 You can not run the script to generate your 
 
 ```shell
@@ -280,6 +282,8 @@ Compared to generating SDOs, there is one difference I will highlight these by s
 * add `at_least_one_of` defining a list of properties where at least one must exist. Generally this should match the list of `id_contrib_props` defined at 2.3.
 
 ### 2.5 Generate the extension assets
+
+Now update `stix2extensions/definitions/scos/__init__.py` to include your new class.
 
 See 1.5.
 
