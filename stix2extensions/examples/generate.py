@@ -6,8 +6,22 @@ serialized JSON to `automodel_generated/examples/{category}/{object.id}.json`.
 """
 from pathlib import Path
 import importlib
+import json
 import sys
 import traceback
+
+
+FIRST_KEYS = ["type", "spec_version", "id", "created_by_ref", "created", "modified", "name"]
+LAST_KEYS = ["object_marking_refs", "extensions", "external_references"]
+
+
+def sort_key(key):
+    if key in FIRST_KEYS:
+        return (0, FIRST_KEYS.index(key))
+    elif key in LAST_KEYS:
+        return (2, LAST_KEYS.index(key))
+    else:
+        return (1, key)
 
 
 def generate_examples(repo_root: Path):
@@ -43,14 +57,15 @@ def generate_examples(repo_root: Path):
                 obj_id = obj['id']
 
                 filename = dest_dir / f"{obj_id}.json"
-                data = obj.serialize(indent=4)
-                filename.write_text(data, encoding="utf-8")
+                obj_dict = json.loads(obj.serialize())
+                sorted_dict = {k: v for k, v in sorted(obj_dict.items(), key=lambda x: sort_key(x[0]))}
+                data = json.dumps(sorted_dict, indent=4, ensure_ascii=False)
+                filename.write_text(data + "\n", encoding="utf-8")
 
                 total += 1
                 print(f"Wrote {filename}")
 
     print(f"Wrote {total} example files to {out_root}")
-
 
 def main():
     repo_root = Path(__file__).resolve().parents[2]
