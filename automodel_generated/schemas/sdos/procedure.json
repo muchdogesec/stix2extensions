@@ -75,6 +75,7 @@
                             "Administrative access to the target host",
                             "Remote execution over WMI is permitted"
                         ]
+                    ],
                     "items": {
                         "type": "string"
                     },
