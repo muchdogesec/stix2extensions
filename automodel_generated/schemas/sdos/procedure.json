@@ -1,0 +1,172 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "allOf": [
+        {
+            "$ref": "https://github.com/oasis-open/cti-stix2-json-schemas/raw/refs/heads/master/schemas/common/core.json"
+        },
+        {
+            "properties": {
+                "type": {
+                    "const": "procedure",
+                    "examples": [
+                        "procedure"
+                    ],
+                    "title": "Type",
+                    "type": "string"
+                },
+                "id": {
+                    "examples": [
+                        "procedure--93953ed9-d603-573e-a296-385781bdbba1"
+                    ],
+                    "pattern": "^(procedure)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Id",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "A short, recognisable name for the procedural pattern.",
+                    "examples": [
+                        "Shadow copy deletion via vssadmin before ransomware deployment"
+                    ],
+                    "title": "Name",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "A plain-language summary of how the procedure is operationalised.",
+                    "examples": [
+                        "Uses WMI to spawn PowerShell, deletes shadow copies, and schedules ransomware execution on backup systems."
+                    ],
+                    "title": "Description",
+                    "type": "string"
+                },
+                "objective": {
+                    "description": "The attacker goal or intended effect achieved by the procedure.",
+                    "examples": [
+                        "Prevent host recovery before ransomware encryption"
+                    ],
+                    "title": "Objective",
+                    "type": "string"
+                },
+                "context": {
+                    "description": "The operational context or environment where this procedure is relevant.",
+                    "examples": [
+                        "Windows backup infrastructure during maintenance windows"
+                    ],
+                    "title": "Context",
+                    "type": "string"
+                },
+                "variants": {
+                    "description": "Known variants of the same underlying procedural pattern.",
+                    "examples": [
+                        [
+                            "Uses WMIC to launch encoded PowerShell",
+                            "Uses PsExec before scheduled task creation"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Variants",
+                    "type": "array"
+                },
+                "preconditions": {
+                    "description": "Conditions that typically need to be true before the procedure succeeds.",
+                    "examples": [
+                        [
+                            "Administrative access to the target host",
+                            "Remote execution over WMI is permitted"
+                        ]
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Preconditions",
+                    "type": "array"
+                },
+                "required_permissions": {
+                    "description": "The permissions or privileges generally needed to execute the procedure.",
+                    "examples": [
+                        [
+                            "Local administrator",
+                            "Permission to create scheduled tasks"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Required Permissions",
+                    "type": "array"
+                },
+                "targeted_asset_types": {
+                    "description": "The types of assets typically targeted by this procedure.",
+                    "examples": [
+                        [
+                            "Windows backup servers",
+                            "Recovery infrastructure"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Targeted Asset Types",
+                    "type": "array"
+                },
+                "command_line_ref": {
+                    "description": "Optional reference to a representative STIX process object showing how the procedure is typically executed.",
+                    "examples": [
+                        "process--8e6b6156-69f7-4f6c-bf99-100f8b85222d"
+                    ],
+                    "pattern": "^(process)--[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                    "title": "Command Line Ref",
+                    "type": "string"
+                },
+                "revoked": {
+                    "examples": [
+                        false
+                    ],
+                    "title": "Revoked",
+                    "type": "boolean"
+                },
+                "labels": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Labels",
+                    "type": "array"
+                },
+                "confidence": {
+                    "title": "Confidence",
+                    "type": "integer"
+                },
+                "lang": {
+                    "title": "Lang",
+                    "type": "string"
+                },
+                "extensions": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "properties": {
+                        "extension-definition--3dc9c77a-9790-5cd0-94d5-2337871b886b": {
+                            "const": {
+                                "extension_type": "new-sdo"
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "extension-definition--3dc9c77a-9790-5cd0-94d5-2337871b886b"
+                    ],
+                    "type": "object"
+                }
+            }
+        }
+    ],
+    "description": "This extension creates a new SDO that can be used to represent adversary procedures.",
+    "required": [
+        "type",
+        "id",
+        "name",
+        "extensions"
+    ],
+    "title": "procedure",
+    "type": "object"
+}

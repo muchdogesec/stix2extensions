@@ -2,6 +2,7 @@ from stix2 import CustomObject
 from stix2.properties import (
     ReferenceProperty,
     StringProperty,
+    ListProperty,
 )
 
 from stix2extensions.automodel import AutomodelExtensionBase, automodel, extend_property
@@ -42,7 +43,7 @@ _type = "procedure"
             ),
         ),
         (
-            "procedure_context",
+            "context",
             extend_property(
                 StringProperty(),
                 description="The operational context or environment where this procedure is relevant.",
@@ -109,8 +110,7 @@ _type = "procedure"
                 examples=["process--8e6b6156-69f7-4f6c-bf99-100f8b85222d"],
             ),
         ),
-    ],
-    id_contrib_props=["name", "objective", "procedure_context"],
+    ]
 )
 class Procedure(AutomodelExtensionBase):
     extension_description = (
