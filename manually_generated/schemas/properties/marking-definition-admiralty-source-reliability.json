@@ -1,0 +1,139 @@
+{
+  "$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/manually_generated/schemas/properties/marking-definition-admiralty-source-reliability.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MarkingDefinitionAdmiraltySourceReliabilityPropertyExtension",
+  "description": "STIX 2.1 Marking Definition property extension for Admiralty source reliability codes.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "extension_type": {
+      "type": "string",
+      "const": "property-extension"
+    },
+    "admiralty_source_reliability": {
+      "type": "string",
+      "enum": ["A", "B", "C", "D", "E", "F"],
+      "description": "Admiralty source reliability code."
+    },
+    "admiralty_source_reliability_description": {
+      "type": "string",
+      "enum": [
+        "Completely reliable",
+        "Usually reliable",
+        "Fairly reliable",
+        "Not usually reliable",
+        "Unreliable",
+        "Reliability cannot be judged"
+      ],
+      "description": "Human-readable meaning of the Admiralty source reliability code."
+    }
+  },
+  "required": [
+    "extension_type",
+    "admiralty_source_reliability"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "admiralty_source_reliability": {
+            "const": "A"
+          }
+        },
+        "required": ["admiralty_source_reliability"]
+      },
+      "then": {
+        "properties": {
+          "admiralty_source_reliability_description": {
+            "const": "Completely reliable"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "admiralty_source_reliability": {
+            "const": "B"
+          }
+        },
+        "required": ["admiralty_source_reliability"]
+      },
+      "then": {
+        "properties": {
+          "admiralty_source_reliability_description": {
+            "const": "Usually reliable"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "admiralty_source_reliability": {
+            "const": "C"
+          }
+        },
+        "required": ["admiralty_source_reliability"]
+      },
+      "then": {
+        "properties": {
+          "admiralty_source_reliability_description": {
+            "const": "Fairly reliable"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "admiralty_source_reliability": {
+            "const": "D"
+          }
+        },
+        "required": ["admiralty_source_reliability"]
+      },
+      "then": {
+        "properties": {
+          "admiralty_source_reliability_description": {
+            "const": "Not usually reliable"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "admiralty_source_reliability": {
+            "const": "E"
+          }
+        },
+        "required": ["admiralty_source_reliability"]
+      },
+      "then": {
+        "properties": {
+          "admiralty_source_reliability_description": {
+            "const": "Unreliable"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "admiralty_source_reliability": {
+            "const": "F"
+          }
+        },
+        "required": ["admiralty_source_reliability"]
+      },
+      "then": {
+        "properties": {
+          "admiralty_source_reliability_description": {
+            "const": "Reliability cannot be judged"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "$id": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/manually_generated/schemas/properties/marking-definition-admiralty-information-credibility.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MarkingDefinitionAdmiraltyInformationCredibilityPropertyExtension",
+  "description": "STIX 2.1 Marking Definition property extension for Admiralty information credibility codes.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "extension_type": {
+      "type": "string",
+      "const": "property-extension"
+    },
+    "admiralty_information_credibility": {
+      "type": "string",
+      "enum": ["1", "2", "3", "4", "5", "6"],
+      "description": "Admiralty information credibility code."
+    },
+    "admiralty_information_credibility_description": {
+      "type": "string",
+      "enum": [
+        "Confirmed by other sources",
+        "Probably true",
+        "Possibly true",
+        "Doubtful",
+        "Improbable",
+        "Truth cannot be judged"
+      ],
+      "description": "Human-readable meaning of the Admiralty information credibility code."
+    }
+  },
+  "required": [
+    "extension_type",
+    "admiralty_information_credibility"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "admiralty_information_credibility": {
+            "const": "1"
+          }
+        },
+        "required": ["admiralty_information_credibility"]
+      },
+      "then": {
+        "properties": {
+          "admiralty_information_credibility_description": {
+            "const": "Confirmed by other sources"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "admiralty_information_credibility": {
+            "const": "2"
+          }
+        },
+        "required": ["admiralty_information_credibility"]
+      },
+      "then": {
+        "properties": {
+          "admiralty_information_credibility_description": {
+            "const": "Probably true"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "admiralty_information_credibility": {
+            "const": "3"
+          }
+        },
+        "required": ["admiralty_information_credibility"]
+      },
+      "then": {
+        "properties": {
+          "admiralty_information_credibility_description": {
+            "const": "Possibly true"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "admiralty_information_credibility": {
+            "const": "4"
+          }
+        },
+        "required": ["admiralty_information_credibility"]
+      },
+      "then": {
+        "properties": {
+          "admiralty_information_credibility_description": {
+            "const": "Doubtful"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "admiralty_information_credibility": {
+            "const": "5"
+          }
+        },
+        "required": ["admiralty_information_credibility"]
+      },
+      "then": {
+        "properties": {
+          "admiralty_information_credibility_description": {
+            "const": "Improbable"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "admiralty_information_credibility": {
+            "const": "6"
+          }
+        },
+        "required": ["admiralty_information_credibility"]
+      },
+      "then": {
+        "properties": {
+          "admiralty_information_credibility_description": {
+            "const": "Truth cannot be judged"
+          }
+        }
+      }
+    }
+  ]
+}
