@@ -5,7 +5,7 @@
     "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
-    "name": "MarkingDefinitionAdmiralityInformationCredibilityPropertyExtension",
+    "name": "MarkingDefinitionAdmiraltyInformationCredibilityPropertyExtension",
     "description": "This extension adds new properties to Marking Definition objects to capture Admiralty Information Credibility.",
     "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/manually_generated/schemas/properties/marking-definition-admiralty-information-credibility.json",
     "version": "1.0",
