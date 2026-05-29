@@ -30,6 +30,14 @@
                     "title": "Value",
                     "type": "string"
                 },
+                "models": {
+                    "description": "The AI models that the prompt is designed for",
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Models",
+                    "type": "array"
+                },
                 "extensions": {
                     "additionalProperties": {
                         "type": "object"
