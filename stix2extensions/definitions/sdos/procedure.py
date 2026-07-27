@@ -35,21 +35,6 @@ _type = "procedure"
             ),
         ),
         (
-            "operating_system_refs",
-            extend_property(
-                ListProperty(
-                    ReferenceProperty(valid_types="software", spec_version="2.1")
-                ),
-                description="The operating systems this command can be executed on.",
-                examples=[
-                    [
-                        "software--f35d74df-cf21-4bc3-b14c-fa692c52f98c",
-                        "software--0fe83d8f-071e-4c37-a4a0-38a8397b3a93",
-                    ]
-                ],
-            ),
-        ),
-        (
             "objective",
             extend_property(
                 StringProperty(),
@@ -129,7 +114,7 @@ _type = "procedure"
             "operating_system_refs",
             extend_property(
                 ListProperty(ReferenceProperty(valid_types="software", spec_version="2.1")),
-                description="Optional references to STIX software objects representing the operating systems where this procedure is relevant.",
+                description="Optional references to STIX software objects representing the operating systems this command can be executed on.",
                 examples=[
                     [
                         "software--f81e1c3b-4d2a-4fc1-9f3e-2b5d6e8a1c3b",
