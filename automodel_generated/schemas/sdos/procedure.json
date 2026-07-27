@@ -39,11 +39,11 @@
                     "type": "string"
                 },
                 "operating_system_refs": {
-                    "description": "The operating systems this command can be executed on.",
+                    "description": "Optional references to STIX software objects representing the operating systems where this procedure is relevant.",
                     "examples": [
                         [
-                            "software--f35d74df-cf21-4bc3-b14c-fa692c52f98c",
-                            "software--0fe83d8f-071e-4c37-a4a0-38a8397b3a93"
+                            "software--f81e1c3b-4d2a-4fc1-9f3e-2b5d6e8a1c3b",
+                            "software--a1b2c3d4-5e6f-78g-9h0i-1j2k3l4m5n6o"
                         ]
                     ],
                     "items": {

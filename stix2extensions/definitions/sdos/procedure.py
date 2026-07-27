@@ -125,9 +125,25 @@ _type = "procedure"
                 examples=["process--8e6b6156-69f7-4f6c-bf99-100f8b85222d"],
             ),
         ),
+        (
+            "operating_system_refs",
+            extend_property(
+                ListProperty(ReferenceProperty(valid_types="software", spec_version="2.1")),
+                description="Optional references to STIX software objects representing the operating systems where this procedure is relevant.",
+                examples=[
+                    [
+                        "software--f81e1c3b-4d2a-4fc1-9f3e-2b5d6e8a1c3b",
+                        "software--a1b2c3d4-5e6f-78g-9h0i-1j2k3l4m5n6o",
+                    ]
+                ],
+            ),
+        )
     ]
 )
 class Procedure(AutomodelExtensionBase):
     extension_description = (
         "This extension creates a new SDO that can be used to represent adversary procedures."
     )
+    extension_modified = "2026-07-27T00:00:00Z"
+    extension_version = "1.1"
+    
