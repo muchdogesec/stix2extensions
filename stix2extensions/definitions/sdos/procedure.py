@@ -35,6 +35,21 @@ _type = "procedure"
             ),
         ),
         (
+            "operating_system_refs",
+            extend_property(
+                ListProperty(
+                    ReferenceProperty(valid_types="software", spec_version="2.1")
+                ),
+                description="The operating systems this command can be executed on.",
+                examples=[
+                    [
+                        "software--f35d74df-cf21-4bc3-b14c-fa692c52f98c",
+                        "software--0fe83d8f-071e-4c37-a4a0-38a8397b3a93",
+                    ]
+                ],
+            ),
+        ),
+        (
             "objective",
             extend_property(
                 StringProperty(),
