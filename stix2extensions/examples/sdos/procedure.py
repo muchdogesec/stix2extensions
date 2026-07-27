@@ -16,6 +16,10 @@ example_ProcedureSDO = Procedure(
     modified=modified,
     name="Shadow copy deletion via vssadmin before ransomware deployment",
     description="Uses WMI to spawn PowerShell, deletes shadow copies, and schedules ransomware execution on backup systems.",
+    operating_system_refs=[
+            "software--f35d74df-cf21-4bc3-b14c-fa692c52f98c",
+            "software--0fe83d8f-071e-4c37-a4a0-38a8397b3a93",
+    ],
     objective="Prevent host recovery before ransomware encryption",
     context="Windows backup infrastructure during maintenance windows",
     variants=[
