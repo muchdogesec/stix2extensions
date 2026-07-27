@@ -83,10 +83,12 @@ def create_extension_definition(
     cls.extension_created = getattr(
         cls, "extension_created", AutomodelExtensionBase.extension_created
     )
-    cls.extension_modified = getattr(cls, "extension_created", cls.extension_created)
+    cls.extension_modified = getattr(cls, "extension_modified", None) or cls.extension_created
     cls.extension_version = getattr(
         cls, "extension_version", AutomodelExtensionBase.extension_version
     )
+    assert cls.extension_created, "extension_created must be set"
+    assert cls.extension_modified, "extension_modified must be set"
     properties = (
         list(filter(lambda x: x != "extension_type", get_properties(cls)))
         if extension_type in ["property-extension", "toplevel-property-extension"]
