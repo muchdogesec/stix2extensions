@@ -4,11 +4,11 @@
     "id": "extension-definition--3dc9c77a-9790-5cd0-94d5-2337871b886b",
     "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
     "created": "2020-01-01T00:00:00.000Z",
-    "modified": "2020-01-01T00:00:00.000Z",
+    "modified": "2026-07-27T00:00:00.000Z",
     "name": "Procedure",
     "description": "This extension creates a new SDO that can be used to represent adversary procedures.",
     "schema": "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/automodel_generated/schemas/sdos/procedure.json",
-    "version": "1.0",
+    "version": "1.1",
     "extension_types": [
         "new-sdo"
     ],
