@@ -389,3 +389,31 @@ See 1.5.
 ### 3.6 Create an example object
 
 See 1.6.
+
+---
+
+## 4. Updating an existing extension
+
+This applies to any change made to an SDO, SCO, or property extension that has already been published (i.e. already merged and released in a version of this package).
+
+When you make such a change, you must update two attributes on the class (see 1.4 / 2.4 / 3.4):
+
+1. `extension_modified`: set to the current date and time, e.g. `extension_modified = "2026-07-27T00:00:00Z"`. This becomes the `modified` property of the generated Extension Definition.
+2. `extension_version`: bump this to reflect the change, e.g. `extension_version = "1.1"`. Use your judgement on whether the change is a major, minor, or patch bump.
+
+These only need to be updated together when you make a real change to the extension — i.e. adding, removing, or changing a property (its type, requirements, etc). If you are only editing the `description` or `examples` of an existing property (i.e. no change to the actual schema), you do not need to update `extension_modified` or `extension_version`.
+
+For example (from `stix2extensions/definitions/sdos/procedure.py`):
+
+```python
+class Procedure(AutomodelExtensionBase):
+    extension_description = (
+        "This extension creates a new SDO that can be used to represent adversary procedures."
+    )
+    extension_modified = "2026-07-27T00:00:00Z"
+    extension_version = "1.1"
+```
+
+**IMPORTANT**: Never change `extension_created` on a published extension — it must always reflect the original creation date.
+
+Once updated, regenerate the extension assets (see 1.5) so the schema and Extension Definition object are rebuilt with the new metadata.

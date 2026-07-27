@@ -11,7 +11,11 @@ It is useful for two use-cases, to:
 
 ## Create your own STIX Object/Extension
 
-To create your own STIX SDO, SCO or extension of an existing object, follow the instructions here: `docs/create_new_extension.md`
+To create your own STIX SDO, SCO or extension of an existing object, follow the instructions here: [`docs/create_new_extension.md`](docs/create_new_extension.md)
+
+## Modifying existing extensions
+
+If you are updating an extension that has already been published (rather than creating a new one), follow [`docs/create_new_extension.md#4-updating-an-existing-extension`](docs/create_new_extension.md#4-updating-an-existing-extension) instead.
 
 Whilst it is completely optional, we welcome the submission of your creation via a PR to this repository.
 
